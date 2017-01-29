@@ -4,12 +4,14 @@
     
     require_once "consts/ptypeaccessright.consts.php";
     
-    class PVar
+    class PMethod
     {
         private $name;
         private $access_type;
+        private $args;
+        private $src;
         
-        function __construct(int $access_type = _PRIVATE_, string $var_name)
+        public function __construct(int $access_type, string $method_name, array $args = array())
         {
             switch($access_type)
             {
@@ -27,8 +29,9 @@
                 } break;
                 default: $this->access_type = _PRIVATE_;
             }
-            
-            $this->name = $var_name;
+            $this->name = $method_name;
+            $this->args = $args;
+            $this->src = "";
         }
         
         public function getName() : string
@@ -38,12 +41,22 @@
         
         public function getAccessType() : int
         {
-            return $this->type;
+            return $this->access_type;
         }
         
-        public function setName(string $var_name)
+        public function getArgs() : array
         {
-            $this->name = $var_name;
+            return $this->args;
+        }
+        
+        public function getSrc() : string
+        {
+            return $this->src;
+        }
+        
+        public function setName(string $method_name)
+        {
+            $this->name = $method_name;
         }
         
         public function setAccessType(int $access_type)
@@ -66,6 +79,19 @@
             }
         }
         
+        public function setSrc(string $src)
+        {
+            $this->src = $src;
+        }
+        
+        public function addArgs(array $args)
+        {
+            foreach($args as $arg)
+            {
+                $this->args[] = $arg;
+            }
+        }
+        
         public function __toString()
         {
             $type = "";
@@ -83,10 +109,32 @@
                 {
                     $type = "protected";
                 } break;
-                default: $this->access_type = _PRIVATE_;
+                default: $type = "private";
             }
+            $lines = explode("\n", $this->src);
+            for($i = 0; $i < count($lines); $i++) $lines[$i] = str_replace("\t", "    ", $lines[$i]);
             
-            return $type." $".$this->name.";\n";
+            $code = "\n".$type." ".$this->name;
+            
+            $code .= "(";
+            foreach($this->args as $arg)
+            {
+                $code .= "$".$arg;
+                if (next($this->args)) $code .= ", ";
+            }
+            $code .= ")\n";
+            
+            $code .= "{\n";
+            
+            $isT = false;
+            foreach($lines as $line)
+            {
+                $code .= "\t".($line)."\n";
+            }
+            $code .= "\n}";
+            
+            
+            return $code;
         }
         
     }
