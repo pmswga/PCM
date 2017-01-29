@@ -1,8 +1,8 @@
 <?php
-    declare(strict_types=1);
+    declare(strict_types = 1);
     namespace PCM\Structures;
     
-    require_once "../consts/ptypeclass.consts.php";
+    require_once $_SERVER['DOCUMENT_ROOT']."/pcm/consts/ptypeclass.consts.php";
     require_once "pvar.class.php";
     require_once "pconst.class.php";
     require_once "pmethod.class.php";

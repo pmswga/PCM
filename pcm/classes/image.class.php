@@ -1,15 +1,10 @@
 <?php
-    declare(strict_types=1);
+    declare(strict_types = 1);
     namespace PCM\Classes;
     
-    require_once "../structures/pclass.class.php";
+    require_once $_SERVER['DOCUMENT_ROOT']."/pcm/structures/pclass.class.php";
     
-    use PCM\Structures\PClass;
-    use PCM\Structures\PVar;
-    use PCM\Structures\PConst;
-    use PCM\Structures\PMethod;
-    
-    class Image
+    class PImage
     {
         private $name;
         private $classes;
