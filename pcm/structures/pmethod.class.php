@@ -2,7 +2,7 @@
     declare(strict_types=1);
     namespace PCM\Structures;
     
-    require_once "consts/ptypeaccessright.consts.php";
+    require_once "../consts/ptypeaccessright.consts.php";
     
     class PMethod
     {

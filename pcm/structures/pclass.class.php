@@ -2,7 +2,7 @@
     declare(strict_types=1);
     namespace PCM\Structures;
     
-    require_once "consts/ptypeclass.consts.php";
+    require_once "../consts/ptypeclass.consts.php";
     require_once "pvar.class.php";
     require_once "pconst.class.php";
     require_once "pmethod.class.php";
@@ -36,7 +36,7 @@
             }
         }
         
-        public function getName() : string
+        public function getClassName() : string
         {
             return $this->name;
         }
