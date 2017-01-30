@@ -15,6 +15,11 @@
             $this->classes = $classes;
         }
         
+        public function getName() : string
+        {
+            return $this->name;
+        }
+        
         public function getClasses() : array
         {
             return $this->classes;

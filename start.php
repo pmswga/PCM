@@ -1,5 +1,6 @@
 <?php
-	require_once "pcm/classes/image.class.php";
+	require_once "pcm/classes/pimage.class.php";
+    require_once "engine/ctemplater.php";
 	
     use PCM\Structures\PClass;
     use PCM\Structures\PVar;
@@ -9,5 +10,5 @@
     
 	session_start();
     
-    $class = new PClass(_NATIVE_, "Test");
+    $CT = new CTemplater("templates/tpl", "templates/tpl_c", "templates/configs", "templates/cache");
 ?>

@@ -1,1 +1,17 @@
 
+.table th{
+    text-align: center;
+}
+
+form[name="create_image"] .form-group:last-child{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#add_const_form{
+    width: 100%;
+}
+
+#add_const_form td{
+    padding: 5px;
+}
