@@ -3,10 +3,11 @@
     text-align: center;
 }
 
-form[name="create_image"] .form-group:last-child{
+form[name="create_image"] .form-group:last-child, form[name="create_class"] .form-group:last-child{
     display: flex;
     justify-content: flex-end;
 }
+
 
 #add_const_form{
     width: 100%;
@@ -14,4 +15,38 @@ form[name="create_image"] .form-group:last-child{
 
 #add_const_form td{
     padding: 5px;
+}
+
+form[name="create_class"] .form-group:nth-child(4) legend{
+    text-align: center;
+}
+
+#public_var_legend{
+    color: #61BD6D;
+
+    }
+#private_var_legend{
+    color: #E14938;
+}
+
+#protected_var_legend{
+    color: #FBA026;
+}
+
+textarea[name="code"] {
+    background-color: #475577;
+    color: white;
+}
+
+#result_prepros_code{
+    width: 100%;
+    height: 32vh;
+    background-color: #475577;
+    color: white;
+    padding: 5px;
+}
+
+.panel-title{
+    display: flex;
+    justify-content: space-between;
 }

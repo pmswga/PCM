@@ -1,3 +1,26 @@
+<?php
+/* Smarty version 3.1.29, created on 2017-01-31 23:30:17
+  from "C:\OpenServer\domains\pcm.php\templates\tpl\index.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_5890f3d9ce9a75_89441169',
+  'file_dependency' => 
+  array (
+    '9b555640721e9f8bd254525bf25abd0b0077de93' => 
+    array (
+      0 => 'C:\\OpenServer\\domains\\pcm.php\\templates\\tpl\\index.tpl',
+      1 => 1485894617,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5890f3d9ce9a75_89441169 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,9 +29,15 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/vt.css">
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/tabulation.js"></script>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
+>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -40,12 +69,31 @@
                                                             <th>Класс</th>
                                                             <th>Выбрать</th>
                                                         </tr>
-                                                        {foreach from=$classes item=class}
+                                                        <?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_0_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_0_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
                                                             <tr>
-                                                                <td>{$class->getClassName()}</td>
-                                                                <td><input name="add_class[]" value="{$class->getClassName()}" type="checkbox" class="form-control"></td>
+                                                                <td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</td>
+                                                                <td><input name="add_class[]" value="<?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+" type="checkbox" class="form-control"></td>
                                                             </tr>
-                                                        {/foreach}
+                                                        <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_local_item;
+}
+if ($__foreach_class_0_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
+}
+?>
                                                     </table>
                                                 </div>
                                                 <div class="form-group">
@@ -64,34 +112,73 @@
                                                 <input name="delete_image_button" type="submit" class="btn btn-danger pull-right" value="Удалить">
                                                 <br>
                                                 <br>
-                                                {if $images != NULL}
+                                                <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
                                                     <div class="panel-group" id="final_images">
-                                                    {foreach from=$images item=image}
+                                                    <?php
+$_from = $_smarty_tpl->tpl_vars['images']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_image_1_saved_item = isset($_smarty_tpl->tpl_vars['image']) ? $_smarty_tpl->tpl_vars['image'] : false;
+$_smarty_tpl->tpl_vars['image'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['image']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['image']->value) {
+$_smarty_tpl->tpl_vars['image']->_loop = true;
+$__foreach_image_1_saved_local_item = $_smarty_tpl->tpl_vars['image'];
+?>
                                                         <div class="panel panel-default">
                                                             <div class="panel-heading">
                                                                 <h4 class="panel-title">
-                                                                  <a data-toggle="collapse" data-parent="#final_images" href="#{$image->getName()}">{$image->getName()}</a>
-                                                                  <input name="delete_image[]" type="checkbox" value="{$image->getName()}">
+                                                                  <a data-toggle="collapse" data-parent="#final_images" href="#<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+"><?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+</a>
+                                                                  <input name="delete_image[]" type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+">
                                                                 </h4>
                                                             </div>
-                                                            <div id="{$image->getName()}" class="panel-collapse collapse">
+                                                            <div id="<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+" class="panel-collapse collapse">
                                                                 <div class="panel-body">
                                                                     <label>Классы в составе образа:</label>
                                                                     <ul>
-                                                                    {foreach from=$image->getClasses() item=class}
-                                                                        <li>{$class->getClassName()}</li>
-                                                                    {/foreach}
+                                                                    <?php
+$_from = $_smarty_tpl->tpl_vars['image']->value->getClasses();
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_2_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_2_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+                                                                        <li><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</li>
+                                                                    <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_2_saved_local_item;
+}
+if ($__foreach_class_2_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_2_saved_item;
+}
+?>
                                                                     </ul>
                                                                     <hr>
                                                                     <input type="submit" class="btn btn-warning" value="Изменить">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    {/foreach}
+                                                    <?php
+$_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_local_item;
+}
+if ($__foreach_image_1_saved_item) {
+$_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_item;
+}
+?>
                                                     </div>
-                                                {else}
+                                                <?php } else { ?>
                                                     <h3 align="center">Образов нет</h3>
-                                                {/if}
+                                                <?php }?>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -166,24 +253,43 @@
                                         <fieldset>
                                             <legend>Список классов</legend>
                                             <form name="work_with_classes" method="POST">
-                                                {if $classes != NULL}
+                                                <?php if ($_smarty_tpl->tpl_vars['classes']->value != NULL) {?>
                                                     <table class="table table-hover">
                                                         <tr>
                                                             <td>Класс</td>
                                                             <td><input name="delete_class_button" type="submit" class="btn btn-danger" value="Удалить"></td>
                                                             <td>Изменение</td>
                                                         </tr>
-                                                            {foreach from=$classes item=class}
+                                                            <?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_3_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_3_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
                                                                 <tr>
-                                                                    <td>{$class->getClassName()}</td>
-                                                                    <td><input name="delete_class[]" value="{$class->getClassName()}" type="checkbox" class="form-control"></td>
+                                                                    <td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</td>
+                                                                    <td><input name="delete_class[]" value="<?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+" type="checkbox" class="form-control"></td>
                                                                     <td><a href=""></a></td>
                                                                 </tr>
-                                                            {/foreach}
+                                                            <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_3_saved_local_item;
+}
+if ($__foreach_class_3_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_3_saved_item;
+}
+?>
                                                     </table>
-                                                {else}
+                                                <?php } else { ?>
                                                     <h3>Классы не созданы</h3>
-                                                {/if}
+                                                <?php }?>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -195,7 +301,8 @@
                                         <fieldset>
                                             <legend>Предосмотр кода</legend>
                                             <form name="generate_code" method="POST">
-                                                <textarea name="code" rows="32" class="form-control" onkeydown="insertTab(this, event);">{$image_code}</textarea>
+                                                <textarea name="code" rows="32" class="form-control" onkeydown="insertTab(this, event);"><?php echo $_smarty_tpl->tpl_vars['image_code']->value;?>
+</textarea>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -206,7 +313,8 @@
 				</div>
 			</div>
         </div>
-        <script type="text/javascript">
+        <?php echo '<script'; ?>
+ type="text/javascript">
             
             $(document).ready(function(){
                 
@@ -251,6 +359,8 @@
                 
             });
             
-        </script>
+        <?php echo '</script'; ?>
+>
 	</body>
-</html>
+</html><?php }
+}

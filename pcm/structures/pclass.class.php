@@ -7,6 +7,10 @@
     require_once "pconst.class.php";
     require_once "pmethod.class.php";
     
+    use PCM\Structures\PVar;
+    use PCM\Structures\PConst;
+    use PCM\Structures\PMethod;
+    
     class PClass
     {
         private $name;

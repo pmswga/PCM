@@ -1,12 +1,7 @@
 <?php
 	require_once "pcm/classes/pimage.class.php";
     require_once "engine/ctemplater.php";
-	
-    use PCM\Structures\PClass;
-    use PCM\Structures\PVar;
-    use PCM\Structures\PConst;
-    use PCM\Structures\PMethod;
-    use PCM\Structures\PImage;
+    require_once "engine/ctools.php";
     
 	session_start();
     

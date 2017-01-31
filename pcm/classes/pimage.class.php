@@ -4,6 +4,8 @@
     
     require_once $_SERVER['DOCUMENT_ROOT']."/pcm/structures/pclass.class.php";
     
+    use PCM\Structures\PClass;
+    
     class PImage
     {
         private $name;
@@ -29,8 +31,9 @@
         {
             foreach($classes as $class)
             {
-                if($class instanceof PClass)
+                if ($class instanceof PClass) {
                     $this->classes[$class->getClassName()] = $class;
+                }
             }
         }
         
