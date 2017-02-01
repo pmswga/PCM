@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-02-02 00:14:36
+/* Smarty version 3.1.29, created on 2017-02-02 00:23:00
   from "C:\OpenServer\domains\pcm.php\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58924fbcb1fa59_56246129',
+  'unifunc' => 'content_589251b4450af8_83926930',
   'file_dependency' => 
   array (
     '9b555640721e9f8bd254525bf25abd0b0077de93' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\templates\\tpl\\index.tpl',
-      1 => 1485983676,
+      1 => 1485984147,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58924fbcb1fa59_56246129 ($_smarty_tpl) {
+function content_589251b4450af8_83926930 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,9 +109,11 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
                                         <fieldset>
                                             <legend>Готовые образы</legend>
                                             <form name="work_with_images" method="POST">
-                                                <input name="delete_image_button" type="submit" class="btn btn-danger pull-right" value="Удалить">
-                                                <br>
-                                                <br>
+                                                <div id="manage_images" class="form-group">
+                                                    <input name="delete_image_button" type="submit" class="btn btn-danger" value="Удалить">
+                                                    <input name="export_image_button" type="submit" class="btn btn-warning" value="Экспортировать">
+                                                </div>
+                                                <div class="form-group">
                                                 <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
                                                     <div class="panel-group" id="final_images">
                                                     <?php
@@ -132,7 +134,7 @@ $__foreach_image_1_saved_local_item = $_smarty_tpl->tpl_vars['image'];
                                                                   <a data-toggle="collapse" data-parent="#final_images" href="#<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
 "><?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
 </a>
-                                                                  <input name="delete_image[]" type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
+                                                                  <input name="select_image[]" type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getName();?>
 ">
                                                                 </h4>
                                                             </div>
@@ -179,6 +181,7 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_item;
                                                 <?php } else { ?>
                                                     <h3 align="center">Образов нет</h3>
                                                 <?php }?>
+                                                </div>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -305,7 +308,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_3_saved_item;
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <label>Выбрать образ</label>
-                                                            <select id="change_image_for_generate_code" class="form-control">
+                                                            <select id="change_image_for_generate_code" name="selected_image" class="form-control">
                                                                 <?php
 $_from = $_smarty_tpl->tpl_vars['images']->value;
 if (!is_array($_from) && !is_object($_from)) {
@@ -334,7 +337,7 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_4_saved_item;
                                                         
                                                         </div>
                                                         <div id="generate_buttons" class="col-md-2">
-                                                            <input name="generate_current" type="submit" class="btn btn-primary" value="Сгенерировать все образы">
+                                                            <input name="generate_image" type="submit" class="btn btn-primary" value="Сгенерировать все образы">
                                                             <br>
                                                             <input name="generate_current" type="submit" class="btn  btn-primary" value="Сгенерировать этот образ">
                                                         </div>

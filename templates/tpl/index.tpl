@@ -61,9 +61,11 @@
                                         <fieldset>
                                             <legend>Готовые образы</legend>
                                             <form name="work_with_images" method="POST">
-                                                <input name="delete_image_button" type="submit" class="btn btn-danger pull-right" value="Удалить">
-                                                <br>
-                                                <br>
+                                                <div id="manage_images" class="form-group">
+                                                    <input name="delete_image_button" type="submit" class="btn btn-danger" value="Удалить">
+                                                    <input name="export_image_button" type="submit" class="btn btn-warning" value="Экспортировать">
+                                                </div>
+                                                <div class="form-group">
                                                 {if $images != NULL}
                                                     <div class="panel-group" id="final_images">
                                                     {foreach from=$images item=image}
@@ -71,7 +73,7 @@
                                                             <div class="panel-heading">
                                                                 <h4 class="panel-title">
                                                                   <a data-toggle="collapse" data-parent="#final_images" href="#{$image->getName()}">{$image->getName()}</a>
-                                                                  <input name="delete_image[]" type="checkbox" value="{$image->getName()}">
+                                                                  <input name="select_image[]" type="checkbox" value="{$image->getName()}">
                                                                 </h4>
                                                             </div>
                                                             <div id="{$image->getName()}" class="panel-collapse collapse">
@@ -92,6 +94,7 @@
                                                 {else}
                                                     <h3 align="center">Образов нет</h3>
                                                 {/if}
+                                                </div>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -199,7 +202,7 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <label>Выбрать образ</label>
-                                                            <select id="change_image_for_generate_code" class="form-control">
+                                                            <select id="change_image_for_generate_code" name="selected_image" class="form-control">
                                                                 {foreach from=$images item=image}
                                                                     <option value="{$image->getName()}">{$image->getName()}</option>
                                                                 {/foreach}
@@ -209,7 +212,7 @@
                                                         
                                                         </div>
                                                         <div id="generate_buttons" class="col-md-2">
-                                                            <input name="generate_current" type="submit" class="btn btn-primary" value="Сгенерировать все образы">
+                                                            <input name="generate_image" type="submit" class="btn btn-primary" value="Сгенерировать все образы">
                                                             <br>
                                                             <input name="generate_current" type="submit" class="btn  btn-primary" value="Сгенерировать этот образ">
                                                         </div>

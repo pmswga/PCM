@@ -8,6 +8,14 @@ form[name="create_image"] .form-group:last-child, form[name="create_class"] .for
     justify-content: flex-end;
 }
 
+#manage_images{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#manage_images input{
+    margin: 5px;
+}
 
 #add_const_form{
     width: 100%;

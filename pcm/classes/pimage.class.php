@@ -39,7 +39,10 @@
         
         public function save()
         {
-            return file_put_contents($this->name.".pcm", serialize($this));
+            if (!is_dir("images")) mkdir("images");
+            
+            $folder = "images";
+            return file_put_contents($folder."/".$this->name.".pcm", serialize($this));           
         }
         
         public function load($image)

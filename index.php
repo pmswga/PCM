@@ -30,9 +30,18 @@
     }
     
     if (!empty($_POST['delete_image_button'])) {
-        $delete_images = $_POST['delete_image'];
+        $select_image = $_POST['select_image'];
         
-        for($i = 0; $i < count($delete_images); $i++) unset($_SESSION['images'][$delete_images[$i]]);
+        for($i = 0; $i < count($select_image); $i++) unset($_SESSION['images'][$select_image[$i]]);
+        CTools::Redirect(THIS);
+    }
+    
+    if (!empty($_POST['export_image_button'])) {
+        $select_image = $_POST['select_image'];
+        
+        
+        for($i = 0; $i < count($select_image); $i++) $_SESSION['images'][$select_image[$i]]->save();
+        
         CTools::Redirect(THIS);
     }
     
