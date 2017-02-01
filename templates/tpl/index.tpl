@@ -55,7 +55,7 @@
                                         </fieldset>
                                     </div>
                                     <div class="col-md-4">
-                                    
+                                        
                                     </div>
                                     <div class="col-md-4">
                                         <fieldset>
@@ -195,7 +195,29 @@
                                         <fieldset>
                                             <legend>Предосмотр кода</legend>
                                             <form name="generate_code" method="POST">
-                                                <textarea name="code" rows="32" class="form-control" onkeydown="insertTab(this, event);">{$image_code}</textarea>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label>Выбрать образ</label>
+                                                            <select id="change_image_for_generate_code" class="form-control">
+                                                                {foreach from=$images item=image}
+                                                                    <option value="{$image->getName()}">{$image->getName()}</option>
+                                                                {/foreach}
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        
+                                                        </div>
+                                                        <div id="generate_buttons" class="col-md-2">
+                                                            <input name="generate_current" type="submit" class="btn btn-primary" value="Сгенерировать все образы">
+                                                            <br>
+                                                            <input name="generate_current" type="submit" class="btn  btn-primary" value="Сгенерировать этот образ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea name="code" rows="32" class="form-control" onkeydown="insertTab(this, event);">{$image_code}</textarea>
+                                                </div>
                                             </form>
                                         </fieldset>
                                     </div>
@@ -234,16 +256,17 @@
                     
                 });
                 
-                $("[name='prepros_code']").keyup(function(){
+                $("#change_image_for_generate_code").change(function(){
                     
-                    var src = $("[name='prepros_code']").val();
+                    var image_name = $("#change_image_for_generate_code").val();
                     
                     $.ajax({
-                        url: "php/prepros_code.php",
+                        url: "php/get_code_from_image.php",
                         type: "POST",
-                        data: "code=" + src,
+                        data: "image_name=" + image_name,
                         success: function(replay){
-                            $("#result_prepros_code").html(replay);
+                            $("[name='code']").html("");
+                            $("[name='code']").html(replay);
                         }
                     });
                     
