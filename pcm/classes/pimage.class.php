@@ -37,7 +37,7 @@
             }
         }
         
-        public function save()
+        public function export()
         {
             if (!is_dir("images")) mkdir("images");
             
@@ -45,9 +45,12 @@
             return file_put_contents($folder."/".$this->name.".pcm", serialize($this));           
         }
         
-        public function load($image)
+        public static function import()
         {
-            
+          if (!is_dir("images")) return false;
+          else {
+            return unserialize(file_put_contents("images/".$this->name.".pcm"));
+          }
         }
         
         public function __toString()
@@ -63,7 +66,6 @@
                 }
                 $code .= "\n";
             }
-            
             
             $code .= "\n?>\n";
             
