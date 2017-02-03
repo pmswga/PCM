@@ -13,9 +13,8 @@
   $class->addVars([new PVar(_PRIVATE_, "b")]);
   $class->addVars([new PVar(_PRIVATE_, "c")]);
   
-  $image = new PImage("Smalltalk", [$class]);
+  $image = PImage::import("Smalltalk");
   
-  $image->export();
   
   echo "<pre>";
   print_r($image);

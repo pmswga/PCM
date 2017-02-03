@@ -45,11 +45,14 @@
             return file_put_contents($folder."/".$this->name.".pcm", serialize($this));           
         }
         
-        public static function import()
+        public static function import(string $file_name)
         {
           if (!is_dir("images")) return false;
           else {
-            return unserialize(file_put_contents("images/".$this->name.".pcm"));
+            $path = "images/".$file_name.".pcm";
+            
+            if (file_exists($path)) return unserialize(file_get_contents($path));
+            else return false;
           }
         }
         
