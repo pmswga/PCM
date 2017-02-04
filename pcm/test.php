@@ -15,13 +15,22 @@
   $class->addVars([new PVar(_PRIVATE_, "b")]);
   $class->addVars([new PVar(_PRIVATE_, "c")]);
   
-  $image = PImage::import("Smalltalk");
-  $image2 = PImage::import("Smalltalk2");
+  $class2 = new PClass(_NATIVE_, "Second");
+  $class2->addVars([new PVar(_PRIVATE_, "a")]);
+  $class2->addVars([new PVar(_PRIVATE_, "b")]);
+  $class2->addVars([new PVar(_PRIVATE_, "c")]);
   
-  $IM = new PImagesManager([$image, $image2]);
+  $image = new PImage("Smalltalk-72", [$class, $class2]);
+  $image2 = new PImage("Smalltalk-80", [$class]);
+  
+  //file_put_contents("img.php", $image);
+  
+  //$IM = new PImagesManager([$image, $image2]);
+  
+  $image->generate();
   
   echo "<pre>";
-  print_r($IM->getImage("Smalltalk3"));
+  print_r($image);
   echo "</pre>";
   
 ?>

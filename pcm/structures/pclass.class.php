@@ -14,14 +14,16 @@
     class PClass
     {
         private $name;
+        private $subclass_name;
         private $vars;
         private $consts;
         private $methods;
         private $class_type;
         
-        function __construct(int $class_type, string $name)
+        function __construct(int $class_type, string $name, string $subclass_name = "")
         {
             $this->name = str_replace(" ", "_", $name);
+            $this->subclass = str_replace(" ", "_", $subclass_name);
             $this->vars = array();
             $this->consts = array();
             $this->methods = array();
@@ -43,6 +45,11 @@
         public function getClassName() : string
         {
             return $this->name;
+        }
+        
+        public function getSubClassName() : string
+        {
+          return $this->subclass_name;
         }
         
         public function getVars() : array
@@ -75,6 +82,11 @@
             $this->name = str_replace(" ", "_", $class_name);
         }
         
+        public function setSubClass(string $subclass)
+        {
+          $this->name = str_replace(" ", "_", $subclass);
+        }
+        
         public function setClassType(int $class_type)
         {
             switch($class_type)
@@ -95,8 +107,11 @@
         {
             foreach($vars as $var)
             {
-                if ($var instanceof PVar)
-                    $this->vars[$var->getName()] = $var;
+                if ($var instanceof PVar) {
+                  $this->vars[$var->getName()] = $var;
+                  return true;
+                }
+                else return false;
             }
         }
         
@@ -104,8 +119,11 @@
         {
             foreach($consts as $const)
             {
-                if ($const instanceof PConst)
-                    $this->consts[$const->getName()] = $const;
+                if ($const instanceof PConst) {
+                  $this->consts[$const->getName()] = $const;
+                  return true;
+                }
+                else return false;
             }
         }
         
@@ -113,8 +131,11 @@
         {
             foreach($methods as $method)
             {
-                if ($method instanceof PMethod)
+                if ($method instanceof PMethod) {
                     $this->methods[$method->getName()] = $method;
+                    return true;
+                }
+                else return false;
             }
         }
         
@@ -125,11 +146,11 @@
             {
                 case _ABSTRACT_:
                 {
-                    $type = "abstract";
+                    $type = "abstract ";
                 } break;
             }
             
-            $code = $type." class ".$this->name."\n";
+            $code .= $type."class ".$this->name."\n";
             $code .= "{\n";
             
             foreach($this->consts as $const)
@@ -155,7 +176,6 @@
             }
             
             $code .= "\n}";
-            
             
             return $code;
         }

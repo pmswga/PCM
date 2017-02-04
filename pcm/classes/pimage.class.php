@@ -11,10 +11,19 @@
         private $name;
         private $classes;
         
+        private $file_names_of_classes;
+        
         public function __construct(string $name, array $classes = array())
         {
             $this->name = str_replace(" ", "_", $name);
-            $this->classes = $classes;
+            
+            foreach ($classes as $class) {
+                if ($class instanceof PClass) {
+                  $this->classes[$class->getClassName()] = $class;
+                  $this->file_names_of_classes[$class->getClassName()] = $class->getClassName().".class.php";
+                }
+                else return false;
+            }
         }
         
         public function getName() : string
@@ -31,9 +40,8 @@
         {
             foreach($classes as $class)
             {
-                if ($class instanceof PClass) {
-                    $this->classes[$class->getClassName()] = $class;
-                }
+                if ($class instanceof PClass) $this->classes[] = $class;
+                else return false;
             }
         }
         
@@ -56,6 +64,27 @@
           }
         }
         
+        public function generate()
+        {
+          $path = $this->name;
+          if (!is_dir($path)) mkdir($path);
+          
+          foreach ($this->classes as $class) {
+            $class_path = $path.DIRECTORY_SEPARATOR.$this->file_names_of_classes[$class->getClassName()];
+            
+            $code .= "<?php\n\n";
+            $lines = explode("\n", (string)$class);
+            foreach($lines as $line)
+            {                    
+                $code .= "\t".$line."\n";
+            }
+            $code .= "\n";
+            $code .= "?>\n";
+            
+            file_put_contents($class_path, $code);
+          }
+        }
+        
         public function __toString()
         {
             $code .= "<?php\n\n";
@@ -70,7 +99,7 @@
                 $code .= "\n";
             }
             
-            $code .= "\n?>\n";
+            $code .= "?>\n";
             
             return $code;
         }
