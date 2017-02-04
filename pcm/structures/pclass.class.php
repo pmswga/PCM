@@ -14,16 +14,16 @@
     class PClass
     {
         private $name;
-        private $subclass_name;
+        private $superclass_name;
         private $vars;
         private $consts;
         private $methods;
         private $class_type;
         
-        function __construct(int $class_type, string $name, string $subclass_name = "")
+        function __construct(int $class_type, string $name, string $superclass_name = "")
         {
             $this->name = str_replace(" ", "_", $name);
-            $this->subclass = str_replace(" ", "_", $subclass_name);
+            $this->superclass_name = str_replace(" ", "_", $superclass_name);
             $this->vars = array();
             $this->consts = array();
             $this->methods = array();
@@ -47,9 +47,9 @@
             return $this->name;
         }
         
-        public function getSubClassName() : string
+        public function getSuperClassName() : string
         {
-          return $this->subclass_name;
+          return $this->superclass_name;
         }
         
         public function getVars() : array
@@ -82,7 +82,7 @@
             $this->name = str_replace(" ", "_", $class_name);
         }
         
-        public function setSubClass(string $subclass)
+        public function setSuperClassName(string $subclass)
         {
           $this->name = str_replace(" ", "_", $subclass);
         }
@@ -150,7 +150,13 @@
                 } break;
             }
             
-            $code .= $type."class ".$this->name."\n";
+            if (!empty($this->superclass_name)) {
+              $code .= "require_once \"".strtolower($this->superclass_name).".class.php\";\n\n";
+              $code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
+            } else {              
+              $code .= $type."class ".$this->name."\n";
+            }
+            
             $code .= "{\n";
             
             foreach($this->consts as $const)

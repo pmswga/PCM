@@ -10,7 +10,7 @@
     {
         private $name;
         private $classes;
-        
+        private $class_hierarchia;
         private $file_names_of_classes;
         
         public function __construct(string $name, array $classes = array())
@@ -20,10 +20,22 @@
             foreach ($classes as $class) {
                 if ($class instanceof PClass) {
                   $this->classes[$class->getClassName()] = $class;
-                  $this->file_names_of_classes[$class->getClassName()] = $class->getClassName().".class.php";
+                  $this->file_names_of_classes[$class->getClassName()] = strtolower($class->getClassName().".class.php");
                 }
                 else return false;
             }
+            
+            $this->class_hierarchia = array();
+        }
+        
+        public function addToHierarchia(string $root, string $class_name)
+        {
+          
+        }
+        
+        public function generateHierarchia()
+        {
+          $it = new \RecursiveArrayIterator($class);
         }
         
         public function getName() : string
@@ -72,6 +84,7 @@
           foreach ($this->classes as $class) {
             $class_path = $path.DIRECTORY_SEPARATOR.$this->file_names_of_classes[$class->getClassName()];
             
+            
             $code .= "<?php\n\n";
             $lines = explode("\n", (string)$class);
             foreach($lines as $line)
@@ -82,6 +95,9 @@
             $code .= "?>\n";
             
             file_put_contents($class_path, $code);
+            
+            $code = "";
+            $lines = array();
           }
         }
         
