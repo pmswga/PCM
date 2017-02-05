@@ -6,6 +6,8 @@
     
     use PCM\Structures\PClass;
     
+    
+    
     class PImage
     {
         private $name;
@@ -26,16 +28,32 @@
             }
             
             $this->class_hierarchia = array();
+            
+            $this->generateHierarchia();
         }
         
-        public function addToHierarchia(string $root, string $class_name)
+        private function addToHierarchia(&$myArray, $root, $class)
         {
-          
+          if (!empty($root) && !empty($class)) {
+            foreach ($myArray as $key => &$value) {
+              
+              if (is_array($value)) {
+                $this->addToHierarchia($value, $root, $class);
+                
+                if($key == $root) {
+                  $value[$class] = array();
+                }
+              }
+            }
+          }
+          else $myArray[$class] = array();
         }
         
         public function generateHierarchia()
         {
-          $it = new \RecursiveArrayIterator($class);
+          foreach ($this->classes as $class) {
+            $this->addToHierarchia($this->class_hierarchia, $class->getSuperClassName(), $class->getClassName());
+          }
         }
         
         public function getName() : string
@@ -43,9 +61,19 @@
             return $this->name;
         }
         
+        public function getClassHierarchia() : array
+        {
+          return $this->class_hierarchia;
+        }
+        
         public function getClasses() : array
         {
             return $this->classes;
+        }
+        
+        public function getFileNamesOfClasses() : array
+        {
+          return $this->file_names_of_classes;
         }
         
         public function addClasses(array $classes)

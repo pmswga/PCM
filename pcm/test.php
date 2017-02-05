@@ -18,14 +18,11 @@
   $class2 = new PClass(_NATIVE_, "Second", "First");
   $class2->addVars([new PVar(_PRIVATE_, "a")]);
   
-  $c3 = new PClass(_NATIVE_, "Third", "Object");
+  $c3 = new PClass(_NATIVE_, "Third", "Second");
+  $c4 = new PClass(_NATIVE_, "GodObject");
   
-  $image = new PImage("Smalltalk-72", [$object, $class, $class2, $c3]);
+  $image = new PImage("Smalltalk-72", [$object, $class, $class2, $c3, $c4]);
   $image2 = new PImage("Smalltalk-80", [$class]);
-  
-  
-  $image->addToHierarchia("Object", "First");
-  $image->addToHierarchia("First", "Second");
   
   //file_put_contents("img.php", $class2);
   
@@ -36,5 +33,6 @@
   echo "<pre>";
   print_r($image);
   echo "</pre>";
+
   
 ?>
