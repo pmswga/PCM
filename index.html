@@ -26,45 +26,16 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="class_hierarchia">
-                  {$classes_hierarchia}
+                  class_hierarchia
                 </div>
                 <div class="tab-pane" id="classes">
-                  <form name="work_with_classes" method="POST">
-                    <div class="form-group">
-                      <div class="content">
-                        <input type="submit" name="remove_class_button" class="btn btn-danger" value="Удалить">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <table class="table table-hover">
-                        <tr>
-                          <th>Имя</th>
-                          <th>Выбрать</th>
-                        </tr>
-                        {foreach from=$classes item=class}
-                          <tr>
-                              <td>{$class->getClassName()}</td>
-                              <td><input type="checkbox" name="select_class[]" value="{$class->getClassName()}" class="form-control"></td>
-                          </tr>
-                        {/foreach}
-                      </table>
-                    </div>
-                  </form>
+                  classes
                 </div>
                 <div class="tab-pane" id="create_class">
                   <form name="create_class" method="POST">
                     <div class="form-group">
                         <label>Имя:</label>
                         <input name="class_name" type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Суперкласс:</label>
-                        <select name="superclass" class="form-control">
-                              <option value="">nil</option>
-                            {foreach from=$classes item=class}
-                              <option value="{$class->getClassName()}">{$class->getClassName()}</option>
-                            {/foreach}
-                        </select>
                     </div>
                     <div class="form-group">
                         <label>Тип:</label>
@@ -176,9 +147,7 @@
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="class_method_code">
-                  <form name="" method="POST">
-                    <textarea name="code" rows="25" class="form-control" onkeydown="insertTab(this, event);"></textarea>
-                  </form>
+                  class_method_code
                 </div>
                 <div class="tab-pane" id="images">
                   images

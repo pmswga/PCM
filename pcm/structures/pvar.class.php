@@ -86,7 +86,7 @@
                 default: $this->access_type = _PRIVATE_;
             }
             
-            return $type." $".$this->name.";\n";
+            return $type." $".trim($this->name).";\n";
         }
         
     }

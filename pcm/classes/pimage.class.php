@@ -6,8 +6,6 @@
     
     use PCM\Structures\PClass;
     
-    
-    
     class PImage
     {
         private $name;
