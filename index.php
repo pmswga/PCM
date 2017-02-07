@@ -9,30 +9,6 @@
     
 	const THIS = "index.php";
   
-  function addToHierarchia(&$myArray, $root, $class)
-  {
-    if (!empty($root) && !empty($class)) {
-      foreach ($myArray as $key => &$value) {
-        
-        if (is_array($value)) {
-          addToHierarchia($value, $root, $class);
-          
-          if($key == $root) {
-            $value[$class] = array();
-          }
-        }
-      }
-    }
-    else $myArray[$class] = array();
-  }
-  
-  function generateHierarchia(&$arr, $classes)
-  {
-    foreach ($classes as $class) {
-      addToHierarchia($arr, $class->getSuperClassName(), $class->getClassName());
-    }
-  }
-  
   function view_hierarchia($classes)
   {
     $code = "";
@@ -53,6 +29,7 @@
   
   $CT->assign("classes", $_SESSION['classes']);
   $CT->assign("classes_hierarchia", view_hierarchia($_SESSION['ch']));
+  $CT->assign("images", $_SESSION['images']);
 	$CT->Show("index.tpl");
 	
   /*! Создание нового класса */
@@ -106,5 +83,20 @@
     CTools::Redirect(THIS);
   }
   
+  /*! Создание образа */
+  if (!empty($_POST['create_image_button'])) {
+    $image_name = $_POST['image_name'];
+    $classes = $_POST['add_class'];
+    
+    $image = new PImage($image_name);
+    
+    for ($i = 0; $i < count($classes); $i++) {
+        $image->addClasses([$_SESSION['classes'][$classes[$i]]]);
+    }
+    
+    $_SESSION['images'][$image->getName()] = $image;
+    
+    CTools::Redirect(THIS);
+  }
     
 ?>
