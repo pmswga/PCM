@@ -16,6 +16,9 @@
         public function __construct(string $name, array $classes = array())
         {
             $this->name = str_replace(" ", "_", $name);
+            $this->classes = array();
+            $this->file_names_of_classes = array();
+            $this->class_hierarchia = array();
             
             foreach ($classes as $class) {
                 if ($class instanceof PClass) {
@@ -24,8 +27,6 @@
                 }
                 else return false;
             }
-            
-            $this->class_hierarchia = array();
             
             $this->generateHierarchia();
         }
@@ -49,8 +50,10 @@
         
         public function generateHierarchia()
         {
-          foreach ($this->classes as $class) {
-            $this->addToHierarchia($this->class_hierarchia, $class->getSuperClassName(), $class->getClassName());
+          if (!empty($this->classes)) {
+            foreach ($this->classes as $class) {
+              $this->addToHierarchia($this->class_hierarchia, $class->getSuperClassName(), $class->getClassName());
+            }
           }
         }
         
@@ -78,9 +81,14 @@
         {
             foreach($classes as $class)
             {
-                if ($class instanceof PClass) $this->classes[] = $class;
+                if ($class instanceof PClass) {
+                  $this->classes[] = $class;
+                  $this->file_names_of_classes[$class->getClassName()] = strtolower($class->getClassName().".class.php");
+                }
                 else return false;
             }
+            
+            $this->generateHierarchia();
         }
         
         public function export()
