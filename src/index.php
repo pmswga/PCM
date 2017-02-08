@@ -24,7 +24,6 @@
   }
   
   $_SESSION['ch'] = array();
-  generateHierarchia($_SESSION['ch'], $_SESSION['classes']);
   
   
   $CT->assign("classes", $_SESSION['classes']);
