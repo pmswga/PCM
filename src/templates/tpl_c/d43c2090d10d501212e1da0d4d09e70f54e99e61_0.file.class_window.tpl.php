@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-02-08 22:22:46
+/* Smarty version 3.1.29, created on 2017-03-24 20:21:03
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\class_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_589b7006eb8394_97595872',
+  'unifunc' => 'content_58d5557f9a3471_02612418',
   'file_dependency' => 
   array (
     'd43c2090d10d501212e1da0d4d09e70f54e99e61' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\class_window.tpl',
-      1 => 1486581747,
+      1 => 1490376059,
       2 => 'file',
     ),
   ),
@@ -19,16 +19,14 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_589b7006eb8394_97595872 ($_smarty_tpl) {
+function content_58d5557f9a3471_02612418 ($_smarty_tpl) {
 ?>
-<div class="window-title">
-  <h4>Окно классов</h4>
-</div>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_hierarchia" data-toggle="tab">Иерархия</a></li>
   <li><a href="#classes" data-toggle="tab">Классы</a></li>
   <li><a href="#create_class" data-toggle="tab">Создать</a></li>
 </ul>
+<br>
 <div class="tab-content">
   <div class="tab-pane active" id="class_hierarchia">
     <?php echo $_smarty_tpl->tpl_vars['classes_hierarchia']->value;?>
@@ -128,7 +126,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
                   <td><button id="add_const_to_table" type="button" class="btn btn-primary">+</button></td>
               </tr>
           </table>
-          <br>                                                           
+          <br>
           <table id="consts_table" class="table table-hover">
               <tr>
                   <th>Имя</th>
@@ -164,5 +162,6 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
       </div>
   </form>
   </div>
-</div><?php }
+</div>
+<?php }
 }

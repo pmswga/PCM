@@ -1,11 +1,9 @@
-<div class="window-title">
-  <h4>Окно классов</h4>
-</div>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_hierarchia" data-toggle="tab">Иерархия</a></li>
   <li><a href="#classes" data-toggle="tab">Классы</a></li>
   <li><a href="#create_class" data-toggle="tab">Создать</a></li>
 </ul>
+<br>
 <div class="tab-content">
   <div class="tab-pane active" id="class_hierarchia">
     {$classes_hierarchia}
@@ -66,7 +64,7 @@
                   <td><button id="add_const_to_table" type="button" class="btn btn-primary">+</button></td>
               </tr>
           </table>
-          <br>                                                           
+          <br>
           <table id="consts_table" class="table table-hover">
               <tr>
                   <th>Имя</th>

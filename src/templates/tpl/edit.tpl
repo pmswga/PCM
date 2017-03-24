@@ -14,25 +14,25 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-4">
-                    <fieldset>
-                        <legend>Константы</legend>
-                        
-                    </fieldset>
-                    <fieldset>
-                        <legend>Атрибуты</legend>
-                        
-                    </fieldset>
-                </div>
-                <div class="col-md-8">
-                    <fieldset>
-                        <legend>Методы</legend>
-                        
-                    </fieldset>
-                </div>
+					<fieldset>
+						<legend>Константы</legend>
+						
+					</fieldset>
+					<fieldset>
+						<legend>Атрибуты</legend>
+						
+					</fieldset>
+				</div>
+				<div class="col-md-8">
+					<fieldset>
+						<legend>Методы</legend>
+						
+					</fieldset>
+				</div>
 			</div>
-        </div>
-        <script type="text/javascript">
-        
-        </script>
+		</div>
+		<script type="text/javascript">
+		
+		</script>
 	</body>
 </html>

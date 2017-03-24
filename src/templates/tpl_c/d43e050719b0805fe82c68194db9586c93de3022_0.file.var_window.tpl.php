@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-02-08 22:25:27
+/* Smarty version 3.1.29, created on 2017-03-24 20:30:52
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\var_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_589b70a7db7365_85416596',
+  'unifunc' => 'content_58d557cc0a90e6_52045284',
   'file_dependency' => 
   array (
     'd43e050719b0805fe82c68194db9586c93de3022' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\var_window.tpl',
-      1 => 1486581808,
+      1 => 1490376649,
       2 => 'file',
     ),
   ),
@@ -19,11 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_589b70a7db7365_85416596 ($_smarty_tpl) {
+function content_58d557cc0a90e6_52045284 ($_smarty_tpl) {
 ?>
-<div class="window-title">
-  <h4>Окно свойств и констант</h4>
-</div>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_variables" data-toggle="tab">Свойства</a></li>
   <li><a href="#class_consts" data-toggle="tab">Константы</a></li>
@@ -39,5 +36,6 @@ function content_589b70a7db7365_85416596 ($_smarty_tpl) {
   <div class="tab-pane" id="create_var_or_const">
     create_var_or_const
   </div>
-</div><?php }
+</div>
+<?php }
 }

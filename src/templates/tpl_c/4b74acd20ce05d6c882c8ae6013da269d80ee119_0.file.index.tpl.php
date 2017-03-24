@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-02-08 22:25:27
+/* Smarty version 3.1.29, created on 2017-03-24 20:21:45
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_589b70a7dab7e1_29318077',
+  'unifunc' => 'content_58d555a96978d1_20795274',
   'file_dependency' => 
   array (
     '4b74acd20ce05d6c882c8ae6013da269d80ee119' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\index.tpl',
-      1 => 1486581926,
+      1 => 1490376103,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/tools_window.tpl' => 1,
   ),
 ),false)) {
-function content_589b70a7dab7e1_29318077 ($_smarty_tpl) {
+function content_58d555a96978d1_20795274 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,54 +45,75 @@ function content_589b70a7dab7e1_29318077 ($_smarty_tpl) {
 	</head>
 	<body>
 		<div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row content">
-            <div class="col-md-4 window">
-              <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/class_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+      <div class="row" style="padding: 5px;">
+        <div class="col-md-4">
+					<div class="panel-group" id="mainPanel">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_classes">Классы</a>
+								</h4>
+							</div>
+							<div id="pcm_classes" class="panel-collapse collapse">
+								<div class="panel-body">
+									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/class_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-            </div>
-            <div class="col-md-4 window">
-              <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/var_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_vars">Переменные и константы</a>
+								</h4>
+							</div>
+							<div id="pcm_vars" class="panel-collapse collapse">
+								<div class="panel-body">
+									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/var_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-            </div>
-            <div class="col-md-4 window">
-              <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/method_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_methods">Методы</a>
+								</h4>
+							</div>
+							<div id="pcm_methods" class="panel-collapse collapse">
+								<div class="panel-body">
+									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/method_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-            </div>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row content">
-            <div class="col-md-12 window">
-              <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/tools_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+				<div class="col-md-8">
+					<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/tools_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-            </div>
-          </div>
-        </div>
+				</div>
       </div>
     </div>
-    
+
     <!-- Скрипты -->
     <?php echo '<script'; ?>
  type="text/javascript">
-            
+
       $(document).ready(function(){
-          
+
         var class_consts_names = new Array();
         var class_variables_names = new Array();
-        
+
         $("#add_const_to_table").click(function(){
-        
+
             var const_name = $("#const_name").val();
             var const_value = $("#const_value").val();
-            
+
             if((const_name != "") && (const_value != ""))
             {
                 if($.inArray(const_name, class_consts_names) > -1) alert("Вы уже добавили константу с таким именем");
@@ -106,13 +127,13 @@ function content_589b70a7dab7e1_29318077 ($_smarty_tpl) {
             }
             else if(const_name == "") alert("Введите имя константы");
             else alert("Введите значение константы");
-            
+
         });
-        
+
         $("#change_image_for_generate_code").change(function(){
-            
+
             var image_name = $("#change_image_for_generate_code").val();
-            
+
             $.ajax({
                 url: "php/get_code_from_image.php",
                 type: "POST",
@@ -122,13 +143,14 @@ function content_589b70a7dab7e1_29318077 ($_smarty_tpl) {
                     $("[name='code']").html(replay);
                 }
             });
-            
+
         });
-          
+
       });
-        
+
     <?php echo '</script'; ?>
 >
 	</body>
-</html><?php }
+</html>
+<?php }
 }

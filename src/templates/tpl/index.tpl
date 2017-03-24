@@ -12,45 +12,66 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row content">
-            <div class="col-md-4 window">
-              {include file='windows/class_window.tpl'}
-            </div>
-            <div class="col-md-4 window">
-              {include file='windows/var_window.tpl'}
-            </div>
-            <div class="col-md-4 window">
-              {include file='windows/method_window.tpl'}
-            </div>
+      <div class="row" style="padding: 5px;">
+        <div class="col-md-4">
+					<div class="panel-group" id="mainPanel">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_classes">Классы</a>
+								</h4>
+							</div>
+							<div id="pcm_classes" class="panel-collapse collapse">
+								<div class="panel-body">
+									{include file='windows/class_window.tpl'}
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_vars">Переменные и константы</a>
+								</h4>
+							</div>
+							<div id="pcm_vars" class="panel-collapse collapse">
+								<div class="panel-body">
+									{include file='windows/var_window.tpl'}
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_methods">Методы</a>
+								</h4>
+							</div>
+							<div id="pcm_methods" class="panel-collapse collapse">
+								<div class="panel-body">
+									{include file='windows/method_window.tpl'}
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row content">
-            <div class="col-md-12 window">
-              {include file='windows/tools_window.tpl'}
-            </div>
-          </div>
-        </div>
+				<div class="col-md-8">
+					{include file='windows/tools_window.tpl'}
+				</div>
       </div>
     </div>
-    
+
     <!-- Скрипты -->
     <script type="text/javascript">
-            
+
       $(document).ready(function(){
-          
+
         var class_consts_names = new Array();
         var class_variables_names = new Array();
-        
+
         $("#add_const_to_table").click(function(){
-        
+
             var const_name = $("#const_name").val();
             var const_value = $("#const_value").val();
-            
+
             if((const_name != "") && (const_value != ""))
             {
                 if($.inArray(const_name, class_consts_names) > -1) alert("Вы уже добавили константу с таким именем");
@@ -64,13 +85,13 @@
             }
             else if(const_name == "") alert("Введите имя константы");
             else alert("Введите значение константы");
-            
+
         });
-        
+
         $("#change_image_for_generate_code").change(function(){
-            
+
             var image_name = $("#change_image_for_generate_code").val();
-            
+
             $.ajax({
                 url: "php/get_code_from_image.php",
                 type: "POST",
@@ -80,11 +101,11 @@
                     $("[name='code']").html(replay);
                 }
             });
-            
+
         });
-          
+
       });
-        
+
     </script>
 	</body>
 </html>

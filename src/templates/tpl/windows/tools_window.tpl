@@ -113,9 +113,6 @@
         </fieldset>
       </div>
     </div>
-    
-    
-    
   </div>
   <div class="tab-pane" id="generate_code">
     generate_code

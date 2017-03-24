@@ -1,6 +1,3 @@
-<div class="window-title">
-  <h4>Окно свойств и констант</h4>
-</div>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_variables" data-toggle="tab">Свойства</a></li>
   <li><a href="#class_consts" data-toggle="tab">Константы</a></li>

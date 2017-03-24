@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-02-08 22:56:59
+/* Smarty version 3.1.29, created on 2017-03-24 20:16:19
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\tools_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_589b780b3d0c17_32644509',
+  'unifunc' => 'content_58d554639bdab2_52393819',
   'file_dependency' => 
   array (
     'f7f7db587890092a6e7cea7707ad6bf6ee4fd775' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\tools_window.tpl',
-      1 => 1486583818,
+      1 => 1490375640,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_589b780b3d0c17_32644509 ($_smarty_tpl) {
+function content_58d554639bdab2_52393819 ($_smarty_tpl) {
 ?>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_method_code" data-toggle="tab">Код метода</a></li>
@@ -214,9 +214,6 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_2_saved_item;
         </fieldset>
       </div>
     </div>
-    
-    
-    
   </div>
   <div class="tab-pane" id="generate_code">
     generate_code
