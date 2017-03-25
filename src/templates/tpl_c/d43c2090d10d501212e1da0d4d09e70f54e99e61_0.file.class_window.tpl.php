@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-03-24 20:21:03
+/* Smarty version 3.1.29, created on 2017-03-25 05:49:59
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\class_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58d5557f9a3471_02612418',
+  'unifunc' => 'content_58d5dad7e07440_69198940',
   'file_dependency' => 
   array (
     'd43c2090d10d501212e1da0d4d09e70f54e99e61' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\class_window.tpl',
-      1 => 1490376059,
+      1 => 1490409998,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58d5557f9a3471_02612418 ($_smarty_tpl) {
+function content_58d5dad7e07440_69198940 ($_smarty_tpl) {
 ?>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_hierarchia" data-toggle="tab">Иерархия</a></li>
@@ -158,7 +158,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
           </div>
       </div>
       <div class="form-group">
-          <input name="create_class_button" type="submit" class="btn btn-md btn-success" value="Создать класс">
+				<input name="create_class_button" type="submit" class="btn btn-md btn-success" value="Создать класс">
       </div>
   </form>
   </div>

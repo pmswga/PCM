@@ -115,6 +115,36 @@
       
     CTools::Redirect(THIS);
   }
+	
+	
+	CTools::var_dump($_SESSION['tmp_image']);
+	CTools::var_dump($_SESSION['classes']);
+	
+	
+	/*! Создание метода */
+	if (!empty($_POST['createMethodButton'])) {
+		$method_name = htmlspecialchars($_POST['method_name']);
+		$method_type = (int)htmlspecialchars($_POST['method_type']);
+		$method_class = $_POST['method_class'];
+		$method_access_type = (int)$_POST['method_access_type'];
+		$method_args = explode(",", $_POST['method_args']);
+		
+		var_dump( $method_access_type );
+		echo "<br>";
+		var_dump( $method_type );
+		echo "<br>";
+		var_dump(NATIVE_METHOD);
+		echo "<br>";
+		
+		
+		$method = new PMethod($method_access_type, $method_name, $method_args);
+		$method->setMethodType($method_type);
+		
+		$_SESSION['classes'][$method_class]->addMethods([$method]);
+		$_SESSION['tmp_image']->getClass($method_class)->addMethods([$method]);
+		
+    CTools::Redirect(THIS);
+	}
 
 
 ?>

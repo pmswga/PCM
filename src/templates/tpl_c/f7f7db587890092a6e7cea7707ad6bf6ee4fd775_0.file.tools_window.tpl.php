@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-03-24 20:16:19
+/* Smarty version 3.1.29, created on 2017-03-25 06:03:35
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\tools_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58d554639bdab2_52393819',
+  'unifunc' => 'content_58d5de07668a88_61807596',
   'file_dependency' => 
   array (
     'f7f7db587890092a6e7cea7707ad6bf6ee4fd775' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\tools_window.tpl',
-      1 => 1490375640,
+      1 => 1490411014,
       2 => 'file',
     ),
   ),
@@ -19,10 +19,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58d554639bdab2_52393819 ($_smarty_tpl) {
+function content_58d5de07668a88_61807596 ($_smarty_tpl) {
 ?>
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#class_method_code" data-toggle="tab">Код метода</a></li>
+  <li class="active"><a href="#class_method_code" data-toggle="tab">Код</a></li>
   <li><a href="#images" data-toggle="tab">Образы</a></li>
   <li><a href="#generate_code" data-toggle="tab">Генерация кода</a></li>
   <li></li>

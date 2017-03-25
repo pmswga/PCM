@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#class_method_code" data-toggle="tab">Код метода</a></li>
+  <li class="active"><a href="#class_method_code" data-toggle="tab">Код</a></li>
   <li><a href="#images" data-toggle="tab">Образы</a></li>
   <li><a href="#generate_code" data-toggle="tab">Генерация кода</a></li>
   <li></li>

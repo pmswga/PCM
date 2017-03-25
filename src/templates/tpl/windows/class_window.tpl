@@ -96,7 +96,7 @@
           </div>
       </div>
       <div class="form-group">
-          <input name="create_class_button" type="submit" class="btn btn-md btn-success" value="Создать класс">
+				<input name="create_class_button" type="submit" class="btn btn-md btn-success" value="Создать класс">
       </div>
   </form>
   </div>
