@@ -9,6 +9,7 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
+		<script type="text/javascript" src="js/tabulation.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -18,10 +19,10 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_classes">Классы</a>
+									<a data-toggle="collapse" href="#pcm_classes">Классы</a>
 								</h4>
 							</div>
-							<div id="pcm_classes" class="panel-collapse collapse">
+							<div id="pcm_classes" class="panel-collapse collapse in">
 								<div class="panel-body">
 									{include file='windows/class_window.tpl'}
 								</div>
@@ -30,10 +31,10 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_vars">Переменные и константы</a>
+									<a data-toggle="collapse" href="#pcm_vars">Переменные и константы</a>
 								</h4>
 							</div>
-							<div id="pcm_vars" class="panel-collapse collapse">
+							<div id="pcm_vars" class="panel-collapse collapse in">
 								<div class="panel-body">
 									{include file='windows/var_window.tpl'}
 								</div>
@@ -42,10 +43,10 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_methods">Методы</a>
+									<a data-toggle="collapse" href="#pcm_methods">Методы</a>
 								</h4>
 							</div>
-							<div id="pcm_methods" class="panel-collapse collapse">
+							<div id="pcm_methods" class="panel-collapse collapse in">
 								<div class="panel-body">
 									{include file='windows/method_window.tpl'}
 								</div>

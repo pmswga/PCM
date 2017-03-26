@@ -10,71 +10,57 @@
 	{
 		private $name;
 		private $classes;
-		private $class_hierarchia;
 		private $file_names_of_classes;
 		
-		public function __construct(string $name, array $classes = array())
+		public function __construct(string $name)
 		{
 			$this->name = str_replace(" ", "_", $name);
 			$this->classes = array();
 			$this->file_names_of_classes = array();
-			$this->class_hierarchia = array();
-			
-			foreach ($classes as $class) {
-					if ($class instanceof PClass) {
-						$this->classes[$class->getClassName()] = $class;
-						$this->file_names_of_classes[$class->getClassName()] = strtolower($class->getClassName().".class.php");
-					}
-					else return false;
-			}
-			
-			$this->generateHierarchia();
 		}
 		
-		private function addToHierarchia(&$myArray, $root, $class)
-		{
-			if (!empty($root) && !empty($class)) {
-				foreach ($myArray as $key => &$value) {
-					
-					if (is_array($value)) {
-						$this->addToHierarchia($value, $root, $class);
-						
-						if($key == $root) {
-							$value[$class] = array();
-						}
-					}
-				}
-			}
-			else $myArray[$class] = array();
-		}
-		
-		public function generateHierarchia()
-		{
-			if (!empty($this->classes)) {
-				foreach ($this->classes as $class) {
-					$this->addToHierarchia($this->class_hierarchia, $class->getSuperClassName(), $class->getClassName());
-				}
-			}
-		}
-		
-		public function getName() : string
+		public function getImageName() : string
 		{
 				return $this->name;
 		}
 		
-		public function getClassHierarchia() : array
-		{
-			return $this->class_hierarchia;
-		}
-		
 		public function getClasses() : array
 		{
-			return $this->classes;
+			$sinker = function (&$array) use (&$sinker) {
+				static $classes = array();
+				foreach ($array as $value) {
+					if (is_array($value)) {
+						$sinker($value);
+						
+						if (!empty($value['class'])) {
+							$classes[$value['class']->getClassName()] = $value['class'];
+						}
+					}
+				}
+				return $classes;
+			};
+			$classes = $sinker($this->classes);
+			
+			return $classes;
 		}
 		
 		public function getClass(string $class_name) : PClass
 		{
-			return $this->classes[$class_name];
+			$find = function($array, $class_name) use (&$find) {
+				if(isset($array[$class_name])) return $array[$class_name];
+				
+				foreach ($array as $value){
+					if (isset($value['childs'])) {
+						$result = $find($value['childs'], $class_name);
+						if ($result) return $result;
+					}
+				}
+				
+				return false;
+			};
+			$c =  $find($this->classes, $class_name);
+			
+			return $c['class'];
 		}
 		
 		public function getFileNamesOfClasses() : array
@@ -82,18 +68,40 @@
 			return $this->file_names_of_classes;
 		}
 		
+		public function createFileNamesList()
+		{
+			$sinker = function (&$array) use (&$sinker) {
+				static $filenames = array();
+				foreach ($array as $value) {
+					if (is_array($value)) {
+						$sinker($value);
+						
+						if (!empty($value['class'])) {
+							$filenames[$value['class']->getClassName()] = strtolower($value['class']->getClassName()).".class.php";
+						}
+					}
+				}
+				return $filenames;
+			};
+			$this->file_names_of_classes = $sinker($this->classes);
+		}
+		
 		public function addClasses(array $classes)
 		{
 			foreach($classes as $class)
 			{
-					if ($class instanceof PClass) {
-						$this->classes[$class->getClassName()] = $class;
-						$this->file_names_of_classes[$class->getClassName()] = strtolower($class->getClassName().".class.php");
-					}
-					else return false;
+				if ($class instanceof PClass) {
+					$this->addToHierarchia($class);
+				}
+				else return false;
 			}
-			
-			$this->generateHierarchia();
+			$this->createFileNamesList();
+		}
+		
+		public function removeClass(string $class_name)
+		{
+			$this->removeFromHierarchia($this->findClass($this->classes, $class_name)['class']);
+			$this->createFileNamesList();
 		}
 		
 		public function export()
@@ -120,7 +128,9 @@
 			$path = $this->name;
 			if (!is_dir($path)) mkdir($path);
 			
-			foreach ($this->classes as $class) {
+			$classes = $this->getClasses();
+			
+			foreach ($classes as $class) {
 				$class_path = $path.DIRECTORY_SEPARATOR.$this->file_names_of_classes[$class->getClassName()];
 				
 				
@@ -128,7 +138,7 @@
 				$lines = explode("\n", (string)$class);
 				foreach($lines as $line)
 				{                    
-						$code .= "\t".$line."\n";
+					$code .= "\t".$line."\n";
 				}
 				$code .= "\n";
 				$code .= "?>\n";
@@ -140,25 +150,67 @@
 			}
 		}
 		
+		public function &findClass(&$array, $class_name)
+		{
+			if(isset($array[$class_name])) return $array[$class_name];
+			
+			foreach ($array as &$value){
+				if (isset($value['childs'])) {
+					$result = &$this->findClass($value['childs'], $class_name);
+					if ($result) return $result;
+				}
+			}
+			
+			return false;
+		}
+		
+		public function addToHierarchia($class)
+		{
+			if (empty($class->getSuperClassName())) {
+				$this->classes[$class->getClassName()]['class'] = $class;
+				$this->classes[$class->getClassName()]['childs'] = array();
+			} else {
+				$find_obj = &$this->findClass($this->classes, $class->getSuperClassName());
+				$find_obj['childs'][$class->getClassName()]['class'] = $class;
+				$find_obj['childs'][$class->getClassName()]['childs'] = array();
+			}
+		}
+		
+		public function removeFromHierarchia($class)
+		{
+			if (empty($class->getSuperClassName())) {
+				unset($this->classes[$class->getClassName()]);
+			} else {
+				$find_obj = &$this->findClass($this->classes, $class->getSuperClassName());
+				unset($find_obj['childs']);
+				$find_obj['childs'] = array();
+			}
+		}
+		
+		public function getClassHierarchia() : array
+		{
+			return $this->classes;
+		}
+		
 		public function __toString()
 		{
 			$code .= "<?php\n\n";
 			
 			foreach($this->classes as $class)
 			{
-					$lines = explode("\n", (string)$class);
-					foreach($lines as $line)
-					{                    
-							$code .= "\t".$line."\n";
-					}
-					$code .= "\n";
+				$lines = explode("\n", (string)$class);
+				foreach($lines as $line)
+				{                    
+					$code .= "\t".$line."\n";
+				}
+				$code .= "\n";
 			}
 			
 			$code .= "?>\n";
 			
 			return $code;
 		}
-			
+		
 	}
-    
+	
 ?>

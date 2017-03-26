@@ -30,21 +30,21 @@
 			
 			switch($class_type)
 			{
-					case _ABSTRACT_:
-					{
-							$this->class_type = $class_type;
-					} break;
-					case _NATIVE_:
-					{
-							$this->class_type = $class_type;
-					} break;
-					default: $this->class_type = 1; break;
+				case _ABSTRACT_:
+				{
+						$this->class_type = $class_type;
+				} break;
+				case _NATIVE_:
+				{
+						$this->class_type = $class_type;
+				} break;
+				default: $this->class_type = 1; break;
 			}
 		}
 		
 		public function getClassName() : string
 		{
-				return $this->name;
+			return $this->name;
 		}
 		
 		public function getSuperClassName() : string
@@ -54,32 +54,32 @@
 		
 		public function getVars() : array
 		{
-				return $this->vars;
+			return $this->vars;
 		}
 		
 		public function getVar(string $var_name) : PVar
 		{
-				return $this->vars[$var_name];
+			return $this->vars[$var_name];
 		}
 		
 		public function getConsts() : array
 		{
-				return $this->consts;
+			return $this->consts;
 		}
 		
 		public function getMethods() : array
 		{
-				return $this->methods;
+			return $this->methods;
 		}
 		
 		public function getClassType() : int
 		{
-				return $this->class_type;
+			return $this->class_type;
 		}
 		
-		public function setName(string $class_name)
+		public function setClassName(string $class_name)
 		{
-				$this->name = str_replace(" ", "_", $class_name);
+			$this->name = str_replace(" ", "_", $class_name);
 		}
 		
 		public function setSuperClassName(string $subclass)
@@ -89,101 +89,101 @@
 		
 		public function setClassType(int $class_type)
 		{
-				switch($class_type)
+			switch($class_type)
+			{
+				case _ABSTRACT_:
 				{
-						case _ABSTRACT_:
-						{
-								$this->class_type = $class_type;
-						} break;
-						case _NATIVE_:
-						{
-								$this->class_type = $class_type;
-						} break;
-						default: $this->class_type = 1; break;
-				}
+						$this->class_type = $class_type;
+				} break;
+				case _NATIVE_:
+				{
+						$this->class_type = $class_type;
+				} break;
+				default: $this->class_type = 1; break;
+			}
 		}
 		
 		public function addVars(array $vars)
 		{
-				foreach($vars as $var)
-				{
-						if ($var instanceof PVar) {
-							$this->vars[$var->getName()] = $var;
-							return true;
-						}
-						else return false;
+			foreach($vars as $var)
+			{
+				if ($var instanceof PVar) {
+					$this->vars[$var->getName()] = $var;
+					return true;
 				}
+				else return false;
+			}
 		}
 		
 		public function addConsts(array $consts)
 		{
-				foreach($consts as $const)
-				{
-						if ($const instanceof PConst) {
-							$this->consts[$const->getName()] = $const;
-							return true;
-						}
-						else return false;
+			foreach($consts as $const)
+			{
+				if ($const instanceof PConst) {
+					$this->consts[$const->getName()] = $const;
+					return true;
 				}
+				else return false;
+			}
 		}
 		
 		public function addMethods(array $methods)
 		{
-				foreach($methods as $method)
-				{
-						if ($method instanceof PMethod) {
-								$this->methods[$method->getName()] = $method;
-								return true;
-						}
-						else return false;
+			foreach($methods as $method)
+			{
+				if ($method instanceof PMethod) {
+					$this->methods[$method->getName()] = $method;
+					return true;
 				}
+				else return false;
+			}
 		}
 		
 		public function __toString()
 		{
-				$type = "";
-				switch($this->class_type)
+			$type = "";
+			switch($this->class_type)
+			{
+				case _ABSTRACT_:
 				{
-						case _ABSTRACT_:
-						{
-								$type = "abstract ";
-						} break;
-				}
+					$type = "abstract ";
+				} break;
+			}
+			
+			if (!empty($this->superclass_name)) {
+				$code .= "require_once \"".strtolower($this->superclass_name).".class.php\";\n\n";
+				$code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
+			} else {              
+				$code .= $type."class ".$this->name."\n";
+			}
+			
+			$code .= "{\n";
+			
+			foreach($this->consts as $const)
+			{
+				$code .= "\t".$const;
+			}
+			
+			$code .= "\n";
+			
+			foreach($this->vars as $var)
+			{
+				$code .= "\t".$var;
+			}
+			
+			foreach($this->methods as $method)
+			{
+				$lines = explode("\n", (string)$method);
 				
-				if (!empty($this->superclass_name)) {
-					$code .= "require_once \"".strtolower($this->superclass_name).".class.php\";\n\n";
-					$code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
-				} else {              
-					$code .= $type."class ".$this->name."\n";
-				}
-				
-				$code .= "{\n";
-				
-				foreach($this->consts as $const)
+				foreach($lines as $line)
 				{
-						$code .= "\t".$const;
+						$code .= "\t".$line."\n";
 				}
-				
-				$code .= "\n";
-				
-				foreach($this->vars as $var)
-				{
-						$code .= "\t".$var;
-				}
-				
-				foreach($this->methods as $method)
-				{
-						$lines = explode("\n", (string)$method);
-						
-						foreach($lines as $line)
-						{
-								$code .= "\t".$line."\n";
-						}
-				}
-				
-				$code .= "\n}";
-				
-				return $code;
+			}
+			
+			$code .= "\n}";
+			
+			return $code;
 		}
 		
 	}

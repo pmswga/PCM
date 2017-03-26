@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-03-24 20:21:45
+/* Smarty version 3.1.29, created on 2017-03-26 20:35:42
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58d555a96978d1_20795274',
+  'unifunc' => 'content_58d7fbee3a79b9_37657199',
   'file_dependency' => 
   array (
     '4b74acd20ce05d6c882c8ae6013da269d80ee119' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\index.tpl',
-      1 => 1490376103,
+      1 => 1490549734,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/tools_window.tpl' => 1,
   ),
 ),false)) {
-function content_58d555a96978d1_20795274 ($_smarty_tpl) {
+function content_58d7fbee3a79b9_37657199 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +42,9 @@ function content_58d555a96978d1_20795274 ($_smarty_tpl) {
 		<?php echo '<script'; ?>
  type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
 >
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
+>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -51,10 +54,10 @@ function content_58d555a96978d1_20795274 ($_smarty_tpl) {
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_classes">Классы</a>
+									<a data-toggle="collapse" href="#pcm_classes">Классы</a>
 								</h4>
 							</div>
-							<div id="pcm_classes" class="panel-collapse collapse">
+							<div id="pcm_classes" class="panel-collapse collapse in">
 								<div class="panel-body">
 									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/class_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -65,10 +68,10 @@ function content_58d555a96978d1_20795274 ($_smarty_tpl) {
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_vars">Переменные и константы</a>
+									<a data-toggle="collapse" href="#pcm_vars">Переменные и константы</a>
 								</h4>
 							</div>
-							<div id="pcm_vars" class="panel-collapse collapse">
+							<div id="pcm_vars" class="panel-collapse collapse in">
 								<div class="panel-body">
 									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/var_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -79,10 +82,10 @@ function content_58d555a96978d1_20795274 ($_smarty_tpl) {
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#mainPanel" href="#pcm_methods">Методы</a>
+									<a data-toggle="collapse" href="#pcm_methods">Методы</a>
 								</h4>
 							</div>
-							<div id="pcm_methods" class="panel-collapse collapse">
+							<div id="pcm_methods" class="panel-collapse collapse in">
 								<div class="panel-body">
 									<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/method_window.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
