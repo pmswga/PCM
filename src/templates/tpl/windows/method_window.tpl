@@ -5,7 +5,38 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="class_methods">
-    class_methods
+		<br>
+		<div class="panel-group" id="methods">
+			{foreach from=$classes item=class}
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" href="#{$class->getClassName()}">{$class->getClassName()}</a>
+						</h4>
+					</div>
+					<div id="{$class->getClassName()}" class="panel-collapse collapse">
+						<div class="panel-body">
+							<table class="table table-bordered">
+								<tr>
+									<th>Метод</th>
+									<th>Аргументы</th>
+								</tr>
+								{foreach from=$class->getMethods() item=method}
+									<tr>
+										<td><a href="#" onclick="editMethod('{$class->getClassName()}', '{$method->getName()}')">{$method->getName()}</a></td>
+										<td>
+											{foreach from=$method->getArgs() item=arg}
+												{$arg},
+											{/foreach}
+										</td>
+									</tr>
+								{/foreach}
+							</table>
+						</div>
+					</div>
+				</div>
+			{/foreach}
+		</div>
   </div>
   <div class="tab-pane" id="create_method">
     <br>

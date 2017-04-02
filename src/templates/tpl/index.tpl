@@ -89,24 +89,41 @@
 
         });
 
-        $("#change_image_for_generate_code").change(function(){
+        $("[name='changeImageForGenerate']").change(function(){
 
-            var image_name = $("#change_image_for_generate_code").val();
+            var image_name = $("[name='changeImageForGenerate']").val();
 
             $.ajax({
                 url: "php/get_code_from_image.php",
                 type: "POST",
                 data: "image_name=" + image_name,
                 success: function(replay){
-                    $("[name='code']").html("");
-                    $("[name='code']").html(replay);
+									$("#previewCode").html("");
+									$("#previewCode").html(replay);
                 }
             });
 
         });
-
+				
       });
+			
+			function editMethod(class_name, method_name) {
+				
+				$.ajax({
+						url: "php/get_class.php",
+						type: "POST",
+						data: "class_name=" + class_name + "&method_name=" + method_name + "&what=1",
+						success: function(replay){
+							$("#codeEditor").text("");
+							$("#codeEditor").text(replay);
+							
+							$("[name='for_class']").attr("value", class_name);
+							$("[name='for_method']").attr("value", method_name);
+						}
+				});
 
+			}
+			
     </script>
 	</body>
 </html>

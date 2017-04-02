@@ -67,6 +67,11 @@
 			return $this->consts;
 		}
 		
+		public function getMethod(string $method_name) : PMethod
+		{
+			return $this->methods[$method_name];
+		}
+		
 		public function getMethods() : array
 		{
 			return $this->methods;

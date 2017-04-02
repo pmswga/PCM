@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-03-26 20:35:42
+/* Smarty version 3.1.29, created on 2017-04-02 11:29:04
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58d7fbee3a79b9_37657199',
+  'unifunc' => 'content_58e0b6504ea0e5_27190525',
   'file_dependency' => 
   array (
     '4b74acd20ce05d6c882c8ae6013da269d80ee119' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\index.tpl',
-      1 => 1490549734,
+      1 => 1491121743,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/tools_window.tpl' => 1,
   ),
 ),false)) {
-function content_58d7fbee3a79b9_37657199 ($_smarty_tpl) {
+function content_58e0b6504ea0e5_27190525 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,24 +133,41 @@ function content_58d7fbee3a79b9_37657199 ($_smarty_tpl) {
 
         });
 
-        $("#change_image_for_generate_code").change(function(){
+        $("[name='changeImageForGenerate']").change(function(){
 
-            var image_name = $("#change_image_for_generate_code").val();
+            var image_name = $("[name='changeImageForGenerate']").val();
 
             $.ajax({
                 url: "php/get_code_from_image.php",
                 type: "POST",
                 data: "image_name=" + image_name,
                 success: function(replay){
-                    $("[name='code']").html("");
-                    $("[name='code']").html(replay);
+									$("#previewCode").html("");
+									$("#previewCode").html(replay);
                 }
             });
 
         });
-
+				
       });
+			
+			function editMethod(class_name, method_name) {
+				
+				$.ajax({
+						url: "php/get_class.php",
+						type: "POST",
+						data: "class_name=" + class_name + "&method_name=" + method_name + "&what=1",
+						success: function(replay){
+							$("#codeEditor").text("");
+							$("#codeEditor").text(replay);
+							
+							$("[name='for_class']").attr("value", class_name);
+							$("[name='for_method']").attr("value", method_name);
+						}
+				});
 
+			}
+			
     <?php echo '</script'; ?>
 >
 	</body>

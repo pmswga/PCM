@@ -7,13 +7,16 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="class_method_code">
-    <form name="" method="POST">
+    <form name="editCodeForm" method="POST">
       <textarea id="codeEditor" name="code" rows="25" class="form-control" onkeydown="insertTab(this, event);"></textarea>
-    </form>
+			<input type="hidden" name="for_class" value="">
+			<input type="hidden" name="for_method" value="">
+			<input type="submit" name="editCodeButton" value="Изменить" class="btn btn-primary pull-right">
+		</form>
   </div>
   <div class="tab-pane" id="images">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
 				<br>
         <fieldset>
           <legend>Создать образ</legend>
@@ -43,18 +46,44 @@
           </form>
         </fieldset>
       </div>
-      <div class="col-md-6">
+			<div class="col-md-4">
+				<br>
+        <fieldset>
+					<legend>Импортировать образ</legend>
+					<form name="importImageForm" method="POST">
+						<div class="form-group">
+							<label>Найденные образы</label>
+							<table class="table table-hover">
+								<tr>
+									<th>Образ</th>
+									<th>Выбрать</th>
+								</tr>
+								{foreach from=$images_files item=image_file}
+									<tr>
+										<td>{$image_file}</td>
+										<td><input type="checkbox" name="image_file[]" value="{$image_file}" class="form-control"></td>
+									</tr>
+								{/foreach}
+							</table>
+						</div>
+						<div class="form-group">
+							<input name="importImageButton" type="submit" class="btn btn-warning" value="Импорт">		
+						</div>
+					</form>
+				</fieldset>
+			</div>
+      <div class="col-md-4">
 				<br>
         <fieldset>
           <form name="work_with_images" method="POST">
 						<legend>
 							<div class="row">
-								<div class="col-md-9">
+								<div class="col-md-7">
 									<p>Готовые образы</p>								
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-5">
 									<input name="delete_image_button" type="submit" class="btn btn-sm btn-danger" value="-">
-									<input name="export_image_button" type="submit" class="btn btn-sm btn-warning" value="Импорт">								
+									<input name="export_image_button" type="submit" class="btn btn-sm btn-warning" value="Экспорт">				
 								</div>
 							</div>
 						</legend>
@@ -129,9 +158,29 @@
 		</div>
   </div>
 	<div class="tab-pane" id="testing">
-	
+		
 	</div>
 	<div class="tab-pane" id="generate_code">
-    generate_code
+		<br>
+		<div class="row">
+			<form name="generateCodeForm" method="POST">
+				<div class="col-md-10">
+					<select name="changeImageForGenerate" class="form-control">
+						{foreach from=$images item=image}
+							<option value="{$image->getImageName()}">{$image->getImageName()}</option>
+						{/foreach}
+					</select>
+				</div>
+				<div class="col-md-2">
+					<input type="submit" name="generateImageButton" value="Сгенерировать" class="btn btn-success">
+				</div>
+			</form>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">			
+				<textarea id="previewCode" name="code" rows="25" class="form-control" onkeydown="insertTab(this, event);"></textarea>
+			</div>
+		</div>
   </div>
 </div>

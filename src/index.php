@@ -9,6 +9,24 @@
 
   const THIS = "index.php";
 
+	function findImages() : array
+	{
+		$files = array();
+		$dp = opendir("images");
+		
+		while (($dir = readdir($dp)) !== false) {
+			
+			if ((strcmp($dir, "..") != 0) && (strcmp($dir, ".") != 0)) {	
+				$files[] = $dir;
+			}
+			
+		}
+		
+		closedir($dp);
+		
+		return $files;
+	}
+	
   function view_hierarchia(&$classes)
   {
     static $code = "";
@@ -25,11 +43,12 @@
     }
     return $code;
   }
-
+	
   $CT->assign("classes", $_SESSION['tmp_image']->getClasses());
   $CT->assign("classes_hierarchia", view_hierarchia($_SESSION['tmp_image']->getClassHierarchia()));
   $CT->assign("tmp_image", $_SESSION['tmp_image']);
   $CT->assign("images", $_SESSION['images']);
+	$CT->assign("images_files", findImages());
 	
   $CT->Show("index.tpl");
 	
@@ -46,7 +65,6 @@
       $private_vars = $_POST['private_vars'];
       $protected_vars = $_POST['protected_vars'];
 
-
       $new_class = new PClass($class_type, $class_name, $_POST['superclass']);
       for ($i = 0; $i < count($consts_names); $i++) {
           $new_class->addConsts([new PConst($consts_names[$i], $consts_values[$i])]);
@@ -54,17 +72,17 @@
 
       $public_vars = explode(",", $public_vars);
       for ($i = 0; $i < count($public_vars); $i++) {
-          if (!empty($public_vars[$i])) $new_class->addVars([new PVar(_PUBLIC_, $public_vars[$i])]);
+          if (!empty($public_vars[$i])) $new_class->addVars([new PVar(_PUBLIC_, trim($public_vars[$i]))]);
       }
 
       $private_vars = explode(",", $private_vars);
       for ($i = 0; $i < count($private_vars); $i++) {
-          if (!empty($private_vars[$i])) $new_class->addVars([new PVar(_PRIVATE_, $private_vars[$i])]);
+          if (!empty($private_vars[$i])) $new_class->addVars([new PVar(_PRIVATE_, trim($private_vars[$i]))]);
       }
 
       $protected_vars = explode(",", $protected_vars);
       for ($i = 0; $i < count($protected_vars); $i++) {
-          if (!empty($protected_vars[$i])) $new_class->addVars([new PVar(_PROTECTED_, $protected_vars[$i])]);
+          if (!empty($protected_vars[$i])) $new_class->addVars([new PVar(_PROTECTED_, trim($protected_vars[$i]))]);
       }
 
       $_SESSION['tmp_image']->addClasses([$new_class]);
@@ -94,8 +112,6 @@
 			
 			$c = $_SESSION['tmp_image']->getClass($classes[$i]);
 			
-			
-			
 			$image->addClasses([$_SESSION['tmp_image']->getClass($classes[$i])]);
     }
 
@@ -121,6 +137,19 @@
     CTools::Redirect(THIS);
   }
 	
+	if (!empty($_POST['importImageButton'])) {
+		$images = $_POST['image_file'];
+		
+		for ($i = 0; $i < count($images); $i++) {
+			$new_image = PImage::import($images[$i]);
+			
+			$_SESSION['images'][$new_image->getImageName()] = $new_image;
+			
+		}
+		
+    CTools::Redirect(THIS);
+	}
+	
 	if (!empty($_POST['delete_image_button'])) {
 		$images_name = $_POST['select_image'];
 
@@ -137,14 +166,34 @@
 		$method_type = (int)htmlspecialchars($_POST['method_type']);
 		$method_class = $_POST['method_class'];
 		$method_access_type = (int)$_POST['method_access_type'];
-		$method_args = explode(",", $_POST['method_args']);
-
+		
+		if (!empty($_POST['method_args'])) {			
+			$method_args = explode(",", $_POST['method_args']);
+		} else {
+			$method_args = array();
+		}
+		
 		$method = new PMethod($method_access_type, $method_name, $method_args);
 		$method->setMethodType($method_type);
 
 		$_SESSION['tmp_image']->getClass($method_class)->addMethods([$method]);
 
     CTools::Redirect(THIS);
+	}
+	
+	if (!empty($_POST['editCodeButton'])) {
+		$class_name = $_POST['for_class'];
+		$method_name = $_POST['for_method'];
+		$code = $_POST['code'];
+		
+		$_SESSION['tmp_image']->getClass($class_name)->getMethod($method_name)->setSrc($code);
+		
+    CTools::Redirect(THIS);
+	}
+	
+	if (!empty($_POST['generateImageButton'])) {
+		$image_name = $_POST['changeImageForGenerate'];
+		$_SESSION['images'][$image_name]->generate();
 	}
 	
 ?>

@@ -116,7 +116,7 @@
 		{
 			if (!is_dir("images")) return false;
 			else {
-				$path = "images/".$file_name.".pcm";
+				$path = "images/".$file_name;
 				
 				if (file_exists($path)) return unserialize(file_get_contents($path));
 				else return false;
@@ -133,7 +133,6 @@
 			foreach ($classes as $class) {
 				$class_path = $path.DIRECTORY_SEPARATOR.$this->file_names_of_classes[$class->getClassName()];
 				
-				
 				$code .= "<?php\n\n";
 				$lines = explode("\n", (string)$class);
 				foreach($lines as $line)
@@ -147,6 +146,7 @@
 				
 				$code = "";
 				$lines = array();
+				
 			}
 		}
 		
@@ -194,9 +194,11 @@
 		
 		public function __toString()
 		{
+			$classes = $this->getClasses();
+			
 			$code .= "<?php\n\n";
 			
-			foreach($this->classes as $class)
+			foreach($classes as $class)
 			{
 				$lines = explode("\n", (string)$class);
 				foreach($lines as $line)

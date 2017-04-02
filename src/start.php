@@ -12,4 +12,8 @@
 	}
 
 	$CT = new CTemplater("templates/tpl", "templates/tpl_c", "templates/configs", "templates/cache");
+	
+	const ALL = 0;
+	const METHOD_SOURCE = 1;
+	
 ?>

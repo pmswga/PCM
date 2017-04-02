@@ -138,27 +138,45 @@
 				} break;
 				default: $type = "private";
 			}
+			
+			$m_type = "";
+			switch($this->type)
+			{
+				case NATIVE_METHOD:
+				{
+						$m_type = "";
+				} break;
+				case STATIC_METHOD:
+				{
+						$m_type = "static ";
+				} break;
+				case ABSTRACT_METHOD:
+				{
+						$m_type = "abstract ";
+				} break;
+				default: $m_type = "";
+			}
+			
 			$lines = explode("\n", $this->src);
 			for($i = 0; $i < count($lines); $i++) $lines[$i] = str_replace("\t", "    ", $lines[$i]);
 			
-			$code = "\n".$type." ".$this->name;
+			$code = "\n".$m_type.$type." function ".$this->name;
 			
 			$code .= "(";
 			foreach($this->args as $arg)
 			{
-				$code .= "$".$arg;
+				$code .= "$".trim($arg);
 				if (next($this->args)) $code .= ", ";
 			}
 			$code .= ")\n";
 			
 			$code .= "{\n";
 			
-			$isT = false;
 			foreach($lines as $line)
 			{
 				$code .= "\t".($line)."\n";
 			}
-			$code .= "\n}";
+			$code .= "}";
 			
 			
 			return $code;
