@@ -17,8 +17,6 @@
       }
     }
     
-    
-    
     public function getImage(string $image_name)
     {
       if (array_key_exists($image_name, $this->images)) return $this->images[$image_name];

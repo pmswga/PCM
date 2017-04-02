@@ -21,7 +21,12 @@
 		
 		public function getImageName() : string
 		{
-				return $this->name;
+			return $this->name;
+		}
+		
+		public function setImageName(string $image_name)
+		{
+			$this->name = $image_name;
 		}
 		
 		public function getClasses() : array
