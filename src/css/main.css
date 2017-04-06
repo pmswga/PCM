@@ -38,14 +38,17 @@ form[name="create_class"] .form-group:nth-child(4) legend{
 
 #public_var_legend{
     color: #61BD6D;
+		text-align: center;
 }
 
 #private_var_legend{
     color: #E14938;
+		text-align: center;
 }
 
 #protected_var_legend{
     color: #FBA026;
+		text-align: center;
 }
 
 textarea[name="code"] {

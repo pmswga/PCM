@@ -46,7 +46,7 @@
         <input type="text" name="method_name" class="form-control">
       </div>
       <div class="form-group">
-        <label for="">Модификатор доступа</label>
+        <label for="">Тип метода</label>
         <select name="method_type" class="form-control">
           <option value="0">Обычный</option>
           <option value="1">Статический</option>

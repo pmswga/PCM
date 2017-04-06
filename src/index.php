@@ -14,13 +14,18 @@
 		$files = array();
 		$dp = opendir("images");
 		
-		while (($dir = readdir($dp)) !== false) {
-			
-			if ((strcmp($dir, "..") != 0) && (strcmp($dir, ".") != 0)) {	
-				$files[] = $dir;
+		if (!empty($dp)) {
+
+			while (($dir = readdir($dp)) !== false) {
+				
+				if ((strcmp($dir, "..") != 0) && (strcmp($dir, ".") != 0)) {	
+					$files[] = $dir;
+				}
+				
 			}
 			
 		}
+		
 		
 		closedir($dp);
 		

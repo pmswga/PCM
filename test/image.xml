@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<image name="">
+	<class type="NATIVE|ABSTRACT" parent="" name="">
+		<vars>
+			<var access="PUBLIC|PRIVATE|PROTECTED" type="NATIVE|STATIC" name="">
+			<const access="PUBLIC|PRIVATE|PROTECTED" name="" value="">
+		</vars>
+		<method access="PUBLIC|PRIVATE|PROTECTED" type="NATIVE|ABSTRACT|STATIC">
+			<args>
+				<arg type="" name="" default_value="">
+			</args>
+			<src>
+				<!-- Code -->
+			</src>
+		</method>
+	</class>
+</image>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-01 21:04:02
+/* Smarty version 3.1.29, created on 2017-04-04 12:48:37
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\method_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58dfeb92b0ddc2_33964774',
+  'unifunc' => 'content_58e36bf5147403_67594815',
   'file_dependency' => 
   array (
     'feb1d17551f5f5079d0e0ad4dc7d31380ca5d2ae' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\method_window.tpl',
-      1 => 1491069841,
+      1 => 1491299307,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58dfeb92b0ddc2_33964774 ($_smarty_tpl) {
+function content_58e36bf5147403_67594815 ($_smarty_tpl) {
 ?>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_methods" data-toggle="tab">Методы</a></li>
@@ -127,7 +127,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
         <input type="text" name="method_name" class="form-control">
       </div>
       <div class="form-group">
-        <label for="">Модификатор доступа</label>
+        <label for="">Тип метода</label>
         <select name="method_type" class="form-control">
           <option value="0">Обычный</option>
           <option value="1">Статический</option>
