@@ -158,7 +158,22 @@
 		</div>
   </div>
 	<div class="tab-pane" id="testing">
-		
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<form name="doItForm" method="POST">
+					<div class="form-group">
+						<label>Код</label>
+						<textarea name="test_code" rows="15" class="form-control"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<div id="result_of_code">
+				
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="tab-pane" id="generate_code">
 		<br>
@@ -184,3 +199,28 @@
 		</div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+	$("document").ready(function(){
+		
+		$("[name='test_code']").change(function(){
+			
+			var code = $("[name='test_code']").val();
+			
+			$.ajax({
+				url: "php/do_it.php",
+				type: "POST",
+				data: "code=" + code,
+				success: function(replay) {
+					$("#result_of_code").html("");
+					$("#result_of_code").html(replay);
+				}
+			});
+			
+		});
+		
+		
+	})
+
+</script>

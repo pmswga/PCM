@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-02 12:11:31
+/* Smarty version 3.1.29, created on 2017-04-08 22:02:00
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\windows\tools_window.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58e0c043a28a25_18355197',
+  'unifunc' => 'content_58e933a8709a99_21739721',
   'file_dependency' => 
   array (
     'f7f7db587890092a6e7cea7707ad6bf6ee4fd775' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\windows\\tools_window.tpl',
-      1 => 1491124286,
+      1 => 1491678119,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58e0c043a28a25_18355197 ($_smarty_tpl) {
+function content_58e933a8709a99_21739721 ($_smarty_tpl) {
 ?>
 <ul class="nav nav-tabs">
   <li class="active"><a href="#class_method_code" data-toggle="tab"><img src="img/code.png" width="20" alt=""></a></li>
@@ -278,7 +278,22 @@ $_smarty_tpl->tpl_vars['class_file'] = $__foreach_class_file_4_saved_item;
 		</div>
   </div>
 	<div class="tab-pane" id="testing">
-		
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<form name="doItForm" method="POST">
+					<div class="form-group">
+						<label>Код</label>
+						<textarea name="test_code" rows="15" class="form-control"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<div id="result_of_code">
+				
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="tab-pane" id="generate_code">
 		<br>
@@ -322,5 +337,32 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_5_saved_item;
 			</div>
 		</div>
   </div>
-</div><?php }
+</div>
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+
+	$("document").ready(function(){
+		
+		$("[name='test_code']").change(function(){
+			
+			var code = $("[name='test_code']").val();
+			
+			$.ajax({
+				url: "php/do_it.php",
+				type: "POST",
+				data: "code=" + code,
+				success: function(replay) {
+					$("#result_of_code").html("");
+					$("#result_of_code").html(replay);
+				}
+			});
+			
+		});
+		
+		
+	})
+
+<?php echo '</script'; ?>
+><?php }
 }

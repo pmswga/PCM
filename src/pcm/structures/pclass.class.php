@@ -144,6 +144,52 @@
 			}
 		}
 		
+		public function for_test()
+		{
+			$type = "";
+			switch($this->class_type)
+			{
+				case _ABSTRACT_:
+				{
+					$type = "abstract ";
+				} break;
+			}
+			
+			if (!empty($this->superclass_name)) {
+				$code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
+			} else {              
+				$code .= $type."class ".$this->name."\n";
+			}
+			
+			$code .= "{\n";
+			
+			foreach($this->consts as $const)
+			{
+				$code .= "\t".$const;
+			}
+			
+			$code .= "\n";
+			
+			foreach($this->vars as $var)
+			{
+				$code .= "\t".$var;
+			}
+			
+			foreach($this->methods as $method)
+			{
+				$lines = explode("\n", (string)$method);
+				
+				foreach($lines as $line)
+				{
+						$code .= "\t".$line."\n";
+				}
+			}
+			
+			$code .= "\n}";
+			
+			return $code;
+		}
+		
 		public function __toString()
 		{
 			$type = "";

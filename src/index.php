@@ -12,7 +12,7 @@
 	function findImages() : array
 	{
 		$files = array();
-		$dp = opendir("images");
+		@$dp = opendir("images");
 		
 		if (!empty($dp)) {
 
@@ -27,7 +27,7 @@
 		}
 		
 		
-		closedir($dp);
+		@closedir($dp);
 		
 		return $files;
 	}

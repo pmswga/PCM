@@ -7,7 +7,7 @@
 	class Workspace
 	{
 		
-		public function setClass($class)
+		public static function setClass($class)
 		{
 			eval($class);
 		}
