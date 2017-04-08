@@ -1,0 +1,19 @@
+echo 'a';
+echo 'a';
+$a = new My();
+$a->first();
+$a = new My();
+$a->first('How are you?');
+$a = new My();
+$a->first(\"How are you?\");
+$a = new My();
+$a->first("How are you?");
+
+
+$obj = new My();
+$a = 10;
+
+$a += 100;
+
+$obj->first($a);
+

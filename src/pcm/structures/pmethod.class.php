@@ -31,7 +31,9 @@
 				} break;
 				default: $this->access_type = _PRIVATE_;
 			}
+			
 			$this->name = $method_name;
+			$this->type = NATIVE_METHOD;
 			$this->args = $args;
 			$this->src = "";
 		}
@@ -46,7 +48,7 @@
 			return $this->access_type;
 		}
 		
-		public function getMEthodType() : int
+		public function getMethodType() : int
 		{
 			return $this->type;
 		}
