@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-02 11:29:04
+/* Smarty version 3.1.29, created on 2017-04-12 00:09:35
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58e0b6504ea0e5_27190525',
+  'unifunc' => 'content_58ed460f96ef70_78251468',
   'file_dependency' => 
   array (
     '4b74acd20ce05d6c882c8ae6013da269d80ee119' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\index.tpl',
-      1 => 1491121743,
+      1 => 1491944920,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/tools_window.tpl' => 1,
   ),
 ),false)) {
-function content_58e0b6504ea0e5_27190525 ($_smarty_tpl) {
+function content_58ed460f96ef70_78251468 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +45,12 @@ function content_58e0b6504ea0e5_27190525 ($_smarty_tpl) {
 		<?php echo '<script'; ?>
  type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
 >
+		<link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
+		<?php echo '<script'; ?>
+ src="css/semantic/dist/semantic.min.js"><?php echo '</script'; ?>
+>
 	</head>
-	<body>
+	<body>	
 		<div class="container-fluid">
       <div class="row" style="padding: 5px;">
         <div class="col-md-4">

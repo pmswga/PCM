@@ -10,8 +10,10 @@
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
+		<script src="css/semantic/dist/semantic.min.js"></script>
 	</head>
-	<body>
+	<body>	
 		<div class="container-fluid">
       <div class="row" style="padding: 5px;">
         <div class="col-md-4">
