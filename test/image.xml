@@ -1,17 +1,67 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- 
+	
+	Типы доступа:
+		PUBLIC
+		PRIVATE
+		PROTECTED
+	
+	Типы классов:
+		NATIVE
+		ABSTRACT
+		
+	Типы метода
+		NATIVE
+		STATIC
+		ABSTRACT
+		
+	Типы переменных и констант:
+		NATIVE
+		STATIC
+	
+-->
 <image name="">
-	<class type="NATIVE|ABSTRACT" parent="" name="">
+	<class type="NATIVE" parent="nil" name="Object">
 		<vars>
-			<var access="PUBLIC|PRIVATE|PROTECTED" type="NATIVE|STATIC" name="">
-			<const access="PUBLIC|PRIVATE|PROTECTED" name="" value="">
+			<var access="PUBLIC" type="NATIVE" name="first"/>
+			<const access="PUBLIC" type="NATIVE" name="c1" value="3.14"/>
 		</vars>
-		<method access="PUBLIC|PRIVATE|PROTECTED" type="NATIVE|ABSTRACT|STATIC">
-			<args>
-				<arg type="" name="" default_value="">
-			</args>
-			<src>
-				<!-- Code -->
-			</src>
-		</method>
+		<methods>			
+			<method access="PUBLIC" type="NATIVE" name="hw">
+				<args>
+					<arg type=" " name="a" default_value=""/>
+				</args>
+				<src>
+					<!-- Code -->
+				</src>
+			</method>
+		</methods>
+	</class>
+	<class type="NATIVE" parent="nil" name="QObject">
+		<vars>
+			<var access="PUBLIC" type="NATIVE" name="first"/>
+			<var access="PUBLIC" type="NATIVE" name="second"/>
+			<const access="PUBLIC" type="NATIVE" name="c1" value="3.14"/>
+			<const access="PUBLIC" type="NATIVE" name="c2" value="3.14"/>
+		</vars>
+		<methods>			
+			<method access="PUBLIC" type="NATIVE" name="hw">
+				<args>
+					<arg type=" " name="a" default_value=""/>
+				</args>
+				<src>
+					afsasf
+					<!-- Code -->
+				</src>
+			</method>
+			<method access="PUBLIC" type="NATIVE" name="hw2">
+				<args>
+					<arg type=" " name="a" default_value=""/>
+				</args>
+				<src>
+					<!-- Code -->
+				</src>
+			</method>
+		</methods>
 	</class>
 </image>
