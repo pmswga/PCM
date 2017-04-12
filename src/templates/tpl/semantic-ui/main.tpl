@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding: 15px;">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="ui styled accordion">
 						<div class="active title">
 							<i class="dropdown icon"></i>
@@ -141,14 +141,11 @@
 										<thead>
 											<tr>
 												<td colspan="3">
-													<button class="ui right floated negative button">
-														Удалить все
+													<button class="ui right floated brown button">
+														<i class="trash icon"></i>
 													</button>
-													<button class="ui right floated negative button">
-														Удалить
-													</button>
-													<button class="ui right floated secondary button">
-														Изменить
+													<button class="ui right floated orange button">
+														<i class="edit icon"></i>
 													</button>
 												</td>
 											</tr>
@@ -203,11 +200,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-5">
 					<div class="ui top attached tabular menu">
-						<a class="active item" data-tab="code">Код</a>
-						<a class="item" data-tab="testing">Тестирование</a>
-						<a class="item" data-tab="images">Образы</a>
+						<a class="active item" data-tab="code"><i class="code icon"></i></a>
+						<a class="item" data-tab="testing"><i class="terminal icon"></i></a>
+						<a class="item" data-tab="images"><i class="compass icon"></i></a>
 						<a class="item" data-tab="generate">Генерация</a>
 					</div>
 					<div class="ui bottom attached active tab segment" data-tab="code">

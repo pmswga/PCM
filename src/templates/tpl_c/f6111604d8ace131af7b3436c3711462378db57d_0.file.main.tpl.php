@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-13 02:20:53
+/* Smarty version 3.1.29, created on 2017-04-13 02:32:00
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\semantic-ui\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58eeb655d05e98_27751946',
+  'unifunc' => 'content_58eeb8f029e499_65302585',
   'file_dependency' => 
   array (
     'f6111604d8ace131af7b3436c3711462378db57d' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\semantic-ui\\main.tpl',
-      1 => 1492039252,
+      1 => 1492039918,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58eeb655d05e98_27751946 ($_smarty_tpl) {
+function content_58eeb8f029e499_65302585 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,7 +123,7 @@ function content_58eeb655d05e98_27751946 ($_smarty_tpl) {
 				</div>
 			</div>
 			<div class="row" style="padding: 15px;">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="ui styled accordion">
 						<div class="active title">
 							<i class="dropdown icon"></i>
@@ -172,14 +172,11 @@ function content_58eeb655d05e98_27751946 ($_smarty_tpl) {
 										<thead>
 											<tr>
 												<td colspan="3">
-													<button class="ui right floated negative button">
-														Удалить все
+													<button class="ui right floated brown button">
+														<i class="trash icon"></i>
 													</button>
-													<button class="ui right floated negative button">
-														Удалить
-													</button>
-													<button class="ui right floated secondary button">
-														Изменить
+													<button class="ui right floated orange button">
+														<i class="edit icon"></i>
 													</button>
 												</td>
 											</tr>
@@ -234,11 +231,11 @@ function content_58eeb655d05e98_27751946 ($_smarty_tpl) {
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-5">
 					<div class="ui top attached tabular menu">
-						<a class="active item" data-tab="code">Код</a>
-						<a class="item" data-tab="testing">Тестирование</a>
-						<a class="item" data-tab="images">Образы</a>
+						<a class="active item" data-tab="code"><i class="code icon"></i></a>
+						<a class="item" data-tab="testing"><i class="terminal icon"></i></a>
+						<a class="item" data-tab="images"><i class="compass icon"></i></a>
 						<a class="item" data-tab="generate">Генерация</a>
 					</div>
 					<div class="ui bottom attached active tab segment" data-tab="code">
