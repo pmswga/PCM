@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-12 00:09:35
+/* Smarty version 3.1.29, created on 2017-04-12 00:14:16
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58ed460f96ef70_78251468',
+  'unifunc' => 'content_58ed472864a835_65916313',
   'file_dependency' => 
   array (
     '4b74acd20ce05d6c882c8ae6013da269d80ee119' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\index.tpl',
-      1 => 1491944920,
+      1 => 1491945255,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/tools_window.tpl' => 1,
   ),
 ),false)) {
-function content_58ed460f96ef70_78251468 ($_smarty_tpl) {
+function content_58ed472864a835_65916313 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
