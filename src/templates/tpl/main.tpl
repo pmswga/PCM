@@ -155,10 +155,8 @@
 												<thead>
 													<tr>
 														<td colspan="3">
-															<button class="ui basic right floated brown button">
-																<i class="trash icon"></i>
-															</button>
-															<button class="ui basic right floated orange button">
+															<input type="submit" name="removeClassButton" value="Удалить" class="ui basic right floated brown button">
+															<button type="submit" class="ui basic right floated orange button">
 																<i class="edit icon"></i>
 															</button>
 														</td>
@@ -172,7 +170,7 @@
 												<tbody>
 													{foreach from=$classes item=class}
 														<tr>
-															<td><input type="checkbox" value="{$class->getClassName()}" class="form-control"></td>
+															<td><input type="checkbox" name="selectedClass[]" value="{$class->getClassName()}" class="form-control"></td>
 															<td>{$class->getClassName()}</td>
 															<td>{$class->getSuperClassName()|default:"nil"}</td>
 														</tr>

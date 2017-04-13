@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-13 22:38:24
+/* Smarty version 3.1.29, created on 2017-04-13 22:49:15
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58efd3b0ed7025_40649231',
+  'unifunc' => 'content_58efd63b38d236_72666385',
   'file_dependency' => 
   array (
     '1e8349887558cbbd6d9967c175cf7b67ef19c413' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\main.tpl',
-      1 => 1492112304,
+      1 => 1492112954,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58efd3b0ed7025_40649231 ($_smarty_tpl) {
+function content_58efd63b38d236_72666385 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -194,10 +194,8 @@ function content_58efd3b0ed7025_40649231 ($_smarty_tpl) {
 												<thead>
 													<tr>
 														<td colspan="3">
-															<button class="ui basic right floated brown button">
-																<i class="trash icon"></i>
-															</button>
-															<button class="ui basic right floated orange button">
+															<input type="submit" name="removeClassButton" value="Удалить" class="ui basic right floated brown button">
+															<button type="submit" class="ui basic right floated orange button">
 																<i class="edit icon"></i>
 															</button>
 														</td>
@@ -222,7 +220,7 @@ $_smarty_tpl->tpl_vars['class']->_loop = true;
 $__foreach_class_0_saved_local_item = $_smarty_tpl->tpl_vars['class'];
 ?>
 														<tr>
-															<td><input type="checkbox" value="<?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+															<td><input type="checkbox" name="selectedClass[]" value="<?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
 " class="form-control"></td>
 															<td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
 </td>

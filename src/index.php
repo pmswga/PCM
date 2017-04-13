@@ -70,10 +70,14 @@
 			$_SESSION['tmp']->removeClass($classes[$i]);
 		}
 		
+		$_SESSION['messageStatus'] = "warning";
+		$_SESSION['messageHeader'] = "Выбранные классы были удалены";
+		$_SESSION['messageContent'] = count($classes)." классов было удалено";
+		
 		CTools::Redirect(THIS);
 	}
 	
-	CTools::var_dump($_SESSION['tmp']);
+	// CTools::var_dump($_SESSION['tmp']);
 	
 	
 	
