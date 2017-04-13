@@ -91,7 +91,15 @@
 			$this->file_names_of_classes = $sinker($this->classes);
 		}
 		
-		public function addClasses(array $classes)
+		public function addClass(PClass $class) : bool
+		{
+			$this->addToHierarchia($class);
+			$this->createFileNamesList();
+			
+			return true;
+		}
+		
+		public function addClasses(array $classes) : bool
 		{
 			foreach($classes as $class)
 			{
@@ -101,6 +109,8 @@
 				else return false;
 			}
 			$this->createFileNamesList();
+			
+			return true;
 		}
 		
 		public function removeClass(string $class_name)

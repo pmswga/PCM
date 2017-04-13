@@ -6,9 +6,79 @@
   use PCM\Structures\PConst;
   use PCM\Structures\PMethod;
   use PCM\Classes\PImage;
-
+	
   const THIS = "index.php";
-
+	
+	function viewHierarchia(&$classes)
+  {
+    static $code = "";
+    foreach ($classes as $value) {
+      $code .= "<ul class='item'>";
+      if (is_array($value['childs'])) {
+				
+				if (!empty($value['class'])) {
+					$code .= "<li>".$value['class']->getClassName()."</li>";
+				}
+				
+				viewHierarchia($value['childs']);
+      }
+      $code .= "</ul>";
+    }
+    return $code;
+  }
+	
+	$CT->assign("messageStatus", $_SESSION['messageStatus']);
+	$CT->assign("messageHeader", $_SESSION['messageHeader']);
+	$CT->assign("messageContent", $_SESSION['messageContent']);
+	
+	$CT->assign("countClasses", count($_SESSION['tmp']->getClasses()));
+	
+	$CT->assign("classes", $_SESSION['tmp']->getClasses());
+  $CT->assign("classHierarchia", viewHierarchia($_SESSION['tmp']->getClassHierarchia()));
+	
+	$CT->show("main.tpl");
+	
+	unset($_SESSION['messageStatus']);
+	unset($_SESSION['messageHeader']);
+	unset($_SESSION['messageContent']);
+	
+	
+	if (!empty($_POST['createClassButton'])) {
+		$superClass = ($_POST['superClassName'] != "nil") ? $_POST['superClassName'] : "";
+		$className = htmlspecialchars($_POST['className']);
+		$typeClass = $_POST['typeClass'];
+		
+		$newClass = new PClass($typeClass, $className, $superClass);
+		
+		if ($_SESSION['tmp']->addClass($newClass)) {
+			$_SESSION['messageStatus'] = "success";
+			$_SESSION['messageHeader'] = "Класс успешно создан";
+			$_SESSION['messageContent'] = "Класс ".$className." добавлен во временный образ";
+		} else {
+			$_SESSION['messageStatus'] = "negative";
+			$_SESSION['messageHeader'] = "Не удалось создать класс";
+			$_SESSION['messageContent'] = "Что-то пошло не так";
+		}
+		
+		CTools::Redirect(THIS);
+	}
+	
+	if (!empty($_POST['removeClassButton'])) {
+		$classes = $_POST['selectedClass'];
+		
+		for ($i = 0; $i < count($classes); $i++) {
+			$_SESSION['tmp']->removeClass($classes[$i]);
+		}
+		
+		CTools::Redirect(THIS);
+	}
+	
+	CTools::var_dump($_SESSION['tmp']);
+	
+	
+	
+	
+	/*!
 	function findImages() : array
 	{
 		$files = array();
@@ -57,7 +127,7 @@
 	
   $CT->Show("index.tpl");
 	
-  /*! Создание нового класса */
+	
   if (!empty($_POST['create_class_button'])) {
 
       $class_name = $_POST['class_name'];
@@ -95,7 +165,7 @@
       CTools::Redirect(THIS);
   }
 
-  /*! Удаление класса или группы классов */
+	
   if (!empty($_POST['remove_class_button'])) {
     $classes = $_POST['select_class'];
 
@@ -106,7 +176,7 @@
     CTools::Redirect(THIS);
   }
 
-  /*! Создание образа */
+	
   if (!empty($_POST['create_image_button'])) {
     $image_name = $_POST['image_name'];
     $classes = array_reverse($_POST['add_class']);
@@ -125,13 +195,13 @@
     CTools::Redirect(THIS);
   }
 
-  /* Удаление временного образа */
+	
   if (!empty($_POST['delete_tmp_image'])) {
     unset($_SESSION['tmp_image']);
     CTools::Redirect(THIS);
   }
 
-  /*! Экспорт выбранных образов */
+	
   if (!empty($_POST['export_image_button'])) {
 		$images_name = $_POST['select_image'];
 
@@ -165,7 +235,7 @@
     CTools::Redirect(THIS);
 	}
 
-	/*! Создание метода */
+	
 	if (!empty($_POST['createMethodButton'])) {
 		$method_name = htmlspecialchars($_POST['method_name']);
 		$method_type = (int)htmlspecialchars($_POST['method_type']);
@@ -200,5 +270,7 @@
 		$image_name = $_POST['changeImageForGenerate'];
 		$_SESSION['images'][$image_name]->generate();
 	}
+	
+	*/
 	
 ?>

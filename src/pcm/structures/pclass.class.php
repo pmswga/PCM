@@ -30,15 +30,15 @@
 			
 			switch($class_type)
 			{
-				case _ABSTRACT_:
+				case ABSTRACT_CLASS:
 				{
 						$this->class_type = $class_type;
 				} break;
-				case _NATIVE_:
+				case NATIVE_CLASS:
 				{
 						$this->class_type = $class_type;
 				} break;
-				default: $this->class_type = 1; break;
+				default: $this->class_type = NATIVE_CLASS; break;
 			}
 		}
 		
@@ -96,15 +96,15 @@
 		{
 			switch($class_type)
 			{
-				case _ABSTRACT_:
+				case ABSTRACT_CLASS:
 				{
 						$this->class_type = $class_type;
 				} break;
-				case _NATIVE_:
+				case NATIVE_CLASS:
 				{
 						$this->class_type = $class_type;
 				} break;
-				default: $this->class_type = 1; break;
+				default: $this->class_type = NATIVE_CLASS; break;
 			}
 		}
 		
@@ -149,7 +149,7 @@
 			$type = "";
 			switch($this->class_type)
 			{
-				case _ABSTRACT_:
+				case ABSTRACT_CLASS:
 				{
 					$type = "abstract ";
 				} break;
@@ -195,7 +195,7 @@
 			$type = "";
 			switch($this->class_type)
 			{
-				case _ABSTRACT_:
+				case ABSTRACT_CLASS:
 				{
 					$type = "abstract ";
 				} break;

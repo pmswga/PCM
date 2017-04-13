@@ -8,8 +8,8 @@
 
 	session_start();
 
-	if (!isset($_SESSION['tmp_image'])) {      
-		$_SESSION['tmp_image'] = new PImage("tmp");
+	if (!isset($_SESSION['tmp'])) {      
+		$_SESSION['tmp'] = new PImage("tmp");
 	}
 
 	$CT = new CTemplater("templates/tpl", "templates/tpl_c", "templates/configs", "templates/cache");

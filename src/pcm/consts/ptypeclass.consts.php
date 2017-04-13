@@ -1,6 +1,6 @@
 <?php
 
-    const _ABSTRACT_ = 0;
-    const _NATIVE_ = 1;
-    
+	const NATIVE_CLASS = 0;
+	const ABSTRACT_CLASS = 1;
+	
 ?>
