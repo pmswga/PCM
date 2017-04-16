@@ -19,7 +19,10 @@
 			
 			[name='createClassForm'] .field:last-child, 
 			[name='editMethodForm'] .field:last-child,
-			[name='createMethodForm']	.field:last-child
+			[name='createMethodForm']	.field:last-child,
+			[name='createDictionary'] .field:last-child,
+			[name='createVarForm'] .field:last-child,
+			[name='createConstForm'] .field:last-child
 			{
 				display: flex;
 				justify-content: flex-end;
@@ -68,6 +71,14 @@
 									</div>
 									<div class="value">
 										{$countMethods|default:0}
+									</div>
+								</div>
+								<div class="statistic">
+									<div class="label">
+										Словарей
+									</div>
+									<div class="value">
+										{$countDictionaries|default:0}
 									</div>
 								</div>
 							</div>
@@ -228,7 +239,7 @@
 					<div class="ui bottom attached active tab segment" data-tab="code">
 						<form name="editMethodForm" class="ui form">
 							<div class="field">
-								<textarea rows="32"></textarea>
+								<textarea rows="32" onkeydown="insertTab(this, event);"></textarea>
 							</div>
 							<div class="field">
 								<button class="ui basic positive button" type="submit">Сохранить</button>
@@ -238,11 +249,11 @@
 					<div class="ui bottom attached tab segment" data-tab="testing">
 						<form name="testCodeForm" class="ui form">
 							<div class="field">
-								<textarea rows="16"></textarea>
+								<textarea name="test_code" rows="16" onkeydown="insertTab(this, event);"></textarea>
 							</div>
 							<div class="field">
 								<label>Результат</label>
-								<textarea rows="16" readonly></textarea>
+								<textarea id="result_of_code" rows="16" readonly></textarea>
 							</div>
 						</form>
 					</div>
@@ -263,14 +274,34 @@
 										Просмотр
 								</div>
 								<div class="content">
-									
-								</div>
-								<div class="title">
-										<i class="dropdown icon"></i>
-										Управление
-								</div>
-								<div class="content">
-										Level 1B Contents
+									<form name="workWithMethodsForm" method="POST" class="ui form">
+										<table class="ui compact celled definition table">
+											<thead>
+												<tr>
+													<td colspan="4">
+														<input type="submit" name="removeMethodButton" value="Удалить" class="ui basic right floated brown button">
+														<button type="submit" class="ui basic right floated orange button">
+															<i class="edit icon"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th>Выбрать</th>
+													<th>Метод</th>
+													<th>Аргументы</th>
+													<th>Тип</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="selectedMethod[]" value="" class="form-control"></td>
+													<td><a href="#edit">hw</a></td>
+													<td>a, b, c</td>
+													<td>Обычный</td>
+												</tr>
+											</tbody>
+										</table>
+									</form>
 								</div>
 								<div class="title">
 										<i class="dropdown icon"></i>
@@ -315,28 +346,98 @@
 										Просмотр
 								</div>
 								<div class="content">
-									
-								</div>
-								<div class="title">
-										<i class="dropdown icon"></i>
-										Управление
-								</div>
-								<div class="content">
-										Level 1B Contents
+									<form name="workWithИVarsForm" method="POST" class="ui form">
+										<table class="ui compact celled definition table">
+											<thead>
+												<tr>
+													<td colspan="4">
+														<input type="submit" name="removeVarButton" value="Удалить" class="ui basic right floated brown button">
+														<button type="submit" class="ui basic right floated orange button">
+															<i class="edit icon"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th>Выбрать</th>
+													<th>Доступ</th>
+													<th>Имя</th>
+													<th>Тип</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="selectedVar[]" value="" class="form-control"></td>
+													<td>PUBLIC</td>
+													<td><a href="#edit">a</a></td>
+													<td>Переменная</td>
+												</tr>
+											</tbody>
+										</table>
+									</form>
 								</div>
 								<div class="title">
 										<i class="dropdown icon"></i>
 										Добавить свойства
 								</div>
 								<div class="content">
-										Level 1C Contents
+									<form name="createVarForm" method="POST" class="ui form">
+										<div class="field">
+											<label>Имя</label>
+											<input type="text">
+										</div>
+										<div class="field">
+											<label>Доступ</label>
+											<select class="dropdown">
+												<option>PUBLIC</option>
+												<option>PRIVATE</option>
+												<option>PROTECTED</option>
+											</select>
+										</div>
+										<div class="field">
+											<label>Тип</label>
+											<select class="dropdown">
+												<option>Обычное</option>
+												<option>Статическое</option>
+											</select>
+										</div>
+										<div class="field">
+											<input type="submit" name="createVarButton" value="Создать" class="ui basic positive button">
+										</div>
+									</form>
 								</div>
 								<div class="title">
 										<i class="dropdown icon"></i>
 										Добавить константу
 								</div>
 								<div class="content">
-										Level 1C Contents
+									<form name="createConstForm" method="POST" class="ui form">
+										<div class="field">
+											<label>Имя</label>
+											<input type="text">
+										</div>
+										<div class="field">
+											<label>Доступ</label>
+											<select class="dropdown">
+												<option>PUBLIC</option>
+												<option>PRIVATE</option>
+												<option>PROTECTED</option>
+											</select>
+										</div>
+										<div class="field">
+											<label>Тип</label>
+											<select class="dropdown">
+												<option>Обычное</option>
+												<option>Статическое</option>
+											</select>
+										</div>
+										<div class="field">
+											<label>Значение</label>
+											<input type="number">
+										</div>
+										<div class="field">
+											<input type="submit" name="createConstButton" value="Создать" class="ui basic positive button">
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
@@ -359,7 +460,34 @@
 							Словари
 						</div>
 						<div class="content">
-							
+							<div class="accordion">
+								<div class="title">
+									<i class="dropdown icon"></i>
+									Просмотр
+								</div>
+								<div class="content">
+								
+								</div>
+								<div class="title">
+									<i class="dropdown icon"></i>
+									Создать словарь
+								</div>
+								<div class="content">
+									<form name="createDictionary" method="POST" class="ui form">
+										<div class="field">
+											<label>Название</label>
+											<input type="text" name="dictionaryName">
+										</div>
+										<div class="field">
+											<label>Кол-во записей</label>
+											<input type="number" name="countEntries" min="1" max="100">
+										</div>
+										<div class="field">
+											<input type="submit" value="Создать" class="ui basic positive button">
+										</div>
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -443,6 +571,30 @@
 				
 				
 			});
+			
+			
+			
+			$("[name='test_code']").change(function(){
+				
+				var code = $("[name='test_code']").val();
+				
+				if (code != "") {
+				
+					$.ajax({
+						url: "php/do_it.php",
+						type: "POST",
+						data: "code=" + code,
+						success: function(replay) {
+							$("#result_of_code").html("");
+							$("#result_of_code").html(replay);
+						}
+					});
+				
+				}
+				
+			});
+				
+				
 			
 		</script>
 		

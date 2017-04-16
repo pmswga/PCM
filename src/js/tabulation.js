@@ -1,6 +1,7 @@
 function insertTab(o, e)
 {
     var kC = e.keyCode ? e.keyCode : e.charCode ? e.charCode : e.which;
+		
     if (kC == 9 && !e.shiftKey && !e.ctrlKey && !e.altKey)
     {
         var oS = o.scrollTop;
@@ -24,5 +25,7 @@ function insertTab(o, e)
         }
         return false;
     }
+		
+		
     return true;
 }
