@@ -77,6 +77,11 @@
 		CTools::Redirect(THIS);
 	}
 	
+	if (!empty($_POST['createMethodButton'])) {
+		
+	}
+	
+	
 	// CTools::var_dump($_SESSION['tmp']);
 	
 	

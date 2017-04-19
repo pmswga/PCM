@@ -1,3 +1,30 @@
+<?php
+/* Smarty version 3.1.29, created on 2017-04-19 14:37:07
+  from "C:\OpenServer\domains\PCM\src\templates\tpl\main.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_58f74be3022f30_09845577',
+  'file_dependency' => 
+  array (
+    '76ded4bf7195bc13cfffb8ab1bfb841fec9d4a06' => 
+    array (
+      0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\main.tpl',
+      1 => 1492601814,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:windows/menu.tpl' => 1,
+    'file:windows/classes.tpl' => 1,
+    'file:windows/tools.tpl' => 1,
+    'file:windows/methods_vars.tpl' => 1,
+  ),
+),false)) {
+function content_58f74be3022f30_09845577 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,11 +33,19 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/vt.css">
-		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/tabulation.js"></script>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
+>
 		<link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
-		<script src="css/semantic/dist/semantic.min.js"></script>
+		<?php echo '<script'; ?>
+ src="css/semantic/dist/semantic.min.js"><?php echo '</script'; ?>
+>
 		<style>
 			
 			table tr th {
@@ -38,18 +73,26 @@
 		<div class="container-fluid">
       <div class="row">
 				<div class="col-md-12">
-					{include file='windows/menu.tpl'}
+					<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 				</div>
 			</div>
 			<div class="row" style="padding: 15px;">
 				<div class="col-md-3">
-					{include file='windows/classes.tpl'}
+					<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/classes.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 				</div>
 				<div class="col-md-5">
-					{include file='windows/tools.tpl'}
+					<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/tools.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 				</div>
 				<div class="col-md-4">
-					{include file='windows/methods_vars.tpl'}
+					<?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:windows/methods_vars.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 				</div>
 			</div>
     </div>
@@ -59,7 +102,8 @@
 		
 		<!-- ############## -->
 		
-		<script type="text/javascript">
+		<?php echo '<script'; ?>
+ type="text/javascript">
 			
 			$(".menu .item").tab();
 			
@@ -156,8 +200,11 @@
 				
 				
 			
-		</script>
+		<?php echo '</script'; ?>
+>
 		
 		
 	</body>
 </html>
+<?php }
+}
