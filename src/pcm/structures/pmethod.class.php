@@ -4,6 +4,9 @@
 	
 	require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/consts/ptypeaccessright.consts.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/consts/ptypemethod.consts.php";
+	require_once "parg.class.php";
+	
+	use PCM\Structures\PArg;
 	
 	class PMethod
 	{
@@ -80,12 +83,17 @@
 			return $this->args;
 		}
 		
+		public function getArg(string $arg_name) : PArg
+		{
+			return $this->args[$arg_name];
+		}
+		
 		public function getSrc() : string
 		{
 			return $this->src;
 		}
 		
-		public function setName(string $method_name)
+		public function setMethodName(string $method_name)
 		{
 			$this->method_name = $method_name;
 		}
@@ -96,15 +104,15 @@
 			{
 				case PUBLIC_ACCESS:
 				{
-						$this->access_type = $access_type;
+					$this->access_type = $access_type;
 				} break;
 				case PRIVATE_ACCESS:
 				{
-						$this->access_type = $access_type;
+					$this->access_type = $access_type;
 				} break;
 				case PROTECTED_ACCESS:
 				{
-						$this->access_type = $access_type;
+					$this->access_type = $access_type;
 				} break;
 				default: $this->access_type = PRIVATE_ACCESS;
 			}
@@ -116,15 +124,15 @@
 			{
 				case NATIVE_METHOD:
 				{
-						$this->method_type = $method_type;
+					$this->method_type = $method_type;
 				} break;
 				case STATIC_METHOD:
 				{
-						$this->method_type = $method_type;
+					$this->method_type = $method_type;
 				} break;
 				case ABSTRACT_METHOD:
 				{
-						$this->method_type = $method_type;
+					$this->method_type = $method_type;
 				} break;
 				default: $this->method_type = NATIVE_METHOD;
 			}
@@ -139,13 +147,13 @@
 		{
 			foreach($args as $arg)
 			{
-				$this->args[] = $arg;
+				$this->args[$arg->getArgName()] = $arg;
 			}
 		}
 		
-		public function addArg()
+		public function addArg(PArg $arg)
 		{
-			
+			$this->args[$arg->getArgName()] = $arg;
 		}
 		
 		public function __toString()
@@ -155,15 +163,15 @@
 			{
 				case PUBLIC_ACCESS:
 				{
-						$access_type = "public";
+					$access_type = "public";
 				} break;
 				case PRIVATE_ACCESS:
 				{
-						$access_type = "private";
+					$access_type = "private";
 				} break;
 				case PROTECTED_ACCESS:
 				{
-						$access_type = "protected";
+					$access_type = "protected";
 				} break;
 				default: $access_type = "private";
 			}
@@ -173,15 +181,15 @@
 			{
 				case NATIVE_METHOD:
 				{
-						$method_type = "";
+					$method_type = "";
 				} break;
 				case STATIC_METHOD:
 				{
-						$method_type = "static ";
+					$method_type = " static ";
 				} break;
 				case ABSTRACT_METHOD:
 				{
-						$method_type = "abstract ";
+					$method_type = "abstract ";
 				} break;
 				default: $method_type = "";
 			}
@@ -194,7 +202,7 @@
 			$code .= "(";
 			foreach($this->args as $arg)
 			{
-				$code .= "$".trim($arg);
+				$code .= $arg;
 				if (next($this->args)) $code .= ", ";
 			}
 			$code .= ")\n";
@@ -206,7 +214,6 @@
 				$code .= "\t".($line)."\n";
 			}
 			$code .= "}";
-			
 			
 			return $code;
 		}

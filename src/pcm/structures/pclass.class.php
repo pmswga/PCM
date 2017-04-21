@@ -22,7 +22,7 @@
 		private $consts;
 		private $methods;
 		
-		function __construct(int $class_type, string $class_name, string $superclass_name = "")
+		function __construct(string $class_name, int $class_type = NATIVE_CLASS, string $superclass_name = "")
 		{
 			$this->class_name = str_replace(" ", "_", $class_name);
 			$this->superclass_name = str_replace(" ", "_", $superclass_name);
@@ -54,6 +54,11 @@
 			return $this->superclass_name;
 		}
 		
+		public function getClassType() : int
+		{
+			return $this->class_type;
+		}
+		
 		public function getVars() : array
 		{
 			return $this->vars;
@@ -82,11 +87,6 @@
 		public function getMethod(string $method_name) : PMethod
 		{
 			return $this->methods[$method_name];
-		}
-		
-		public function getClassType() : int
-		{
-			return $this->class_type;
 		}
 		
 		public function setClassName(string $class_name)
