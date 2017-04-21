@@ -1,92 +1,19 @@
 
-.table th{
-    text-align: center;
+table tr th{
+	text-align: center;
 }
 
-form[name="create_image"] .form-group:last-child, form[name="create_class"] .form-group:last-child{
-    display: flex;
-    justify-content: flex-end;
+[name='createClassForm'] .field:last-child, 
+[name='editMethodForm'] .field:last-child,
+[name='createMethodForm']	.field:last-child,
+[name='createDictionary'] .field:last-child,
+[name='createVarForm'] .field:last-child,
+[name='createConstForm'] .field:last-child
+{
+	display: flex;
+	justify-content: flex-end;
 }
 
-#manage_images{
-    display: flex;
-    justify-content: flex-end;
+[type='checkbox'] {
+	outline: none;
 }
-
-#manage_images input{
-    margin: 5px;
-}
-
-#manage_system{
-  border: 1px solid black;
-  padding: 5px;
-}
-
-
-
-#add_const_form{
-    width: 100%;
-}
-
-#add_const_form td{
-    padding: 5px;
-}
-
-form[name="create_class"] .form-group:nth-child(4) legend{
-    text-align: center;
-}
-
-#public_var_legend{
-    color: #61BD6D;
-		text-align: center;
-}
-
-#private_var_legend{
-    color: #E14938;
-		text-align: center;
-}
-
-#protected_var_legend{
-    color: #FBA026;
-		text-align: center;
-}
-
-textarea[name="code"] {
-    background-color: #475577;
-    color: white;
-}
-
-#generate_buttons {
-    display: flex;
-    flex-direction: column;
-}
-
-.panel-title{
-    display: flex;
-    justify-content: space-between;
-}
-
-/* index.html */
-
-.content{
-  padding: 5px;
-}
-
-.window-title{
-  border-bottom: 1px solid black;
-  margin: 5px;
-}
-
-.window{
-  padding: 5px;
-}
-
-.window h4{
-  margin: 0px;
-}
-
-.window hr{
-  margin: 5px;
-}
-
-

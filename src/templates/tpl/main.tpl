@@ -5,34 +5,11 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="css/vt.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
 		<script src="css/semantic/dist/semantic.min.js"></script>
-		<style>
-			
-			table tr th {
-				text-align: center;
-			}
-			
-			[name='createClassForm'] .field:last-child, 
-			[name='editMethodForm'] .field:last-child,
-			[name='createMethodForm']	.field:last-child,
-			[name='createDictionary'] .field:last-child,
-			[name='createVarForm'] .field:last-child,
-			[name='createConstForm'] .field:last-child
-			{
-				display: flex;
-				justify-content: flex-end;
-			}
-			
-			[type='checkbox'] {
-				outline: none;
-			}
-			
-		</style>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -53,11 +30,6 @@
 				</div>
 			</div>
     </div>
-		
-		
-		<!-- Модальные окна -->
-		
-		<!-- ############## -->
 		
 		<script type="text/javascript">
 			
@@ -117,7 +89,6 @@
 			
 			
 			$(".ui.accordion").click(function (accordion) {
-				
 				
 				<!-- if (isClick) { -->
 					<!-- ui.saveAccordionState($(accordion), true); -->

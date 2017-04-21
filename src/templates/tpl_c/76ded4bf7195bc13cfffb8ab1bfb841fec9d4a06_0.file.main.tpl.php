@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-19 14:37:07
+/* Smarty version 3.1.29, created on 2017-04-19 15:08:35
   from "C:\OpenServer\domains\PCM\src\templates\tpl\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58f74be3022f30_09845577',
+  'unifunc' => 'content_58f75343908742_27170696',
   'file_dependency' => 
   array (
     '76ded4bf7195bc13cfffb8ab1bfb841fec9d4a06' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\main.tpl',
-      1 => 1492601814,
+      1 => 1492603698,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/methods_vars.tpl' => 1,
   ),
 ),false)) {
-function content_58f74be3022f30_09845577 ($_smarty_tpl) {
+function content_58f75343908742_27170696 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,6 @@ function content_58f74be3022f30_09845577 ($_smarty_tpl) {
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="css/vt.css">
 		<?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
 >
@@ -46,28 +45,6 @@ function content_58f74be3022f30_09845577 ($_smarty_tpl) {
 		<?php echo '<script'; ?>
  src="css/semantic/dist/semantic.min.js"><?php echo '</script'; ?>
 >
-		<style>
-			
-			table tr th {
-				text-align: center;
-			}
-			
-			[name='createClassForm'] .field:last-child, 
-			[name='editMethodForm'] .field:last-child,
-			[name='createMethodForm']	.field:last-child,
-			[name='createDictionary'] .field:last-child,
-			[name='createVarForm'] .field:last-child,
-			[name='createConstForm'] .field:last-child
-			{
-				display: flex;
-				justify-content: flex-end;
-			}
-			
-			[type='checkbox'] {
-				outline: none;
-			}
-			
-		</style>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -96,11 +73,6 @@ function content_58f74be3022f30_09845577 ($_smarty_tpl) {
 				</div>
 			</div>
     </div>
-		
-		
-		<!-- Модальные окна -->
-		
-		<!-- ############## -->
 		
 		<?php echo '<script'; ?>
  type="text/javascript">
@@ -161,7 +133,6 @@ function content_58f74be3022f30_09845577 ($_smarty_tpl) {
 			
 			
 			$(".ui.accordion").click(function (accordion) {
-				
 				
 				<!-- if (isClick) { -->
 					<!-- ui.saveAccordionState($(accordion), true); -->
