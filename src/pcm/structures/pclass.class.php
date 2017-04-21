@@ -3,6 +3,7 @@
 	namespace PCM\Structures;
 	
 	require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/consts/ptypeclass.consts.php";
+	
 	require_once "pvar.class.php";
 	require_once "pconst.class.php";
 	require_once "pmethod.class.php";
@@ -13,16 +14,17 @@
 	
 	class PClass
 	{
-		private $name;
+		private $class_type;
+		private $class_name;
 		private $superclass_name;
+		
 		private $vars;
 		private $consts;
 		private $methods;
-		private $class_type;
 		
-		function __construct(int $class_type, string $name, string $superclass_name = "")
+		function __construct(int $class_type, string $class_name, string $superclass_name = "")
 		{
-			$this->name = str_replace(" ", "_", $name);
+			$this->class_name = str_replace(" ", "_", $class_name);
 			$this->superclass_name = str_replace(" ", "_", $superclass_name);
 			$this->vars = array();
 			$this->consts = array();
@@ -44,7 +46,7 @@
 		
 		public function getClassName() : string
 		{
-			return $this->name;
+			return $this->class_name;
 		}
 		
 		public function getSuperClassName() : string
@@ -67,14 +69,19 @@
 			return $this->consts;
 		}
 		
-		public function getMethod(string $method_name) : PMethod
+		public function getConst(string $const_name) : PConst
 		{
-			return $this->methods[$method_name];
+			return $this->consts[$const_name];
 		}
 		
 		public function getMethods() : array
 		{
 			return $this->methods;
+		}
+		
+		public function getMethod(string $method_name) : PMethod
+		{
+			return $this->methods[$method_name];
 		}
 		
 		public function getClassType() : int
@@ -84,12 +91,12 @@
 		
 		public function setClassName(string $class_name)
 		{
-			$this->name = str_replace(" ", "_", $class_name);
+			$this->class_name = str_replace(" ", "_", $class_name);
 		}
 		
 		public function setSuperClassName(string $subclass)
 		{
-			$this->name = str_replace(" ", "_", $subclass);
+			$this->class_name = str_replace(" ", "_", $subclass);
 		}
 		
 		public function setClassType(int $class_type)
@@ -113,11 +120,16 @@
 			foreach($vars as $var)
 			{
 				if ($var instanceof PVar) {
-					$this->vars[$var->getName()] = $var;
+					$this->vars[$var->getVarName()] = $var;
 					return true;
 				}
 				else return false;
 			}
+		}
+		
+		public function addVar(PVar $var)
+		{
+			$this->vars[$var->getVarName()] = $var;
 		}
 		
 		public function addConsts(array $consts)
@@ -125,11 +137,16 @@
 			foreach($consts as $const)
 			{
 				if ($const instanceof PConst) {
-					$this->consts[$const->getName()] = $const;
+					$this->consts[$const->getConstName()] = $const;
 					return true;
 				}
 				else return false;
 			}
+		}
+		
+		public function addConst(PConst $const)
+		{
+			$this->consts[$const->getConstName()] = $const;
 		}
 		
 		public function addMethods(array $methods)
@@ -137,14 +154,19 @@
 			foreach($methods as $method)
 			{
 				if ($method instanceof PMethod) {
-					$this->methods[$method->getName()] = $method;
+					$this->methods[$method->getMethodName()] = $method;
 					return true;
 				}
 				else return false;
 			}
 		}
 		
-		public function for_test()
+		public function addMethod(PMethod $method)
+		{
+			$this->methods[$method->getMethodName()] = $method;
+		}
+		
+		public function preview()
 		{
 			$type = "";
 			switch($this->class_type)
@@ -156,9 +178,9 @@
 			}
 			
 			if (!empty($this->superclass_name)) {
-				$code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
+				$code .= $type."class ".$this->class_name." extends ".$this->superclass_name."\n";
 			} else {              
-				$code .= $type."class ".$this->name."\n";
+				$code .= $type."class ".$this->class_name."\n";
 			}
 			
 			$code .= "{\n";
@@ -203,9 +225,9 @@
 			
 			if (!empty($this->superclass_name)) {
 				$code .= "require_once \"".strtolower($this->superclass_name).".class.php\";\n\n";
-				$code .= $type."class ".$this->name." extends ".$this->superclass_name."\n";
+				$code .= $type."class ".$this->class_name." extends ".$this->superclass_name."\n";
 			} else {              
-				$code .= $type."class ".$this->name."\n";
+				$code .= $type."class ".$this->class_name."\n";
 			}
 			
 			$code .= "{\n";

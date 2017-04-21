@@ -7,40 +7,62 @@
 	
 	class PMethod
 	{
-		private $name;
 		private $access_type;
-		private $type;
+		private $method_type;
+		private $method_name;
+		
 		private $args;
 		private $src;
 		
-		public function __construct(int $access_type, string $method_name, array $args = array())
-		{
+		public function __construct(
+			string $method_name, 
+			int $access_type,
+			int $method_type, 
+			array $args = array(),
+			string $src = ""
+		) {
 			switch($access_type)
 			{
-				case _PUBLIC_:
+				case PUBLIC_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				case _PRIVATE_:
+				case PRIVATE_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				case _PROTECTED_:
+				case PROTECTED_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				default: $this->access_type = _PRIVATE_;
+				default: $this->access_type = PRIVATE_ACCESS;
 			}
 			
-			$this->name = $method_name;
-			$this->type = NATIVE_METHOD;
+			switch($method_type)
+			{
+				case NATIVE_METHOD:
+				{
+						$this->method_type = $method_type;
+				} break;
+				case STATIC_METHOD:
+				{
+						$this->method_type = $method_type;
+				} break;
+				case ABSTRACT_METHOD:
+				{
+						$this->method_type = $method_type;
+				} break;
+				default: $this->method_type = NATIVE_METHOD;
+			}
+			
+			$this->method_name = $method_name;
 			$this->args = $args;
-			$this->src = "";
+			$this->src = $src;
 		}
 		
-		public function getName() : string
+		public function getMethodName() : string
 		{
-			return $this->name;
+			return $this->method_name;
 		}
 		
 		public function getAccessType() : int
@@ -50,7 +72,7 @@
 		
 		public function getMethodType() : int
 		{
-			return $this->type;
+			return $this->method_type;
 		}
 		
 		public function getArgs() : array
@@ -65,46 +87,46 @@
 		
 		public function setName(string $method_name)
 		{
-			$this->name = $method_name;
+			$this->method_name = $method_name;
 		}
 		
 		public function setAccessType(int $access_type)
 		{
 			switch($access_type)
 			{
-				case _PUBLIC_:
+				case PUBLIC_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				case _PRIVATE_:
+				case PRIVATE_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				case _PROTECTED_:
+				case PROTECTED_ACCESS:
 				{
 						$this->access_type = $access_type;
 				} break;
-				default: $this->access_type = _PRIVATE_;
+				default: $this->access_type = PRIVATE_ACCESS;
 			}
 		}
 		
-		public function setMethodType(int $type)
+		public function setMethodType(int $method_type)
 		{
-			switch($type)
+			switch($method_type)
 			{
 				case NATIVE_METHOD:
 				{
-						$this->type = $type;
+						$this->method_type = $method_type;
 				} break;
 				case STATIC_METHOD:
 				{
-						$this->type = $type;
+						$this->method_type = $method_type;
 				} break;
 				case ABSTRACT_METHOD:
 				{
-						$this->type = $type;
+						$this->method_type = $method_type;
 				} break;
-				default: $this->type = NATIVE_METHOD;
+				default: $this->method_type = NATIVE_METHOD;
 			}
 		}
 		
@@ -121,48 +143,53 @@
 			}
 		}
 		
+		public function addArg()
+		{
+			
+		}
+		
 		public function __toString()
 		{
-			$type = "";
+			$access_type = "";
 			switch($this->access_type)
 			{
-				case _PUBLIC_:
+				case PUBLIC_ACCESS:
 				{
-						$type = "public";
+						$access_type = "public";
 				} break;
-				case _PRIVATE_:
+				case PRIVATE_ACCESS:
 				{
-						$type = "private";
+						$access_type = "private";
 				} break;
-				case _PROTECTED_:
+				case PROTECTED_ACCESS:
 				{
-						$type = "protected";
+						$access_type = "protected";
 				} break;
-				default: $type = "private";
+				default: $access_type = "private";
 			}
 			
-			$m_type = "";
-			switch($this->type)
+			$method_type = "";
+			switch($this->method_type)
 			{
 				case NATIVE_METHOD:
 				{
-						$m_type = "";
+						$method_type = "";
 				} break;
 				case STATIC_METHOD:
 				{
-						$m_type = "static ";
+						$method_type = "static ";
 				} break;
 				case ABSTRACT_METHOD:
 				{
-						$m_type = "abstract ";
+						$method_type = "abstract ";
 				} break;
-				default: $m_type = "";
+				default: $method_type = "";
 			}
 			
 			$lines = explode("\n", $this->src);
 			for($i = 0; $i < count($lines); $i++) $lines[$i] = str_replace("\t", "    ", $lines[$i]);
 			
-			$code = "\n".$m_type.$type." function ".$this->name;
+			$code = "\n".$access_type.$method_type." function ".$this->method_name;
 			
 			$code .= "(";
 			foreach($this->args as $arg)
