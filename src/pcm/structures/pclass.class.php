@@ -22,7 +22,7 @@
 		private $consts;
 		private $methods;
 		
-		function __construct(string $class_name, int $class_type = NATIVE_CLASS, string $superclass_name = "")
+		function __construct(string $class_name, string $superclass_name = "", int $class_type = NATIVE_CLASS)
 		{
 			$this->class_name = str_replace(" ", "_", $class_name);
 			$this->superclass_name = str_replace(" ", "_", $superclass_name);
@@ -166,7 +166,7 @@
 			$this->methods[$method->getMethodName()] = $method;
 		}
 		
-		public function preview()
+		public function preview() : string
 		{
 			$type = "";
 			switch($this->class_type)

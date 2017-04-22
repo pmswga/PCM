@@ -8,25 +8,35 @@
 	
 	class PImage
 	{
-		private $name;
+		private $image_name;
 		private $classes;
 		private $file_names_of_classes;
 		
-		public function __construct(string $name)
+		public function __construct(string $image_name, array $classes = array())
 		{
-			$this->name = str_replace(" ", "_", $name);
-			$this->classes = array();
+			$this->image_name = str_replace(" ", "_", $image_name);
+			
+			if (!empty($classes)) {
+				foreach ($classes as $class) {
+					if ($class instanceof PClass) {
+						$this->classes[$class->getClassName()] = $class;
+					}
+				}
+			} else {				
+				$this->classes = array();
+			}
+			
 			$this->file_names_of_classes = array();
 		}
 		
 		public function getImageName() : string
 		{
-			return $this->name;
+			return $this->image_name;
 		}
 		
 		public function setImageName(string $image_name)
 		{
-			$this->name = $image_name;
+			$this->image_name = $image_name;
 		}
 		
 		public function getClasses() : array
@@ -91,14 +101,6 @@
 			$this->file_names_of_classes = $sinker($this->classes);
 		}
 		
-		public function addClass(PClass $class) : bool
-		{
-			$this->addToHierarchia($class);
-			$this->createFileNamesList();
-			
-			return true;
-		}
-		
 		public function addClasses(array $classes) : bool
 		{
 			foreach($classes as $class)
@@ -108,6 +110,14 @@
 				}
 				else return false;
 			}
+			$this->createFileNamesList();
+			
+			return true;
+		}
+		
+		public function addClass(PClass $class) : bool
+		{
+			$this->addToHierarchia($class);
 			$this->createFileNamesList();
 			
 			return true;
@@ -124,7 +134,7 @@
 			if (!is_dir("images")) mkdir("images");
 			
 			$folder = "images";
-			return file_put_contents($folder."/".$this->name.".pcm", serialize($this));           
+			return file_put_contents($folder."/".$this->image_name.".pcm", serialize($this));           
 		}
 		
 		public static function import(string $file_name)
@@ -140,7 +150,7 @@
 		
 		public function generate()
 		{
-			$path = $this->name;
+			$path = $this->image_name;
 			if (!is_dir($path)) mkdir($path);
 			
 			$classes = $this->getClasses();
