@@ -38,108 +38,26 @@
 	
 	// echo str_replace("\n", "<br>", $class);
 	
-	// $image = array(
-		// "Object" => array(
-			// "supclass" => $class_a,
-			// "subclass" => array(
-				// "Animal" => array(
-					// "supclass" => $class_b,
-					// "subclass" => array(
-						// "Cat" => array(
-							// "supclass" => $class_f,
-							// "subclass" => array()
-						// )
-					// )
-				// ),
-				// "Wow" => array(
-					// "supclass" => $class_c,
-					// "subclass" => array()
-				// )
-			// )
-		// )
-	// );
-	
-	// function addClass(PClass $class)
-	// {
-		// global $image;
-		// if (!empty($class->getSuperClassName())) {
-			
-			// $find_node = function(&$h, $search_class) use (&$find_node) {
-				
-				// foreach ($h as $class_name => &$node) {
-					
-					// if ($class_name == $search_class->getSuperClassName()) {
-						
-						// $new_node = array(
-							// "supclass" => $search_class,
-							// "subclass" => array()
-						// );
-						
-						// $node['subclass'][$search_class->getClassName()] = $new_node;
-						
-					// } else {						
-						// if (!empty($node['subclass'])) {
-							// $find_node($node['subclass'], $search_class);
-						// }
-					// }
-				// }
-				
-			// };
-			
-			// $find_node($image, $class);
-			
-		// } else {
-			
-			// $new_node = array(
-				// "supclass" => $class,
-				// "subclass" => array()
-			// );
-			
-			// $image[$class->getClassName()] = $new_node;
-			
-		// }
-	// }
-	
-	// function removeClass($class_name)
-	// {
-		// global $image;
-		
-		// $remove_class = function(&$h, $search_class) use (&$remove_class) {
-			
-			// if (array_key_exists($search_class, $h)) {
-				// unset($h[$search_class]);
-			// } else {
-				
-				// foreach ($h as $class_name => &$node) {
-					
-					// if (array_key_exists($search_class, $node['subclass'])) {
-						// unset($node['subclass'][$search_class]);
-					// }
-					
-					// if (!empty($node['subclass'])) {
-						// $remove_class($node['subclass'], $search_class);
-					// }
-					
-				// }
-				
-			// }
-			
-		// };
-		
-		// $remove_class($image, $class_name);
-		
-	// }
-	
-	
-	// addClass($class_d);
-	// addClass($class_e);
-	// addClass($class_g);
-	// addClass($class_h);
-	
-	
 	$image = new PImage("Smalltalk");
 	
+	$image->addClass($class_a);
 	$image->addClass($class_b);
+	$image->addClass($class_c);
+	$image->addClass($class_d);
+	$image->addClass($class_e);
+	$image->addClass($class_f);
+	$image->addClass($class_g);
+	$image->addClass($class_h);
+	
+	
+	
+	echo "<hr>";
+	$f = $image->getClass("QAnimal");
+	$f['supclass']->setClassName("my");
+	
+	echo "<pre>";
+	print_r($f);
+	echo "</pre>";
 	
 	echo "<pre>";
 	print_r($image);

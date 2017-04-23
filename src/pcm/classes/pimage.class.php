@@ -15,6 +15,7 @@
 		public function __construct(string $image_name)
 		{
 			$this->image_name = str_replace(" ", "_", $image_name);
+			
 			$this->file_names_of_classes = array();
 		}
 		
@@ -33,18 +34,41 @@
 			$this->image_name = $image_name;
 		}
 		
-		public function findClass(string $class_name)
+		private function isClassExists(string $class_name) : bool
 		{
-			$find = function () use (&$find) {
+			$find = function ($h, $search_class) use (&$find) {
 				
-			}
+				if (!empty($h)) {
+					
+					if (array_key_exists($search_class, $h)) {
+						return true;
+					} else {
+						
+						foreach ($h as $class_name => &$node) {
+							
+							if (array_key_exists($search_class, $node['subclass'])) {
+								return true;
+							}
+							
+							if (!empty($node['subclass'])) {
+								return $find($node['subclass'], $search_class);
+							}
+							
+						}
+					}
+				} 
+				
+				return false;
+			};
+			
+			return $find($this->classes, $class_name);
 		}
 		
-		public function addClass(PClass $class)
+		public function addClass(PClass $class) : bool
 		{
 			if (!empty($class->getSuperClassName())) {
 				
-				$find_node = function(&$h, $search_class) use (&$find_node) {
+				$add_class = function(&$h, $search_class) use (&$add_class) {
 					
 					foreach ($h as $class_name => &$node) {
 						
@@ -59,16 +83,18 @@
 							
 						} else {		
 							if (!empty($node['subclass'])) {
-								$find_node($node['subclass'], $search_class);
+								$add_class($node['subclass'], $search_class);
 							}
 						}
 					}
 					
 				};
 				
-				
-					$find_node($this->classes, $class);
-				
+				if ($this->isClassExists($class->getSuperClassName())) {					
+					$add_class($this->classes, $class);
+					return true;
+				} else return false;
+					
 			} else {
 				
 				$new_node = array(
@@ -78,6 +104,7 @@
 				
 				$this->classes[$class->getClassName()] = $new_node;
 				
+				return true;
 			}
 		}
 		
@@ -106,7 +133,6 @@
 			};
 			
 			$remove_class($this->classes, $class_name);
-			
 		}
 		
 		public function getClassHierarchia() : array
@@ -114,8 +140,51 @@
 			return $this->classes;
 		}
 		
+		public function getClasses()
+		{
+			$get_classes = function ($h) use (&$get_classes) {
+				static $classes;
+				
+				foreach ($h as $class_name => $node) {
+					
+					$classes[$class_name] = $node["supclass"];
+					
+					if (!empty($node['subclass'])) {
+						$get_classes($node['subclass']);
+					}
+					
+				}
+				
+				return $classes;
+			};
+			
+			return $get_classes($this->classes);
+		}
 		
-		
+		public function getClass(string $class_name)
+		{
+			$get_class = function ($h, $search_class) use (&$get_class) {
+				static $class;
+				
+				foreach ($h as $class_name => $node) {
+					
+					if ($class_name == $search_class) {
+						$class = $node;
+					}
+					
+					if (!empty($node['subclass'])) {
+						$get_class($node['subclass'], $search_class);
+					}
+					
+				}
+				
+				return $class;
+			};
+			
+			if (!empty($this->classes)) {
+				return $get_class($this->classes, $class_name);
+			}
+		}
 		
 		
 		
