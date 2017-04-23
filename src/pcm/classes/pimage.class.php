@@ -9,14 +9,15 @@
 	class PImage
 	{
 		private $image_name;
+		private $image_file;
 		private $classes;
-		private $file_names_of_classes;
+		private $classes_files;
 		
 		public function __construct(string $image_name)
 		{
 			$this->image_name = str_replace(" ", "_", $image_name);
-			
-			$this->file_names_of_classes = array();
+			$this->image_file = strtolower($image_name).".pcm";
+			$this->classes_files = array();
 		}
 		
 		public function getImageName() : string
@@ -24,9 +25,9 @@
 			return $this->image_name;
 		}
 		
-		public function getFilesList() : array
+		public function getClassesFiles() : array
 		{
-			return $this->file_names_of_classes;
+			return $this->classes_files;
 		}
 		
 		public function setImageName(string $image_name)
@@ -66,6 +67,8 @@
 		
 		public function addClass(PClass $class) : bool
 		{
+			$class_file = strtolower($class->getClassName()).".class.php";
+			
 			if (!empty($class->getSuperClassName())) {
 				
 				$add_class = function(&$h, $search_class) use (&$add_class) {
@@ -92,6 +95,8 @@
 				
 				if ($this->isClassExists($class->getSuperClassName())) {					
 					$add_class($this->classes, $class);
+					$this->classes_files[$class->getClassName()] = $class_file;
+					
 					return true;
 				} else return false;
 					
@@ -103,6 +108,7 @@
 				);
 				
 				$this->classes[$class->getClassName()] = $new_node;
+				$this->classes_files[$class->getClassName()] = $class_file;
 				
 				return true;
 			}
@@ -113,13 +119,13 @@
 			$remove_class = function(&$h, $search_class) use (&$remove_class) {
 				
 				if (array_key_exists($search_class, $h)) {
-					unset($h[$search_class]);
+					unset($h[$search_class], $this->classes_files[$search_class]);
 				} else {
 					
 					foreach ($h as $class_name => &$node) {
 						
 						if (array_key_exists($search_class, $node['subclass'])) {
-							unset($node['subclass'][$search_class]);
+							unset($node['subclass'][$search_class], $this->classes_files[$search_class]);
 						}
 						
 						if (!empty($node['subclass'])) {
@@ -186,11 +192,6 @@
 			}
 		}
 		
-		
-		
-		
-		
-		
 		public function export()
 		{
 			if (!is_dir("images")) mkdir("images");
@@ -218,9 +219,17 @@
 			$classes = $this->getClasses();
 			
 			foreach ($classes as $class) {
-				$class_path = $path.DIRECTORY_SEPARATOR.$this->file_names_of_classes[$class->getClassName()];
+				
+				$class_path = $path.DIRECTORY_SEPARATOR.$this->classes_files[$class->getClassName()];
 				
 				$code .= "<?php\n\n";
+				
+				if (!empty($class->getSuperClassName())) {
+					$code .= "\t";
+					$code .= 'require_once "'.strtolower($class->getSuperClassName()).'.class.php";';
+					$code .= "\n\n";
+				}
+				
 				$lines = explode("\n", (string)$class);
 				foreach($lines as $line)
 				{                    
@@ -241,19 +250,16 @@
 		{
 			$classes = $this->getClasses();
 			
-			$code .= "<?php\n\n";
-			
 			foreach($classes as $class)
 			{
 				$lines = explode("\n", (string)$class);
+				
 				foreach($lines as $line)
 				{                    
 					$code .= "\t".$line."\n";
 				}
 				$code .= "\n";
 			}
-			
-			$code .= "?>\n";
 			
 			return $code;
 		}

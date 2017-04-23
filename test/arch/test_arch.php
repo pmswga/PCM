@@ -42,25 +42,19 @@
 	
 	$image->addClass($class_a);
 	$image->addClass($class_b);
-	$image->addClass($class_c);
-	$image->addClass($class_d);
-	$image->addClass($class_e);
-	$image->addClass($class_f);
-	$image->addClass($class_g);
-	$image->addClass($class_h);
-	
-	
-	
-	echo "<hr>";
-	$f = $image->getClass("QAnimal");
-	$f['supclass']->setClassName("my");
-	
-	echo "<pre>";
-	print_r($f);
-	echo "</pre>";
+	// $image->addClass($class_c);
+	// $image->addClass($class_d);
+	// $image->addClass($class_e);
+	// $image->addClass($class_f);
+	// $image->addClass($class_g);
+	// $image->addClass($class_h);
 	
 	echo "<pre>";
 	print_r($image);
 	echo "</pre>";
+	
+	echo str_replace("\n", "<br>", $image);
+	
+	$image->generate();
 	
 ?>

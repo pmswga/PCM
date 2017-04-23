@@ -223,13 +223,7 @@
 				} break;
 			}
 			
-			if (!empty($this->superclass_name)) {
-				$code .= "require_once \"".strtolower($this->superclass_name).".class.php\";\n\n";
-				$code .= $type."class ".$this->class_name." extends ".$this->superclass_name."\n";
-			} else {              
-				$code .= $type."class ".$this->class_name."\n";
-			}
-			
+			$code .= $type."class ".$this->class_name."\n";
 			$code .= "{\n";
 			
 			foreach($this->consts as $const)
