@@ -14,7 +14,7 @@
 			string $default_value = "", 
 			string $arg_type = ""
 		) {
-			$this->arg_name = str_replace(" ", "_", $arg_name);
+			$this->arg_name = str_replace(" ", "_", trim($arg_name));
 			$this->default_value = $default_value;
 			$this->arg_type = $arg_type;
 		}

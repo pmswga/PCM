@@ -59,7 +59,17 @@
 			}
 			
 			$this->method_name = $method_name;
-			$this->args = $args;
+			
+			if (!empty($args)) {
+				
+				foreach ($args as $arg) {
+					$this->args[$arg] = new PArg($arg);
+				}
+				
+			} else {
+				$this->args = array();
+			}
+			
 			$this->src = $src;
 		}
 		

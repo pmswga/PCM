@@ -28,7 +28,7 @@
 								<th>Тип</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="classMethods">
 							<tr>
 								<td><input type="checkbox" name="selectedMethod[]" value="" class="form-control"></td>
 								<td><a href="#edit">hw</a></td>
@@ -44,28 +44,40 @@
 					Создать метод
 			</div>
 			<div class="content">
-				<form name="createMethodForm" class="ui form">
+				<form name="createMethodForm" method="POST" class="ui form">
+					<div class="field">
+						<label>Класс</label>
+						<select name="class" class="dropdown">
+							{foreach from=$classes item=class}
+								<option>{$class->getClassName()}</option>
+							{/foreach}
+						</select>
+					</div>
 					<div class="field">
 						<label>Имя метода</label>
-						<input type="text" name="" placeholder="">
+						<input type="text" name="methodName">
 					</div>
 					<div class="field">
 						<label>Тип метода</label>
-						<select class="dropdown">
-							<option>Обычный</option>
-							<option>Абстрактный</option>
+						<select name="methodType" class="dropdown">
+							<option value="0" >Обычный</option>
+							<option value="1" >Абстрактный</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип доступа</label>
-						<select class="dropdown">
-							<option style="color: #6FC17A">PUBLIC</option>
-							<option style="color: #E14976">PRIVATE</option>
-							<option style="color: #FBA026">PROTECTED</option>
+						<select name="methodAccessType" class="dropdown">
+							<option value="0" style="color: #6FC17A">PUBLIC</option>
+							<option value="1" style="color: #E14976">PRIVATE</option>
+							<option value="2" style="color: #FBA026">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
-						<button class="ui basic positive button" type="submit">Создать</button>
+						<label>Аргументы (через ,)</label>
+						<input type="text" name="methodArgs">
+					</div>
+					<div class="field">
+						<input type="submit" name="createMethodButton" value="Создать" class="ui basic positive button">
 					</div>
 				</form>
 			</div>

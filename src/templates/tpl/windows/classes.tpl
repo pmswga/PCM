@@ -11,7 +11,7 @@
 			</div>
 			<div class="active content">
 				{if $classHierarchia != NULL}
-					<div class="ui bulleted list">
+					<div id="hierarchia" class="ui bulleted list">
 						{$classHierarchia}
 					</div>
 				{else}

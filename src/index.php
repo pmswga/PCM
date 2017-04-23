@@ -9,46 +9,68 @@
 	
   const THIS = "index.php";
 	
-	function viewHierarchia(&$classes)
-  {
-    static $code = "";
-    foreach ($classes as $value) {
-      $code .= "<ul class='item'>";
-      if (is_array($value['childs'])) {
+	
+	function viewHierarchia($classes)
+  {			
+		static $code = "";
+		foreach ($classes as $value) {
+			$code .= "<ul>";
+			if (is_array($value['subclass'])) {
 				
-				if (!empty($value['class'])) {
-					$code .= "<li>".$value['class']->getClassName()."</li>";
+				if (!empty($value['supclass'])) {
+					$code .= "<li><a href='#".$value['supclass']->getClassName()."'>".$value['supclass']->getClassName()."</a></li>";
 				}
 				
-				viewHierarchia($value['childs']);
-      }
-      $code .= "</ul>";
-    }
-    return $code;
+				viewHierarchia($value['subclass']);
+			}
+			$code .= "</ul>";
+		}
+		return $code;
+		
   }
+
+	$classes = $_SESSION['tmp']->getClasses();
+	$classHierarchia = $_SESSION['tmp']->getClassHierarchia();
 	
 	$CT->assign("messageStatus", $_SESSION['messageStatus']);
 	$CT->assign("messageHeader", $_SESSION['messageHeader']);
 	$CT->assign("messageContent", $_SESSION['messageContent']);
 	
+	
 	$CT->assign("countClasses", count($_SESSION['tmp']->getClasses()));
 	
-	$CT->assign("classes", $_SESSION['tmp']->getClasses());
-  $CT->assign("classHierarchia", viewHierarchia($_SESSION['tmp']->getClassHierarchia()));
+	$countMethods = 0;
+	
+	foreach ($classes as $class) {
+		$countMethods += count($class->getMethods());
+	}
+	
+	$CT->assign("countMethods", $countMethods);
+	
+	
+	if (!empty($classes)) {		
+		$CT->assign("classes", $classes);
+	}
+	
+	if (!empty($classHierarchia)) {
+		$CT->assign("classHierarchia", viewHierarchia($classHierarchia));
+	}
 	
 	$CT->show("main.tpl");
+	
+	
 	
 	unset($_SESSION['messageStatus']);
 	unset($_SESSION['messageHeader']);
 	unset($_SESSION['messageContent']);
 	
-	
 	if (!empty($_POST['createClassButton'])) {
+		
 		$superClass = ($_POST['superClassName'] != "nil") ? $_POST['superClassName'] : "";
 		$className = htmlspecialchars($_POST['className']);
 		$typeClass = $_POST['typeClass'];
 		
-		$newClass = new PClass($typeClass, $className, $superClass);
+		$newClass = new PClass($className, $superClass, $typeClass);
 		
 		if ($_SESSION['tmp']->addClass($newClass)) {
 			$_SESSION['messageStatus'] = "success";
@@ -79,6 +101,23 @@
 	
 	if (!empty($_POST['createMethodButton'])) {
 		
+		$class = $_POST['class'];
+		$methodName = $_POST['methodName'];
+		$methodType = $_POST['methodType'];
+		$methodAccessType = $_POST['methodAccessType'];
+		$args = (!empty($_POST['methodArgs'])) ? explode(",", $_POST['methodArgs']) : array();
+		
+		$newMethod = new PMethod($methodName, $methodAccessType, $methodType, $args);
+		
+		CTools::var_dump($newMethod);
+		
+		$_SESSION['tmp']->getClass($class)['supclass']->addMethod($newMethod);
+		
+		$_SESSION['messageStatus'] = "success";
+		$_SESSION['messageHeader'] = "Метод успешно создан";
+		$_SESSION['messageContent'] = "В класс ".$class." добавлен метод ".$methodName;
+		
+		CTools::Redirect(THIS);
 	}
 	
 	

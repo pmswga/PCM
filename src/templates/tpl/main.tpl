@@ -105,6 +105,29 @@
 			
 			
 			
+			$("#hierarchia a").click(function(){
+				
+				var class_name = this.getAttribute("href");
+				class_name = class_name.substr(1, class_name.length);
+				
+				if (class_name) {
+				
+					$.ajax({
+						url: "php/get_methods.php",
+						type: "POST",
+						data: "className=" + class_name,
+						success: function(replay) {
+							$("#classMethods").html("");
+							$("#classMethods").html(replay);
+						}
+					});
+				
+				}
+				
+			});
+			
+			
+			// Код для интерактивного тестирования
 			$("[name='test_code']").change(function(){
 				
 				var code = $("[name='test_code']").val();
@@ -123,9 +146,7 @@
 				
 				}
 				
-			});
-				
-				
+			});		
 			
 		</script>
 		

@@ -17,6 +17,7 @@
 		{
 			$this->image_name = str_replace(" ", "_", $image_name);
 			$this->image_file = strtolower($image_name).".pcm";
+			$this->classes = array();
 			$this->classes_files = array();
 		}
 		
@@ -141,7 +142,7 @@
 			$remove_class($this->classes, $class_name);
 		}
 		
-		public function getClassHierarchia() : array
+		public function getClassHierarchia()
 		{
 			return $this->classes;
 		}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-21 20:19:33
+/* Smarty version 3.1.29, created on 2017-04-23 22:08:21
   from "C:\OpenServer\domains\pcm.php\src\templates\tpl\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58fa3f258212a1_70294172',
+  'unifunc' => 'content_58fcfba5d1f758_22623442',
   'file_dependency' => 
   array (
     '1e8349887558cbbd6d9967c175cf7b67ef19c413' => 
     array (
       0 => 'C:\\OpenServer\\domains\\pcm.php\\src\\templates\\tpl\\main.tpl',
-      1 => 1492794969,
+      1 => 1492974438,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/methods_vars.tpl' => 1,
   ),
 ),false)) {
-function content_58fa3f258212a1_70294172 ($_smarty_tpl) {
+function content_58fcfba5d1f758_22623442 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,6 +149,29 @@ function content_58fa3f258212a1_70294172 ($_smarty_tpl) {
 			
 			
 			
+			$("#hierarchia a").click(function(){
+				
+				var class_name = this.getAttribute("href");
+				class_name = class_name.substr(1, class_name.length);
+				
+				if (class_name) {
+				
+					$.ajax({
+						url: "php/get_methods.php",
+						type: "POST",
+						data: "className=" + class_name,
+						success: function(replay) {
+							$("#classMethods").html("");
+							$("#classMethods").html(replay);
+						}
+					});
+				
+				}
+				
+			});
+			
+			
+			// Код для интерактивного тестирования
 			$("[name='test_code']").change(function(){
 				
 				var code = $("[name='test_code']").val();
@@ -167,9 +190,7 @@ function content_58fa3f258212a1_70294172 ($_smarty_tpl) {
 				
 				}
 				
-			});
-				
-				
+			});		
 			
 		<?php echo '</script'; ?>
 >
