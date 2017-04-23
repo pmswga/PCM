@@ -12,20 +12,9 @@
 		private $classes;
 		private $file_names_of_classes;
 		
-		public function __construct(string $image_name, array $classes = array())
+		public function __construct(string $image_name)
 		{
 			$this->image_name = str_replace(" ", "_", $image_name);
-			
-			if (!empty($classes)) {
-				foreach ($classes as $class) {
-					if ($class instanceof PClass) {
-						$this->classes[$class->getClassName()] = $class;
-					}
-				}
-			} else {				
-				$this->classes = array();
-			}
-			
 			$this->file_names_of_classes = array();
 		}
 		
@@ -34,100 +23,104 @@
 			return $this->image_name;
 		}
 		
+		public function getFilesList() : array
+		{
+			return $this->file_names_of_classes;
+		}
+		
 		public function setImageName(string $image_name)
 		{
 			$this->image_name = $image_name;
 		}
 		
-		public function getClasses() : array
+		public function findClass(string $class_name)
 		{
-			$sinker = function (&$array) use (&$sinker) {
-				static $classes = array();
-				foreach ($array as $value) {
-					if (is_array($value)) {
-						$sinker($value);
-						
-						if (!empty($value['class'])) {
-							$classes[$value['class']->getClassName()] = $value['class'];
-						}
-					}
-				}
-				return $classes;
-			};
-			$classes = $sinker($this->classes);
-			
-			return $classes;
-		}
-		
-		public function getClass(string $class_name) : PClass
-		{
-			$find = function($array, $class_name) use (&$find) {
-				if(isset($array[$class_name])) return $array[$class_name];
+			$find = function () use (&$find) {
 				
-				foreach ($array as $value){
-					if (isset($value['childs'])) {
-						$result = $find($value['childs'], $class_name);
-						if ($result) return $result;
-					}
-				}
-				
-				return false;
-			};
-			$c =  $find($this->classes, $class_name);
-			
-			return $c['class'];
-		}
-		
-		public function getFileNamesOfClasses() : array
-		{
-			return $this->file_names_of_classes;
-		}
-		
-		public function createFileNamesList()
-		{
-			$sinker = function (&$array) use (&$sinker) {
-				static $filenames = array();
-				foreach ($array as $value) {
-					if (is_array($value)) {
-						$sinker($value);
-						
-						if (!empty($value['class'])) {
-							$filenames[$value['class']->getClassName()] = strtolower($value['class']->getClassName()).".class.php";
-						}
-					}
-				}
-				return $filenames;
-			};
-			$this->file_names_of_classes = $sinker($this->classes);
-		}
-		
-		public function addClasses(array $classes) : bool
-		{
-			foreach($classes as $class)
-			{
-				if ($class instanceof PClass) {
-					$this->addToHierarchia($class);
-				}
-				else return false;
 			}
-			$this->createFileNamesList();
-			
-			return true;
 		}
 		
-		public function addClass(PClass $class) : bool
+		public function addClass(PClass $class)
 		{
-			$this->addToHierarchia($class);
-			$this->createFileNamesList();
-			
-			return true;
+			if (!empty($class->getSuperClassName())) {
+				
+				$find_node = function(&$h, $search_class) use (&$find_node) {
+					
+					foreach ($h as $class_name => &$node) {
+						
+						if ($class_name == $search_class->getSuperClassName()) {
+							
+							$new_node = array(
+								"supclass" => $search_class,
+								"subclass" => array()
+							);
+							
+							$node['subclass'][$search_class->getClassName()] = $new_node;
+							
+						} else {		
+							if (!empty($node['subclass'])) {
+								$find_node($node['subclass'], $search_class);
+							}
+						}
+					}
+					
+				};
+				
+				
+					$find_node($this->classes, $class);
+				
+			} else {
+				
+				$new_node = array(
+					"supclass" => $class,
+					"subclass" => array()
+				);
+				
+				$this->classes[$class->getClassName()] = $new_node;
+				
+			}
 		}
 		
-		public function removeClass(string $class_name)
+		public function removeClass($class_name)
 		{
-			$this->removeFromHierarchia($this->findClass($this->classes, $class_name)['class']);
-			$this->createFileNamesList();
+			$remove_class = function(&$h, $search_class) use (&$remove_class) {
+				
+				if (array_key_exists($search_class, $h)) {
+					unset($h[$search_class]);
+				} else {
+					
+					foreach ($h as $class_name => &$node) {
+						
+						if (array_key_exists($search_class, $node['subclass'])) {
+							unset($node['subclass'][$search_class]);
+						}
+						
+						if (!empty($node['subclass'])) {
+							$remove_class($node['subclass'], $search_class);
+						}
+						
+					}
+					
+				}
+				
+			};
+			
+			$remove_class($this->classes, $class_name);
+			
 		}
+		
+		public function getClassHierarchia() : array
+		{
+			return $this->classes;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		public function export()
 		{
@@ -173,48 +166,6 @@
 				$lines = array();
 				
 			}
-		}
-		
-		public function &findClass(&$array, $class_name)
-		{
-			if(isset($array[$class_name])) return $array[$class_name];
-			
-			foreach ($array as &$value){
-				if (isset($value['childs'])) {
-					$result = &$this->findClass($value['childs'], $class_name);
-					if ($result) return $result;
-				}
-			}
-			
-			return false;
-		}
-		
-		public function addToHierarchia($class)
-		{
-			if (empty($class->getSuperClassName())) {
-				$this->classes[$class->getClassName()]['class'] = $class;
-				$this->classes[$class->getClassName()]['childs'] = array();
-			} else {
-				$find_obj = &$this->findClass($this->classes, $class->getSuperClassName());
-				$find_obj['childs'][$class->getClassName()]['class'] = $class;
-				$find_obj['childs'][$class->getClassName()]['childs'] = array();
-			}
-		}
-		
-		public function removeFromHierarchia($class)
-		{
-			if (empty($class->getSuperClassName())) {
-				unset($this->classes[$class->getClassName()]);
-			} else {
-				$find_obj = &$this->findClass($this->classes, $class->getSuperClassName());
-				unset($find_obj['childs']);
-				$find_obj['childs'] = array();
-			}
-		}
-		
-		public function getClassHierarchia() : array
-		{
-			return $this->classes;
 		}
 		
 		public function __toString()
