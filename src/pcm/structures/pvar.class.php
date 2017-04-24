@@ -54,7 +54,7 @@
 		
 		public function getAccessType() : int
 		{
-			return $this->type;
+			return $this->access_type;
 		}
 		
 		public function getVarType() : int

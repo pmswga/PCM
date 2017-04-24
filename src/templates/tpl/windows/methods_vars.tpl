@@ -29,12 +29,7 @@
 							</tr>
 						</thead>
 						<tbody id="classMethods">
-							<tr>
-								<td><input type="checkbox" name="selectedMethod[]" value="" class="form-control"></td>
-								<td><a href="#edit">hw</a></td>
-								<td>a, b, c</td>
-								<td>Обычный</td>
-							</tr>
+							
 						</tbody>
 					</table>
 				</form>
@@ -107,18 +102,13 @@
 							</tr>
 							<tr>
 								<th>Выбрать</th>
-								<th>Доступ</th>
 								<th>Имя</th>
+								<th>Доступ</th>
 								<th>Тип</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td><input type="checkbox" name="selectedVar[]" value="" class="form-control"></td>
-								<td>PUBLIC</td>
-								<td><a href="#edit">a</a></td>
-								<td>Переменная</td>
-							</tr>
+						<tbody id="classVarsConsts">
+							
 						</tbody>
 					</table>
 				</form>
@@ -130,22 +120,30 @@
 			<div class="content">
 				<form name="createVarForm" method="POST" class="ui form">
 					<div class="field">
+						<label>Класс</label>
+						<select name="class" class="dropdown">
+							{foreach from=$classes item=class}
+								<option>{$class->getClassName()}</option>
+							{/foreach}
+						</select>
+					</div>
+					<div class="field">
 						<label>Имя</label>
-						<input type="text">
+						<input type="text" name="varName">
 					</div>
 					<div class="field">
 						<label>Доступ</label>
-						<select class="dropdown">
-							<option>PUBLIC</option>
-							<option>PRIVATE</option>
-							<option>PROTECTED</option>
+						<select name="varAccessType" class="dropdown">
+							<option value="0">PUBLIC</option>
+							<option value="1">PRIVATE</option>
+							<option value="2">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип</label>
-						<select class="dropdown">
-							<option>Обычное</option>
-							<option>Статическое</option>
+						<select name="varType" class="dropdown">
+							<option value="0">Обычное</option>
+							<option value="1">Статическое</option>
 						</select>
 					</div>
 					<div class="field">

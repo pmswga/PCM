@@ -120,11 +120,29 @@
 		CTools::Redirect(THIS);
 	}
 	
+	if (!empty($_POST['removeMethodButton'])) {
+		
+	}
+	
+	if (!empty($_POST['createVarButton'])) {
+		$class = $_POST['class'];
+		$varName = $_POST['varName'];
+		$varAccessType = $_POST['varAccessType'];
+		$varType = $_POST['varType'];
+		
+		$newVar = new PVar($varName, $varAccessType, $varType);
+		
+		$_SESSION['tmp']->getClass($class)['supclass']->addVar($newVar);
+		
+		$_SESSION['messageStatus'] = "success";
+		$_SESSION['messageHeader'] = "Свойство успешно создано";
+		$_SESSION['messageContent'] = "В класс ".$class." добавлено новое свойство: ".$varName;
+		
+		
+		CTools::Redirect(THIS);
+	}
 	
 	// CTools::var_dump($_SESSION['tmp']);
-	
-	
-	
 	
 	/*!
 	function findImages() : array

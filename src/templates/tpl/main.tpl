@@ -121,6 +121,16 @@
 							$("#classMethods").html(replay);
 						}
 					});
+					
+					$.ajax({
+						url: "php/get_vars.php",
+						type: "POST",
+						data: "className=" + class_name,
+						success: function(replay) {
+							$("#classVarsConsts").html("");
+							$("#classVarsConsts").html(replay);
+						}
+					});
 				
 				}
 				

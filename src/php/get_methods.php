@@ -12,23 +12,30 @@
 			echo "<tr>";
 			echo '<td><input type="checkbox" name="selectedMethod[]" value="'.$method->getMethodName().'" class="form-control"></td>';
 			echo '<td><a href="'.$method->getMethodName().'">'.$method->getMethodName().'</a></td>';
-			echo '<td></td>';
-			echo '<td></td>';
+			echo '<td>';
+			
+			$args = $method->getArgs();
+			foreach ($args as $arg) {
+				echo $arg;
+				if (next($args)) echo ", ";
+			}
+			
+			echo '</td>';
+			
+			echo '<td>';
+			
+			switch ($method->getMethodType())
+			{
+				case NATIVE_METHOD: echo "Обычный"; break;
+				case STATIC_METHOD: echo "Статический"; break;
+				case ABSTRACT_METHOD: echo "Абстрактный"; break;
+			}
+			
+			echo '</td>';
+			
 			echo "</tr>";
 			
-			
-			/*
-				<tr>
-					<td><input type="checkbox" name="selectedMethod[]" value="" class="form-control"></td>
-					<td><a href="#edit">hw</a></td>
-					<td>a, b, c</td>
-					<td>Обычный</td>
-				</tr>
-				
-			*/
-			
 		}
-		
 		
 	}
 	
