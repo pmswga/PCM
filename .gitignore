@@ -29,7 +29,7 @@ local.properties
 .buildpath
 
 #templates
-src/templates/tpl_c
+src/templates/tpl_c/
 
 #################
 ## Visual Studio

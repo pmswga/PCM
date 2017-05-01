@@ -8,8 +8,7 @@
   use PCM\Classes\PImage;
 	
   const THIS = "index.php";
-	
-	
+  
 	function viewHierarchia($classes)
   {			
 		static $code = "";
@@ -26,7 +25,6 @@
 			$code .= "</ul>";
 		}
 		return $code;
-		
   }
 
 	$classes = $_SESSION['tmp']->getClasses();
@@ -41,9 +39,14 @@
 	
 	$countMethods = 0;
 	
-	foreach ($classes as $class) {
-		$countMethods += count($class->getMethods());
-	}
+  if (!empty($classes)) {
+    
+    foreach ($classes as $class) {
+      $countMethods += count($class->getMethods());
+    }
+    
+  }
+  
 	
 	$CT->assign("countMethods", $countMethods);
 	
@@ -57,8 +60,6 @@
 	}
 	
 	$CT->show("main.tpl");
-	
-	
 	
 	unset($_SESSION['messageStatus']);
 	unset($_SESSION['messageHeader']);
@@ -141,6 +142,12 @@
 		
 		CTools::Redirect(THIS);
 	}
+  
+  if (!empty($_POST['createConstButton'])) {
+    
+    $constName = $_POST['constName'];
+    
+  }
 	
 	// CTools::var_dump($_SESSION['tmp']);
 	

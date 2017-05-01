@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-19 15:08:35
+/* Smarty version 3.1.29, created on 2017-04-29 08:47:54
   from "C:\OpenServer\domains\PCM\src\templates\tpl\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58f75343908742_27170696',
+  'unifunc' => 'content_5904290ab36021_88681394',
   'file_dependency' => 
   array (
     '76ded4bf7195bc13cfffb8ab1bfb841fec9d4a06' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\main.tpl',
-      1 => 1492603698,
+      1 => 1493444464,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/methods_vars.tpl' => 1,
   ),
 ),false)) {
-function content_58f75343908742_27170696 ($_smarty_tpl) {
+function content_5904290ab36021_88681394 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,6 +149,39 @@ function content_58f75343908742_27170696 ($_smarty_tpl) {
 			
 			
 			
+			$("#hierarchia a").click(function(){
+				
+				var class_name = this.getAttribute("href");
+				class_name = class_name.substr(1, class_name.length);
+				
+				if (class_name) {
+				
+					$.ajax({
+						url: "php/get_methods.php",
+						type: "POST",
+						data: "className=" + class_name,
+						success: function(replay) {
+							$("#classMethods").html("");
+							$("#classMethods").html(replay);
+						}
+					});
+					
+					$.ajax({
+						url: "php/get_vars.php",
+						type: "POST",
+						data: "className=" + class_name,
+						success: function(replay) {
+							$("#classVarsConsts").html("");
+							$("#classVarsConsts").html(replay);
+						}
+					});
+				
+				}
+				
+			});
+			
+			
+			// Код для интерактивного тестирования
 			$("[name='test_code']").change(function(){
 				
 				var code = $("[name='test_code']").val();
@@ -167,9 +200,7 @@ function content_58f75343908742_27170696 ($_smarty_tpl) {
 				
 				}
 				
-			});
-				
-				
+			});		
 			
 		<?php echo '</script'; ?>
 >

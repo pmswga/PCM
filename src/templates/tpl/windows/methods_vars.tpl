@@ -159,26 +159,26 @@
 				<form name="createConstForm" method="POST" class="ui form">
 					<div class="field">
 						<label>Имя</label>
-						<input type="text">
+						<input type="text" name="constName" required>
 					</div>
 					<div class="field">
 						<label>Доступ</label>
-						<select class="dropdown">
-							<option>PUBLIC</option>
-							<option>PRIVATE</option>
-							<option>PROTECTED</option>
+						<select class="dropdown" required>
+							<option value="0">PUBLIC</option>
+							<option value="1">PRIVATE</option>
+							<option value="2">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип</label>
-						<select class="dropdown">
-							<option>Обычное</option>
-							<option>Статическое</option>
+						<select class="dropdown" required>
+							<option value="0">Обычное</option>
+							<option value="1">Статическое</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Значение</label>
-						<input type="number">
+						<input type="number" name="constValue" required>
 					</div>
 					<div class="field">
 						<input type="submit" name="createConstButton" value="Создать" class="ui basic positive button">

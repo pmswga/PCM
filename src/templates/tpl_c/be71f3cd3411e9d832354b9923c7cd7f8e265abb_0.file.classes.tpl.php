@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-19 14:37:07
+/* Smarty version 3.1.29, created on 2017-04-29 08:47:54
   from "C:\OpenServer\domains\PCM\src\templates\tpl\windows\classes.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58f74be30cd356_59383443',
+  'unifunc' => 'content_5904290abf56d2_39704810',
   'file_dependency' => 
   array (
     'be71f3cd3411e9d832354b9923c7cd7f8e265abb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\windows\\classes.tpl',
-      1 => 1492601722,
+      1 => 1493444464,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58f74be30cd356_59383443 ($_smarty_tpl) {
+function content_5904290abf56d2_39704810 ($_smarty_tpl) {
 ?>
 <div class="ui styled accordion">
 	<div class="active title">
@@ -34,7 +34,7 @@ function content_58f74be30cd356_59383443 ($_smarty_tpl) {
 			</div>
 			<div class="active content">
 				<?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
-					<div class="ui bulleted list">
+					<div id="hierarchia" class="ui bulleted list">
 						<?php echo $_smarty_tpl->tpl_vars['classHierarchia']->value;?>
 
 					</div>

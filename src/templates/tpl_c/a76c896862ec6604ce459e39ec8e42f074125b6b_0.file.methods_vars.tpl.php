@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-19 14:37:07
+/* Smarty version 3.1.29, created on 2017-04-29 08:47:54
   from "C:\OpenServer\domains\PCM\src\templates\tpl\windows\methods_vars.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_58f74be310d260_35401607',
+  'unifunc' => 'content_5904290ac3fa66_74411579',
   'file_dependency' => 
   array (
     'a76c896862ec6604ce459e39ec8e42f074125b6b' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\windows\\methods_vars.tpl',
-      1 => 1492601823,
+      1 => 1493444464,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_58f74be310d260_35401607 ($_smarty_tpl) {
+function content_5904290ac3fa66_74411579 ($_smarty_tpl) {
 ?>
 <div class="ui styled accordion">
 	<div class="title">
@@ -51,13 +51,8 @@ function content_58f74be310d260_35401607 ($_smarty_tpl) {
 								<th>Тип</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td><input type="checkbox" name="selectedMethod[]" value="" class="form-control"></td>
-								<td><a href="#edit">hw</a></td>
-								<td>a, b, c</td>
-								<td>Обычный</td>
-							</tr>
+						<tbody id="classMethods">
+							
 						</tbody>
 					</table>
 				</form>
@@ -67,28 +62,58 @@ function content_58f74be310d260_35401607 ($_smarty_tpl) {
 					Создать метод
 			</div>
 			<div class="content">
-				<form name="createMethodForm" class="ui form">
+				<form name="createMethodForm" method="POST" class="ui form">
+					<div class="field">
+						<label>Класс</label>
+						<select name="class" class="dropdown">
+							<?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_0_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_0_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+								<option><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</option>
+							<?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_local_item;
+}
+if ($__foreach_class_0_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
+}
+?>
+						</select>
+					</div>
 					<div class="field">
 						<label>Имя метода</label>
-						<input type="text" name="" placeholder="">
+						<input type="text" name="methodName">
 					</div>
 					<div class="field">
 						<label>Тип метода</label>
-						<select class="dropdown">
-							<option>Обычный</option>
-							<option>Абстрактный</option>
+						<select name="methodType" class="dropdown">
+							<option value="0" >Обычный</option>
+							<option value="1" >Абстрактный</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип доступа</label>
-						<select class="dropdown">
-							<option style="color: #6FC17A">PUBLIC</option>
-							<option style="color: #E14976">PRIVATE</option>
-							<option style="color: #FBA026">PROTECTED</option>
+						<select name="methodAccessType" class="dropdown">
+							<option value="0" style="color: #6FC17A">PUBLIC</option>
+							<option value="1" style="color: #E14976">PRIVATE</option>
+							<option value="2" style="color: #FBA026">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
-						<button class="ui basic positive button" type="submit">Создать</button>
+						<label>Аргументы (через ,)</label>
+						<input type="text" name="methodArgs">
+					</div>
+					<div class="field">
+						<input type="submit" name="createMethodButton" value="Создать" class="ui basic positive button">
 					</div>
 				</form>
 			</div>
@@ -118,18 +143,13 @@ function content_58f74be310d260_35401607 ($_smarty_tpl) {
 							</tr>
 							<tr>
 								<th>Выбрать</th>
-								<th>Доступ</th>
 								<th>Имя</th>
+								<th>Доступ</th>
 								<th>Тип</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td><input type="checkbox" name="selectedVar[]" value="" class="form-control"></td>
-								<td>PUBLIC</td>
-								<td><a href="#edit">a</a></td>
-								<td>Переменная</td>
-							</tr>
+						<tbody id="classVarsConsts">
+							
 						</tbody>
 					</table>
 				</form>
@@ -141,22 +161,48 @@ function content_58f74be310d260_35401607 ($_smarty_tpl) {
 			<div class="content">
 				<form name="createVarForm" method="POST" class="ui form">
 					<div class="field">
+						<label>Класс</label>
+						<select name="class" class="dropdown">
+							<?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_1_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_1_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+								<option><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</option>
+							<?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_local_item;
+}
+if ($__foreach_class_1_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
+}
+?>
+						</select>
+					</div>
+					<div class="field">
 						<label>Имя</label>
-						<input type="text">
+						<input type="text" name="varName">
 					</div>
 					<div class="field">
 						<label>Доступ</label>
-						<select class="dropdown">
-							<option>PUBLIC</option>
-							<option>PRIVATE</option>
-							<option>PROTECTED</option>
+						<select name="varAccessType" class="dropdown">
+							<option value="0">PUBLIC</option>
+							<option value="1">PRIVATE</option>
+							<option value="2">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип</label>
-						<select class="dropdown">
-							<option>Обычное</option>
-							<option>Статическое</option>
+						<select name="varType" class="dropdown">
+							<option value="0">Обычное</option>
+							<option value="1">Статическое</option>
 						</select>
 					</div>
 					<div class="field">
