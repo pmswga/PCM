@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-29 08:47:54
+/* Smarty version 3.1.29, created on 2017-05-07 22:03:09
   from "C:\OpenServer\domains\PCM\src\templates\tpl\windows\methods_vars.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5904290ac3fa66_74411579',
+  'unifunc' => 'content_590f6f6d7b1833_82827162',
   'file_dependency' => 
   array (
     'a76c896862ec6604ce459e39ec8e42f074125b6b' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\windows\\methods_vars.tpl',
-      1 => 1493444464,
+      1 => 1493446636,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5904290ac3fa66_74411579 ($_smarty_tpl) {
+function content_590f6f6d7b1833_82827162 ($_smarty_tpl) {
 ?>
 <div class="ui styled accordion">
 	<div class="title">
@@ -218,26 +218,26 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
 				<form name="createConstForm" method="POST" class="ui form">
 					<div class="field">
 						<label>Имя</label>
-						<input type="text">
+						<input type="text" name="constName" required>
 					</div>
 					<div class="field">
 						<label>Доступ</label>
-						<select class="dropdown">
-							<option>PUBLIC</option>
-							<option>PRIVATE</option>
-							<option>PROTECTED</option>
+						<select class="dropdown" required>
+							<option value="0">PUBLIC</option>
+							<option value="1">PRIVATE</option>
+							<option value="2">PROTECTED</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Тип</label>
-						<select class="dropdown">
-							<option>Обычное</option>
-							<option>Статическое</option>
+						<select class="dropdown" required>
+							<option value="0">Обычное</option>
+							<option value="1">Статическое</option>
 						</select>
 					</div>
 					<div class="field">
 						<label>Значение</label>
-						<input type="number">
+						<input type="number" name="constValue" required>
 					</div>
 					<div class="field">
 						<input type="submit" name="createConstButton" value="Создать" class="ui basic positive button">

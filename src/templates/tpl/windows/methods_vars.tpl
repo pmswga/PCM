@@ -32,6 +32,7 @@
 							
 						</tbody>
 					</table>
+          <input type="hidden" name="class" value="">
 				</form>
 			</div>
 			<div class="title">

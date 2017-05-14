@@ -111,7 +111,9 @@
 				class_name = class_name.substr(1, class_name.length);
 				
 				if (class_name) {
-				
+          
+          $("[name='class']")
+          
 					$.ajax({
 						url: "php/get_methods.php",
 						type: "POST",
