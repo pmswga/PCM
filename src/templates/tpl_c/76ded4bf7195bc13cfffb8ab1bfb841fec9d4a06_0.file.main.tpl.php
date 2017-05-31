@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-04-29 08:47:54
+/* Smarty version 3.1.29, created on 2017-05-31 13:04:06
   from "C:\OpenServer\domains\PCM\src\templates\tpl\main.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5904290ab36021_88681394',
+  'unifunc' => 'content_592e951653c688_62251818',
   'file_dependency' => 
   array (
     '76ded4bf7195bc13cfffb8ab1bfb841fec9d4a06' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\src\\templates\\tpl\\main.tpl',
-      1 => 1493444464,
+      1 => 1494184432,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:windows/methods_vars.tpl' => 1,
   ),
 ),false)) {
-function content_5904290ab36021_88681394 ($_smarty_tpl) {
+function content_592e951653c688_62251818 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,7 +155,9 @@ function content_5904290ab36021_88681394 ($_smarty_tpl) {
 				class_name = class_name.substr(1, class_name.length);
 				
 				if (class_name) {
-				
+          
+          $("[name='class']")
+          
 					$.ajax({
 						url: "php/get_methods.php",
 						type: "POST",

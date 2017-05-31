@@ -126,7 +126,7 @@
 		$selectedMethod = $_POST['selectedMethod'];
     
     for ($i = 0; $i < count($selectedMethod); $i++) {
-      $_SESSION['tmp']->getClass()
+      $_SESSION['tmp']->getClass();
     }
     
 	}
