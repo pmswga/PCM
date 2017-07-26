@@ -1,0 +1,19 @@
+
+table tr th{
+	text-align: center;
+}
+
+[name='createClassForm'] .field:last-child, 
+[name='editMethodForm'] .field:last-child,
+[name='createMethodForm']	.field:last-child,
+[name='createDictionary'] .field:last-child,
+[name='createVarForm'] .field:last-child,
+[name='createConstForm'] .field:last-child
+{
+	display: flex;
+	justify-content: flex-end;
+}
+
+[type='checkbox'] {
+	outline: none;
+}
