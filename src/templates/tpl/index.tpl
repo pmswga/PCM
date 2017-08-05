@@ -9,7 +9,6 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
-		<script type="text/javascript" src="js/tabulation.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/semantic/dist/semantic.min.css">
 		<script src="css/semantic/dist/semantic.min.js"></script>
 	</head>
