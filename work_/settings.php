@@ -17,7 +17,7 @@
   }
   
   if (!empty($_POST['resetCurrentImageButton'])) {
-    unset($_SESSION['current_image']);
+    unset($_SESSION['currentImage']);
     
     $update();
   }

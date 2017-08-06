@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-05 11:05:45
+/* Smarty version 3.1.29, created on 2017-08-06 14:05:57
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59857c594c6356_56411349',
+  'unifunc' => 'content_5986f8154c1a29_39059233',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1501920344,
+      1 => 1502017555,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59857c594c6356_56411349 ($_smarty_tpl) {
+function content_5986f8154c1a29_39059233 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,12 +71,21 @@ function content_59857c594c6356_56411349 ($_smarty_tpl) {
                   <li><a href="#" accesskey="d">Словарь</a></li>
                 </ul>
               </li>
-              <li><a href="#count_of_classes">Классов: [1]</a></li>
-              <li><a href="#count_of_methods">Методов: [1]</a></li>
-              <li><a href="#count_of_variables">Свойств: [1]</a></li>
+              <?php if ($_smarty_tpl->tpl_vars['countOfClasses']->value > 0) {?>              
+                <li><a href="#count_of_classes">Классов: <?php echo $_smarty_tpl->tpl_vars['countOfClasses']->value;?>
+</a></li>
+              <?php }?>
+              <?php if ($_smarty_tpl->tpl_vars['countOfMethods']->value > 0) {?>              
+                <li><a href="#count_of_methods">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfMethods']->value;?>
+</a></li>
+              <?php }?>
+              <?php if ($_smarty_tpl->tpl_vars['countOfVariables']->value > 0) {?>              
+                <li><a href="#count_of_variables">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfVariables']->value;?>
+</a></li>
+              <?php }?>
               <li class="dropdown">
                 <?php if ($_smarty_tpl->tpl_vars['msgs']->value != NULL) {?>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Сообщений <?php echo count($_smarty_tpl->tpl_vars['msgs']->value);?>
+                  <a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown">Сообщений <?php echo count($_smarty_tpl->tpl_vars['msgs']->value);?>
  <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <?php
@@ -102,11 +111,10 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
 }
 ?>
                   </ul>
-                <?php } else { ?>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Сообщений нет</b></a>
+                <?php } else { ?>  
+                  <a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown">Сообщений нет</b></a>
                 <?php }?>
               </li>
-              
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="settings.php">Настройки</a></li>
@@ -127,8 +135,8 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-4" style="border: 1px solid black;">
-              Classes hierarchia
+            <div class="col-md-4">
+              
             </div>
             <div class="col-md-8">
               <div class="row">

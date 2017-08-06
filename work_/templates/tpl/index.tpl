@@ -41,22 +41,27 @@
                   <li><a href="#" accesskey="d">Словарь</a></li>
                 </ul>
               </li>
-              <li><a href="#count_of_classes">Классов: [1]</a></li>
-              <li><a href="#count_of_methods">Методов: [1]</a></li>
-              <li><a href="#count_of_variables">Свойств: [1]</a></li>
+              {if $countOfClasses > 0}              
+                <li><a href="#count_of_classes">Классов: {$countOfClasses}</a></li>
+              {/if}
+              {if $countOfMethods > 0}              
+                <li><a href="#count_of_methods">Методов: {$countOfMethods}</a></li>
+              {/if}
+              {if $countOfVariables > 0}              
+                <li><a href="#count_of_variables">Методов: {$countOfVariables}</a></li>
+              {/if}
               <li class="dropdown">
                 {if $msgs != NULL}
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Сообщений {count($msgs)} <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown">Сообщений {count($msgs)} <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     {foreach from=$msgs item=msg}                  
                       <li><a href="#info" class="bg-{$msg['type']}">{$msg['msg']}</a></li>
                     {/foreach}
                   </ul>
-                {else}
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Сообщений нет</b></a>
+                {else}  
+                  <a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown">Сообщений нет</b></a>
                 {/if}
               </li>
-              
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="settings.php">Настройки</a></li>
@@ -77,8 +82,8 @@
       <div class="row">
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-4" style="border: 1px solid black;">
-              Classes hierarchia
+            <div class="col-md-4">
+              
             </div>
             <div class="col-md-8">
               <div class="row">

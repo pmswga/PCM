@@ -12,10 +12,14 @@
     setMessage("Не выбран образ по умолчанию", "danger");
   } else {
     $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
+    $CT->assign("countOfClasses", count($_SESSION['currentImage']->getClasses()));
   }
   
   $CT->assign("images", $_SESSION['images']);
   
+  
+  
+  $CT->assign("msgs", $_SESSION['msgs']);
   $CT->Show("index.tpl");
 
   unsetMessage();
@@ -45,17 +49,11 @@
   if (!empty($_POST['selectCurrnetImageButton'])) {
     $currentImage = $_POST['currentImage'];
     
-    if (!empty($currentImage)) {
-      
-      if (array_key_exists($currentImage, $_SESSION['images'])) {
-        $_SESSION['currentImage'] = $_SESSION['images'][$currentImage];
-        setMessage("Образ ".$currentImage." был выбран в качестве по умолчанию", "info");
-      } else {
-        setMessage("Невозможно выбрать несуществующий образ", "danger");
-      }
-      
+    if (array_key_exists($currentImage, $_SESSION['images'])) {
+      $_SESSION['currentImage'] = $_SESSION['images'][$currentImage];
+      setMessage("Образ ".$currentImage." был выбран в качестве по умолчанию", "info");
     } else {
-      setMessage("Невозможно выбрать безымянный образ", "danger");
+      setMessage("Невозможно выбрать несуществующий образ", "danger");
     }
     
     $update();

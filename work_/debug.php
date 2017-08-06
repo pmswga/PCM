@@ -23,6 +23,13 @@
   echo "<pre>";
   var_dump($_SESSION);
   echo "</pre>";
+ 
+  echo "<hr>";
+  echo "<h1>Msgs</h1>";
+  
+  echo "<pre>";
+  var_dump($_SESSION['msgs']);
+  echo "</pre>";
   
   
 ?>

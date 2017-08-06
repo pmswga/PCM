@@ -27,8 +27,6 @@
       "type" => $type,
       "msg" => $msg
     );
-    
-    $CT->assign("msgs", $_SESSION['msgs']);
   }
 
   function unsetMessage()
