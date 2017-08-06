@@ -3,21 +3,49 @@
   require_once "start.php";
   
   use PCM\Classes\PImage;
+  use PCM\Structures\PClass;
   
   $update = function () {
     CTools::Redirect("index.php");
   };
   
+	function viewHierarchia($classes)
+  {			
+		static $code = "";
+		foreach ($classes as $value) {
+			$code .= "<ul>";
+			if (is_array($value['subclass'])) {
+				
+				if (!empty($value['supclass'])) {
+					$code .= "<li><a href='#".$value['supclass']->getClassName()."' class='class'>".$value['supclass']->getClassName()."</a></li>";
+				}
+				
+				viewHierarchia($value['subclass']);
+			}
+			$code .= "</ul>";
+		}
+		return $code;
+  }
+  
+  
+  
+  
   if (empty($_SESSION['currentImage'])) {
     setMessage("Не выбран образ по умолчанию", "danger");
   } else {
+    
     $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
     $CT->assign("countOfClasses", count($_SESSION['currentImage']->getClasses()));
+    
+    $classHierarchia = $_SESSION['currentImage']->getClassHierarchia();
+    $CT->assign("classHierarchia", viewHierarchia($classHierarchia));
+    $CT->assign("classes", $_SESSION['currentImage']->getClasses());
+    
   }
   
+  
+
   $CT->assign("images", $_SESSION['images']);
-  
-  
   
   $CT->assign("msgs", $_SESSION['msgs']);
   $CT->Show("index.tpl");
@@ -58,5 +86,23 @@
     
     $update();
   }
+  
+  if (!empty($_POST['createClassButton'])) {
+    
+		$superClass = ($_POST['superClassName'] != "nil") ? $_POST['superClassName'] : "";
+		$className = htmlspecialchars($_POST['className']);
+		$typeClass = $_POST['typeClass'];
+		
+		$newClass = new PClass($className, $superClass, $typeClass);
+		
+		if ($_SESSION['currentImage']->addClass($newClass)) {
+      setMessage("Класс ".$className." был успешно создан", "success");
+		} else {
+      setMessage("Произошла ошибка при создании класса ".$className, "danger");
+		}
+		
+    $update();
+  }
+  
   
 ?>

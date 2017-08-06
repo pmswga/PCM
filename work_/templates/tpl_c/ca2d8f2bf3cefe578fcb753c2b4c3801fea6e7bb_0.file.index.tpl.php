@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-06 14:05:57
+/* Smarty version 3.1.29, created on 2017-08-06 22:00:41
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5986f8154c1a29_39059233',
+  'unifunc' => 'content_5987675907e1e0_51613829',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502017555,
+      1 => 1502046040,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5986f8154c1a29_39059233 ($_smarty_tpl) {
+function content_5987675907e1e0_51613829 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +65,7 @@ function content_5986f8154c1a29_39059233 ($_smarty_tpl) {
                 <ul class="dropdown-menu">
                   <li><a href="#" accesskey="c" data-toggle="modal" data-target="#createClassModal">Класс</a></li>
                   <li><a href="#" accesskey="m">Метод</a></li>
-                  <li><a href="#" accesskey="v">Свойство</a></li>
+                  <li><a href="#" accesskey="v" data-toggle="modal" data-target="#createVarModal">Свойство</a></li>
                   <li><a href="#">Константа</a></li>
                   <li class="divider"></li>
                   <li><a href="#" accesskey="d">Словарь</a></li>
@@ -136,7 +136,17 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-4">
-              
+              <fieldset>
+                <legend>Иерархия классов</legend>
+                <?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
+                  <div id="hierarchia" class="ui bulleted list">
+                    <?php echo $_smarty_tpl->tpl_vars['classHierarchia']->value;?>
+
+                  </div>
+                <?php } else { ?>
+                  <h3 align="center">Классы не объявлены</h3>
+                <?php }?>
+              </fieldset>
             </div>
             <div class="col-md-8">
               <div class="row">
@@ -147,18 +157,13 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Свойства</a>
+                              <a data-toggle="collapse" data-parent="#accordion" href="#vars">Свойства</a>
                             </h4>
                           </div>
-                          <div id="collapseOne" class="panel-collapse collapse in">
+                          <div id="vars" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
-                                <tbody>
-                                  <tr>
-                                    <th>Имя</th>
-                                    <th>Тип</th>
-                                    <th>Доступ</th>
-                                  </tr>
+                                <tbody id="vars-table">
                                 </tbody>
                               </table>
                             </div>
@@ -171,10 +176,10 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Методы</a>
+                              <a data-toggle="collapse" data-parent="#accordion" href="#methods">Методы</a>
                             </h4>
                           </div>
-                          <div id="collapseOne" class="panel-collapse collapse in">
+                          <div id="methods" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
                                 <tbody>
@@ -321,7 +326,8 @@ $__foreach_image_2_saved_local_item = $_smarty_tpl->tpl_vars['image'];
                       <td><a href="#<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 "><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 </a></td>
-                      <td>~</td>
+                      <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
+</td>
                       <td>~</td>
                       <td>~</td>
                     </tr>
@@ -390,6 +396,98 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_3_saved_item;
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    
+    
+    <div class="modal fade" id="createVarModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Добавить свойсто</h4>
+          </div>
+          <div class="modal-body">
+            <form name="createVarForm" method="POST">
+              <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
+                <div class="form-group">
+                  <label>Класс</label>
+                  <select name="class" class="form-control">
+                    <?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_4_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_4_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+                      <option><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</option>
+                    <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_local_item;
+}
+if ($__foreach_class_4_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_item;
+}
+?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Имя</label>
+                  <input type="text" name="varName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Доступ</label>
+                  <select name="varAccessType" class="form-control">
+                    <option value="0">PUBLIC</option>
+                    <option value="1">PRIVATE</option>
+                    <option value="2">PROTECTED</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Тип</label>
+                  <select name="varType" class="form-control">
+                    <option value="0">Обычное</option>
+                    <option value="1">Статическое</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="createVarButton" value="Создать" class="btn btn-primary">
+                </div>
+              <?php } else { ?>
+                <h3 align="center">Создайте образ</h3>
+              <?php }?>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+    <?php echo '<script'; ?>
+ type="text/javascript">
+      
+      $("a.class").click(function(){
+        
+        var className = $(this).attr("href");
+        className = className.substr(1, className.length);
+        
+        $.ajax({
+          url: "php/getVars.php",
+          type: "post",
+          data: "className=" + className,
+          success: function (replay) {
+            $("#vars-table").html("");
+            $("#vars-table").html(replay);
+          }
+        });
+        
+      });
+      
+    <?php echo '</script'; ?>
+>
+    
     
   </body>
 </html><?php }

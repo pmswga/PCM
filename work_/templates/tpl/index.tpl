@@ -35,7 +35,7 @@
                 <ul class="dropdown-menu">
                   <li><a href="#" accesskey="c" data-toggle="modal" data-target="#createClassModal">Класс</a></li>
                   <li><a href="#" accesskey="m">Метод</a></li>
-                  <li><a href="#" accesskey="v">Свойство</a></li>
+                  <li><a href="#" accesskey="v" data-toggle="modal" data-target="#createVarModal">Свойство</a></li>
                   <li><a href="#">Константа</a></li>
                   <li class="divider"></li>
                   <li><a href="#" accesskey="d">Словарь</a></li>
@@ -83,7 +83,16 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-4">
-              
+              <fieldset>
+                <legend>Иерархия классов</legend>
+                {if $classHierarchia != NULL}
+                  <div id="hierarchia" class="ui bulleted list">
+                    {$classHierarchia}
+                  </div>
+                {else}
+                  <h3 align="center">Классы не объявлены</h3>
+                {/if}
+              </fieldset>
             </div>
             <div class="col-md-8">
               <div class="row">
@@ -94,18 +103,13 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Свойства</a>
+                              <a data-toggle="collapse" data-parent="#accordion" href="#vars">Свойства</a>
                             </h4>
                           </div>
-                          <div id="collapseOne" class="panel-collapse collapse in">
+                          <div id="vars" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
-                                <tbody>
-                                  <tr>
-                                    <th>Имя</th>
-                                    <th>Тип</th>
-                                    <th>Доступ</th>
-                                  </tr>
+                                <tbody id="vars-table">
                                 </tbody>
                               </table>
                             </div>
@@ -118,10 +122,10 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Методы</a>
+                              <a data-toggle="collapse" data-parent="#accordion" href="#methods">Методы</a>
                             </h4>
                           </div>
-                          <div id="collapseOne" class="panel-collapse collapse in">
+                          <div id="methods" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
                                 <tbody>
@@ -236,7 +240,7 @@
                   {foreach from=$images item=image}        
                     <tr>
                       <td><a href="#{$image->getImageName()}">{$image->getImageName()}</a></td>
-                      <td>~</td>
+                      <td>{count($image->getClasses())}</td>
                       <td>~</td>
                       <td>~</td>
                     </tr>
@@ -280,6 +284,78 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    
+    
+    <div class="modal fade" id="createVarModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Добавить свойсто</h4>
+          </div>
+          <div class="modal-body">
+            <form name="createVarForm" method="POST">
+              {if $images != NULL}
+                <div class="form-group">
+                  <label>Класс</label>
+                  <select name="class" class="form-control">
+                    {foreach from=$classes item=class}
+                      <option>{$class->getClassName()}</option>
+                    {/foreach}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Имя</label>
+                  <input type="text" name="varName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Доступ</label>
+                  <select name="varAccessType" class="form-control">
+                    <option value="0">PUBLIC</option>
+                    <option value="1">PRIVATE</option>
+                    <option value="2">PROTECTED</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Тип</label>
+                  <select name="varType" class="form-control">
+                    <option value="0">Обычное</option>
+                    <option value="1">Статическое</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="createVarButton" value="Создать" class="btn btn-primary">
+                </div>
+              {else}
+                <h3 align="center">Создайте образ</h3>
+              {/if}
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+    <script type="text/javascript">
+      
+      $("a.class").click(function(){
+        
+        var className = $(this).attr("href");
+        className = className.substr(1, className.length);
+        
+        $.ajax({
+          url: "php/getVars.php",
+          type: "post",
+          data: "className=" + className,
+          success: function (replay) {
+            $("#vars-table").html("");
+            $("#vars-table").html(replay);
+          }
+        });
+        
+      });
+      
+    </script>
+    
     
   </body>
 </html>
