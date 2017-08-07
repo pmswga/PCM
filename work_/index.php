@@ -4,6 +4,7 @@
   
   use PCM\Classes\PImage;
   use PCM\Structures\PClass;
+  use PCM\Structures\PVar;
   
   $update = function () {
     CTools::Redirect("index.php");
@@ -101,6 +102,20 @@
       setMessage("Произошла ошибка при создании класса ".$className, "danger");
 		}
 		
+    $update();
+  }
+  
+  if (!empty($_POST['createVarButton'])) {
+    
+    $className = $_POST['class'];
+    $varName = $_POST['varName'];
+    $varAccessType = $_POST['varAccessType'];
+    $varType = $_POST['varType'];
+    
+    $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
+    
+    setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+    
     $update();
   }
   

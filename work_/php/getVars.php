@@ -4,23 +4,29 @@
   
   
   $vars = $_SESSION['currentImage']->getClass($_POST['className'])['supclass']->getVars();
-   
-  $code .= <<< _END
-    <tr>
-      <th>Имя</th>
-      <th>Тип</th>
-      <th>Доступ</th>
-    </tr>
+  
+  if (!empty($vars)) {
+    
+    $code .= <<< _END
+      <tr>
+        <th>Имя</th>
+        <th>Тип</th>
+        <th>Доступ</th>
+      </tr>
 _END;
 
-  foreach ($vars as $var) {
-    $code .= "<tr>";
-    $code .= "<td>".$var->getVarName()."</td>";
-    $code .= "<td></td>";
-    $code .= "<td></td>";
-    $code .= "</tr>";
-  }
+    foreach ($vars as $var) {
+      $code .= "<tr>";
+      $code .= "<td>".$var->getVarName()."</td>";
+      $code .= "<td>".$var->getAccessType()."</td>";
+      $code .= "<td>".$var->getVarType()."</td>";
+      $code .= "</tr>";
+    }
 
-  echo $code;
+    echo $code;
+    
+  } else {
+    echo "<h3 align='center'>Свойств не объявлено</h3>";
+  }
   
 ?>
