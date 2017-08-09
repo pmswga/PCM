@@ -99,11 +99,11 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="panel-group" id="accordion">
+                      <div class="panel-group">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#vars">Свойства</a>
+                              <a data-toggle="collapse" href="#vars">Свойства</a>
                             </h4>
                           </div>
                           <div id="vars" class="panel-collapse collapse in">
@@ -122,18 +122,13 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#methods">Методы</a>
+                              <a data-toggle="collapse" href="#methods">Методы</a>
                             </h4>
                           </div>
                           <div id="methods" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
-                                <tbody>
-                                  <tr>
-                                    <th>Имя</th>
-                                    <th>Тип</th>
-                                    <th>Доступ</th>
-                                  </tr>
+                                <tbody id="methods-table">
                                 </tbody>
                               </table>
                             </div>
@@ -347,8 +342,19 @@
           type: "post",
           data: "className=" + className,
           success: function (replay) {
-            $("#vars-table").html("");
+            $("#vars-table").html(" ");
             $("#vars-table").html(replay);
+          }
+        });
+        
+        
+        $.ajax({
+          url: "php/getMethods.php",
+          type: "post",
+          data: "className=" + className,
+          success: function (replay) {
+            $("#methods-table").html(" ");
+            $("#methods-table").html(replay);
           }
         });
         

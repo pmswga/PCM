@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-06 22:00:41
+/* Smarty version 3.1.29, created on 2017-08-09 12:11:20
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5987675907e1e0_51613829',
+  'unifunc' => 'content_598ad1b8042178_74009091',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502046040,
+      1 => 1502269872,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5987675907e1e0_51613829 ($_smarty_tpl) {
+function content_598ad1b8042178_74009091 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -153,11 +153,11 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="panel-group" id="accordion">
+                      <div class="panel-group">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#vars">Свойства</a>
+                              <a data-toggle="collapse" href="#vars">Свойства</a>
                             </h4>
                           </div>
                           <div id="vars" class="panel-collapse collapse in">
@@ -176,18 +176,13 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" data-parent="#accordion" href="#methods">Методы</a>
+                              <a data-toggle="collapse" href="#methods">Методы</a>
                             </h4>
                           </div>
                           <div id="methods" class="panel-collapse collapse in">
                             <div class="panel-body">
                               <table class="table table-bordered">
-                                <tbody>
-                                  <tr>
-                                    <th>Имя</th>
-                                    <th>Тип</th>
-                                    <th>Доступ</th>
-                                  </tr>
+                                <tbody id="methods-table">
                                 </tbody>
                               </table>
                             </div>
@@ -478,8 +473,19 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_item;
           type: "post",
           data: "className=" + className,
           success: function (replay) {
-            $("#vars-table").html("");
+            $("#vars-table").html(" ");
             $("#vars-table").html(replay);
+          }
+        });
+        
+        
+        $.ajax({
+          url: "php/getMethods.php",
+          type: "post",
+          data: "className=" + className,
+          success: function (replay) {
+            $("#methods-table").html(" ");
+            $("#methods-table").html(replay);
           }
         });
         

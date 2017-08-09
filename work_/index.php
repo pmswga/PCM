@@ -53,14 +53,6 @@
 
   unsetMessage();
   
-  if (!empty($_POST['createClassButton'])) {
-    
-    $superClassName = $_POST['superClassName'];
-    $className = $_POST['className'];
-    $typeClass = $_POST['typeClass'];
-    
-  }
-  
   if (!empty($_POST['createImageButton'])) {
     
     $imageName = $_POST['imageName'];
@@ -90,18 +82,25 @@
   
   if (!empty($_POST['createClassButton'])) {
     
-		$superClass = ($_POST['superClassName'] != "nil") ? $_POST['superClassName'] : "";
-		$className = htmlspecialchars($_POST['className']);
-		$typeClass = $_POST['typeClass'];
-		
-		$newClass = new PClass($className, $superClass, $typeClass);
-		
-		if ($_SESSION['currentImage']->addClass($newClass)) {
-      setMessage("Класс ".$className." был успешно создан", "success");
-		} else {
-      setMessage("Произошла ошибка при создании класса ".$className, "danger");
-		}
-		
+    if (!empty($_SESSION['currentImage']) && ($_SESSION['currentImage'] instanceof PImage)) {
+      
+      $superClass = ($_POST['superClassName'] != "nil") ? $_POST['superClassName'] : "";
+      $className = htmlspecialchars($_POST['className']);
+      $typeClass = $_POST['typeClass'];
+    
+      $newClass = new PClass($className, $superClass, $typeClass);
+    
+      
+      if ($_SESSION['currentImage']->addClass($newClass)) {
+        setMessage("Класс ".$className." был успешно создан", "success");
+      } else {
+        setMessage("Произошла ошибка при создании класса ".$className, "danger");
+      }
+
+    } else {
+      setMessage("Невозможно создать класс в пустом образе", "warning");
+    }
+    
     $update();
   }
   

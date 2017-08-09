@@ -26,7 +26,7 @@ _END;
     echo $code;
     
   } else {
-    echo "<h3 align='center'>Свойств не объявлено</h3>";
+    echo "<h3 align='center'>Свойства не объявлены</h3>";
   }
   
 ?>
