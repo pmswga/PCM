@@ -17,9 +17,9 @@ _END;
 
     foreach ($methods as $method) {
       $code .= "<tr>";
-      $code .= "<td>".$method->getVarName()."</td>";
+      $code .= "<td><a href='#".$method->getMethodName()."' class='method'>".$method->getMethodName()."</a></td>";
       $code .= "<td>".$method->getAccessType()."</td>";
-      $code .= "<td>".$method->getVarType()."</td>";
+      $code .= "<td>".$method->getMethodType()."</td>";
       $code .= "</tr>";
     }
 

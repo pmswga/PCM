@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-09 12:11:20
+/* Smarty version 3.1.29, created on 2017-08-09 22:00:53
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598ad1b8042178_74009091',
+  'unifunc' => 'content_598b5be58c6c48_90276703',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502269872,
+      1 => 1502305252,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598ad1b8042178_74009091 ($_smarty_tpl) {
+function content_598b5be58c6c48_90276703 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +64,7 @@ function content_598ad1b8042178_74009091 ($_smarty_tpl) {
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Создать <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#" accesskey="c" data-toggle="modal" data-target="#createClassModal">Класс</a></li>
-                  <li><a href="#" accesskey="m">Метод</a></li>
+                  <li><a href="#" accesskey="m" data-toggle="modal" data-target="#createMethodModal">Метод</a></li>
                   <li><a href="#" accesskey="v" data-toggle="modal" data-target="#createVarModal">Свойство</a></li>
                   <li><a href="#">Константа</a></li>
                   <li class="divider"></li>
@@ -127,7 +127,7 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
                   <li><a href="#viewImages" data-toggle="modal" data-target="#viewImagesModal">Просмотр</a></li>
                 </ul>
               </li>
-              <li><a href="#">Генерация</a></li>
+              <li><a href="generate.php">Генерация</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -195,7 +195,16 @@ $_smarty_tpl->tpl_vars['msg'] = $__foreach_msg_0_saved_item;
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <textarea rows="15" class="form-control"></textarea>
+                  <form name="editCodeMethodForm" method="POST">
+                    <div class="form-group">                    
+                      <textarea rows="15" name="src" class="form-control" id="methodCode"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <input type="hidden" name="editClass" value="">
+                      <input type="hidden" name="editMethod" value="">
+                      <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary">
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -398,7 +407,7 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_3_saved_item;
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Добавить свойсто</h4>
+            <h4 class="modal-title">Добавить свойство</h4>
           </div>
           <div class="modal-body">
             <form name="createVarForm" method="POST">
@@ -460,29 +469,103 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_item;
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     
+    
+    <div class="modal fade" id="createMethodModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Добавить метод</h4>
+          </div>
+          <div class="modal-body">
+            <form name="createMethodForm" method="POST">
+              <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
+                <div class="form-group">
+                  <label>Класс</label>
+                  <select name="class" class="form-control">
+                    <?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_5_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_5_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+                      <option><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</option>
+                    <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_5_saved_local_item;
+}
+if ($__foreach_class_5_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_5_saved_item;
+}
+?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Имя метода</label>
+                  <input type="text" name="methodName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Тип метода</label>
+                  <select name="methodType" class="form-control">
+                    <option value="0" >Обычный</option>
+                    <option value="1" >Абстрактный</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Тип доступа</label>
+                  <select name="methodAccessType" class="form-control">
+                    <option value="0" style="color: #6FC17A">PUBLIC</option>
+                    <option value="1" style="color: #E14976">PRIVATE</option>
+                    <option value="2" style="color: #FBA026">PROTECTED</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Аргументы (через ,)</label>
+                  <input type="text" name="methodArgs" class="form-control">
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="createMethodButton" value="Создать" class="btn btn-primary">
+                </div>
+              <?php } else { ?>
+                <h3 align="center">Создайте образ</h3>
+              <?php }?>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
     <?php echo '<script'; ?>
  type="text/javascript">
+    
+      var className = "nil", methodName = "";
       
       $("a.class").click(function(){
         
-        var className = $(this).attr("href");
-        className = className.substr(1, className.length);
+        var selectedClassName = $(this).attr("href");
+        selectedClassName = selectedClassName.substr(1, selectedClassName.length);
+        className = selectedClassName;
         
         $.ajax({
           url: "php/getVars.php",
           type: "post",
-          data: "className=" + className,
+          data: "className=" + selectedClassName,
           success: function (replay) {
             $("#vars-table").html(" ");
             $("#vars-table").html(replay);
           }
         });
         
-        
         $.ajax({
           url: "php/getMethods.php",
           type: "post",
-          data: "className=" + className,
+          data: "className=" + selectedClassName,
           success: function (replay) {
             $("#methods-table").html(" ");
             $("#methods-table").html(replay);
@@ -490,6 +573,37 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_item;
         });
         
       });
+      
+      
+      $(document).on("click", "a.method", function(){
+        
+        if (className != "nil") {
+        
+          var selectedMethodName = $(this).attr("href");
+          selectedMethodName = selectedMethodName.substr(1, selectedMethodName.length);
+          methodName = selectedMethodName;
+        
+          $.ajax({
+            url: "php/getMethodSrc.php",
+            type: "post",
+            data: "className=" + className + "&methodName=" + selectedMethodName,
+            success: function (replay) {
+              $("#methodCode").text("");
+              $("#methodCode").text(replay);
+              
+              $("[name='editMethod']").attr("value", methodName);
+              $("[name='editClass']").attr("value", className);
+              
+            }
+          });
+          
+        } else {
+          alert("Select class");
+        }
+        
+      });
+      
+      
       
     <?php echo '</script'; ?>
 >

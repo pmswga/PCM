@@ -5,6 +5,7 @@
   use PCM\Classes\PImage;
   use PCM\Structures\PClass;
   use PCM\Structures\PVar;
+  use PCM\Structures\PMethod;
   
   $update = function () {
     CTools::Redirect("index.php");
@@ -88,14 +89,19 @@
       $className = htmlspecialchars($_POST['className']);
       $typeClass = $_POST['typeClass'];
     
-      $newClass = new PClass($className, $superClass, $typeClass);
-    
+      if (!empty($className)) {
+        $newClass = new PClass($className, $superClass, $typeClass);
       
-      if ($_SESSION['currentImage']->addClass($newClass)) {
-        setMessage("Класс ".$className." был успешно создан", "success");
+        if ($_SESSION['currentImage']->addClass($newClass)) {
+          setMessage("Класс ".$className." был успешно создан", "success");
+        } else {
+          setMessage("Произошла ошибка при создании класса ".$className, "danger");
+        }
+        
       } else {
-        setMessage("Произошла ошибка при создании класса ".$className, "danger");
+        setMessage("Невозможно создать безымянный класс", "warning");
       }
+    
 
     } else {
       setMessage("Невозможно создать класс в пустом образе", "warning");
@@ -106,16 +112,59 @@
   
   if (!empty($_POST['createVarButton'])) {
     
-    $className = $_POST['class'];
-    $varName = $_POST['varName'];
-    $varAccessType = $_POST['varAccessType'];
-    $varType = $_POST['varType'];
+    if (!empty($_SESSION['currentImage']) && ($_SESSION['currentImage'] instanceof PImage)) {
     
-    $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
-    
-    setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+      $className = $_POST['class'];
+      $varName = $_POST['varName'];
+      $varAccessType = $_POST['varAccessType'];
+      $varType = $_POST['varType'];
+      
+      $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
+      
+      setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+      
+    } else {
+      setMessage("Невозможно создать свойство в пустом образе", "warning");
+    }
     
     $update();
+  }
+  
+  if (!empty($_POST['createMethodButton'])) {
+    
+    if (!empty($_SESSION['currentImage']) && ($_SESSION['currentImage'] instanceof PImage)) {
+      
+      $class = $_POST['class'];
+      $methodName = $_POST['methodName'];
+      $methodType = $_POST['methodType'];
+      $methodAccessType = $_POST['methodAccessType'];
+      $args = (!empty($_POST['methodArgs'])) ? explode(",", $_POST['methodArgs']) : array();
+      
+      $newMethod = new PMethod($methodName, $methodAccessType, $methodType, $args);
+      
+      $_SESSION['currentImage']->getClass($class)['supclass']->addMethod($newMethod);
+      
+      setMessage("Метод ".$methodName." был добавлено в класс".$class, "success");
+      
+    } else {
+      setMessage("Невозможно создать метод в пустом образе", "warning");
+    }
+    
+    $update();
+  }
+  
+  if (!empty($_POST['saveCodeMethodButton'])) {
+    
+    if (!empty($_SESSION['currentImage']) && ($_SESSION['currentImage'] instanceof PImage)) {
+      
+      $editClass = $_POST['editClass'];
+      $editMethod = $_POST['editMethod'];
+      $src = $_POST['src'];
+      
+      $_SESSION['currentImage']->getClass($editClass)['supclass']->getMethod($editMethod)->setSrc($src);
+      
+    }
+    
   }
   
   

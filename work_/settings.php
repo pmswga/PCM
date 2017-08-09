@@ -8,7 +8,7 @@
     CTools::Redirect("settings.php");
   };
   
-  $CT->Show("settings.php");
+  $CT->Show("settings.tpl");
   
   if (!empty($_POST['clearAllImagesButton'])) {
     unset($_SESSION['images']);
