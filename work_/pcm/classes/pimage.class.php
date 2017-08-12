@@ -195,7 +195,21 @@
 		
 		public function export(string $destination)
 		{
-			return file_put_contents($destination."/".$this->image_name.".pcm", serialize($this));           
+			$content = serialize($this);
+      
+      $fp = fopen($destination."/".$this->image_name.".pcm", "w");
+      
+      if ($fp !== false) {        
+        if (fwrite($fp, $content)) {
+          return false;
+        }
+        
+        if (fclose($fp)) {
+          return file_exists($destination);
+        }
+      }
+      
+      return false;
 		}
 		
 		public static function import(string $path)

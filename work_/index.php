@@ -30,8 +30,6 @@
   }
   
   
-  
-  
   if (empty($_SESSION['currentImage'])) {
     setMessage("Не выбран образ по умолчанию", "danger");
   } else {

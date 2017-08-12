@@ -4,6 +4,7 @@
     <title>Настройки</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/vt.css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -91,5 +92,16 @@
         </div>
       </div>
     </form>
+    
+    <!-- Status Bar -->
+    {include "blocks/status_bar.tpl"}
+    
+    <script type="text/javascript">
+      
+      $("[data-toggle='tooltip']").tooltip();
+      $("[data-toggle='popover']").popover();
+      
+    </script>
+    
   </body>
 </html>
