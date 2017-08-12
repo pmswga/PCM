@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 21:50:54
+/* Smarty version 3.1.29, created on 2017-08-12 22:04:58
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\blocks\menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f4e0ec93dd9_85137749',
+  'unifunc' => 'content_598f515a190758_92548411',
   'file_dependency' => 
   array (
     'ace7d7f9b9850490ce6dba804897dffebd524644' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\blocks\\menu.tpl',
-      1 => 1502563848,
+      1 => 1502564697,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598f4e0ec93dd9_85137749 ($_smarty_tpl) {
+function content_598f515a190758_92548411 ($_smarty_tpl) {
 ?>
 <div class="navbar-header">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -40,23 +40,23 @@ function content_598f4e0ec93dd9_85137749 ($_smarty_tpl) {
         <li><a href="#" accesskey="d">Словарь</a></li>
       </ul>
     </li>
+    <li><a href="settings.php">Настройки</a></li>
     <?php if ($_smarty_tpl->tpl_vars['countOfClasses']->value > 0) {?>              
-      <li><a href="#count_of_classes">Классов: <?php echo $_smarty_tpl->tpl_vars['countOfClasses']->value;?>
+      <li class="image-statistic"><a href="#count_of_classes">Классов: <?php echo $_smarty_tpl->tpl_vars['countOfClasses']->value;?>
 </a></li>
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['countOfMethods']->value > 0) {?>              
-      <li><a href="#count_of_methods">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfMethods']->value;?>
+      <li class="image-statistic"><a href="#count_of_methods">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfMethods']->value;?>
 </a></li>
     <?php }?>
     <?php if ($_smarty_tpl->tpl_vars['countOfVariables']->value > 0) {?>              
-      <li><a href="#count_of_variables">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfVariables']->value;?>
+      <li class="image-statistic"><a href="#count_of_variables">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfVariables']->value;?>
 </a></li>
     <?php }?>
   </ul>
 </div>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="settings.php">Настройки</a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Образы <b class="caret"></b></a>
       <ul class="dropdown-menu">

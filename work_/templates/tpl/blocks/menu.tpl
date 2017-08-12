@@ -17,20 +17,20 @@
         <li><a href="#" accesskey="d">Словарь</a></li>
       </ul>
     </li>
+    <li><a href="settings.php">Настройки</a></li>
     {if $countOfClasses > 0}              
-      <li><a href="#count_of_classes">Классов: {$countOfClasses}</a></li>
+      <li class="image-statistic"><a href="#count_of_classes">Классов: {$countOfClasses}</a></li>
     {/if}
     {if $countOfMethods > 0}              
-      <li><a href="#count_of_methods">Методов: {$countOfMethods}</a></li>
+      <li class="image-statistic"><a href="#count_of_methods">Методов: {$countOfMethods}</a></li>
     {/if}
     {if $countOfVariables > 0}              
-      <li><a href="#count_of_variables">Методов: {$countOfVariables}</a></li>
+      <li class="image-statistic"><a href="#count_of_variables">Методов: {$countOfVariables}</a></li>
     {/if}
   </ul>
 </div>
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="settings.php">Настройки</a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Образы <b class="caret"></b></a>
       <ul class="dropdown-menu">

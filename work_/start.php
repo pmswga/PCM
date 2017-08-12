@@ -9,6 +9,24 @@
 
 	session_start();
   
+  if (!isset($_SESSION['settigns'])) {
+    if (file_exists("settings.ini")) {      
+      $_SESSION['settings'] = parse_ini_file("settings.ini", true);
+      
+      $image_export_folder = $_SESSION['settings']['General']['image_export_folder'];
+      /* Prepare settings */
+      
+      if (!is_dir($image_export_folder)) {
+        if (!mkdir($image_export_folder)) {
+          die("Error create dir ".$image_export_folder);
+        }
+      }
+      
+    } else {
+      die("Settings file not found");
+    }
+  }
+  
   if (!isset($_SESSION['images'])) {
     $_SESSION['images'] = array();
   }

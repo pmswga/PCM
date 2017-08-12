@@ -112,15 +112,21 @@
     {if $msgs != NULL}
       <div id="status_bar">
         {foreach from=$msgs item=msg}
-          <div class="message bg-success"
+          <div class="message bg-{$msg['type']}"
             data-toggle="popover" 
             data-placement="top"                  
-            data-html="true"                  
-            title="{$traffic_entry['date_visit']|date_format:'d.m.Y'}" 
+            data-html="true"
+            {if $msg['type'] == "success"}
+              title="Уведомление"
+            {elseif $msg['type'] == "info"}
+              title="Информация"
+            {elseif $msg['type'] == "warning"}
+              title="Предупреждение"
+            {elseif $msg['type'] == "danger"}
+              title="Ошибка"
+            {/if}
             data-content="{$msg['msg']}">
-            {if $msg['type'] == "primary"}
-              <a href="#">P</a>
-            {elseif $msg['type'] == "success"}
+            {if $msg['type'] == "success"}
               <a href="#">S</a>
             {elseif $msg['type'] == "info"}
               <a href="#">I</a>

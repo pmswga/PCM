@@ -193,23 +193,19 @@
 			}
 		}
 		
-		public function export()
+		public function export(string $destination)
 		{
-			if (!is_dir("images")) mkdir("images");
-			
-			$folder = "images";
-			return file_put_contents($folder."/".$this->image_name.".pcm", serialize($this));           
+			return file_put_contents($destination."/".$this->image_name.".pcm", serialize($this));           
 		}
 		
-		public static function import(string $file_name)
+		public static function import(string $path)
 		{
-			if (!is_dir("images")) return false;
-			else {
-				$path = "images/".$file_name;
-				
-				if (file_exists($path)) return unserialize(file_get_contents($path));
-				else return false;
-			}
+      if (file_exists($path)) {        
+        return unserialize(file_get_contents($path));
+      }
+      else {        
+        return false;
+      } 
 		}
 		
 		public function generate()

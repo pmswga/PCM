@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 22:00:00
+/* Smarty version 3.1.29, created on 2017-08-12 22:27:34
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f50308a8cb2_98608999',
+  'unifunc' => 'content_598f56a60c7811_79212038',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502564399,
+      1 => 1502566053,
       2 => 'file',
     ),
   ),
@@ -26,8 +26,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:modals/create_method_modal.tpl' => 1,
   ),
 ),false)) {
-function content_598f50308a8cb2_98608999 ($_smarty_tpl) {
-if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\domains\\PCM\\work_\\engine\\smarty\\plugins\\modifier.date_format.php';
+function content_598f56a60c7811_79212038 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -176,17 +175,23 @@ foreach ($_from as $_smarty_tpl->tpl_vars['msg']->value) {
 $_smarty_tpl->tpl_vars['msg']->_loop = true;
 $__foreach_msg_0_saved_local_item = $_smarty_tpl->tpl_vars['msg'];
 ?>
-          <div class="message bg-success"
+          <div class="message bg-<?php echo $_smarty_tpl->tpl_vars['msg']->value['type'];?>
+"
             data-toggle="popover" 
             data-placement="top"                  
-            data-html="true"                  
-            title="<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['traffic_entry']->value['date_visit'],'d.m.Y');?>
-" 
+            data-html="true"
+            <?php if ($_smarty_tpl->tpl_vars['msg']->value['type'] == "success") {?>
+              title="Уведомление"
+            <?php } elseif ($_smarty_tpl->tpl_vars['msg']->value['type'] == "info") {?>
+              title="Информация"
+            <?php } elseif ($_smarty_tpl->tpl_vars['msg']->value['type'] == "warning") {?>
+              title="Предупреждение"
+            <?php } elseif ($_smarty_tpl->tpl_vars['msg']->value['type'] == "danger") {?>
+              title="Ошибка"
+            <?php }?>
             data-content="<?php echo $_smarty_tpl->tpl_vars['msg']->value['msg'];?>
 ">
-            <?php if ($_smarty_tpl->tpl_vars['msg']->value['type'] == "primary") {?>
-              <a href="#">P</a>
-            <?php } elseif ($_smarty_tpl->tpl_vars['msg']->value['type'] == "success") {?>
+            <?php if ($_smarty_tpl->tpl_vars['msg']->value['type'] == "success") {?>
               <a href="#">S</a>
             <?php } elseif ($_smarty_tpl->tpl_vars['msg']->value['type'] == "info") {?>
               <a href="#">I</a>
