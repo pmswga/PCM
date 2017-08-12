@@ -10,18 +10,10 @@
   
   } else {
     
-    echo "Here";
-      
-    $image = PImage::import("Test.pcm");
     
-    echo "<pre>";
-    print_r($image);
-    echo "</pre>";
-    
-    $image->generate();
     
   }
   
-  // $CT->Show("generate.tpl");
+  $CT->Show("generate.tpl");
   
 ?>

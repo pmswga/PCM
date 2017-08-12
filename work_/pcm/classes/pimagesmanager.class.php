@@ -2,7 +2,7 @@
   declare(strict_types = 1);
   namespace PCM\Classes;
   
-  require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/classes/pimage.class.php";
+  require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/classes/pimage.class.php";
   
   use PCM\Classes\PImage;
   
@@ -30,7 +30,6 @@
       }
     }
     
-  }
-  
+  }  
   
 ?>

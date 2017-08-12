@@ -2,7 +2,7 @@
 	declare(strict_types = 1);
 	namespace PCM\Classes;
 	
-	require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/structures/pclass.class.php";
+	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/structures/pclass.class.php";
 	
 	use PCM\Structures\PClass;
 	

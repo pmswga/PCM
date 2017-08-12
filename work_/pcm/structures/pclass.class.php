@@ -2,7 +2,7 @@
 	declare(strict_types = 1);
 	namespace PCM\Structures;
 	
-	require_once $_SERVER['DOCUMENT_ROOT']."/src/pcm/consts/ptypeclass.consts.php";
+	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/consts/ptypeclass.consts.php";
 	
 	require_once "pvar.class.php";
 	require_once "pconst.class.php";
@@ -234,7 +234,7 @@
 				$code .= "\t".$const;
 			}
 			
-			$code .= "\n";
+			$code .= "{\n";
 			
 			foreach($this->vars as $var)
 			{
