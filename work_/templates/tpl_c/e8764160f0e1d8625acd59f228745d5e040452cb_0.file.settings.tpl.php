@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 23:27:05
+/* Smarty version 3.1.29, created on 2017-08-13 01:01:41
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\settings.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f64999a23c6_48242421',
+  'unifunc' => 'content_598f7ac5ce8460_12695105',
   'file_dependency' => 
   array (
     'e8764160f0e1d8625acd59f228745d5e040452cb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\settings.tpl',
-      1 => 1502569624,
+      1 => 1502575253,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:blocks/status_bar.tpl' => 1,
   ),
 ),false)) {
-function content_598f64999a23c6_48242421 ($_smarty_tpl) {
+function content_598f7ac5ce8460_12695105 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,15 +60,59 @@ function content_598f64999a23c6_48242421 ($_smarty_tpl) {
                   <div class="col-md-4">
                     <fieldset>
                       <legend>Действия</legend>
-                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные образы" class="btn btn-primary btn-block">
-                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все образы" class="btn btn-primary btn-block">
-                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные образы" class="btn btn-danger btn-block">
-                        <input type="submit" name="clearAllImagesButton" value="Удалить все образы" class="btn btn-danger btn-block">
+                        <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
+                        <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
+                        <hr>
+                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
+                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
+                        <hr>
+                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
+                        <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
                         <hr>
                         <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
                     </fieldset>
                   </div>
                   <div class="col-md-8">
+                    <fieldset>
+                      <legend>Файлы образов</legend>
+                      <?php if ($_smarty_tpl->tpl_vars['imagesFiles']->value != NULL) {?>
+                        <table class="table table-hover">
+                          <tbody>
+                            <tr>
+                              <th>Имя</th>
+                              <th>Выбрать</th>
+                            </tr>
+                            <?php
+$_from = $_smarty_tpl->tpl_vars['imagesFiles']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_imageFile_0_saved_item = isset($_smarty_tpl->tpl_vars['imageFile']) ? $_smarty_tpl->tpl_vars['imageFile'] : false;
+$_smarty_tpl->tpl_vars['imageFile'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['imageFile']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['imageFile']->value) {
+$_smarty_tpl->tpl_vars['imageFile']->_loop = true;
+$__foreach_imageFile_0_saved_local_item = $_smarty_tpl->tpl_vars['imageFile'];
+?>
+                              <tr>
+                                <td><?php echo basename($_smarty_tpl->tpl_vars['imageFile']->value);?>
+</td>
+                                <td><input type="checkbox" name="selectImageFile[]" value="<?php echo $_smarty_tpl->tpl_vars['imageFile']->value;?>
+" class="form-control"></td>
+                              </tr>
+                            <?php
+$_smarty_tpl->tpl_vars['imageFile'] = $__foreach_imageFile_0_saved_local_item;
+}
+if ($__foreach_imageFile_0_saved_item) {
+$_smarty_tpl->tpl_vars['imageFile'] = $__foreach_imageFile_0_saved_item;
+}
+?>
+                          </tbody>
+                        </table>
+                      <?php } else { ?>
+                        <h3 align="center">Не найдено</h3>
+                      <?php }?>
+                    </fieldset>
                     <fieldset>
                       <legend>Образ по умолчанию</legend>
                       <?php if ($_smarty_tpl->tpl_vars['session']->value['currentImage'] != NULL) {?>                      
@@ -78,45 +122,49 @@ function content_598f64999a23c6_48242421 ($_smarty_tpl) {
                         <h3 align="center">Не выбран</h3>
                       <?php }?>
                     </fieldset>
-                    <table class="table table-striped">
-                      <thead>
-                        <h1>Образы в системе</h1>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th>Название</th>
-                          <th>Кол-во классов</th>
-                          <th>Выбрать</th>
-                        </tr>
-                        <?php
+                    <fieldset>
+                      <legend>Образы в системе</legend>
+                      <?php if ($_smarty_tpl->tpl_vars['session']->value['images'] != NULL) {?>                      
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <th>Название</th>
+                              <th>Кол-во классов</th>
+                              <th>Выбрать</th>
+                            </tr>
+                            <?php
 $_from = $_smarty_tpl->tpl_vars['session']->value['images'];
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
-$__foreach_image_0_saved_item = isset($_smarty_tpl->tpl_vars['image']) ? $_smarty_tpl->tpl_vars['image'] : false;
+$__foreach_image_1_saved_item = isset($_smarty_tpl->tpl_vars['image']) ? $_smarty_tpl->tpl_vars['image'] : false;
 $_smarty_tpl->tpl_vars['image'] = new Smarty_Variable();
 $_smarty_tpl->tpl_vars['image']->_loop = false;
 foreach ($_from as $_smarty_tpl->tpl_vars['image']->value) {
 $_smarty_tpl->tpl_vars['image']->_loop = true;
-$__foreach_image_0_saved_local_item = $_smarty_tpl->tpl_vars['image'];
+$__foreach_image_1_saved_local_item = $_smarty_tpl->tpl_vars['image'];
 ?>
-                          <tr>
-                            <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
+                              <tr>
+                                <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 </td>
-                            <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
+                                <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
 </td>
-                            <td><input type="checkbox" name="selectImage[]" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
+                                <td><input type="checkbox" name="selectImage[]" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 " class="form-control"></td>
-                          </tr>
-                        <?php
-$_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_local_item;
+                              </tr>
+                            <?php
+$_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_local_item;
 }
-if ($__foreach_image_0_saved_item) {
-$_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_item;
+if ($__foreach_image_1_saved_item) {
+$_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_item;
 }
 ?>
-                      </tbody>
-                    </table>
+                          </tbody>
+                        </table>
+                      <?php } else { ?>
+                        <h3 align="center">Не созданы</h3>
+                      <?php }?>
+                    </fieldset>
                   </div>
                 </div>
               </div>
@@ -138,7 +186,36 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_item;
 </pre>
               </div>
               <div class="tab-pane" id="settings">
-                
+                <div class="row">
+                  <div class="col-md-4">
+                    <fieldset>
+                      <legend>Папка для экспорта образов</legend>
+                      <form name="changeImageExportFolderForm" method="POST">
+                        <div class="form-group">
+                          <input type="text" name="imageExportFolder" value="<?php echo $_smarty_tpl->tpl_vars['settings']->value['General']['image_export_folder'];?>
+" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" name="changeImageExportFolderButton" value="Изменить" class="btn btn-primary">
+                        </div>
+                      </form>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-4">
+                    <fieldset>
+                      <legend>Папка для импорта образов</legend>
+                      <form name="changeImageExportFolderForm" method="POST">
+                        <div class="form-group">
+                          <input type="text" name="imageExportFolder" value="<?php echo $_smarty_tpl->tpl_vars['settings']->value['General']['image_import_folder'];?>
+" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" name="changeImageExportFolderButton" value="Изменить" class="btn btn-primary">
+                        </div>
+                      </form>
+                    </fieldset>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

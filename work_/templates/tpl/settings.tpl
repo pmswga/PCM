@@ -32,15 +32,40 @@
                   <div class="col-md-4">
                     <fieldset>
                       <legend>Действия</legend>
-                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные образы" class="btn btn-primary btn-block">
-                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все образы" class="btn btn-primary btn-block">
-                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные образы" class="btn btn-danger btn-block">
-                        <input type="submit" name="clearAllImagesButton" value="Удалить все образы" class="btn btn-danger btn-block">
+                        <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
+                        <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
+                        <hr>
+                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
+                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
+                        <hr>
+                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
+                        <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
                         <hr>
                         <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
                     </fieldset>
                   </div>
                   <div class="col-md-8">
+                    <fieldset>
+                      <legend>Файлы образов</legend>
+                      {if $imagesFiles != NULL}
+                        <table class="table table-hover">
+                          <tbody>
+                            <tr>
+                              <th>Имя</th>
+                              <th>Выбрать</th>
+                            </tr>
+                            {foreach from=$imagesFiles item=imageFile}
+                              <tr>
+                                <td>{basename($imageFile)}</td>
+                                <td><input type="checkbox" name="selectImageFile[]" value="{$imageFile}" class="form-control"></td>
+                              </tr>
+                            {/foreach}
+                          </tbody>
+                        </table>
+                      {else}
+                        <h3 align="center">Не найдено</h3>
+                      {/if}
+                    </fieldset>
                     <fieldset>
                       <legend>Образ по умолчанию</legend>
                       {if $session['currentImage'] != NULL}                      
@@ -49,25 +74,29 @@
                         <h3 align="center">Не выбран</h3>
                       {/if}
                     </fieldset>
-                    <table class="table table-striped">
-                      <thead>
-                        <h1>Образы в системе</h1>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th>Название</th>
-                          <th>Кол-во классов</th>
-                          <th>Выбрать</th>
-                        </tr>
-                        {foreach from=$session['images'] item=image}
-                          <tr>
-                            <td>{$image->getImageName()}</td>
-                            <td>{count($image->getClasses())}</td>
-                            <td><input type="checkbox" name="selectImage[]" value="{$image->getImageName()}" class="form-control"></td>
-                          </tr>
-                        {/foreach}
-                      </tbody>
-                    </table>
+                    <fieldset>
+                      <legend>Образы в системе</legend>
+                      {if $session['images'] != NULL}                      
+                        <table class="table table-striped">
+                          <tbody>
+                            <tr>
+                              <th>Название</th>
+                              <th>Кол-во классов</th>
+                              <th>Выбрать</th>
+                            </tr>
+                            {foreach from=$session['images'] item=image}
+                              <tr>
+                                <td>{$image->getImageName()}</td>
+                                <td>{count($image->getClasses())}</td>
+                                <td><input type="checkbox" name="selectImage[]" value="{$image->getImageName()}" class="form-control"></td>
+                              </tr>
+                            {/foreach}
+                          </tbody>
+                        </table>
+                      {else}
+                        <h3 align="center">Не созданы</h3>
+                      {/if}
+                    </fieldset>
                   </div>
                 </div>
               </div>
@@ -85,7 +114,34 @@
                 <pre>{print_r($session['msgs'])}</pre>
               </div>
               <div class="tab-pane" id="settings">
-                
+                <div class="row">
+                  <div class="col-md-4">
+                    <fieldset>
+                      <legend>Папка для экспорта образов</legend>
+                      <form name="changeImageExportFolderForm" method="POST">
+                        <div class="form-group">
+                          <input type="text" name="imageExportFolder" value="{$settings['General']['image_export_folder']}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" name="changeImageExportFolderButton" value="Изменить" class="btn btn-primary">
+                        </div>
+                      </form>
+                    </fieldset>
+                  </div>
+                  <div class="col-md-4">
+                    <fieldset>
+                      <legend>Папка для импорта образов</legend>
+                      <form name="changeImageExportFolderForm" method="POST">
+                        <div class="form-group">
+                          <input type="text" name="imageExportFolder" value="{$settings['General']['image_import_folder']}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" name="changeImageExportFolderButton" value="Изменить" class="btn btn-primary">
+                        </div>
+                      </form>
+                    </fieldset>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

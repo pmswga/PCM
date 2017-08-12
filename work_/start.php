@@ -1,6 +1,7 @@
 <?php
 
 	require_once "pcm/classes/pimage.class.php";
+	require_once "pcm/classes/pimagesmanager.class.php";
 	require_once "pcm/classes/pworkspace.class.php";
 	require_once "engine/ctemplater.php";
 	require_once "engine/ctools.php";
@@ -23,7 +24,7 @@
       }
       
     } else {
-      die("Settings file not found");
+      
     }
   }
   

@@ -7,13 +7,16 @@
   if (!empty($_SESSION['currentImage']) && ($_SESSION['currentImage'] instanceof PImage)) {
     
     $CT->assign("image", $_SESSION['currentImage']);
-  
+    $CT->Show("generate.tpl");
+
+    if (!empty($_POST['generateImageButton'])) {
+      $_SESSION['currentImage']->generate();
+    }
+    
   } else {
-    
-    
     
   }
   
-  $CT->Show("generate.tpl");
+  
   
 ?>

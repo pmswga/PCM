@@ -3,6 +3,7 @@
   require_once "start.php";
   
   use PCM\Classes\PImage;
+  use PCM\Classes\PImagesManager;
   
   $update = function () {
     CTools::Redirect("settings.php");
@@ -13,6 +14,8 @@
   }
   
   $CT->assign("session", $_SESSION);
+  $CT->assign("settings", $_SESSION['settings']);
+  $CT->assign("imagesFiles", PImagesManager::scanDir($_SESSION['settings']['General']['image_import_folder']."/*.pcm"));
   
   $CT->assign("msgs", $_SESSION['msgs']);
   $CT->Show("settings.tpl");
@@ -25,7 +28,7 @@
             
       unset($_SESSION['images']);
       
-      if (is_array($_SESSION['images']) && empty($_SESSION['images'])) {
+      if (empty($_SESSION['images'])) {
         setMessage("Удаление образов прошло успешно", "success");
       }
       
@@ -101,6 +104,59 @@
       setMessage("Невозможно экспортировать несуществующие образы", "danger");
     }
     
+    $update();
+  }
+  
+  if (!empty($_POST['importSelectedImagesButton'])) {
+    $imagesFiles = $_POST['selectImageFile'];
+    
+    if (!empty($imagesFiles)) {
+      
+      for ($i = 0; $i < count($imagesFiles); $i++) {
+        $image = PImagesManager::import($imagesFiles[$i]);
+        
+        if ($image !== false) {
+          $_SESSION['images'][$image->getImageName()] = $image;
+        }
+        
+      }
+      
+      setMessage("Выбранные образы успешно импортированы", "success");
+      
+    } else {
+      setMessage("Вы не выбрали файл/файлы", "warning");
+    }
+    
+    $update();
+  }
+  
+  if (!empty($_POST['importAllImagesButton'])) {
+    $imagesFiles = PImagesManager::scanDir($_SESSION['settings']['General']['image_import_folder']."/*.pcm");
+    
+    if (!empty($imagesFiles)) {
+      
+      for ($i = 0; $i < count($imagesFiles); $i++) {
+        $image = PImagesManager::import($imagesFiles[$i]);
+        
+        if ($image !== false) {
+          $_SESSION['images'][$image->getImageName()] = $image;
+        }
+        
+      }
+      
+      setMessage("Выбранные образы успешно импортированы", "success");
+      
+    } else {
+      setMessage("Вы не выбрали файл/файлы", "warning");
+    }
+    
+    $update();
+  }
+  
+  if (!empty($_POST['changeImageExportFolderButton'])) {
+    $export_folder = $_POST['imageExportFolder'];
+    
+    //Implement execution code ...
     
     $update();
   }

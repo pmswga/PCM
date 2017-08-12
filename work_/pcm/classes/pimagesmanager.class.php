@@ -19,8 +19,12 @@
     
     public function getImage(string $image_name)
     {
-      if (array_key_exists($image_name, $this->images)) return $this->images[$image_name];
-      else return false;
+      if (array_key_exists($image_name, $this->images)) {        
+        return $this->images[$image_name];
+      } 
+      else {        
+        return false;
+      } 
     }
     
     public function addImage(array $images)
@@ -29,6 +33,22 @@
         $this->images[$image->getName()] = $image;
       }
     }
+    
+    public static function scanDir(string $dir)
+    {
+      $files = glob($dir);
+      return $files;
+    }
+    
+    public static function import(string $path)
+    {
+      if (file_exists($path)) {
+        return unserialize(file_get_contents($path));
+      } else {
+        return false;
+      }
+    }
+    
     
   }  
   
