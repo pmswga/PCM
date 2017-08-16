@@ -1,4 +1,5 @@
-<div class="navbar-header">
+<br>
+<div class="navbar-header menu">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>
@@ -18,18 +19,19 @@
       </ul>
     </li>
     <li><a href="settings.php">Настройки</a></li>
-    {if $countOfClasses > 0}              
-      <li class="image-statistic"><a href="#count_of_classes">Классов: {$countOfClasses}</a></li>
-    {/if}
-    {if $countOfMethods > 0}              
-      <li class="image-statistic"><a href="#count_of_methods">Методов: {$countOfMethods}</a></li>
-    {/if}
-    {if $countOfVariables > 0}              
-      <li class="image-statistic"><a href="#count_of_variables">Методов: {$countOfVariables}</a></li>
-    {/if}
+    <li><a href="#docs.php">Справка</a></li>
+    <!-- {if $countOfClasses > 0}               -->
+      <!-- <li class="image-statistic"><a href="#count_of_classes">Классов: {$countOfClasses}</a></li> -->
+    <!-- {/if} -->
+    <!-- {if $countOfMethods > 0}               -->
+      <!-- <li class="image-statistic"><a href="#count_of_methods">Методов: {$countOfMethods}</a></li> -->
+    <!-- {/if} -->
+    <!-- {if $countOfVariables > 0}               -->
+      <!-- <li class="image-statistic"><a href="#count_of_variables">Методов: {$countOfVariables}</a></li> -->
+    <!-- {/if} -->
   </ul>
 </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse menu">
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Образы <b class="caret"></b></a>
@@ -43,3 +45,4 @@
     <li><a href="generate.php">Генерация</a></li>
   </ul>
 </div><!-- /.navbar-collapse -->
+<br>

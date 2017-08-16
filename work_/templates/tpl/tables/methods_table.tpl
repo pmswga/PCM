@@ -5,17 +5,16 @@
         <th>Доступ</th>     
         <th>Тип</th>
         <th>Имя</th>
-        <th>Аргументы</th>
       </tr>
       {foreach from=$methods item=method}
         <tr>
           <td>
             {if $method->getAccessType() == 0}
-              PUBLIC
+              <span class="public">PUBLIC</span>
             {elseif $method->getAccessType() == 1}
-              PRIVATE
+              <span class="private">PRIVATE</span>
             {elseif $method->getAccessType() == 2}
-              PROTECTED
+              <span class="protected">PROTECTED</span>
             {/if}
           </td>
           <td>
@@ -28,14 +27,12 @@
             {/if}
           </td>
           <td>
-            <a href="#{$method->getMethodName()}" class="method">{$method->getMethodName()}</a>
-          </td>
-          <td>
-            {foreach from=$method->getArgs() item=arg}
-              <ul>
-                <li>{$arg->getArgName()}</li>
-              </ul>
-            {/foreach}
+            <a href="#{$method->getMethodName()}" class="method">{$method->getMethodName()} (
+              {$methods = $method->getArgs()}
+              {foreach from=$methods item=arg}
+                {$arg->getArgName()}{if next($methods)},{/if}
+              {/foreach}
+            )</a>
           </td>
         </tr>
       {/foreach}

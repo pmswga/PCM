@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 22:04:58
+/* Smarty version 3.1.29, created on 2017-08-17 00:47:42
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\blocks\menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f515a190758_92548411',
+  'unifunc' => 'content_5994bd7e247132_97964022',
   'file_dependency' => 
   array (
     'ace7d7f9b9850490ce6dba804897dffebd524644' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\blocks\\menu.tpl',
-      1 => 1502564697,
+      1 => 1502920061,
       2 => 'file',
     ),
   ),
@@ -19,9 +19,10 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598f515a190758_92548411 ($_smarty_tpl) {
+function content_5994bd7e247132_97964022 ($_smarty_tpl) {
 ?>
-<div class="navbar-header">
+<br>
+<div class="navbar-header menu">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
     <span class="sr-only">Toggle navigation</span>
     <span class="icon-bar"></span>
@@ -41,21 +42,22 @@ function content_598f515a190758_92548411 ($_smarty_tpl) {
       </ul>
     </li>
     <li><a href="settings.php">Настройки</a></li>
-    <?php if ($_smarty_tpl->tpl_vars['countOfClasses']->value > 0) {?>              
-      <li class="image-statistic"><a href="#count_of_classes">Классов: <?php echo $_smarty_tpl->tpl_vars['countOfClasses']->value;?>
-</a></li>
-    <?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['countOfMethods']->value > 0) {?>              
-      <li class="image-statistic"><a href="#count_of_methods">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfMethods']->value;?>
-</a></li>
-    <?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['countOfVariables']->value > 0) {?>              
-      <li class="image-statistic"><a href="#count_of_variables">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfVariables']->value;?>
-</a></li>
-    <?php }?>
+    <li><a href="#docs.php">Справка</a></li>
+    <!-- <?php if ($_smarty_tpl->tpl_vars['countOfClasses']->value > 0) {?>               -->
+      <!-- <li class="image-statistic"><a href="#count_of_classes">Классов: <?php echo $_smarty_tpl->tpl_vars['countOfClasses']->value;?>
+</a></li> -->
+    <!-- <?php }?> -->
+    <!-- <?php if ($_smarty_tpl->tpl_vars['countOfMethods']->value > 0) {?>               -->
+      <!-- <li class="image-statistic"><a href="#count_of_methods">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfMethods']->value;?>
+</a></li> -->
+    <!-- <?php }?> -->
+    <!-- <?php if ($_smarty_tpl->tpl_vars['countOfVariables']->value > 0) {?>               -->
+      <!-- <li class="image-statistic"><a href="#count_of_variables">Методов: <?php echo $_smarty_tpl->tpl_vars['countOfVariables']->value;?>
+</a></li> -->
+    <!-- <?php }?> -->
   </ul>
 </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse menu">
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Образы <b class="caret"></b></a>
@@ -68,5 +70,6 @@ function content_598f515a190758_92548411 ($_smarty_tpl) {
     </li>
     <li><a href="generate.php">Генерация</a></li>
   </ul>
-</div><!-- /.navbar-collapse --><?php }
+</div><!-- /.navbar-collapse -->
+<br><?php }
 }

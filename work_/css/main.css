@@ -1,15 +1,58 @@
 
+body {
+  background-color: #36465D;
+}
+
+.menu, .dropdown-menu {
+  background-color: #2B3847;
+}
+
+.panel-body {
+  color: white;
+  background-color: #2B3847;
+}
+
+.menu li a {
+  color: white;
+}
+
+.menu li a:hover{
+  background-color: #50637C;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: #898989;
+}
+
 table tr th{
 	text-align: center;
 }
 
 #status_bar {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 50px;
   display: flex;
+}
+
+fieldset legend {
+  color: white;
+}
+
+a.class {
+  padding: 5px;
+  color: white;
+}
+
+a.class:hover {
+  color: white;
+  font-size: 20px;
+}
+
+#currentEditMethod {
+  color: #DD6E53;
 }
 
 .message {
@@ -27,6 +70,14 @@ table tr th{
   color: black;
 }
 
-.image-statistic a{
-  color: black;
+.public {
+  color: #67C396;
+}
+
+.private {
+  color: #dd6e53;
+}
+
+.protected {
+  color: #F3A343;
 }

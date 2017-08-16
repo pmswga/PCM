@@ -13,7 +13,7 @@
     <form name="settingsForm" method="POST">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2">        
+          <div class="col-md-2">
             <ul class="nav nav-tabs tabs-left">
               <li><a href="index.php">Назад</a></li>
               <li class="active"><a href="#general" data-toggle="tab">Общее</a></li>
@@ -28,75 +28,101 @@
                 
               </div>
               <div class="tab-pane" id="images">
+                <br>
                 <div class="row">
                   <div class="col-md-4">
-                    <fieldset>
-                      <legend>Действия</legend>
-                        <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
-                        <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
-                        <hr>
-                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
-                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
-                        <hr>
-                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
-                        <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
-                        <hr>
-                        <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
-                    </fieldset>
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Образ по умолчанию</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
+                            {if $session['currentImage'] != NULL}                      
+                              <h3 align="center">{$session['currentImage']->getImageName()}</h3>
+                            {else}
+                              <h3 align="center">Не выбран</h3>
+                            {/if}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-8">
-                    <fieldset>
-                      <legend>Файлы образов</legend>
-                      {if $imagesFiles != NULL}
-                        <table class="table table-hover">
-                          <tbody>
-                            <tr>
-                              <th>Имя</th>
-                              <th>Выбрать</th>
-                            </tr>
-                            {foreach from=$imagesFiles item=imageFile}
-                              <tr>
-                                <td>{basename($imageFile)}</td>
-                                <td><input type="checkbox" name="selectImageFile[]" value="{$imageFile}" class="form-control"></td>
-                              </tr>
-                            {/foreach}
-                          </tbody>
-                        </table>
-                      {else}
-                        <h3 align="center">Не найдено</h3>
-                      {/if}
-                    </fieldset>
-                    <fieldset>
-                      <legend>Образ по умолчанию</legend>
-                      {if $session['currentImage'] != NULL}                      
-                        <h3 align="center">{$session['currentImage']->getImageName()}</h3>
-                      {else}
-                        <h3 align="center">Не выбран</h3>
-                      {/if}
-                    </fieldset>
-                    <fieldset>
-                      <legend>Образы в системе</legend>
-                      {if $session['images'] != NULL}                      
-                        <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <th>Название</th>
-                              <th>Кол-во классов</th>
-                              <th>Выбрать</th>
-                            </tr>
-                            {foreach from=$session['images'] item=image}
-                              <tr>
-                                <td>{$image->getImageName()}</td>
-                                <td>{count($image->getClasses())}</td>
-                                <td><input type="checkbox" name="selectImage[]" value="{$image->getImageName()}" class="form-control"></td>
-                              </tr>
-                            {/foreach}
-                          </tbody>
-                        </table>
-                      {else}
-                        <h3 align="center">Не созданы</h3>
-                      {/if}
-                    </fieldset>
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Файлы образов</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
+                            <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
+                            <br>
+                            {if $imagesFiles != NULL}
+                              <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <th>Имя</th>
+                                    <th>Выбрать</th>
+                                  </tr>
+                                  {foreach from=$imagesFiles item=imageFile}
+                                    <tr>
+                                      <td>{basename($imageFile)}</td>
+                                      <td><input type="checkbox" name="selectImageFile[]" value="{$imageFile}" class="form-control"></td>
+                                    </tr>
+                                  {/foreach}
+                                </tbody>
+                              </table>
+                            {else}
+                              <h3 align="center">Не найдено</h3>
+                            {/if}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Образы в системе</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
+                            <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
+                            <hr>
+                            <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
+                            <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
+                            <br>
+                            {if $session['images'] != NULL}
+                              <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <th>Название</th>
+                                    <th>Кол-во классов</th>
+                                    <th>Выбрать</th>
+                                  </tr>
+                                  {foreach from=$session['images'] item=image}
+                                    <tr>
+                                      <td>{$image->getImageName()}</td>
+                                      <td>{count($image->getClasses())}</td>
+                                      <td><input type="checkbox" name="selectImage[]" value="{$image->getImageName()}" class="form-control"></td>
+                                    </tr>
+                                  {/foreach}
+                                </tbody>
+                              </table>
+                            {else}
+                              <h3 align="center">Не созданы</h3>
+                            {/if}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

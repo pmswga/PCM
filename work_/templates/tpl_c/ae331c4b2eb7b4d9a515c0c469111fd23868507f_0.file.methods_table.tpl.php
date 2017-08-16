@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 21:35:18
+/* Smarty version 3.1.29, created on 2017-08-17 01:11:52
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\tables\methods_table.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f4a661eb0d6_65912399',
+  'unifunc' => 'content_5994c328e260f2_65904222',
   'file_dependency' => 
   array (
     'ae331c4b2eb7b4d9a515c0c469111fd23868507f' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\tables\\methods_table.tpl',
-      1 => 1502562916,
+      1 => 1502921510,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598f4a661eb0d6_65912399 ($_smarty_tpl) {
+function content_5994c328e260f2_65904222 ($_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['methods']->value != NULL) {?>
   <table class="table table-bordered">
     <tbody>
@@ -27,7 +27,6 @@ if ($_smarty_tpl->tpl_vars['methods']->value != NULL) {?>
         <th>Доступ</th>     
         <th>Тип</th>
         <th>Имя</th>
-        <th>Аргументы</th>
       </tr>
       <?php
 $_from = $_smarty_tpl->tpl_vars['methods']->value;
@@ -44,11 +43,11 @@ $__foreach_method_0_saved_local_item = $_smarty_tpl->tpl_vars['method'];
         <tr>
           <td>
             <?php if ($_smarty_tpl->tpl_vars['method']->value->getAccessType() == 0) {?>
-              PUBLIC
+              <span class="public">PUBLIC</span>
             <?php } elseif ($_smarty_tpl->tpl_vars['method']->value->getAccessType() == 1) {?>
-              PRIVATE
+              <span class="private">PRIVATE</span>
             <?php } elseif ($_smarty_tpl->tpl_vars['method']->value->getAccessType() == 2) {?>
-              PROTECTED
+              <span class="protected">PROTECTED</span>
             <?php }?>
           </td>
           <td>
@@ -63,11 +62,11 @@ $__foreach_method_0_saved_local_item = $_smarty_tpl->tpl_vars['method'];
           <td>
             <a href="#<?php echo $_smarty_tpl->tpl_vars['method']->value->getMethodName();?>
 " class="method"><?php echo $_smarty_tpl->tpl_vars['method']->value->getMethodName();?>
-</a>
-          </td>
-          <td>
-            <?php
-$_from = $_smarty_tpl->tpl_vars['method']->value->getArgs();
+ (
+              <?php $_smarty_tpl->tpl_vars['methods'] = new Smarty_Variable($_smarty_tpl->tpl_vars['method']->value->getArgs(), null);
+$_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'methods', 0);?>
+              <?php
+$_from = $_smarty_tpl->tpl_vars['methods']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -78,17 +77,16 @@ foreach ($_from as $_smarty_tpl->tpl_vars['arg']->value) {
 $_smarty_tpl->tpl_vars['arg']->_loop = true;
 $__foreach_arg_1_saved_local_item = $_smarty_tpl->tpl_vars['arg'];
 ?>
-              <ul>
-                <li><?php echo $_smarty_tpl->tpl_vars['arg']->value->getArgName();?>
-</li>
-              </ul>
-            <?php
+                <?php echo $_smarty_tpl->tpl_vars['arg']->value->getArgName();
+if (next($_smarty_tpl->tpl_vars['methods']->value)) {?>,<?php }?>
+              <?php
 $_smarty_tpl->tpl_vars['arg'] = $__foreach_arg_1_saved_local_item;
 }
 if ($__foreach_arg_1_saved_item) {
 $_smarty_tpl->tpl_vars['arg'] = $__foreach_arg_1_saved_item;
 }
 ?>
+            )</a>
           </td>
         </tr>
       <?php

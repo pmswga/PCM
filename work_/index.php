@@ -10,7 +10,7 @@
   $update = function () {
     CTools::Redirect("index.php");
   };
-  
+    
 	function viewHierarchia($classes)
   {			
 		static $code = "";

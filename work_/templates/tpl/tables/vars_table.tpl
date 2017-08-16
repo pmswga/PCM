@@ -10,11 +10,11 @@
         <tr>
           <td>
             {if $var->getAccessType() == 0}
-              PUBLIC
+              <span class="public">PUBLIC</span>
             {elseif $var->getAccessType() == 1}
-              PRIVATE
+              <span class="private">PRIVATE</span>
             {elseif $var->getAccessType() == 2}
-              PROTECTED
+              <span class="protected">PROTECTED</span>
             {/if}
           </td>
           <td>

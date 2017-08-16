@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-13 01:01:41
+/* Smarty version 3.1.29, created on 2017-08-17 02:05:15
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\settings.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f7ac5ce8460_12695105',
+  'unifunc' => 'content_5994cfab84ac25_42489925',
   'file_dependency' => 
   array (
     'e8764160f0e1d8625acd59f228745d5e040452cb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\settings.tpl',
-      1 => 1502575253,
+      1 => 1502924714,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:blocks/status_bar.tpl' => 1,
   ),
 ),false)) {
-function content_598f7ac5ce8460_12695105 ($_smarty_tpl) {
+function content_5994cfab84ac25_42489925 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@ function content_598f7ac5ce8460_12695105 ($_smarty_tpl) {
     <form name="settingsForm" method="POST">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2">        
+          <div class="col-md-2">
             <ul class="nav nav-tabs tabs-left">
               <li><a href="index.php">Назад</a></li>
               <li class="active"><a href="#general" data-toggle="tab">Общее</a></li>
@@ -56,33 +56,51 @@ function content_598f7ac5ce8460_12695105 ($_smarty_tpl) {
                 
               </div>
               <div class="tab-pane" id="images">
+                <br>
                 <div class="row">
                   <div class="col-md-4">
-                    <fieldset>
-                      <legend>Действия</legend>
-                        <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
-                        <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
-                        <hr>
-                        <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
-                        <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
-                        <hr>
-                        <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
-                        <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
-                        <hr>
-                        <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
-                    </fieldset>
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Образ по умолчанию</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="resetCurrentImageButton" value="Сбросить образ по умолчанию" class="btn btn-warning btn-block">
+                            <?php if ($_smarty_tpl->tpl_vars['session']->value['currentImage'] != NULL) {?>                      
+                              <h3 align="center"><?php echo $_smarty_tpl->tpl_vars['session']->value['currentImage']->getImageName();?>
+</h3>
+                            <?php } else { ?>
+                              <h3 align="center">Не выбран</h3>
+                            <?php }?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-8">
-                    <fieldset>
-                      <legend>Файлы образов</legend>
-                      <?php if ($_smarty_tpl->tpl_vars['imagesFiles']->value != NULL) {?>
-                        <table class="table table-hover">
-                          <tbody>
-                            <tr>
-                              <th>Имя</th>
-                              <th>Выбрать</th>
-                            </tr>
-                            <?php
+                    <div class="panel-group">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Файлы образов</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="importSelectedImagesButton" value="Импортировать выбранные" class="btn btn-success btn-block">
+                            <input type="submit" name="importAllImagesButton" value="Импортировать все" class="btn btn-success btn-block">
+                            <br>
+                            <?php if ($_smarty_tpl->tpl_vars['imagesFiles']->value != NULL) {?>
+                              <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <th>Имя</th>
+                                    <th>Выбрать</th>
+                                  </tr>
+                                  <?php
 $_from = $_smarty_tpl->tpl_vars['imagesFiles']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -94,45 +112,50 @@ foreach ($_from as $_smarty_tpl->tpl_vars['imageFile']->value) {
 $_smarty_tpl->tpl_vars['imageFile']->_loop = true;
 $__foreach_imageFile_0_saved_local_item = $_smarty_tpl->tpl_vars['imageFile'];
 ?>
-                              <tr>
-                                <td><?php echo basename($_smarty_tpl->tpl_vars['imageFile']->value);?>
+                                    <tr>
+                                      <td><?php echo basename($_smarty_tpl->tpl_vars['imageFile']->value);?>
 </td>
-                                <td><input type="checkbox" name="selectImageFile[]" value="<?php echo $_smarty_tpl->tpl_vars['imageFile']->value;?>
+                                      <td><input type="checkbox" name="selectImageFile[]" value="<?php echo $_smarty_tpl->tpl_vars['imageFile']->value;?>
 " class="form-control"></td>
-                              </tr>
-                            <?php
+                                    </tr>
+                                  <?php
 $_smarty_tpl->tpl_vars['imageFile'] = $__foreach_imageFile_0_saved_local_item;
 }
 if ($__foreach_imageFile_0_saved_item) {
 $_smarty_tpl->tpl_vars['imageFile'] = $__foreach_imageFile_0_saved_item;
 }
 ?>
-                          </tbody>
-                        </table>
-                      <?php } else { ?>
-                        <h3 align="center">Не найдено</h3>
-                      <?php }?>
-                    </fieldset>
-                    <fieldset>
-                      <legend>Образ по умолчанию</legend>
-                      <?php if ($_smarty_tpl->tpl_vars['session']->value['currentImage'] != NULL) {?>                      
-                        <h3 align="center"><?php echo $_smarty_tpl->tpl_vars['session']->value['currentImage']->getImageName();?>
-</h3>
-                      <?php } else { ?>
-                        <h3 align="center">Не выбран</h3>
-                      <?php }?>
-                    </fieldset>
-                    <fieldset>
-                      <legend>Образы в системе</legend>
-                      <?php if ($_smarty_tpl->tpl_vars['session']->value['images'] != NULL) {?>                      
-                        <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <th>Название</th>
-                              <th>Кол-во классов</th>
-                              <th>Выбрать</th>
-                            </tr>
-                            <?php
+                                </tbody>
+                              </table>
+                            <?php } else { ?>
+                              <h3 align="center">Не найдено</h3>
+                            <?php }?>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a>Образы в системе</a>
+                          </h4>
+                        </div>
+                        <div class="panel-collapse collapse in">      
+                          <div class="panel-body">
+                            <input type="submit" name="exportSelectedImagesButton" value="Экспортировать выбранные" class="btn btn-primary btn-block">
+                            <input type="submit" name="exportAllImagesButton" value="Экспортировать все" class="btn btn-primary btn-block">
+                            <hr>
+                            <input type="submit" name="removeSelectedImagesButton" value="Удалить выбранные" class="btn btn-danger btn-block">
+                            <input type="submit" name="clearAllImagesButton" value="Удалить все" class="btn btn-danger btn-block">
+                            <br>
+                            <?php if ($_smarty_tpl->tpl_vars['session']->value['images'] != NULL) {?>
+                              <table class="table table-bordered">
+                                <tbody>
+                                  <tr>
+                                    <th>Название</th>
+                                    <th>Кол-во классов</th>
+                                    <th>Выбрать</th>
+                                  </tr>
+                                  <?php
 $_from = $_smarty_tpl->tpl_vars['session']->value['images'];
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -144,27 +167,30 @@ foreach ($_from as $_smarty_tpl->tpl_vars['image']->value) {
 $_smarty_tpl->tpl_vars['image']->_loop = true;
 $__foreach_image_1_saved_local_item = $_smarty_tpl->tpl_vars['image'];
 ?>
-                              <tr>
-                                <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
+                                    <tr>
+                                      <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 </td>
-                                <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
+                                      <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
 </td>
-                                <td><input type="checkbox" name="selectImage[]" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
+                                      <td><input type="checkbox" name="selectImage[]" value="<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
 " class="form-control"></td>
-                              </tr>
-                            <?php
+                                    </tr>
+                                  <?php
 $_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_local_item;
 }
 if ($__foreach_image_1_saved_item) {
 $_smarty_tpl->tpl_vars['image'] = $__foreach_image_1_saved_item;
 }
 ?>
-                          </tbody>
-                        </table>
-                      <?php } else { ?>
-                        <h3 align="center">Не созданы</h3>
-                      <?php }?>
-                    </fieldset>
+                                </tbody>
+                              </table>
+                            <?php } else { ?>
+                              <h3 align="center">Не созданы</h3>
+                            <?php }?>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 23:11:01
+/* Smarty version 3.1.29, created on 2017-08-17 01:53:30
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f60d5def529_30589199',
+  'unifunc' => 'content_5994ccea4f9ca3_22247601',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502568653,
+      1 => 1502923972,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:blocks/status_bar.tpl' => 1,
   ),
 ),false)) {
-function content_598f60d5def529_30589199 ($_smarty_tpl) {
+function content_5994ccea4f9ca3_22247601 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,13 +43,6 @@ function content_598f60d5def529_30589199 ($_smarty_tpl) {
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <style rel="stylesheet">
-      
-      table tr th {
-        text-align: center;
-      }
-      
-    </style>
     <?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
 >
@@ -58,6 +51,9 @@ function content_598f60d5def529_30589199 ($_smarty_tpl) {
 >
 		<?php echo '<script'; ?>
  type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ type="text/javascript" src="js/uiapp.js"><?php echo '</script'; ?>
 >
   </head>
   <body>
@@ -122,16 +118,19 @@ function content_598f60d5def529_30589199 ($_smarty_tpl) {
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <form name="editCodeMethodForm" method="POST">
-                    <div class="form-group">                    
-                      <textarea rows="15" name="src" class="form-control" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <input type="hidden" name="editClass" value="">
-                      <input type="hidden" name="editMethod" value="">
-                      <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary">
-                    </div>
-                  </form>
+                  <fieldset>
+                    <legend>Редактирование метода <span id="currentEditMethod"></span></legend>
+                    <form name="editCodeMethodForm" method="POST">
+                      <div class="form-group">                    
+                        <textarea rows="15" name="src" class="form-control" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="editClass" value="">
+                        <input type="hidden" name="editMethod" value="">
+                        <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary pull-right">
+                      </div>
+                    </form>
+                  </fieldset>
                 </div>
               </div>
             </div>
@@ -169,63 +168,35 @@ function content_598f60d5def529_30589199 ($_smarty_tpl) {
     <?php echo '<script'; ?>
  type="text/javascript">
     
-      var className = "nil", methodName = "";
+      var classes = [];
       
-      $("a.class").click(function(){
+      $("a.class").each(function(index, value){
+        let class_name = $(value).attr("href");
+        class_name = class_name.substr(1, class_name.length);
         
-        var selectedClassName = $(this).attr("href");
-        selectedClassName = selectedClassName.substr(1, selectedClassName.length);
-        className = selectedClassName;
-        
-        $.ajax({
-          url: "php/getVars.php",
-          type: "post",
-          data: "className=" + selectedClassName,
-          success: function (replay) {
-            $("#vars-table").html(" ");
-            $("#vars-table").html(replay);
-          }
-        });
-        
-        $.ajax({
-          url: "php/getMethods.php",
-          type: "post",
-          data: "className=" + selectedClassName,
-          success: function (replay) {
-            $("#methods-table").html(" ");
-            $("#methods-table").html(replay);
-          }
-        });
-        
+        classes.push(class_name);
       });
       
       
+      let app = new UIApp(classes);
+      app.getClassMembers();
+      
+      $("a.class").on("click", function(){
+        
+        var selectedClassName = $(this).attr("href");
+        selectedClassName = selectedClassName.substr(1, selectedClassName.length);
+        
+        app.setCurrentClass(selectedClassName);
+        app.getClassMembers();
+        
+      });
+      
       $(document).on("click", "a.method", function(){
+      
+        var selectedMethodName = $(this).attr("href");
+        selectedMethodName = selectedMethodName.substr(1, selectedMethodName.length);
         
-        if (className != "nil") {
-        
-          var selectedMethodName = $(this).attr("href");
-          selectedMethodName = selectedMethodName.substr(1, selectedMethodName.length);
-          methodName = selectedMethodName;
-        
-          $.ajax({
-            url: "php/getMethodSrc.php",
-            type: "post",
-            data: "className=" + className + "&methodName=" + selectedMethodName,
-            success: function (replay) {
-              $("#methodCode").text("");
-              $("#methodCode").text(replay);
-              
-              $("[name='editMethod']").attr("value", methodName);
-              $("[name='editClass']").attr("value", className);
-              
-            }
-          });
-          
-        } else {
-          alert("Select class");
-        }
-        
+        app.getMethodSrc(selectedMethodName);
       });
             
       $("[data-toggle='tooltip']").tooltip();

@@ -11,16 +11,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <style rel="stylesheet">
-      
-      table tr th {
-        text-align: center;
-      }
-      
-    </style>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
+		<script type="text/javascript" src="js/uiapp.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -81,16 +75,19 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <form name="editCodeMethodForm" method="POST">
-                    <div class="form-group">                    
-                      <textarea rows="15" name="src" class="form-control" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <input type="hidden" name="editClass" value="">
-                      <input type="hidden" name="editMethod" value="">
-                      <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary">
-                    </div>
-                  </form>
+                  <fieldset>
+                    <legend>Редактирование метода <span id="currentEditMethod"></span></legend>
+                    <form name="editCodeMethodForm" method="POST">
+                      <div class="form-group">                    
+                        <textarea rows="15" name="src" class="form-control" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input type="hidden" name="editClass" value="">
+                        <input type="hidden" name="editMethod" value="">
+                        <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary pull-right">
+                      </div>
+                    </form>
+                  </fieldset>
                 </div>
               </div>
             </div>
@@ -113,63 +110,35 @@
     
     <script type="text/javascript">
     
-      var className = "nil", methodName = "";
+      var classes = [];
       
-      $("a.class").click(function(){
+      $("a.class").each(function(index, value){
+        let class_name = $(value).attr("href");
+        class_name = class_name.substr(1, class_name.length);
         
-        var selectedClassName = $(this).attr("href");
-        selectedClassName = selectedClassName.substr(1, selectedClassName.length);
-        className = selectedClassName;
-        
-        $.ajax({
-          url: "php/getVars.php",
-          type: "post",
-          data: "className=" + selectedClassName,
-          success: function (replay) {
-            $("#vars-table").html(" ");
-            $("#vars-table").html(replay);
-          }
-        });
-        
-        $.ajax({
-          url: "php/getMethods.php",
-          type: "post",
-          data: "className=" + selectedClassName,
-          success: function (replay) {
-            $("#methods-table").html(" ");
-            $("#methods-table").html(replay);
-          }
-        });
-        
+        classes.push(class_name);
       });
       
       
+      let app = new UIApp(classes);
+      app.getClassMembers();
+      
+      $("a.class").on("click", function(){
+        
+        var selectedClassName = $(this).attr("href");
+        selectedClassName = selectedClassName.substr(1, selectedClassName.length);
+        
+        app.setCurrentClass(selectedClassName);
+        app.getClassMembers();
+        
+      });
+      
       $(document).on("click", "a.method", function(){
+      
+        var selectedMethodName = $(this).attr("href");
+        selectedMethodName = selectedMethodName.substr(1, selectedMethodName.length);
         
-        if (className != "nil") {
-        
-          var selectedMethodName = $(this).attr("href");
-          selectedMethodName = selectedMethodName.substr(1, selectedMethodName.length);
-          methodName = selectedMethodName;
-        
-          $.ajax({
-            url: "php/getMethodSrc.php",
-            type: "post",
-            data: "className=" + className + "&methodName=" + selectedMethodName,
-            success: function (replay) {
-              $("#methodCode").text("");
-              $("#methodCode").text(replay);
-              
-              $("[name='editMethod']").attr("value", methodName);
-              $("[name='editClass']").attr("value", className);
-              
-            }
-          });
-          
-        } else {
-          alert("Select class");
-        }
-        
+        app.getMethodSrc(selectedMethodName);
       });
             
       $("[data-toggle='tooltip']").tooltip();
