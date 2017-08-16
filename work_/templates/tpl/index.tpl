@@ -121,7 +121,10 @@
       
       
       let app = new UIApp(classes);
-      app.getClassMembers();
+      if (!app.getClassMembers()) {
+        $("#vars-table").html("<h3 align='center'>Empty</h3>");
+        $("#methods-table").html("<h3 align='center'>Empty</h3>");
+      }
       
       $("a.class").on("click", function(){
         

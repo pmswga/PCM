@@ -5,11 +5,12 @@ class UIApp
   constructor(classes) {
     this.classes = classes;
     
-    if (classes[0] != "") {
+    if (this.classes.length > 0 && classes[0] != "") {
       this.current_class = classes[0];
     } else {
       this.current_class = "nil";
     }
+    
   }
   
   setClasses(classes) {
@@ -24,30 +25,40 @@ class UIApp
     this.current_class = current_class
   }
   
-  getClassMembers() {        
-    $.ajax({
-      url: "php/getVars.php",
-      type: "post",
-      data: "className=" + this.current_class,
-      success: function (replay) {
-        $("#vars-table").html(" ");
-        $("#vars-table").html(replay);
-      }
-    });
+  getClassMembers() {
     
-    $.ajax({
-      url: "php/getMethods.php",
-      type: "post",
-      data: "className=" + this.current_class,
-      success: function (replay) {
-        $("#methods-table").html(" ");
-        $("#methods-table").html(replay);
-      }
-    });
+    if (this.current_class != "nil") {
+      
+      $.ajax({
+        url: "php/getVars.php",
+        type: "post",
+        data: "className=" + this.current_class,
+        success: function (replay) {
+          $("#vars-table").html(" ");
+          $("#vars-table").html(replay);
+        }
+      });
+      
+      $.ajax({
+        url: "php/getMethods.php",
+        type: "post",
+        data: "className=" + this.current_class,
+        success: function (replay) {
+          $("#methods-table").html(" ");
+          $("#methods-table").html(replay);
+        }
+      });
+      
+      return true;
+    } else {
+      return false;
+    }
+    
   }
   
   getMethodSrc(method) {
-    if (this.current_class != "") {
+    
+    if (this.current_class != "nil") {
       let className = this.current_class;
       
       $.ajax({
@@ -71,6 +82,7 @@ class UIApp
     } else {
       return false;
     }
+    
   }
 
 }

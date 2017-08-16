@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-17 01:53:30
+/* Smarty version 3.1.29, created on 2017-08-17 02:15:38
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5994ccea4f9ca3_22247601',
+  'unifunc' => 'content_5994d21aabe458_04170600',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502923972,
+      1 => 1502925337,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:blocks/status_bar.tpl' => 1,
   ),
 ),false)) {
-function content_5994ccea4f9ca3_22247601 ($_smarty_tpl) {
+function content_5994d21aabe458_04170600 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -179,7 +179,10 @@ function content_5994ccea4f9ca3_22247601 ($_smarty_tpl) {
       
       
       let app = new UIApp(classes);
-      app.getClassMembers();
+      if (!app.getClassMembers()) {
+        $("#vars-table").html("<h3 align='center'>Empty</h3>");
+        $("#methods-table").html("<h3 align='center'>Empty</h3>");
+      }
       
       $("a.class").on("click", function(){
         
