@@ -25,18 +25,23 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.47304688"
-     inkscape:cx="508.34826"
-     inkscape:cy="579.02883"
+     inkscape:zoom="0.63935242"
+     inkscape:cx="662.21151"
+     inkscape:cy="377.73823"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:window-width="1600"
      inkscape:window-height="855"
      inkscape:window-x="-8"
      inkscape:window-y="18"
      inkscape:window-maximized="1"
-     units="px" />
+     units="px"
+     showguides="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid9" />
+  </sodipodi:namedview>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -45,13 +50,62 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="background">
+    <rect
+       style="fill:#36465d;fill-opacity:1;stroke-width:1.30416489"
+       id="rect20"
+       width="338.66666"
+       height="271.19791"
+       x="0"
+       y="-0.26458332" />
+  </g>
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-26.06665)" />
+     transform="translate(0,-26.06665)">
+    <rect
+       style="fill:#2b3847;stroke-width:0.34309676;fill-opacity:1"
+       id="rect7"
+       width="322.79166"
+       height="19.84375"
+       x="7.9375"
+       y="31.093733" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="8.6237268"
+       y="63.965179"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         x="8.6237268"
+         y="63.965179"
+         style="font-size:7.76111126px;stroke-width:0.26458332">Иерархия классов</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="129.08336"
+       y="160.07924"
+       id="text17-6"><tspan
+         sodipodi:role="line"
+         id="tspan15-4"
+         x="129.08336"
+         y="160.07924"
+         style="font-size:7.76111126px;stroke-width:0.26458332">Редактирование  метода</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.60771453"
+       id="rect40"
+       width="193.14584"
+       height="113.77083"
+       x="124.35416"
+       y="167.35416" />
+  </g>
 </svg>
