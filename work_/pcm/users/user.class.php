@@ -2,6 +2,15 @@
   declare(strict_types = 1);
   namespace PCM\Users;
   
+  /*!
+    
+    \class User user.class.php "pcm/users/user.class.php"
+    \brief Описывает собой сущность - Пользователь
+    \author pmswga
+    \version 1.0
+    
+  */
+  
   class User
   {
     private $login;

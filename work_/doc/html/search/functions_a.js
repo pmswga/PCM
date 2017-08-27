@@ -14,7 +14,5 @@ var searchData=
   ['setmethodtype',['setMethodType',['../class_p_c_m_1_1_structures_1_1_p_method.html#a0237e4645e06fce1956cceaba136363e',1,'PCM::Structures::PMethod']]],
   ['setsrc',['setSrc',['../class_p_c_m_1_1_structures_1_1_p_method.html#af0ed6836cb83c2f7bf67a038829dcd75',1,'PCM::Structures::PMethod']]],
   ['setsuperclassname',['setSuperClassName',['../class_p_c_m_1_1_structures_1_1_p_class.html#aefc5b0c7de95d78a9d9b52a155546f90',1,'PCM::Structures::PClass']]],
-  ['setvarname',['setVarName',['../class_p_c_m_1_1_structures_1_1_p_var.html#ad3b0d11741cd1aa0cee5b38b5c167780',1,'PCM::Structures::PVar']]],
-  ['static_5fmethod',['STATIC_METHOD',['../ptypemethod_8consts_8php.html#a2a8ec03000c33a74b8f629f59fdb5464',1,'ptypemethod.consts.php']]],
-  ['static_5fvar',['STATIC_VAR',['../ptypevar_8consts_8php.html#a22d4a32500503e5b1d1b97a0c97c6d69',1,'ptypevar.consts.php']]]
+  ['setvarname',['setVarName',['../class_p_c_m_1_1_structures_1_1_p_var.html#ad3b0d11741cd1aa0cee5b38b5c167780',1,'PCM::Structures::PVar']]]
 ];
