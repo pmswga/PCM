@@ -8,6 +8,19 @@
     <link rel="stylesheet" type="text/css" href="css/vt.css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
+    <style type="text/css">
+      
+      #images {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      
+      .image {
+        text-align: center;
+      }
+      
+    </style>
   </head>
   <body>
     <div class="container-fluid">
@@ -37,11 +50,40 @@
                           <td>{$user->accountType()}</td>
                         </tr>
                         <tr>
-                          <td>Дата истечения срока работы акканута</td>
+                          <td>Дата удаленяи акканута</td>
                           <td>{$user->expirationDate()}</td>
                         </tr>
                       </tbody>
                     </table>
+                  </fieldset>
+                  <fieldset>
+                    <legend>Статистика</legend>
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td>Образов</td>
+                          <td>5</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </fieldset>
+                </div>
+                <div class="col-md-8">
+                  <fieldset>
+                    <legend>Образы в вашей папке</legend>
+                    {if $imagesFiles != NULL}
+                      <div id="images">
+                        {foreach from=$imagesFiles item=imageFile}
+                          <figure class="image">
+                            <img src="images/image.jpg" alt="image">
+                            <figcaption><a href="#{$imageFile}">{basename($imageFile)}</a></figcaption>
+                            <input type="checkbox" name="selectImageFile[]" value="{$imageFile}">
+                          </figure>
+                        {/foreach}
+                      </div>
+                    {else}
+                      <h3 align="center">Не найдено</h3>
+                    {/if}
                   </fieldset>
                 </div>
               </div>

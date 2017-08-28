@@ -168,8 +168,6 @@
       
     }
     
-      
-    
   } else {
     
     CTools::Redirect("login.php");
