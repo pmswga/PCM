@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-17 00:47:42
+/* Smarty version 3.1.29, created on 2017-08-28 12:06:28
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\blocks\menu.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5994bd7e247132_97964022',
+  'unifunc' => 'content_59a3dd14a12052_36706487',
   'file_dependency' => 
   array (
     'ace7d7f9b9850490ce6dba804897dffebd524644' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\blocks\\menu.tpl',
-      1 => 1502920061,
+      1 => 1503911187,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5994bd7e247132_97964022 ($_smarty_tpl) {
+function content_59a3dd14a12052_36706487 ($_smarty_tpl) {
 ?>
 <br>
 <div class="navbar-header menu">
@@ -41,6 +41,7 @@ function content_5994bd7e247132_97964022 ($_smarty_tpl) {
         <li><a href="#" accesskey="d">Словарь</a></li>
       </ul>
     </li>
+    <li><a href="profile.php">Профиль</a></li>
     <li><a href="settings.php">Настройки</a></li>
     <li><a href="#docs.php">Справка</a></li>
     <!-- <?php if ($_smarty_tpl->tpl_vars['countOfClasses']->value > 0) {?>               -->

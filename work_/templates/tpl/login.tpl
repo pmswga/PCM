@@ -7,8 +7,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-		<script type="text/javascript" src="js/tabulation.js"></script>
-		<script type="text/javascript" src="js/uiapp.js"></script>
     <style type="text/css">
       
       label {

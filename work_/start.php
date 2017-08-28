@@ -3,10 +3,12 @@
 	require_once "pcm/classes/pimage.class.php";
 	require_once "pcm/classes/pimagesmanager.class.php";
 	require_once "pcm/classes/pworkspace.class.php";
+	require_once "pcm/users/um.class.php";
 	require_once "engine/ctemplater.php";
 	require_once "engine/ctools.php";
 
 	use PCM\Classes\PImage;
+  use PCM\Users\UserManager;
 
 	session_start();
   
@@ -37,6 +39,8 @@
   }
   
 	$CT = new CTemplater("templates/tpl", "templates/tpl_c", "templates/configs", "templates/cache");
+  
+  $UM = new UserManager();
   
   function setMessage(string $msg, string $type)
   {

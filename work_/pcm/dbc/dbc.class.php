@@ -2,6 +2,8 @@
 	declare(strict_types = 1);
 	namespace PCM\DataBaseController;
   
+  require_once "connection_settings.consts.php";
+  
   /*!
     
     \class DBC dbc.class.php "pcm/dbc/dbc.class.php"
@@ -32,9 +34,17 @@
       \note Объект класса PDO
     */
     
-		function __construct(\PDO $dbc)
+		function __construct(\PDO $dbc = null)
 		{
-			$this->DBC = $dbc;
+      if (!empty($dbc)) {        
+        $this->DBC = $dbc;
+      } else {
+        
+        $this->DBC = new \PDO("mysql:dbname=".DATABASE_NAME.";host=127.0.0.1:".PORT, USER_NAME, USER_PASSWORD);
+        $this->DBC->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->DBC->exec("SET NAMES utf8");
+        
+      }
 		}
     
     /*!

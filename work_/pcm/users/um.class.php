@@ -49,6 +49,30 @@
       }
     }
     
+    public function user(string $login, string $password) : User
+    {
+      if (!empty($login) && !empty($password)) {
+        $user_data = $this->query(
+        "SELECT `email`, `password`, `account_type`, `expiration_date` FROM `users` WHERE `email`=:login AND `password`=:password",[
+          ":login" => $login,
+          ":password" => $password
+        ])[0];
+        
+        if (!empty($user_data)) {          
+          return new User(
+            $user_data['email'],
+            $user_data['password'],
+            (int)$user_data['account_type'],
+            $user_data['expiration_date']
+          );
+        } else {
+          throw new \Exception("No such user in DB");
+        }
+      } else {
+        throw new \Exception("Incorrect login or password");
+      }
+    }
+    
     /*!
       \brief Добавление нового пользователя
       \param[in] $user_email - Электронная почта пользователя

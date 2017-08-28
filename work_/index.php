@@ -6,6 +6,7 @@
   use PCM\Structures\PClass;
   use PCM\Structures\PVar;
   use PCM\Structures\PMethod;
+  use PCM\Users\User;
   
   if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)) {
   

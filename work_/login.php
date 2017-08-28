@@ -2,6 +2,8 @@
   
   require_once "start.php";
   
+  use PCM\Users\User;
+  
   if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)) {
     
     CTools::Redirect("index.php");
@@ -11,25 +13,20 @@
     $CT->Show("login.tpl");
     
     if (!empty($_POST['loginUserButton'])) {
-      $login = $_POST['login'];
-      $password = md5($_POST['password']);
+      $login = htmlspecialchars($_POST['login']);
+      $password = md5(htmlspecialchars($_POST['password']));
       
-      if ($login == "admin" && $password == md5("admin")) {
+      if (!empty($login) && !empty($password)) {
         
-        $_SESSION['user'] = new class ($login, $password)
+        try
         {
-          private $login;
-          private $password;
           
-          function __construct($login, $password)
-          {
-            $this->login = $login;
-            $this->password = $password;
-          }
+          $_SESSION['user'] = $UM->user($login, $password);          
+          CTools::Redirect("index.php");
           
-        };
-        
-        CTools::Redirect("index.php");
+        } catch (Exception $e) {
+          CTools::Message($e->getMessage());
+        }        
         
       } else {
         CTools::Message("Error");
