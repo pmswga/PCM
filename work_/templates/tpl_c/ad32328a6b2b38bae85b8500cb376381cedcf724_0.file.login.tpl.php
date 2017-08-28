@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-27 12:07:54
+/* Smarty version 3.1.29, created on 2017-08-28 13:04:09
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59a28bea4495a5_12980860',
+  'unifunc' => 'content_59a3ea99ac9755_45580979',
   'file_dependency' => 
   array (
     'ad32328a6b2b38bae85b8500cb376381cedcf724' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\login.tpl',
-      1 => 1503824852,
+      1 => 1503911489,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59a28bea4495a5_12980860 ($_smarty_tpl) {
+function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,12 +33,6 @@ function content_59a28bea4495a5_12980860 ($_smarty_tpl) {
 >
     <?php echo '<script'; ?>
  type="text/javascript" src="js/bootstrap.js"><?php echo '</script'; ?>
->
-		<?php echo '<script'; ?>
- type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
->
-		<?php echo '<script'; ?>
- type="text/javascript" src="js/uiapp.js"><?php echo '</script'; ?>
 >
     <style type="text/css">
       

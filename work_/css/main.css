@@ -1,6 +1,6 @@
 
 body {
-  background-color: #36465D;
+  
 }
 
 .menu, .dropdown-menu {
@@ -8,8 +8,7 @@ body {
 }
 
 .panel-body {
-  color: white;
-  background-color: #2B3847;
+  
 }
 
 .menu li a {
@@ -37,17 +36,12 @@ table tr th{
   display: flex;
 }
 
-fieldset legend {
-  color: white;
-}
 
 a.class {
   padding: 5px;
-  color: white;
 }
 
 a.class:hover {
-  color: white;
   font-size: 20px;
 }
 

@@ -26,7 +26,22 @@
                 <div class="col-md-4">                  
                   <fieldset>
                     <legend>Информация о профиле</legend>
-                    
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td>Логин</td>
+                          <td>{$user->login()}</td>
+                        </tr>
+                        <tr>
+                          <td>Тип акканута</td>
+                          <td>{$user->accountType()}</td>
+                        </tr>
+                        <tr>
+                          <td>Дата истечения срока работы акканута</td>
+                          <td>{$user->expirationDate()}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </fieldset>
                 </div>
               </div>
