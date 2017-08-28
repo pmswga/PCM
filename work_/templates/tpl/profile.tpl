@@ -30,11 +30,12 @@
             <li><a href="index.php">Назад</a></li>
             <li class="active"><a href="#general" data-toggle="tab">Общее</a></li>
             <li><a href="#settings" data-toggle="tab">Настройки</a></li>
+            <li><a href="php/logout.php">Выйти</a></li>
           </ul>
         </div>
         <div class="col-md-10">
           <div class="tab-content">
-            <div class="tab-pane active" id="settings">
+            <div class="tab-pane active" id="general">
               <div class="row">
                 <div class="col-md-4">                  
                   <fieldset>
@@ -50,8 +51,8 @@
                           <td>{$user->accountType()}</td>
                         </tr>
                         <tr>
-                          <td>Дата удаленяи акканута</td>
-                          <td>{$user->expirationDate()}</td>
+                          <td>Дата удаления акканута</td>
+                          <td>{$user->expirationDate()|date_format:'d.m.Y'}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -70,12 +71,12 @@
                 </div>
                 <div class="col-md-8">
                   <fieldset>
-                    <legend>Образы в вашей папке</legend>
+                    <legend>Мои образы</legend>
                     {if $imagesFiles != NULL}
                       <div id="images">
                         {foreach from=$imagesFiles item=imageFile}
                           <figure class="image">
-                            <img src="images/image.jpg" alt="image">
+                            <img src="img/image.jpg" alt="image">
                             <figcaption><a href="#{$imageFile}">{basename($imageFile)}</a></figcaption>
                             <input type="checkbox" name="selectImageFile[]" value="{$imageFile}">
                           </figure>
@@ -88,9 +89,17 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="general">
+            <div class="tab-pane" id="settings">
               <div class="row">
-              
+                <div class="col-md-4">
+                  <fieldset>
+                    <legend>Аккаунт</legend>
+                    <form name="workWithAccountForm" method="POST">                    
+                      <input type="submit" value="Сменить тариф" class="btn btn-primary btn-block">
+                      <input type="submit" value="Удалить акканут" name="removeAccountButton" class="btn btn-danger btn-block">
+                    </form>
+                  </fieldset>
+                </div>
               </div>
             </div>
           </div>

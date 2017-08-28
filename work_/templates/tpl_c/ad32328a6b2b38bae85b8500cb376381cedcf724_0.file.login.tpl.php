@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-28 13:04:09
+/* Smarty version 3.1.29, created on 2017-08-28 18:21:25
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59a3ea99ac9755_45580979',
+  'unifunc' => 'content_59a434f5d43150_41554827',
   'file_dependency' => 
   array (
     'ad32328a6b2b38bae85b8500cb376381cedcf724' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\login.tpl',
-      1 => 1503911489,
+      1 => 1503933685,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
+function content_59a434f5d43150_41554827 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,8 +36,10 @@ function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
 >
     <style type="text/css">
       
-      label {
-        color: white;
+      body {
+        background-image: url("img/background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
       }
       
       #body {
@@ -59,7 +61,6 @@ function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
       }
       
       .news {
-        color: white;
         border: 1px solid white;
         padding: 15px;
         margin: 10px;
@@ -77,6 +78,10 @@ function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
         display: flex;
         justify-content: flex-end;
         width: 100%;
+      }
+      
+      .carousel-indicators li {
+        border: 1px solid black;
       }
       
     </style>
@@ -98,7 +103,8 @@ function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
                   <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group">
-                  <input type="submit" name="loginUserButton" value="Войти" class="btn btn-primary">
+                  <input type="submit" name="loginUserButton" value="Войти" class="btn btn-default">
+                  <a href="#" data-toggle="modal" data-target="#registrationUser" class="btn btn-default">Регистрация</a>
                 </div>
               </form>
             </div>
@@ -278,6 +284,44 @@ function content_59a3ea99ac9755_45580979 ($_smarty_tpl) {
           </fieldset>
       </div>
     </div>
+    
+    <!-- Modals -->
+    
+    <div class="modal fade" id="registrationUser">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Регистрация нового пользователя</h4>
+          </div>
+          <div class="modal-body">
+            <form name="registrationUserForm" method="POST">
+              <div class="form-group">
+                <label>Логин</label>
+                <input type="text" name="login" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Пароль</label>
+                <input type="password" name="password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Повторите пароль</label>
+                <input type="password" name="retry_password" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Тип аккаунта</label>
+                <select name="account_type" class="form-control">
+                  <option value="1">Free</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="submit" name="registrationUserButton" value="Зарегистрироваться" class="btn btn-primary">
+              </div>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     
     <?php echo '<script'; ?>
  type="text/javascript">

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PHP Class Manager (Smart PHP): Исходный файл pcm/dbc/dbc.class.php</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PHP Class Manager (Smart PHP)
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">Руководство программиста по использованию PCM</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_690f39e4732a141faee69ce026190629.html">pcm</a></li><li class="navelem"><a class="el" href="dir_281f0204ad5861b6e444be34114ce39a.html">dbc</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">dbc.class.php</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="dbc_8class_8php.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;&lt;?php</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    declare(strict_types = 1);</div><div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="namespace_p_c_m_1_1_data_base.html">    3</a></span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespace_p_c_m_1_1_data_base.html">PCM\DataBase</a>;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;  </div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;  require_once <span class="stringliteral">&quot;connection_settings.consts.php&quot;</span>;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  </div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">   24</a></span>&#160;    <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">DBC</a></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a47583a8166305523043146f33dc5335a">   26</a></span>&#160;        <span class="keyword">private</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a47583a8166305523043146f33dc5335a">$DBC</a>; </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        </div><div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a839ca5237feab1b51510cb0e0b4662f5">   37</a></span>&#160;        <span class="keyword">function</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a839ca5237feab1b51510cb0e0b4662f5">__construct</a>(\PDO $dbc = null)</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="keywordflow">if</span> (!empty($dbc)) {        </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">DBC</a> = $dbc;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        </div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">DBC</a> = new \PDO(<span class="stringliteral">&quot;mysql:dbname=&quot;</span>.<a class="code" href="connection__settings_8consts_8php.html#aecedf310cd49ebfb276c4ece27f55bdb">DATABASE_NAME</a>.<span class="stringliteral">&quot;;host=127.0.0.1:&quot;</span>.<a class="code" href="connection__settings_8consts_8php.html#ab9a2d2c70deaf0f75cf0ee531f6ed0b5">PORT</a>, <a class="code" href="connection__settings_8consts_8php.html#a154559296480600855edcb7ed56b19e6">USER_NAME</a>, <a class="code" href="connection__settings_8consts_8php.html#ae9ca4f43e5dc4c44e6d0fb448a10821e">USER_PASSWORD</a>);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">DBC</a>-&gt;setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">DBC</a>-&gt;exec(<span class="stringliteral">&quot;SET NAMES utf8&quot;</span>);</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      }</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div><div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#ae51244ccee8b1932cc60c3869d426f66">   56</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#ae51244ccee8b1932cc60c3869d426f66">dbc</a>()</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a47583a8166305523043146f33dc5335a">$this-&gt;DBC</a>;</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        </div><div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a9307862af9ee08f7f911c98ef756642d">   68</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a9307862af9ee08f7f911c98ef756642d">query</a>(<span class="keywordtype">string</span> $sql, array $params = array())</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (!empty($params)) {</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                $query = $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#ae51244ccee8b1932cc60c3869d426f66">dbc</a>()-&gt;prepare($sql);</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                $result = $query-&gt;execute($params);</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">return</span> ($result) ? $query-&gt;fetchAll(\PDO::FETCH_ASSOC) : <span class="keyword">false</span>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            } <span class="keywordflow">else</span> {</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> $this-&gt;<a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#ae51244ccee8b1932cc60c3869d426f66">dbc</a>()-&gt;query($sql)-&gt;fetchAll(\PDO::FETCH_ASSOC);</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      }</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">function</span> <a class="code" href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a5718dddc9c96c76cbcea478ce593dedb">add</a>($data);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="keyword">function</span> <span class="keyword">remove</span>($what);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;?&gt;</div><div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html_a5718dddc9c96c76cbcea478ce593dedb"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a5718dddc9c96c76cbcea478ce593dedb">PCM\DataBase\DBC\add</a></div><div class="ttdeci">add($data)</div><div class="ttdoc">Добавление каких-либо данных в базу данных </div></div>
+<div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html_a47583a8166305523043146f33dc5335a"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a47583a8166305523043146f33dc5335a">PCM\DataBase\DBC\$DBC</a></div><div class="ttdeci">$DBC</div><div class="ttdoc">Контроллер базы данных (PDO) </div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00026">dbc.class.php:26</a></div></div>
+<div class="ttc" id="namespace_p_c_m_1_1_data_base_html"><div class="ttname"><a href="namespace_p_c_m_1_1_data_base.html">PCM\DataBase</a></div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00003">dbc.class.php:3</a></div></div>
+<div class="ttc" id="connection__settings_8consts_8php_html_ab9a2d2c70deaf0f75cf0ee531f6ed0b5"><div class="ttname"><a href="connection__settings_8consts_8php.html#ab9a2d2c70deaf0f75cf0ee531f6ed0b5">PORT</a></div><div class="ttdeci">const PORT</div><div class="ttdef"><b>Definition:</b> <a href="connection__settings_8consts_8php_source.html#l00004">connection_settings.consts.php:4</a></div></div>
+<div class="ttc" id="connection__settings_8consts_8php_html_aecedf310cd49ebfb276c4ece27f55bdb"><div class="ttname"><a href="connection__settings_8consts_8php.html#aecedf310cd49ebfb276c4ece27f55bdb">DATABASE_NAME</a></div><div class="ttdeci">const DATABASE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="connection__settings_8consts_8php_source.html#l00007">connection_settings.consts.php:7</a></div></div>
+<div class="ttc" id="connection__settings_8consts_8php_html_a154559296480600855edcb7ed56b19e6"><div class="ttname"><a href="connection__settings_8consts_8php.html#a154559296480600855edcb7ed56b19e6">USER_NAME</a></div><div class="ttdeci">const USER_NAME</div><div class="ttdef"><b>Definition:</b> <a href="connection__settings_8consts_8php_source.html#l00005">connection_settings.consts.php:5</a></div></div>
+<div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html_ae51244ccee8b1932cc60c3869d426f66"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#ae51244ccee8b1932cc60c3869d426f66">PCM\DataBase\DBC\dbc</a></div><div class="ttdeci">dbc()</div><div class="ttdoc">Возвращает контроллер базы данных </div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00056">dbc.class.php:56</a></div></div>
+<div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html">PCM\DataBase\DBC</a></div><div class="ttdoc">Базовый класс для все остальных менеджеров </div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00024">dbc.class.php:24</a></div></div>
+<div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html_a9307862af9ee08f7f911c98ef756642d"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a9307862af9ee08f7f911c98ef756642d">PCM\DataBase\DBC\query</a></div><div class="ttdeci">query(string $sql, array $params=array())</div><div class="ttdoc">Выполняет запрос </div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00068">dbc.class.php:68</a></div></div>
+<div class="ttc" id="connection__settings_8consts_8php_html_ae9ca4f43e5dc4c44e6d0fb448a10821e"><div class="ttname"><a href="connection__settings_8consts_8php.html#ae9ca4f43e5dc4c44e6d0fb448a10821e">USER_PASSWORD</a></div><div class="ttdeci">const USER_PASSWORD</div><div class="ttdef"><b>Definition:</b> <a href="connection__settings_8consts_8php_source.html#l00006">connection_settings.consts.php:6</a></div></div>
+<div class="ttc" id="class_p_c_m_1_1_data_base_1_1_d_b_c_html_a839ca5237feab1b51510cb0e0b4662f5"><div class="ttname"><a href="class_p_c_m_1_1_data_base_1_1_d_b_c.html#a839ca5237feab1b51510cb0e0b4662f5">PCM\DataBase\DBC\__construct</a></div><div class="ttdeci">__construct(\PDO $dbc=null)</div><div class="ttdoc">Задаёт контроллер базы данных </div><div class="ttdef"><b>Definition:</b> <a href="dbc_8class_8php_source.html#l00037">dbc.class.php:37</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по PHP Class Manager (Smart PHP). Последние изменения: Пн 28 Авг 2017 18:43:46. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

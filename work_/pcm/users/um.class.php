@@ -5,7 +5,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/dbc/dbc.class.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/users/user.class.php";
   
-  use PCM\DataBaseController\DBC;
+  use PCM\DataBase\DBC;
   
   /*!
     
@@ -19,6 +19,7 @@
       1. Добавлять/удалять пользователей
       2. Изменять информацию об пользователе
       3. Удалять пользователей, срок аккаунта которых истёк
+      4. Получать образы пользователя
     
   */
   
@@ -33,21 +34,33 @@
     */
     
     public function add($user) : bool
-    {
+    { 
       if (!empty($user) && ($user instanceof User)) {        
-        return $add_user_query = $this->query(
-          "INSERT INTO `users` (`email`, `password`, `account_type`, `expiration_date`) 
-          VALUES
-          (:email, :passwd, :account_type, :expiration_date)", [
-            ":email" => $user->email(),
-            ":passwd" => $user->password(),
-            ":account_type" => $user->accountType(),
-            ":expiration_date" => $user->expirationDate()
-        ]);
+      
+        $add_user_query = $this->dbc()->prepare("INSERT INTO `users` (`email`, `password`, `account_type`, `expiration_date`) VALUES (:email, :passwd, :account_type, ADDDATE(:expiration_date, INTERVAL 30 DAY))");
+      
+        $add_user_query->bindValue(":email", $user->login());
+        $add_user_query->bindValue(":passwd", $user->password());
+        $add_user_query->bindValue(":account_type", $user->accountType());
+        $add_user_query->bindValue(":expiration_date", $user->expirationDate());
+      
+        return $add_user_query->execute();
+      
       } else {
         return false;
       }
     }
+    
+    /*!
+      \brief Возвращает пользователя по его логину и паролю
+      \param[in] $login    - Логин
+      \param[in] $password - Пароль
+      \exception Exception
+      \return Пользователя
+      \note Объект класса User
+      
+      Используется для аутентификации пользователя. Если пользователь присутствует в системе, то возвращается его данные, а иначе возникают исключения
+    */
     
     public function user(string $login, string $password) : User
     {
@@ -74,6 +87,24 @@
     }
     
     /*!
+      \brief
+    */
+    
+    public function images(string $login) : array
+    {
+      if (!empty($login)) {
+        
+        return $this->query("SELECT ui.id_user_image, ui.id_user, ui.image FROM `users` u 	INNER JOIN `user_images` ui ON u.id_user=ui.id_user WHERE u.email=:login;", [
+          ":login" => $login
+        ]);
+        
+      } else {
+        throw new \Exception("Login is empty");
+      }
+    }
+    
+    
+    /*!
       \brief Добавление нового пользователя
       \param[in] $user_email - Электронная почта пользователя
       \return TRUE - успешно удалён, FALSE - произошла ошибка
@@ -81,10 +112,10 @@
     
     public function remove($user_email) : bool
     {
-      if (!empty($user_email)) {        
-        return $remove_user_query = $this->query(
-          "DELETE FROM `users` WHERE `email`=:user_email",[
-            ":user_email" => $user_email
+      if (!empty($user_email)) {
+        $remove_user_query = $this->dbc()->prepare("DELETE FROM `users` WHERE `email`=:user_email");
+        return $remove_user_query->execute([
+          ":user_email" => $user_email
         ]);
       } else {
         return false;
@@ -92,7 +123,5 @@
     }
     
   }
-  
-  
   
 ?>

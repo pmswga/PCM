@@ -46,7 +46,7 @@
     
     public function expirationDate()
     {
-      return date_format(new \DateTime($this->expiration_date), "d.m.Y");
+      return $this->expiration_date;
     }
     
   }  

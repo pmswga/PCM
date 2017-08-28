@@ -1,6 +1,6 @@
 <?php
 	declare(strict_types = 1);
-	namespace PCM\DataBaseController;
+	namespace PCM\DataBase;
   
   require_once "connection_settings.consts.php";
   

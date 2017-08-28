@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-28 13:33:40
+/* Smarty version 3.1.29, created on 2017-08-28 18:55:07
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59a3f184ae5f57_21968397',
+  'unifunc' => 'content_59a43cdbd97aa5_89527868',
   'file_dependency' => 
   array (
     '305e78501efeefa1437b6af956648a20f4cf0a91' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\profile.tpl',
-      1 => 1503916419,
+      1 => 1503935707,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,8 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59a3f184ae5f57_21968397 ($_smarty_tpl) {
+function content_59a43cdbd97aa5_89527868 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\domains\\PCM\\work_\\engine\\smarty\\plugins\\modifier.date_format.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,11 +58,12 @@ function content_59a3f184ae5f57_21968397 ($_smarty_tpl) {
             <li><a href="index.php">Назад</a></li>
             <li class="active"><a href="#general" data-toggle="tab">Общее</a></li>
             <li><a href="#settings" data-toggle="tab">Настройки</a></li>
+            <li><a href="php/logout.php">Выйти</a></li>
           </ul>
         </div>
         <div class="col-md-10">
           <div class="tab-content">
-            <div class="tab-pane active" id="settings">
+            <div class="tab-pane active" id="general">
               <div class="row">
                 <div class="col-md-4">                  
                   <fieldset>
@@ -79,8 +81,8 @@ function content_59a3f184ae5f57_21968397 ($_smarty_tpl) {
 </td>
                         </tr>
                         <tr>
-                          <td>Дата удаленяи акканута</td>
-                          <td><?php echo $_smarty_tpl->tpl_vars['user']->value->expirationDate();?>
+                          <td>Дата удаления акканута</td>
+                          <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['user']->value->expirationDate(),'d.m.Y');?>
 </td>
                         </tr>
                       </tbody>
@@ -100,7 +102,7 @@ function content_59a3f184ae5f57_21968397 ($_smarty_tpl) {
                 </div>
                 <div class="col-md-8">
                   <fieldset>
-                    <legend>Образы в вашей папке</legend>
+                    <legend>Мои образы</legend>
                     <?php if ($_smarty_tpl->tpl_vars['imagesFiles']->value != NULL) {?>
                       <div id="images">
                         <?php
@@ -116,7 +118,7 @@ $_smarty_tpl->tpl_vars['imageFile']->_loop = true;
 $__foreach_imageFile_0_saved_local_item = $_smarty_tpl->tpl_vars['imageFile'];
 ?>
                           <figure class="image">
-                            <img src="images/image.jpg" alt="image">
+                            <img src="img/image.jpg" alt="image">
                             <figcaption><a href="#<?php echo $_smarty_tpl->tpl_vars['imageFile']->value;?>
 "><?php echo basename($_smarty_tpl->tpl_vars['imageFile']->value);?>
 </a></figcaption>
@@ -138,9 +140,17 @@ $_smarty_tpl->tpl_vars['imageFile'] = $__foreach_imageFile_0_saved_item;
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="general">
+            <div class="tab-pane" id="settings">
               <div class="row">
-              
+                <div class="col-md-4">
+                  <fieldset>
+                    <legend>Аккаунт</legend>
+                    <form name="workWithAccountForm" method="POST">                    
+                      <input type="submit" value="Сменить тариф" class="btn btn-primary btn-block">
+                      <input type="submit" value="Удалить акканут" name="removeAccountButton" class="btn btn-danger btn-block">
+                    </form>
+                  </fieldset>
+                </div>
               </div>
             </div>
           </div>
