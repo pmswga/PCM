@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-17 01:12:35
+/* Smarty version 3.1.29, created on 2017-09-02 22:36:26
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\tables\vars_table.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5994c353b78500_51153150',
+  'unifunc' => 'content_59ab083a5438d8_50780301',
   'file_dependency' => 
   array (
     '13d878c5352a263e3b99aaf602d3a4ca29352682' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\tables\\vars_table.tpl',
-      1 => 1502921554,
+      1 => 1504380975,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_5994c353b78500_51153150 ($_smarty_tpl) {
+function content_59ab083a5438d8_50780301 ($_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['vars']->value != NULL) {?>
   <table class="table table-bordered">
     <tbody>
@@ -50,7 +50,7 @@ $__foreach_var_0_saved_local_item = $_smarty_tpl->tpl_vars['var'];
               <span class="protected">PROTECTED</span>
             <?php }?>
           </td>
-          <td>
+          <td class="type">
             <?php if ($_smarty_tpl->tpl_vars['var']->value->getVarType() == 0) {?>          
               NATIVE
             <?php } elseif ($_smarty_tpl->tpl_vars['var']->value->getVarType() == 1) {?>

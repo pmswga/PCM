@@ -17,7 +17,7 @@
               <span class="protected">PROTECTED</span>
             {/if}
           </td>
-          <td>
+          <td class="type">
             {if $method->getMethodType() == 0}          
               NATIVE
             {elseif $method->getMethodType() == 1}

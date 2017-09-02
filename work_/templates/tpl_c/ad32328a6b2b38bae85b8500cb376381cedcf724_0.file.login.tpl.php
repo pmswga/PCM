@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-28 18:21:25
+/* Smarty version 3.1.29, created on 2017-09-02 22:07:13
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59a434f5d43150_41554827',
+  'unifunc' => 'content_59ab0161c4b663_14601272',
   'file_dependency' => 
   array (
     'ad32328a6b2b38bae85b8500cb376381cedcf724' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\login.tpl',
-      1 => 1503933685,
+      1 => 1504379232,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59a434f5d43150_41554827 ($_smarty_tpl) {
+function content_59ab0161c4b663_14601272 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@ function content_59a434f5d43150_41554827 ($_smarty_tpl) {
     <title>IDE Smart PHP</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
 >
@@ -37,62 +37,48 @@ function content_59a434f5d43150_41554827 ($_smarty_tpl) {
     <style type="text/css">
       
       body {
-        background-image: url("img/background.jpg");
+        background-image: url("img/back.png");
         background-size: cover;
-        background-repeat: no-repeat;
+        font-family: 'Open Sans', sans-serif;
       }
       
-      #body {
-        justify-content: space-around;
-        height: 100vh;
-      }
-      
-      #left-side .row {
+      .form-group:last-child {
         display: flex;
-        align-items: center;
-        height: 100vh;
+        justify-content: center;
       }
       
-      #left-side {
-        border-right: 2px solid white;
+      .btn, .btn-default {
+        width: 150px;
       }
       
-      #right-side {
+      [name="loginUserButton"] {
+        margin-left: 10px;
+        margin-right: 10px;
       }
       
-      .news {
-        border: 1px solid white;
-        padding: 15px;
-        margin: 10px;
+      form label {
+        color: white;
+        font-size: 20px;
       }
       
-      .news h2 {
-        margin: 0px;
-      }
-      
-      .news .content {
-        padding: 15px;
-      }
-      
-      .news .footer {
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-      }
-      
-      .carousel-indicators li {
+      [name="login"], [name="password"] {
         border: 1px solid black;
       }
       
     </style>
   </head>
   <body>
-    <div class="container-fluid" id="body">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6" id="left-side">
+        <figure>
+          <img src="img/logo.png" width="100%" height="" alt="">
+        </figure>
+      </div>
+      <div class="row">
+        <div class="col-md-12" id="body">
           <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="center">
               <form name="loginUserForm" method="POST">
                 <div class="form-group">
                   <label>Логин</label>
@@ -108,180 +94,9 @@ function content_59a434f5d43150_41554827 ($_smarty_tpl) {
                 </div>
               </form>
             </div>
+            <div class="col-md-4"></div>
           </div>
         </div>
-        <div class="col-md-6" id="right-side">
-          <fieldset>
-            <legend>Новости</legend>
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-              </ol>
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <div class="item active">
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                </div>
-                <div class="item">
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                </div>
-                <div class="item">
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                  <article class="news">
-                    <h2>caption</h2>
-                    <div class="content">
-                      Content
-                    </div>
-                    <div class="footer">              
-                      <time><?php echo date("d.m.Y");?>
-</time>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </fieldset>
       </div>
     </div>
     

@@ -22,7 +22,7 @@
         if (is_array($value['subclass'])) {
           
           if (!empty($value['supclass'])) {
-            $code .= "<li><a href='#".$value['supclass']->getClassName()."' class='class'>".$value['supclass']->getClassName()."</a></li>";
+            $code .= "<li><img src='img/file.png' width='30px' alt='class'><a href='#".$value['supclass']->getClassName()."' class='class'>".$value['supclass']->getClassName()."</a></li>";
           }
           
           viewHierarchia($value['subclass']);

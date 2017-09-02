@@ -1,33 +1,33 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-17 02:15:38
+/* Smarty version 3.1.29, created on 2017-09-02 23:08:26
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_5994d21aabe458_04170600',
+  'unifunc' => 'content_59ab0fbaa96336_33166331',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1502925337,
+      1 => 1504382906,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:blocks/menu.tpl' => 1,
+    'file:blocks/status_bar.tpl' => 1,
     'file:modals/create_class_modal.tpl' => 1,
     'file:modals/create_image_modal.tpl' => 1,
     'file:modals/view_images_modal.tpl' => 1,
     'file:modals/select_current_image_modal.tpl' => 1,
     'file:modals/create_var_modal.tpl' => 1,
     'file:modals/create_method_modal.tpl' => 1,
-    'file:blocks/status_bar.tpl' => 1,
   ),
 ),false)) {
-function content_5994d21aabe458_04170600 ($_smarty_tpl) {
+function content_59ab0fbaa96336_33166331 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,6 +43,7 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
 >
@@ -70,6 +71,12 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
           <div class="row">
             <div class="col-md-3">
               <fieldset>
+                <legend>Уведомления</legend>
+                <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:blocks/status_bar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+              </fieldset>
+              <fieldset>
                 <legend>Иерархия классов</legend>
                 <?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
                   <div id="hierarchia" class="ui bulleted list">
@@ -86,7 +93,7 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="panel-group">
+                      <div class="panel-group" id="accord_vars">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
@@ -100,7 +107,7 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="panel-group" id="accordion">
+                      <div class="panel-group" id="accord_methods">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
@@ -161,9 +168,6 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
 
     
     <!-- Status bar -->
-    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:blocks/status_bar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-?>
-
     
     <?php echo '<script'; ?>
  type="text/javascript">
@@ -204,6 +208,7 @@ function content_5994d21aabe458_04170600 ($_smarty_tpl) {
             
       $("[data-toggle='tooltip']").tooltip();
       $("[data-toggle='popover']").popover();
+      $(".close").alert();
       
     <?php echo '</script'; ?>
 >

@@ -11,6 +11,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/tabulation.js"></script>
@@ -28,6 +29,10 @@
           <div class="row">
             <div class="col-md-3">
               <fieldset>
+                <legend>Уведомления</legend>
+                {include "blocks/status_bar.tpl"}
+              </fieldset>
+              <fieldset>
                 <legend>Иерархия классов</legend>
                 {if $classHierarchia != NULL}
                   <div id="hierarchia" class="ui bulleted list">
@@ -43,7 +48,7 @@
                 <div class="col-md-12">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="panel-group">
+                      <div class="panel-group" id="accord_vars">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
@@ -57,7 +62,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="panel-group" id="accordion">
+                      <div class="panel-group" id="accord_methods">
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
@@ -106,7 +111,6 @@
     {include "modals/create_method_modal.tpl"}
     
     <!-- Status bar -->
-    {include "blocks/status_bar.tpl"}
     
     <script type="text/javascript">
     
@@ -146,6 +150,7 @@
             
       $("[data-toggle='tooltip']").tooltip();
       $("[data-toggle='popover']").popover();
+      $(".close").alert();
       
     </script>
     

@@ -1,14 +1,20 @@
 
 body {
-  
+  background-color: #120E21;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.panel-heading {
+  background-color: black;
+}
+
+.panel-body {
+  color: white;
+  background-color: #2B3847;
 }
 
 .menu, .dropdown-menu {
   background-color: #2B3847;
-}
-
-.panel-body {
-  
 }
 
 .menu li a {
@@ -21,6 +27,17 @@ body {
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background-color: #898989;
+}
+
+#methods-table, #vars-table {
+  height: 250px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+fieldset legend {
+  color: white;
+  padding: 4px;
 }
 
 table tr th{
@@ -36,13 +53,27 @@ table tr th{
   display: flex;
 }
 
+#hierarchia ul {
+  list-style-type: none;
+}
 
 a.class {
+  font-size: 16px;
   padding: 5px;
+  color: white;
 }
 
 a.class:hover {
+  color: white;
   font-size: 20px;
+}
+
+a.method {
+  color: white;
+}
+
+.type {
+  color: #337ab7;
 }
 
 #currentEditMethod {
@@ -50,18 +81,8 @@ a.class:hover {
 }
 
 .message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px; 
-}
-
-.message a {
-  text-decoration: none;
-  font-size: 32px;
-  font-family: bold;
-  color: black;
+  font-size: 16px;
+  padding: 10px;
 }
 
 .public {

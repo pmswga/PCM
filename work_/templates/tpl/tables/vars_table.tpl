@@ -17,7 +17,7 @@
               <span class="protected">PROTECTED</span>
             {/if}
           </td>
-          <td>
+          <td class="type">
             {if $var->getVarType() == 0}          
               NATIVE
             {elseif $var->getVarType() == 1}
