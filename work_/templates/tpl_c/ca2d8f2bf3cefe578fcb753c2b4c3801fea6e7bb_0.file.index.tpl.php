@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-02 23:08:26
+/* Smarty version 3.1.29, created on 2017-09-02 23:11:44
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ab0fbaa96336_33166331',
+  'unifunc' => 'content_59ab1080c740f7_59656984',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1504382906,
+      1 => 1504383103,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:modals/create_method_modal.tpl' => 1,
   ),
 ),false)) {
-function content_59ab0fbaa96336_33166331 ($_smarty_tpl) {
+function content_59ab1080c740f7_59656984 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -97,7 +97,7 @@ function content_59ab0fbaa96336_33166331 ($_smarty_tpl) {
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#vars">Свойства</a>
+                              <a data-toggle="collapse">Свойства</a>
                             </h4>
                           </div>
                           <div id="vars" class="panel-collapse collapse in">
@@ -111,7 +111,7 @@ function content_59ab0fbaa96336_33166331 ($_smarty_tpl) {
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#methods">Методы</a>
+                              <a data-toggle="collapse">Методы</a>
                             </h4>
                           </div>
                           <div id="methods" class="panel-collapse collapse in">

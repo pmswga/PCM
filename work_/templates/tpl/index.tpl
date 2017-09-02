@@ -52,7 +52,7 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#vars">Свойства</a>
+                              <a data-toggle="collapse">Свойства</a>
                             </h4>
                           </div>
                           <div id="vars" class="panel-collapse collapse in">
@@ -66,7 +66,7 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h4 class="panel-title">
-                              <a data-toggle="collapse" href="#methods">Методы</a>
+                              <a data-toggle="collapse">Методы</a>
                             </h4>
                           </div>
                           <div id="methods" class="panel-collapse collapse in">

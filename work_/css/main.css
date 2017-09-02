@@ -4,17 +4,21 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+h3 {
+  color: white;
+}
+
 .panel-heading {
-  background-color: black;
+  background-color: #564F6E;
 }
 
 .panel-body {
   color: white;
-  background-color: #2B3847;
+  background-color: #2E2A3B;
 }
 
 .menu, .dropdown-menu {
-  background-color: #2B3847;
+  background-color: #2E2A3B;
 }
 
 .menu li a {
@@ -22,11 +26,11 @@ body {
 }
 
 .menu li a:hover{
-  background-color: #50637C;
+  
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background-color: #898989;
+  background-color: #2E2A3B;
 }
 
 #methods-table, #vars-table {
