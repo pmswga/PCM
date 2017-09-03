@@ -39,7 +39,7 @@
         $CT->assign("countOfVars", $countOfVars);
         
       } else {
-        setMessage("Не удалость подвести статистику образа", "warning");
+        setMessage("Не удалость подвести статистику образа, так как в нём отсутствуют классы", "warning");
       }
       
       $CT->assign("classHierarchia", $_SESSION['currentImage']->getClassHierarchia());
