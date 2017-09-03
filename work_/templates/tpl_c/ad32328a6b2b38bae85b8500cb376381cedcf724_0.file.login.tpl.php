@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 18:55:48
+/* Smarty version 3.1.29, created on 2017-09-04 00:13:12
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac2604f2ddf3_22777177',
+  'unifunc' => 'content_59ac7068ee0bd4_38495358',
   'file_dependency' => 
   array (
     'ad32328a6b2b38bae85b8500cb376381cedcf724' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\login.tpl',
-      1 => 1504431407,
+      1 => 1504473191,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ac2604f2ddf3_22777177 ($_smarty_tpl) {
+function content_59ac7068ee0bd4_38495358 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,13 +36,13 @@ function content_59ac2604f2ddf3_22777177 ($_smarty_tpl) {
  type="text/javascript" src="js/bootstrap.js"><?php echo '</script'; ?>
 >
     <style type="text/css">
-      
+      /*
       body {
         background-image: url("img/back.png");
         background-size: cover;
         font-family: 'Open Sans', sans-serif;
       }
-      
+      */
       .form-group:last-child {
         display: flex;
         justify-content: center;

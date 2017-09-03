@@ -22,16 +22,28 @@
     <script type="text/javascript">
       
        editAreaLoader.init({ 
-       id: "methodCode" 
-       ,start_highlight: true 
+        id: "methodCode" 
+        ,start_highlight: true 
         ,allow_resize: "no" 
         ,min_height: 650
-         ,allow_toggle: false
+        ,allow_toggle: false
         ,word_wrap: true 
         ,language: "ru" 
-         ,syntax: "php" 
+        ,syntax: "php" 
        }); 
-    
+       /*
+       editAreaLoader.init({ 
+        id: "generatedCode" 
+        ,start_highlight: true 
+        ,allow_resize: "both"
+        ,min_height: 650
+        ,allow_toggle: false
+        ,word_wrap: true 
+        ,language: "ru" 
+        ,syntax: "php"
+        ,is_editable: false
+       }); 
+    */
     </script>
   </head>
   <body>
@@ -71,7 +83,7 @@
                 {if $classHierarchia != NULL}
                   {menu data=$classHierarchia}
                 {else}
-                  <h3 align="center">Классы не объявлены</h3>
+                  Классы не объявлены
                 {/if}
               </fieldset>          
             </div>
@@ -179,7 +191,50 @@
                   </div>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="generate_code">
-                  Генерация кода
+                  <div class="ui grid">
+                    {if $image != NULL}
+                      <div class="row">
+                        <div class="six wide column">
+                            <table class="ui table striped">
+                              <thead>                          
+                                <tr>
+                                  <th>Название класса</th>
+                                </tr>
+                              </thead>
+                              <tbody>                          
+                                {foreach from=$image->getClasses() item=class}
+                                  <tr>
+                                    <td>{$class->getClassName()}</td>
+                                  </tr>
+                                {/foreach}
+                              </tbody>
+                            </table>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="ui internally grid">
+                            <div class="row">
+                              <div class="sixteen wide column">
+                                <form name="generateForm" method="POST" class="ui form">
+                                  <div class="field">
+                                    <input type="submit" name="generateImageButton" value="Сгенерировать" class="ui button">
+                                  </div>
+                                  <div class="field">
+                                    <textarea rows="50" id="generatedCode" width="100%">{$image}</textarea>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {else}
+                      <div class="row">
+                        <div class="six wide column">
+                          <h2>Для начала необходимо создать образ</h2>
+                        </div>
+                      </div>
+                    {/if}
+                  </div>
                 </div>
               </div>
             </div>
@@ -187,7 +242,6 @@
         </div>
       </div>
     </div>
-    <!--
     
     <!-- Modal windows -->
     
@@ -246,8 +300,33 @@
         app.getMethodSrc(selectedMethodName);
       });
       
+      //init segment ui
+      $('.ui.search').search({
+        source: classes_for_search   
+      });
+            
+      $("#search_class").on("change", function(){
+        var class_name = $("#search_class").val();
+        
+        if (classes.indexOf(class_name) != -1) {
+        
+          if (class_name != "") {
+            app.setCurrentClass(class_name);
+            app.getClassMembers();
+          }
+        }
+        
+      });
       
-      //$(".close").alert();
+			$(".menu .item").tab();
+			$('.ui.accordion').accordion();
+      
+      $('.message .close').on('click', function() {
+          $(this).closest('.message').transition('fade');
+      });
+      
+      
+      // $(".close").alert();
       
       $("#createImage").on("click", function(){
         $("#createImageModal").modal('show');
@@ -273,34 +352,6 @@
         $("#profileModal").modal('show');
       });
       
-      
-      //init segment ui
-      $('.ui.search').search({
-        source: classes_for_search   
-      });
-            
-      $("#search_class").on("change", function(){
-        var class_name = $("#search_class").val();
-        
-        if (classes.indexOf(class_name) != -1) {
-        
-          if (class_name != "") {
-            app.setCurrentClass(class_name);
-            app.getClassMembers();
-          }
-        }
-        
-      });
-      
-      
-			$(".menu .item").tab();
-			$('.ui.accordion').accordion();
-      
-      $('.message .close').on('click', function() {
-          $(this).closest('.message').transition('fade');
-      });
-      
-          
     </script>   
   </body>
 </html>

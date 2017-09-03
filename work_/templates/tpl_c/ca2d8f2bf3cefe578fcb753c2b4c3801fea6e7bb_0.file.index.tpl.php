@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 19:50:33
+/* Smarty version 3.1.29, created on 2017-09-04 00:22:52
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac32d9c20276_66246070',
+  'unifunc' => 'content_59ac72ac3dcf15_27574202',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1504457433,
+      1 => 1504473771,
       2 => 'file',
     ),
   ),
@@ -36,11 +36,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl_c\\ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb_0.file.index.tpl.php',
       'uid' => 'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb',
-      'call_name' => 'smarty_template_function_menu_2597159ac32d9b64a49_97634752',
+      'call_name' => 'smarty_template_function_menu_2270259ac72ac325578_76461949',
     ),
   ),
 ),false)) {
-function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
+function content_59ac72ac3dcf15_27574202 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,16 +78,28 @@ function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
  type="text/javascript">
       
        editAreaLoader.init({ 
-       id: "methodCode" 
-       ,start_highlight: true 
+        id: "methodCode" 
+        ,start_highlight: true 
         ,allow_resize: "no" 
         ,min_height: 650
-         ,allow_toggle: false
+        ,allow_toggle: false
         ,word_wrap: true 
         ,language: "ru" 
-         ,syntax: "php" 
+        ,syntax: "php" 
        }); 
-    
+       /*
+       editAreaLoader.init({ 
+        id: "generatedCode" 
+        ,start_highlight: true 
+        ,allow_resize: "both"
+        ,min_height: 650
+        ,allow_toggle: false
+        ,word_wrap: true 
+        ,language: "ru" 
+        ,syntax: "php"
+        ,is_editable: false
+       }); 
+    */
     <?php echo '</script'; ?>
 >
   </head>
@@ -117,7 +129,7 @@ function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
                   <?php $_smarty_tpl->smarty->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'menu', array('data'=>$_smarty_tpl->tpl_vars['classHierarchia']->value), true);?>
 
                 <?php } else { ?>
-                  <h3 align="center">Классы не объявлены</h3>
+                  Классы не объявлены
                 <?php }?>
               </fieldset>          
             </div>
@@ -230,7 +242,69 @@ function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
                   </div>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="generate_code">
-                  Генерация кода
+                  <div class="ui grid">
+                    <?php if ($_smarty_tpl->tpl_vars['image']->value != NULL) {?>
+                      <div class="row">
+                        <div class="six wide column">
+                            <table class="ui table striped">
+                              <thead>                          
+                                <tr>
+                                  <th>Название класса</th>
+                                </tr>
+                              </thead>
+                              <tbody>                          
+                                <?php
+$_from = $_smarty_tpl->tpl_vars['image']->value->getClasses();
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_class_1_saved_item = isset($_smarty_tpl->tpl_vars['class']) ? $_smarty_tpl->tpl_vars['class'] : false;
+$_smarty_tpl->tpl_vars['class'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['class']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
+$_smarty_tpl->tpl_vars['class']->_loop = true;
+$__foreach_class_1_saved_local_item = $_smarty_tpl->tpl_vars['class'];
+?>
+                                  <tr>
+                                    <td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+</td>
+                                  </tr>
+                                <?php
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_local_item;
+}
+if ($__foreach_class_1_saved_item) {
+$_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
+}
+?>
+                              </tbody>
+                            </table>
+                        </div>
+                        <div class="ten wide column">
+                          <div class="ui internally grid">
+                            <div class="row">
+                              <div class="sixteen wide column">
+                                <form name="generateForm" method="POST" class="ui form">
+                                  <div class="field">
+                                    <input type="submit" name="generateImageButton" value="Сгенерировать" class="ui button">
+                                  </div>
+                                  <div class="field">
+                                    <textarea rows="50" id="generatedCode" width="100%"><?php echo $_smarty_tpl->tpl_vars['image']->value;?>
+</textarea>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <?php } else { ?>
+                      <div class="row">
+                        <div class="six wide column">
+                          <h2>Для начала необходимо создать образ</h2>
+                        </div>
+                      </div>
+                    <?php }?>
+                  </div>
                 </div>
               </div>
             </div>
@@ -308,8 +382,33 @@ function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
         app.getMethodSrc(selectedMethodName);
       });
       
+      //init segment ui
+      $('.ui.search').search({
+        source: classes_for_search   
+      });
+            
+      $("#search_class").on("change", function(){
+        var class_name = $("#search_class").val();
+        
+        if (classes.indexOf(class_name) != -1) {
+        
+          if (class_name != "") {
+            app.setCurrentClass(class_name);
+            app.getClassMembers();
+          }
+        }
+        
+      });
       
-      //$(".close").alert();
+			$(".menu .item").tab();
+			$('.ui.accordion').accordion();
+      
+      $('.message .close').on('click', function() {
+          $(this).closest('.message').transition('fade');
+      });
+      
+      
+      // $(".close").alert();
       
       $("#createImage").on("click", function(){
         $("#createImageModal").modal('show');
@@ -335,41 +434,13 @@ function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
         $("#profileModal").modal('show');
       });
       
-      
-      //init segment ui
-      $('.ui.search').search({
-        source: classes_for_search   
-      });
-            
-      $("#search_class").on("change", function(){
-        var class_name = $("#search_class").val();
-        
-        if (classes.indexOf(class_name) != -1) {
-        
-          if (class_name != "") {
-            app.setCurrentClass(class_name);
-            app.getClassMembers();
-          }
-        }
-        
-      });
-      
-      
-			$(".menu .item").tab();
-			$('.ui.accordion').accordion();
-      
-      $('.message .close').on('click', function() {
-          $(this).closest('.message').transition('fade');
-      });
-      
-          
     <?php echo '</script'; ?>
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_2597159ac32d9b64a49_97634752 */
-if (!function_exists('smarty_template_function_menu_2597159ac32d9b64a49_97634752')) {
-function smarty_template_function_menu_2597159ac32d9b64a49_97634752($_smarty_tpl,$params) {
+/* smarty_template_function_menu_2270259ac72ac325578_76461949 */
+if (!function_exists('smarty_template_function_menu_2270259ac72ac325578_76461949')) {
+function smarty_template_function_menu_2270259ac72ac325578_76461949($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -415,5 +486,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_2597159ac32d9b64a49_97634752 */
+/*/ smarty_template_function_menu_2270259ac72ac325578_76461949 */
 }

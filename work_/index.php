@@ -13,12 +13,13 @@
     $update = function () {
       CTools::Redirect("index.php");
     };
-        
+    
     if (empty($_SESSION['currentImage'])) {
       setMessage("Не выбран образ по умолчанию", "negative");
     } else {
       
       $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
+      $CT->assign("image", $_SESSION['currentImage']);
       
       $countOfClasses = count($_SESSION['currentImage']->getClasses());
       $countOfMethods = 0;
@@ -51,10 +52,18 @@
     if (!empty($_POST['createImageButton'])) {
       
       $imageName = $_POST['imageName'];
+      $imageDescp = $_POST['imageDescp'];
       
       if (!empty($imageName)) {
-        $_SESSION['images'][$imageName] = new PImage($imageName);
-        setMessage("Образ ".$imageName." был успешно создан", "success");
+        $newImage = new PImage($imageName, $imageDescp);
+        $_SESSION['images'][$imageName] = $newImage;
+        
+        if ($UM->addImage($_SESSION['user']->login(), $newImage)) {          
+          setMessage("Образ ".$imageName." был успешно создан", "success");
+        } else {
+          setMessage("Произошла ошибка при создании образа", "negative");
+        }
+        
       } else {
         setMessage("Невозможно создать безымянный образ", "negative");
       }
@@ -113,9 +122,14 @@
         $varAccessType = $_POST['varAccessType'];
         $varType = $_POST['varType'];
         
-        $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
-        
-        setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+        if (!empty($varName)) {          
+          $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
+          
+          setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+          
+        } else {
+          setMessage("Вы не можете создать безымянное свойство", "negative");
+        }
         
       } else {
         setMessage("Невозможно создать свойство в пустом образе", "warning");
@@ -134,11 +148,15 @@
         $methodAccessType = $_POST['methodAccessType'];
         $args = (!empty($_POST['methodArgs'])) ? explode(",", $_POST['methodArgs']) : array();
         
-        $newMethod = new PMethod($methodName, $methodAccessType, $methodType, $args);
-        
-        $_SESSION['currentImage']->getClass($class)['supclass']->addMethod($newMethod);
-        
-        setMessage("Метод ".$methodName." был добавлено в класс".$class, "success");
+        if (!empty($methodName)) {          
+          $newMethod = new PMethod($methodName, $methodAccessType, $methodType, $args);
+          
+          $_SESSION['currentImage']->getClass($class)['supclass']->addMethod($newMethod);
+          
+          setMessage("Метод ".$methodName." был добавлено в класс ".$class, "success");
+        } else {
+          setMessage("Вы не можете создать безымянный метод", "negative");
+        }
         
       } else {
         setMessage("Невозможно создать метод в пустом образе", "warning");
@@ -159,6 +177,10 @@
       }
       
       $update();
+    }
+    
+    if (!empty($_POST['generateImageButton'])) {
+      $_SESSION['currentImage']->generate();
     }
     
     /*! Work with Profile */
@@ -186,9 +208,7 @@
       }
       
       CTools::Redirect("login.php");
-      
     }
-    
     
   } else {
     

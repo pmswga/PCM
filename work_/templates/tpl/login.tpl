@@ -9,13 +9,13 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <style type="text/css">
-      
+      /*
       body {
         background-image: url("img/back.png");
         background-size: cover;
         font-family: 'Open Sans', sans-serif;
       }
-      
+      */
       .form-group:last-child {
         display: flex;
         justify-content: center;

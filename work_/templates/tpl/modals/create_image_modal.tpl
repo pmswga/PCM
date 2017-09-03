@@ -13,22 +13,30 @@
               </tr>
             </thead>
             <tbody>
-              {foreach from=$images item=image}        
-                <tr>
-                  <td><a href="#{$image->getImageName()}">{$image->getImageName()}</a></td>
-                  <!-- <td>{count($image->getClasses())}</td> -->
-                  <!-- <td>~</td> -->
-                  <!-- <td>~</td> -->
-                </tr>
-              {/foreach}
+              {if $images != NULL}                
+                {foreach from=$images item=image}        
+                  <tr>
+                    <td><a href="#{$image->getImageName()}">{$image->getImageName()}</a></td>
+                    <!-- <td>{count($image->getClasses())}</td> -->
+                    <!-- <td>~</td> -->
+                    <!-- <td>~</td> -->
+                  </tr>
+                {/foreach}
+              {else}
+                <tr><td>Образов нет</td></tr>
+              {/if}
             </tbody>
           </table>
         </div>
         <div class="eight wide column">
           <form name="createImageForm" method="POST" class="ui form">          
             <div class="field">
-              <label>Имя образа</label>
+              <label>Название</label>
               <input type="text" name="imageName">
+            </div>
+            <div class="field">
+              <label>Описание</label>
+              <textarea name="imageDescp"></textarea>
             </div>
             <div class="field">
               <input type="submit" name="createImageButton" value="Создать" class="ui button">

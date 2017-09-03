@@ -4,8 +4,10 @@
   
 	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/dbc/dbc.class.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/users/user.class.php";
+	require_once $_SERVER['DOCUMENT_ROOT']."/work_/pcm/classes/pimage.class.php";
   
   use PCM\DataBase\DBC;
+  use PCM\Classes\PImage;
   
   const FIELD_LOGIN = 0;
   const FIELD_PASSWORD = 1;
@@ -23,6 +25,7 @@
       2. Изменять информацию об пользователе
       3. Удалять пользователей, срок аккаунта которых истёк
       4. Получать образы пользователя
+      5. Добавлять/удалять образы пользователей
     
   */
   
@@ -93,14 +96,41 @@
       \brief
     */
     
+    public function addImage(string $login, PImage $image) : bool
+    {
+      $add_new_image = $this->dbc()->prepare("
+        INSERT INTO `user_images` 
+        (`id_user`, `caption`, `descp`, `image`) 
+        VALUES 
+        ((select getUserID(:login)), :caption, :descp, :image)
+      ");
+      
+      $add_new_image->bindValue(":login", $login);
+      $add_new_image->bindValue(":caption", $image->getImageName());
+      $add_new_image->bindValue(":descp", $image->getImageDescp());
+      $add_new_image->bindValue(":image", serialize($image));
+      
+      return $add_new_image->execute();
+    }
+    
+    /*!
+      \brief
+    */
+    
     public function images(string $login) : array
     {
       if (!empty($login)) {
         
-        return $this->query("SELECT ui.id_user_image, ui.id_user, ui.image FROM `users` u 	INNER JOIN `user_images` ui ON u.id_user=ui.id_user WHERE u.email=:login;", [
+        $db_images = $this->query("SELECT ui.id_user_image, ui.id_user, ui.caption, ui.descp, ui.image FROM `users` u 	INNER JOIN `user_images` ui ON u.id_user=ui.id_user WHERE u.email=:login;", [
           ":login" => $login
         ]);
         
+        $images = array();
+        foreach ($db_images as $db_image) {
+          $images[$db_image['caption']] = unserialize($db_image['image']);
+        }
+        
+        return $images;
       } else {
         throw new \Exception("Login is empty");
       }
@@ -123,6 +153,14 @@
         return false;
       }
     }
+    
+    /*!
+      \brief
+      \param[in]
+      \param[in]
+      \param[in]
+      \return TRUE - успешно изменён, FALSE - произошла ошибка
+    */
     
     public function changeProfilePassword(string $login, string $old_value, string $new_value) : bool
     {
