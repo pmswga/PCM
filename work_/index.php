@@ -163,7 +163,6 @@
         $src = $_POST['src'];
         
         $_SESSION['currentImage']->getClass($editClass)['supclass']->getMethod($editMethod)->setSrc($src);
-        
       }
       
     }

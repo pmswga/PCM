@@ -18,7 +18,7 @@
         <li><a href="#" accesskey="d">Словарь</a></li>
       </ul>
     </li>
-    <li><a href="profile.php">Профиль</a></li>
+    <li><a href="#profile.php" id="profile">Профиль</a></li>
     <li><a href="settings.php">Настройки</a></li>
     <li><a href="#docs.php">Справка</a></li>
     <!-- {if $countOfClasses > 0}               -->

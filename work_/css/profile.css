@@ -1,0 +1,24 @@
+
+.table {
+  color: white;
+}
+
+.table tr td {
+  width: 250px;
+}
+
+.table tr td:last-child {
+  text-align: center;
+}
+
+.image {
+  color: white;
+}
+
+.sssss {
+  color: white;
+}
+
+.me_button{
+  font-size: 100px;
+}

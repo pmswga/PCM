@@ -66,8 +66,8 @@ class UIApp
         type: "post",
         data: "className=" + className + "&methodName=" + method,
         success: function (replay) {
-          $("#methodCode").text("");
-          $("#methodCode").text(replay);
+          
+          editAreaLoader.setValue("methodCode", replay);
           
           $("[name='editMethod']").attr("value", method);
           $("[name='editClass']").attr("value", className);

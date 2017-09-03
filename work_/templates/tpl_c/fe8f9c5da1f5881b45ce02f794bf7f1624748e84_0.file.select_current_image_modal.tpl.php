@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 21:05:19
+/* Smarty version 3.1.29, created on 2017-09-03 14:40:18
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\select_current_image_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f435f4e91f5_36396321',
+  'unifunc' => 'content_59abea221e0ff4_79742246',
   'file_dependency' => 
   array (
     'fe8f9c5da1f5881b45ce02f794bf7f1624748e84' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598f435f4e91f5_36396321 ($_smarty_tpl) {
+function content_59abea221e0ff4_79742246 ($_smarty_tpl) {
 ?>
 <div class="modal fade" id="selectCurrnetImageModal">
   <div class="modal-dialog">

@@ -30,12 +30,12 @@
         margin-right: 10px;
       }
       
-      form label {
+      [name="loginUserForm"] label {
         color: white;
         font-size: 20px;
       }
       
-      [name="login"], [name="password"] {
+      [name="login"], [name="password"], [name="retry_password"], [name="account_type"] {
         border: 1px solid black;
       }
       
@@ -81,7 +81,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Регистрация нового пользователя</h4>
+            <h4 class="modal-title">Регистрация</h4>
           </div>
           <div class="modal-body">
             <form name="registrationUserForm" method="POST">
@@ -104,7 +104,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <input type="submit" name="registrationUserButton" value="Зарегистрироваться" class="btn btn-primary">
+                <input type="submit" name="registrationUserButton" value="Зарегистрировать" class="btn btn-primary">
               </div>
             </form>
           </div>

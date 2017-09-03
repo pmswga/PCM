@@ -11,9 +11,9 @@
     
     $images = $UM->images($_SESSION['user']->login());
     
-    CTools::var_dump($images);
+    // CTools::var_dump($images);
     
-    // $CT->assign("imagesFiles", PImagesManager::scanDir($_SESSION['settings']['General']['image_import_folder']."/*.pcm"));
+    $CT->assign("imagesFiles", PImagesManager::scanDir($_SESSION['settings']['General']['image_import_folder']."/*.pcm"));
     $CT->Show("profile.tpl");
     
     if (!empty($_POST['removeAccountButton'])) {

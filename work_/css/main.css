@@ -26,11 +26,12 @@ h3 {
 }
 
 .menu li a:hover{
-  
+  color: black;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background-color: #2E2A3B;
+  background-color: white;
+  color: black;
 }
 
 #methods-table, #vars-table {

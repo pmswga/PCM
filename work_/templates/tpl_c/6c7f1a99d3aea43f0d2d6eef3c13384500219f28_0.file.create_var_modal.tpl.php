@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-08-12 21:06:30
+/* Smarty version 3.1.29, created on 2017-09-03 14:40:18
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\create_var_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_598f43a6406c81_14994598',
+  'unifunc' => 'content_59abea22208109_01882091',
   'file_dependency' => 
   array (
     '6c7f1a99d3aea43f0d2d6eef3c13384500219f28' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_598f43a6406c81_14994598 ($_smarty_tpl) {
+function content_59abea22208109_01882091 ($_smarty_tpl) {
 ?>
 <div class="modal fade" id="createVarModal">
   <div class="modal-dialog">
