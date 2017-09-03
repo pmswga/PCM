@@ -1,11 +1,13 @@
 {if $vars != NULL}
-  <table class="table table-bordered">
-    <tbody>
+  <table class="ui table striped">
+    <thead>
       <tr>
-        <th>Доступ</th>     
-        <th>Тип</th>
+        <th>Доступ</th>
+        <!-- <th>Тип</th> -->
         <th>Имя</th>
       </tr>
+    </thead>
+    <tbody>
       {foreach from=$vars item=var}
         <tr>
           <td>
@@ -16,14 +18,14 @@
             {elseif $var->getAccessType() == 2}
               <span class="protected">PROTECTED</span>
             {/if}
-          </td>
+          </td>{*
           <td class="type">
             {if $var->getVarType() == 0}          
               NATIVE
             {elseif $var->getVarType() == 1}
               STATIC
             {/if}
-          </td>
+          </td>*}
           <td>{$var->getVarName()}</td>
         </tr>
       {/foreach}

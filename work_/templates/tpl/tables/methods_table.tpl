@@ -1,11 +1,13 @@
 {if $methods != NULL}
-  <table class="table table-bordered">
-    <tbody>
+  <table class="ui table striped">
+    <thead>
       <tr>
         <th>Доступ</th>     
-        <th>Тип</th>
+        <!-- <th>Тип</th> -->
         <th>Имя</th>
       </tr>
+    </thead>
+    <tbody>
       {foreach from=$methods item=method}
         <tr>
           <td>
@@ -16,7 +18,7 @@
             {elseif $method->getAccessType() == 2}
               <span class="protected">PROTECTED</span>
             {/if}
-          </td>
+          </td>{*
           <td class="type">
             {if $method->getMethodType() == 0}          
               NATIVE
@@ -25,7 +27,7 @@
             {elseif $method->getMethodType() == 2}
               ABSTRACT
             {/if}
-          </td>
+          </td>*}
           <td>
             <a href="#{$method->getMethodName()}" class="method">{$method->getMethodName()} (
               {$methods = $method->getArgs()}

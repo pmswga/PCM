@@ -1,7 +1,17 @@
-
 {foreach from=$msgs item=msg}
-  <div class="alert alert-{$msg['type']} fade in">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <p class="message bg-">{$msg['msg']}</p>    
+  <div class="ui {$msg['type']} message">
+    <i class="close icon"></i>
+    <div class="header">
+      {if $msg['type'] == "negative"}
+        Ошибка
+      {elseif $msg['type'] == "warning"}
+        Предупреждение
+      {elseif $msg['type'] == "info"}
+        Уведомление
+      {elseif $msg['type'] == "success"}
+        Успешно
+      {/if}
+    </div>
+    <p>{$msg['msg']}</p>
   </div>
 {/foreach}

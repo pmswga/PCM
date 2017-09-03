@@ -9,32 +9,30 @@
       {/if}
     </title>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css"> -->
     <link rel="stylesheet" type="text/css" href="css/semantic/semantic.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="css/semantic/semantic.js"></script>
-    <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 		<!-- <script type="text/javascript" src="js/tabulation.js"></script> -->
-		<!-- <script type="text/javascript" src="js/uiapp.js"></script> -->
+		<script type="text/javascript" src="js/uiapp.js"></script>
     
     <!-- Init EditArea -->
-    <!-- <script type="text/javascript" src="editarea/edit_area/edit_area_full.js"></script> -->
-    <!-- <script type="text/javascript"> -->
+    <script type="text/javascript" src="editarea/edit_area/edit_area_full.js"></script> 
+    <script type="text/javascript">
       
-      <!-- editAreaLoader.init({ -->
-        <!-- id: "methodCode" -->
-        <!-- ,start_highlight: true -->
-        <!-- ,allow_resize: "no" -->
-        <!-- ,min_height: 650 -->
-        <!-- ,allow_toggle: false -->
-        <!-- ,word_wrap: true -->
-        <!-- ,language: "ru" -->
-        <!-- ,syntax: "php" -->
-      <!-- }); -->
+       editAreaLoader.init({ 
+       id: "methodCode" 
+       ,start_highlight: true 
+        ,allow_resize: "no" 
+        ,min_height: 650
+         ,allow_toggle: false
+        ,word_wrap: true 
+        ,language: "ru" 
+         ,syntax: "php" 
+       }); 
     
-    <!-- </script> -->
+    </script> 
     
     <style rel="stylesheet" type="text/css">
       
@@ -73,63 +71,65 @@
         background-color: white;
       }
       
+      h1, h2, h3, h4 {
+        color: black;
+      }
+      
+      .ui.list, .class{
+        color: white;
+      }
+      
+      .ui.form .field:last-child {
+        display: flex;
+        justify-content: flex-end;
+      }
+      
+      #profile_tool_bar {
+        display: flex;
+        justify-content: space-around;
+      }
+      
     </style>
-    
   </head>
   <body>
-    <div class="ui inverted massive menu">
-      <div class="header item">
-        Smart PHP
-      </div>
-      <a class="item">Профиль</a>
-      <a class="item">Настройки</a>
-      <div class="right menu">
-        <a class="item">Выход</a>
-      </div>
-    </div>
+    {include file="blocks/menu.tpl"}
     <div id="content" class="ui divided grid">
       <div class="row">
         <div class="four wide column">
           <div class="row">
             <div class="sixteen wide column">
-              <div class="ui success message">
-                <i class="close icon"></i>
-                <div class="header">
-                  Хорошее сообщение
-                </div>
-                <p>Барин доволен</p>
-              </div>
-              <div class="ui negative message">
-                <i class="close icon"></i>
-                <div class="header">
-                  Плохое сообщение
-                </div>
-                <p>Царь батюшка!! Не вели казнить, вели слово молвить...</p>
-              </div>
-              <div class="ui warning message">
-                <i class="close icon"></i>
-                <div class="header">
-                  Предупреждение
-                </div>
-                <p>Сейчас кому-то по губам дам, за такие слова!</p>
-              </div>
-              <div class="ui info message">
-                <i class="close icon"></i>
-                <div class="header">
-                  Просто информация 
-                </div>
-                <ul class="list">
-                  <li>Буклеты сделаны</li>
-                  <li>Прога супер</li>
-                </ul>
-              </div>
+              {if $msgs != NULL}              
+                {include file="blocks/status_bar.tpl"}
+              {/if}
             </div>
           </div>
           <br>
           <div class="row">
             <div class="sixteen wide column">
               <fieldset>
-                <legend>Classes</legend>
+                <legend><h1>Иерархия классов</h1></legend>
+                {function menu}
+                  <ul class="ui list" id="hierarchia">
+                    {foreach from=$data item=entry}
+                      <li class="item">
+                        <i class="folder icon"></i>
+                        <div class="content">
+                          <div class="header"><a href="#{$entry['supclass']->getClassName()}" class="class">{$entry['supclass']->getClassName()}</a></div>
+                          {if is_array($entry['subclass'])}
+                            <ul class="list">
+                              {menu data=$entry["subclass"]}
+                            </ul>
+                          {/if}
+                        </div>
+                      </li>
+                    {/foreach}
+                  </ul>
+                {/function}
+                {if $classHierarchia != NULL}
+                  {menu data=$classHierarchia}
+                {else}
+                  <h3 align="center">Классы не объявлены</h3>
+                {/if}
               </fieldset>          
             </div>
           </div>
@@ -138,53 +138,39 @@
           <div class="ui divided grid">
             <div class="row">
               <div class="sixteen wide column">
-                <div class="ui menu">
-                  <a class="item">
-                    <i class="file icon"></i>
-                    Add Class
-                  </a>
-                  <a class="item">
-                    <i class="video play icon"></i>
-                    Add Var
-                  </a>
-                  <a class="item">
-                    <i class="video camera icon"></i>
-                    Add Method
-                  </a>
-                  <a class="item">
-                    <i class="video camera icon"></i>
-                    Add Const
-                  </a>
-                  <div class="right menu">
-                    <div class="item">
-                      <div class="ui input"><input type="text" placeholder="Search..."></div>
-                    </div>
-                    <a class="item">
-                      <i class="out file icon"></i>
-                      Add Image
-                    </a>
-                  </div>
-                </div>
+                {include file="blocks/tool_bar.tpl"}
               </div>
-            </div>
+            </div><!--
             <div class="row">
               <div class="eight wide column">
                 <fieldset>
-                  <legend>Vars</legend>
+                  <legend><h1>Свойства</h1></legend>
+                  <div class="panel-group" id="accord_vars">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse">Свойства</a>
+                        </h4>
+                      </div>
+                      <div id="vars" class="panel-collapse collapse in">
+                        <div class="panel-body" id="vars-table"></div>
+                      </div>
+                    </div>
+                  </div>
                 </fieldset>
               </div>
               <div class="eight wide column">
                <fieldset>
-                  <legend>Methods</legend>
+                  <legend><h1>Методы</h1></legend>
                 </fieldset>
               </div>
-            </div>
+            </div>-->
             <div class="row">
               <div class="sixteen wide column">              
                 <div class="ui top attached tabular menu">
                   <a class="item active" data-tab="method_code">
                     <i class="large code icon"></i>
-                    Метод
+                    Код
                   </a>
                   <a class="item" data-tab="generate_code">
                     <i class="large file code outline icon"></i>
@@ -192,11 +178,43 @@
                   </a>
                 </div>
                 <div class="ui bottom attached tab segment active" data-tab="method_code">
-                  <form class="ui form">
-                    <div class="field">
-                      <textarea rows="15"></textarea>
+                  <div class="ui internally celled grid">
+                    <div class="row">
+                      <div class="ten wide column">
+                        <form name="editCodeMethodForm" method="POST" class="ui form">
+                          <div class="field">
+                            <textarea rows="15" name="src" id="methodCode"></textarea>
+                        <!-- onkeydown="insertTab(this, event);" -->
+                          </div>
+                          <div class="field">
+                            <input type="hidden" name="editClass" value="">
+                            <input type="hidden" name="editMethod" value="">
+                            <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="ui button">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="six wide column">
+                         <div class="ui styled accordion">
+                          <div class="title">
+                            <i class="dropdown icon"></i>
+                            Свойства
+                          </div>
+                          <div class="content">                            
+                            <div class="panel-body" id="vars-table"></div>
+                          </div>
+                        </div>
+                        <div class="ui styled accordion">
+                          <div class="title">
+                            <i class="dropdown icon"></i>
+                            Методы
+                          </div>
+                          <div class="content">                            
+                            <div class="panel-body" id="methods-table"></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="generate_code">
                   Генерация кода
@@ -271,17 +289,7 @@
                 <div class="col-md-12">
                   <fieldset>
                     <legend>Редактирование метода <span id="currentEditMethod"></span></legend>
-                    <form name="editCodeMethodForm" method="POST">
-                      <div class="form-group">                    
-                        <textarea rows="15" name="src" class="form-control"  id="methodCode"></textarea>-->
-                        <!-- onkeydown="insertTab(this, event);" --><!--
-                      </div>
-                      <div class="form-group">
-                        <input type="hidden" name="editClass" value="">
-                        <input type="hidden" name="editMethod" value="">
-                        <input type="submit" name="saveCodeMethodButton" value="Сохранить" class="btn btn-primary pull-right">
-                      </div>
-                    </form>
+                    
                   </fieldset>
                 </div>
               </div>
@@ -292,48 +300,23 @@
     </div>
     -->
     <!-- Modal windows -->
-    <!--
-    {*{include "modals/create_class_modal.tpl"}
+    
     {include "modals/create_image_modal.tpl"}
+    {include "modals/create_class_modal.tpl"}
+    {include "modals/create_var_modal.tpl"}
+    {include "modals/create_method_modal.tpl"}
+    
+    {include "modals/profile.tpl"}
+    {*
     {include "modals/view_images_modal.tpl"}
     {include "modals/select_current_image_modal.tpl"}
-    {include "modals/create_var_modal.tpl"}
-    {include "modals/create_method_modal.tpl"}*}
-    -->
+    *}
+    
     
     <!-- Modals -->
-    <!--
-    <div class="ui modal">
-      <i class="close icon"></i>
-      <div class="header">
-        Profile Picture
-      </div>
-      <div class="image content">
-        <div class="ui medium image">
-          <img src="/images/avatar/large/chris.jpg">
-        </div>
-        <div class="description">
-          <div class="ui header">We've auto-chosen a profile image for you.</div>
-          <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-          <p>Is it okay to use this photo?</p>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="ui black deny button">
-          Nope
-        </div>
-        <div class="ui positive right labeled icon button">
-          Yep, that's me
-          <i class="checkmark icon"></i>
-        </div>
-      </div>
-    </div>
-    -->
-      
+          
     
     
-    <!-- Status bar -->
-    <!--
     <script type="text/javascript">
     
       var classes = [];
@@ -370,33 +353,41 @@
         app.getMethodSrc(selectedMethodName);
       });
       
-      $("[data-toggle='tooltip']").tooltip();
-      $("[data-toggle='popover']").popover();
-      $(".close").alert();
       
-      $("#profile").on("click", function() {      
-        $('.ui.modal').modal('show');
+      //$(".close").alert();
+      
+      $("#createImage").on("click", function(){
+        $("#createImageModal").modal('show');
+      });
+      
+      $("#createClass").on("click", function(){
+        $("#createClassModal").modal('show');
+      });
+     
+      $("#createVar").on("click", function(){
+        $("#createVarModal").modal('show');
+      });
+      
+      $("#createMethod").on("click", function(){
+        $("#createMethodModal").modal('show');
+      });
+      
+      $("#profile").on("click", function(){
+        $("#profileModal").modal('show');
       });
       
       
-    </script>
-    -->
-    
-    <script type="text/javascript">
       
       
+      //init segment ui
 			$(".menu .item").tab();
-			
 			$('.ui.accordion').accordion();
-			
-			$('select.dropdown').dropdown();
-			$('.dropdown').dropdown();
       
       $('.message .close').on('click', function() {
           $(this).closest('.message').transition('fade');
       });
       
-    </script>
-    
+          
+    </script>   
   </body>
 </html>

@@ -16,18 +16,6 @@
     $CT->assign("imagesFiles", PImagesManager::scanDir($_SESSION['settings']['General']['image_import_folder']."/*.pcm"));
     $CT->Show("profile.tpl");
     
-    if (!empty($_POST['removeAccountButton'])) {
-      
-      if ($UM->remove($_SESSION['user']->login())) {
-        unset($_SESSION['user']);
-        CTools::Message("Ваш аккаунт был удалён навсегда");
-      } else {
-        CTools::Message("Произошла ошибка при удалении аккаунта");
-      }
-      
-      CTools::Redirect("login.php");
-      
-    }
     
   } else {
     

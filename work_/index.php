@@ -13,41 +13,22 @@
     $update = function () {
       CTools::Redirect("index.php");
     };
-    
-    function viewHierarchia($classes)
-    {			
-      static $code = "";
-      foreach ($classes as $value) {
-        $code .= "<ul>";
-        if (is_array($value['subclass'])) {
-          
-          if (!empty($value['supclass'])) {
-            $code .= "<li><img src='img/file.png' width='30px' alt='class'><a href='#".$value['supclass']->getClassName()."' class='class'>".$value['supclass']->getClassName()."</a></li>";
-          }
-          
-          viewHierarchia($value['subclass']);
-        }
-        $code .= "</ul>";
-      }
-      return $code;
-    }
-    
-    
+        
     if (empty($_SESSION['currentImage'])) {
-      setMessage("Не выбран образ по умолчанию", "danger");
+      setMessage("Не выбран образ по умолчанию", "negative");
     } else {
       
       $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
       $CT->assign("countOfClasses", count($_SESSION['currentImage']->getClasses()));
       
       $classHierarchia = $_SESSION['currentImage']->getClassHierarchia();
-      $CT->assign("classHierarchia", viewHierarchia($classHierarchia));
+      // $CT->assign("classHierarchia", viewHierarchia($classHierarchia));
+      $CT->assign("classHierarchia", $classHierarchia);
       $CT->assign("classes", $_SESSION['currentImage']->getClasses());
       
     }
     
-    
-
+    $CT->assign("profile", $_SESSION['user']);
     $CT->assign("images", $_SESSION['images']);
     
     $CT->assign("msgs", $_SESSION['msgs']);
@@ -63,7 +44,7 @@
         $_SESSION['images'][$imageName] = new PImage($imageName);
         setMessage("Образ ".$imageName." был успешно создан", "success");
       } else {
-        setMessage("Невозможно создать безымянный образ", "danger");
+        setMessage("Невозможно создать безымянный образ", "negative");
       }
       
       $update();
@@ -76,7 +57,7 @@
         $_SESSION['currentImage'] = $_SESSION['images'][$currentImage];
         setMessage("Образ ".$currentImage." был выбран в качестве по умолчанию", "info");
       } else {
-        setMessage("Невозможно выбрать несуществующий образ", "danger");
+        setMessage("Невозможно выбрать несуществующий образ", "negative");
       }
       
       $update();
@@ -96,7 +77,7 @@
           if ($_SESSION['currentImage']->addClass($newClass)) {
             setMessage("Класс ".$className." был успешно создан", "success");
           } else {
-            setMessage("Произошла ошибка при создании класса ".$className, "danger");
+            setMessage("Произошла ошибка при создании класса ".$className, "negative");
           }
           
         } else {
@@ -165,7 +146,24 @@
         $_SESSION['currentImage']->getClass($editClass)['supclass']->getMethod($editMethod)->setSrc($src);
       }
       
+      $update();
     }
+    
+    /*! Work with Profile */
+    
+    if (!empty($_POST['removeAccountButton'])) {
+      
+      if ($UM->remove($_SESSION['user']->login())) {
+        unset($_SESSION['user']);
+        CTools::Message("Ваш аккаунт был удалён навсегда");
+      } else {
+        CTools::Message("Произошла ошибка при удалении аккаунта");
+      }
+      
+      CTools::Redirect("login.php");
+      
+    }
+    
     
   } else {
     
