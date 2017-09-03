@@ -163,6 +163,19 @@
     
     /*! Work with Profile */
     
+    if (!empty($_POST['changeProfilePasswordButton'])) {
+      $oldPassword = md5(htmlspecialchars($_POST['oldPassword']));
+      $newPassword = md5(htmlspecialchars($_POST['newPassword']));
+      
+      if ($UM->changeProfilePassword($_SESSION['user']->login(), $oldPassword, $newPassword)) {
+        setMessage("Пароль был успешно изменён", "success");
+      } else {
+        setMessage("Не удалось изменить пароль", "negative");
+      }
+      
+      $update();
+    }
+    
     if (!empty($_POST['removeAccountButton'])) {
       
       if ($UM->remove($_SESSION['user']->login())) {

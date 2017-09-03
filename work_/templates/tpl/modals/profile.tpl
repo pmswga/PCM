@@ -25,6 +25,11 @@
           </table>
         </div>
         <div class="ten wide column">
+          <div id="message_box" class="ui message">
+            <i class="close icon"></i>
+            <div id="message_header" class="header"></div>
+            <p id="message_content"></p>
+          </div>
           <div class="ui styled accordion">
             <div class="title">
               Изменить тип акканута
@@ -73,21 +78,21 @@
               Сменить пароль
             </div>
             <div class="content">
-              <form class="ui form">
+              <form name="changeProfilePasswordForm" method="POST" class="ui form">
                 <div class="field">
                   <label>Старый пароль</label>
-                  <input type="password">
+                  <input type="password" name="oldPassword" >
                 </div>
                 <div class="field">
                   <label>Новый пароль</label>
-                  <input type="password">
+                  <input type="password" name="newPassword" >
                 </div>
                 <div class="field">
                   <label>Повторите пароль</label>
-                  <input type="password">
+                  <input type="password" name="newRetryPassword" >
                 </div>
                 <div class="field">
-                  <input type="submit" value="Изменить" class="ui orange button">
+                  <input type="submit" name="changeProfilePasswordButton" value="Изменить" class="ui orange button">
                 </div>
               </form>
             </div>
@@ -103,3 +108,40 @@
     </form>
   </div>
 </div>
+<script type="text/javascript">
+
+  function visibleMessageBox(visible = false, header = "", content = "", status = "info")
+  {
+    $("#message_header").text(header);
+    $("#message_content").text(content);
+    $("#message_box").attr("class", "ui " + status + " message");
+  
+    if (visible) {
+      $("#message_box").show();
+    } else {
+      $("#message_box").hide();
+    }
+  }
+  
+  visibleMessageBox(false);
+  
+  $("[name='changeProfilePasswordForm']").on("submit", function(){
+  
+    var oldPassword = $("[name='oldPassword']").val();
+    var newPassword = $("[name='newPassword']").val();
+    var retryPassword = $("[name='newRetryPassword']").val();
+    
+    if ((oldPassword != "") && (newPassword != "") && (retryPassword != "")) {    
+      if (newPassword === retryPassword) {
+        return true;
+      } else {
+        visibleMessageBox(true, "Ошибка", "Пароли не совпадают", "negative");
+      }
+    } else {
+      visibleMessageBox(true, "Ошибка", "Заполните необходимые поля", "negative");
+    }
+    
+    return false;
+  });
+
+</script>

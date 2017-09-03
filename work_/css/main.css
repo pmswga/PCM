@@ -16,15 +16,6 @@ body {
   background-color: #564F6E;
 }
 
-.one, .two, .three,
-.four, .five, .six,
-.seven, .eight, .nine,
-.ten, .eleven, .twelve,
-.thirteen, .fourtheen, .sixtheen {
-
-  <!-- border: 1px solid black; -->
-}
-
 #content {
   padding: 10px;
 }

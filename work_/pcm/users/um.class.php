@@ -7,6 +7,9 @@
   
   use PCM\DataBase\DBC;
   
+  const FIELD_LOGIN = 0;
+  const FIELD_PASSWORD = 1;
+  
   /*!
     
     \class UserManager um.class.php "pcm/users/um.class.php"
@@ -103,7 +106,6 @@
       }
     }
     
-    
     /*!
       \brief Добавление нового пользователя
       \param[in] $user_email - Электронная почта пользователя
@@ -120,6 +122,17 @@
       } else {
         return false;
       }
+    }
+    
+    public function changeProfilePassword(string $login, string $old_value, string $new_value) : bool
+    {
+      $change_login_query = $this->dbc()->prepare("UPDATE `users` SET `password`=:new_value WHERE `password`=:old_value AND `email`=:login");
+      
+      $change_login_query->bindValue(":old_value", $old_value);
+      $change_login_query->bindValue(":new_value", $new_value);
+      $change_login_query->bindValue(":login", $login);
+      
+      return $change_login_query->execute();
     }
     
   }
