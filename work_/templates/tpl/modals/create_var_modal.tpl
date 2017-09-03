@@ -7,7 +7,7 @@
       <div class="row">
         <div class="sixteen wide column">
           <form name="createVarForm" method="POST" class="ui form">
-            {if $images != NULL}
+            {if $currentImage != NULL}
               <div class="field">
                 <label>Класс</label>
                 <select name="class" class="form-control">
@@ -39,7 +39,7 @@
                 <input type="submit" name="createVarButton" value="Создать" class="ui button">
               </div>
             {else}
-              <h3 align="center">Создайте образ</h3>
+              <h3 align="center">Выберете образ по умолчанию</h3>
             {/if}
           </form>
         </div>

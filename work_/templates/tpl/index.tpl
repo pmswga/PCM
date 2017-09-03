@@ -195,20 +195,25 @@
                     {if $image != NULL}
                       <div class="row">
                         <div class="six wide column">
+                          {$classes = $image->getClasses()}
+                          {if $classes != NULL}
                             <table class="ui table striped">
                               <thead>                          
                                 <tr>
                                   <th>Название класса</th>
                                 </tr>
                               </thead>
-                              <tbody>                          
-                                {foreach from=$image->getClasses() item=class}
-                                  <tr>
-                                    <td>{$class->getClassName()}</td>
-                                  </tr>
-                                {/foreach}
+                              <tbody>
+                                  {foreach from=$classes item=class}
+                                    <tr>
+                                      <td>{$class->getClassName()}</td>
+                                    </tr>
+                                  {/foreach}
                               </tbody>
                             </table>
+                          {else}
+                            <h3>В образе не найдены классы</h3>
+                          {/if}
                         </div>
                         <div class="ten wide column">
                           <div class="ui internally grid">
@@ -226,7 +231,7 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> 
                     {else}
                       <div class="row">
                         <div class="six wide column">
@@ -258,8 +263,6 @@
     
     
     <!-- Modals -->
-          
-    
     
     <script type="text/javascript">
     

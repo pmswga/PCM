@@ -21,25 +21,33 @@
       $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
       $CT->assign("image", $_SESSION['currentImage']);
       
-      $countOfClasses = count($_SESSION['currentImage']->getClasses());
-      $countOfMethods = 0;
-      $countOfVars = 0;
-      
       $classes = $_SESSION['currentImage']->getClasses();
+      $countOfClasses = count($classes);
       
-      foreach ($classes as $class) {
-        $countOfMethods += count($class->getMethods());
-        $countOfVars += count($class->getVars());
+      if ($countOfClasses > 0) {
+        
+        $countOfMethods = 0;
+        $countOfVars = 0;
+        
+        foreach ($classes as $class) {
+          $countOfMethods += count($class->getMethods());
+          $countOfVars += count($class->getVars());
+        }
+        
+        $CT->assign("countOfClasses", $countOfClasses);
+        $CT->assign("countOfMethods", $countOfMethods);
+        $CT->assign("countOfVars", $countOfVars);
+        
+      } else {
+        setMessage("Не удалость подвести статистику образа", "warning");
       }
-      
-      $CT->assign("countOfClasses", $countOfClasses);
-      $CT->assign("countOfMethods", $countOfMethods);
-      $CT->assign("countOfVars", $countOfVars);
       
       $CT->assign("classHierarchia", $_SESSION['currentImage']->getClassHierarchia());
       $CT->assign("classes", $classes);
       
     }
+    
+    // $_SESSION['images'] = $UM->images($_SESSION['user']->login());
     
     $CT->assign("profile", $_SESSION['user']);
     $CT->assign("images", $_SESSION['images']);
@@ -56,7 +64,7 @@
       
       if (!empty($imageName)) {
         $newImage = new PImage($imageName, $imageDescp);
-        $_SESSION['images'][$imageName] = $newImage;
+        // $_SESSION['images'][$imageName] = $newImage;
         
         if ($UM->addImage($_SESSION['user']->login(), $newImage)) {          
           setMessage("Образ ".$imageName." был успешно создан", "success");

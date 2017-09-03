@@ -16,10 +16,7 @@
               {if $images != NULL}                
                 {foreach from=$images item=image}        
                   <tr>
-                    <td><a href="#{$image->getImageName()}">{$image->getImageName()}</a></td>
-                    <!-- <td>{count($image->getClasses())}</td> -->
-                    <!-- <td>~</td> -->
-                    <!-- <td>~</td> -->
+                    <td>{$image->getImageName()}</td>
                   </tr>
                 {/foreach}
               {else}

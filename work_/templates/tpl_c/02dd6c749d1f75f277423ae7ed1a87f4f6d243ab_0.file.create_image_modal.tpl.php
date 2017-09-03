@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 00:21:58
+/* Smarty version 3.1.29, created on 2017-09-04 00:28:21
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\create_image_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac72765dc580_80771066',
+  'unifunc' => 'content_59ac73f5a0e423_71001101',
   'file_dependency' => 
   array (
     '02dd6c749d1f75f277423ae7ed1a87f4f6d243ab' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\modals\\create_image_modal.tpl',
-      1 => 1504472875,
+      1 => 1504474100,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ac72765dc580_80771066 ($_smarty_tpl) {
+function content_59ac73f5a0e423_71001101 ($_smarty_tpl) {
 ?>
 <div class="ui small modal" id="createImageModal">
   <div class="header">
@@ -50,13 +50,8 @@ $_smarty_tpl->tpl_vars['image']->_loop = true;
 $__foreach_image_0_saved_local_item = $_smarty_tpl->tpl_vars['image'];
 ?>        
                   <tr>
-                    <td><a href="#<?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
-"><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
-</a></td>
-                    <!-- <td><?php echo count($_smarty_tpl->tpl_vars['image']->value->getClasses());?>
-</td> -->
-                    <!-- <td>~</td> -->
-                    <!-- <td>~</td> -->
+                    <td><?php echo $_smarty_tpl->tpl_vars['image']->value->getImageName();?>
+</td>
                   </tr>
                 <?php
 $_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_local_item;

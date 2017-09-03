@@ -17,7 +17,7 @@
           <input type="submit" name="selectCurrnetImageButton" value="Выбрать" class="ui button">
         </div>
       {else}
-        <h3 align="center">Создайте образ</h3>
+        <h3 align="center">Создайте образы, чтобы выбрать какой-нибудь по умолчанию</h3>
       {/if}
     </form>
   </div>

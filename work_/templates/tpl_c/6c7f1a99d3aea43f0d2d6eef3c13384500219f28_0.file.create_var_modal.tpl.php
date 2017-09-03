@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 18:21:54
+/* Smarty version 3.1.29, created on 2017-09-04 00:28:04
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\create_var_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac1e12331f86_43822725',
+  'unifunc' => 'content_59ac73e49bc558_43111188',
   'file_dependency' => 
   array (
     '6c7f1a99d3aea43f0d2d6eef3c13384500219f28' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\modals\\create_var_modal.tpl',
-      1 => 1504452113,
+      1 => 1504474082,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ac1e12331f86_43822725 ($_smarty_tpl) {
+function content_59ac73e49bc558_43111188 ($_smarty_tpl) {
 ?>
 <div class="ui small modal" id="createVarModal">
   <div class="header">
@@ -30,7 +30,7 @@ function content_59ac1e12331f86_43822725 ($_smarty_tpl) {
       <div class="row">
         <div class="sixteen wide column">
           <form name="createVarForm" method="POST" class="ui form">
-            <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
+            <?php if ($_smarty_tpl->tpl_vars['currentImage']->value != NULL) {?>
               <div class="field">
                 <label>Класс</label>
                 <select name="class" class="form-control">
@@ -80,7 +80,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
                 <input type="submit" name="createVarButton" value="Создать" class="ui button">
               </div>
             <?php } else { ?>
-              <h3 align="center">Создайте образ</h3>
+              <h3 align="center">Выберете образ по умолчанию</h3>
             <?php }?>
           </form>
         </div>

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 17:49:47
+/* Smarty version 3.1.29, created on 2017-09-04 00:27:45
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\create_method_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac168b680d36_37752401',
+  'unifunc' => 'content_59ac73d10de557_41152672',
   'file_dependency' => 
   array (
     '3ab5e06d7e23392d61c0e20576b04dc7ea763bdd' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\modals\\create_method_modal.tpl',
-      1 => 1504450146,
+      1 => 1504474041,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ac168b680d36_37752401 ($_smarty_tpl) {
+function content_59ac73d10de557_41152672 ($_smarty_tpl) {
 ?>
 <div class="ui small modal" id="createMethodModal">
   <div class="header">
@@ -30,7 +30,7 @@ function content_59ac168b680d36_37752401 ($_smarty_tpl) {
       <div class="row">
         <div class="sixteen wide column">
           <form name="createMethodForm" method="POST" class="ui form">
-            <?php if ($_smarty_tpl->tpl_vars['images']->value != NULL) {?>
+            <?php if ($_smarty_tpl->tpl_vars['currentImage']->value != NULL) {?>
               <div class="field">
                 <label>Класс</label>
                 <select name="class" class="dropdown">
@@ -84,7 +84,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
                 <input type="submit" name="createMethodButton" value="Создать" class="ui button">
               </div>
             <?php } else { ?>
-              <h3 align="center">Создайте образ</h3>
+              <h3 align="center">Выберете образ по умолчанию</h3>
             <?php }?>
           </form>
         </div>

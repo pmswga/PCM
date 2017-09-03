@@ -267,19 +267,25 @@
 		public function __toString()
 		{
 			$classes = $this->getClasses();
+      
+      if (!empty($classes)) {
+        
+        foreach($classes as $class)
+        {
+          $lines = explode("\n", (string)$class);
+          
+          foreach($lines as $line)
+          {                    
+            $code .= "\t".$line."\n";
+          }
+          $code .= "\n";
+        }
+        
+        return $code;
+      } else {
+        return "No such classes";
+      }
 			
-			foreach($classes as $class)
-			{
-				$lines = explode("\n", (string)$class);
-				
-				foreach($lines as $line)
-				{                    
-					$code .= "\t".$line."\n";
-				}
-				$code .= "\n";
-			}
-			
-			return $code;
 		}
 		
 	}

@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 00:22:52
+/* Smarty version 3.1.29, created on 2017-09-04 00:42:18
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac72ac3dcf15_27574202',
+  'unifunc' => 'content_59ac773abd6d33_23594878',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1504473771,
+      1 => 1504474938,
       2 => 'file',
     ),
   ),
@@ -36,11 +36,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl_c\\ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb_0.file.index.tpl.php',
       'uid' => 'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb',
-      'call_name' => 'smarty_template_function_menu_2270259ac72ac325578_76461949',
+      'call_name' => 'smarty_template_function_menu_2426959ac773ab0f983_67037195',
     ),
   ),
 ),false)) {
-function content_59ac72ac3dcf15_27574202 ($_smarty_tpl) {
+function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -246,15 +246,18 @@ function content_59ac72ac3dcf15_27574202 ($_smarty_tpl) {
                     <?php if ($_smarty_tpl->tpl_vars['image']->value != NULL) {?>
                       <div class="row">
                         <div class="six wide column">
+                          <?php $_smarty_tpl->tpl_vars['classes'] = new Smarty_Variable($_smarty_tpl->tpl_vars['image']->value->getClasses(), null);
+$_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'classes', 0);?>
+                          <?php if ($_smarty_tpl->tpl_vars['classes']->value != NULL) {?>
                             <table class="ui table striped">
                               <thead>                          
                                 <tr>
                                   <th>Название класса</th>
                                 </tr>
                               </thead>
-                              <tbody>                          
-                                <?php
-$_from = $_smarty_tpl->tpl_vars['image']->value->getClasses();
+                              <tbody>
+                                  <?php
+$_from = $_smarty_tpl->tpl_vars['classes']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
 }
@@ -265,11 +268,11 @@ foreach ($_from as $_smarty_tpl->tpl_vars['class']->value) {
 $_smarty_tpl->tpl_vars['class']->_loop = true;
 $__foreach_class_1_saved_local_item = $_smarty_tpl->tpl_vars['class'];
 ?>
-                                  <tr>
-                                    <td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
+                                    <tr>
+                                      <td><?php echo $_smarty_tpl->tpl_vars['class']->value->getClassName();?>
 </td>
-                                  </tr>
-                                <?php
+                                    </tr>
+                                  <?php
 $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_local_item;
 }
 if ($__foreach_class_1_saved_item) {
@@ -278,6 +281,9 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
 ?>
                               </tbody>
                             </table>
+                          <?php } else { ?>
+                            <h3>В образе не найдены классы</h3>
+                          <?php }?>
                         </div>
                         <div class="ten wide column">
                           <div class="ui internally grid">
@@ -296,7 +302,7 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> 
                     <?php } else { ?>
                       <div class="row">
                         <div class="six wide column">
@@ -312,7 +318,6 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
         </div>
       </div>
     </div>
-    <!--
     
     <!-- Modal windows -->
     
@@ -339,8 +344,6 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
     
     
     <!-- Modals -->
-          
-    
     
     <?php echo '<script'; ?>
  type="text/javascript">
@@ -438,9 +441,9 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_2270259ac72ac325578_76461949 */
-if (!function_exists('smarty_template_function_menu_2270259ac72ac325578_76461949')) {
-function smarty_template_function_menu_2270259ac72ac325578_76461949($_smarty_tpl,$params) {
+/* smarty_template_function_menu_2426959ac773ab0f983_67037195 */
+if (!function_exists('smarty_template_function_menu_2426959ac773ab0f983_67037195')) {
+function smarty_template_function_menu_2426959ac773ab0f983_67037195($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -486,5 +489,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_2270259ac72ac325578_76461949 */
+/*/ smarty_template_function_menu_2426959ac773ab0f983_67037195 */
 }
