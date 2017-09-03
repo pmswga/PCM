@@ -17,11 +17,19 @@
   </a>-->
   <div class="right menu">
     <div class="item">
-      <div class="ui input"><input type="text" placeholder="Search..."></div>
+      <div class="ui search">
+        <div class="ui input">
+          <input id="search_class" class="prompt" type="text" placeholder="Поиск класса...">
+        </div>
+        <div class="results"></div>
+      </div>
     </div>
     <a class="item" id="createImage">
       <i class="plus icon"></i>
       Образ
+    </a>
+    <a class="item" id="selectCurrentImage">
+      Выбрать образ
     </a>
   </div>
 </div>

@@ -19,12 +19,24 @@
     } else {
       
       $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
-      $CT->assign("countOfClasses", count($_SESSION['currentImage']->getClasses()));
       
-      $classHierarchia = $_SESSION['currentImage']->getClassHierarchia();
-      // $CT->assign("classHierarchia", viewHierarchia($classHierarchia));
-      $CT->assign("classHierarchia", $classHierarchia);
-      $CT->assign("classes", $_SESSION['currentImage']->getClasses());
+      $countOfClasses = count($_SESSION['currentImage']->getClasses());
+      $countOfMethods = 0;
+      $countOfVars = 0;
+      
+      $classes = $_SESSION['currentImage']->getClasses();
+      
+      foreach ($classes as $class) {
+        $countOfMethods += count($class->getMethods());
+        $countOfVars += count($class->getVars());
+      }
+      
+      $CT->assign("countOfClasses", $countOfClasses);
+      $CT->assign("countOfMethods", $countOfMethods);
+      $CT->assign("countOfVars", $countOfVars);
+      
+      $CT->assign("classHierarchia", $_SESSION['currentImage']->getClassHierarchia());
+      $CT->assign("classes", $classes);
       
     }
     

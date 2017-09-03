@@ -5,24 +5,58 @@ body {
 }
 
 
-#methods-table, #vars-table {
-  height: 250px;
-  overflow: scroll;
-  overflow-x: hidden;
+
+body {
+  background-color: #120E21;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ui.inverted.menu {
+  width: 200vh;
+  background-color: #564F6E;
+}
+
+.one, .two, .three,
+.four, .five, .six,
+.seven, .eight, .nine,
+.ten, .eleven, .twelve,
+.thirteen, .fourtheen, .sixtheen {
+
+  <!-- border: 1px solid black; -->
+}
+
+#content {
+  padding: 10px;
 }
 
 fieldset legend {
   color: white;
-  padding: 4px;
 }
 
-table tr th{
-	text-align: center;
+.ui.tabular.menu .item {
+  color: white;
+}
+.ui.tabular.menu .item:hover {
+  color: black;
+  background-color: white;
 }
 
+h2, h3, h4 {
+  color: black;
+}
 
-#hierarchia ul {
-  list-style-type: none;
+.ui.list, .class{
+  color: white;
+}
+
+.ui.form .field:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#profile_tool_bar {
+  display: flex;
+  justify-content: space-around;
 }
 
 a.class {
@@ -36,21 +70,12 @@ a.class:hover {
   font-size: 20px;
 }
 
-a.method {
-  color: white;
-}
-
 .type {
   color: #337ab7;
 }
 
 #currentEditMethod {
   color: #DD6E53;
-}
-
-.message {
-  font-size: 16px;
-  padding: 10px;
 }
 
 .public {

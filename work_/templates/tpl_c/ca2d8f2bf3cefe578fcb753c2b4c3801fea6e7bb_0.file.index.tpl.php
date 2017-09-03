@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 18:54:45
+/* Smarty version 3.1.29, created on 2017-09-03 19:50:33
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac25c5adde44_71202618',
+  'unifunc' => 'content_59ac32d9c20276_66246070',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1504454068,
+      1 => 1504457433,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:blocks/status_bar.tpl' => 1,
     'file:blocks/tool_bar.tpl' => 1,
     'file:modals/create_image_modal.tpl' => 1,
+    'file:modals/select_current_image_modal.tpl' => 1,
     'file:modals/create_class_modal.tpl' => 1,
     'file:modals/create_var_modal.tpl' => 1,
     'file:modals/create_method_modal.tpl' => 1,
@@ -35,11 +36,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl_c\\ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb_0.file.index.tpl.php',
       'uid' => 'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb',
-      'call_name' => 'smarty_template_function_menu_145559ac25c5a39d13_73622962',
+      'call_name' => 'smarty_template_function_menu_2597159ac32d9b64a49_97634752',
     ),
   ),
 ),false)) {
-function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
+function content_59ac32d9c20276_66246070 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +55,7 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
     </title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/semantic/semantic.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <?php echo '<script'; ?>
  type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
@@ -88,64 +89,7 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
        }); 
     
     <?php echo '</script'; ?>
-> 
-    
-    <style rel="stylesheet" type="text/css">
-      
-      body {
-        background-color: #120E21;
-        font-family: 'Open Sans', sans-serif;
-      }
-      
-      .ui.inverted.menu {
-        width: 200vh;
-        background-color: #564F6E;
-      }
-      
-      .one, .two, .three,
-      .four, .five, .six,
-      .seven, .eight, .nine,
-      .ten, .eleven, .twelve,
-      .thirteen, .fourtheen, .sixtheen {
-      
-        <!-- border: 1px solid black; -->
-      }
-      
-      #content {
-        padding: 10px;
-      }
-      
-      fieldset legend {
-        color: white;
-      }
-      
-      .ui.tabular.menu .item {
-        color: white;
-      }
-      .ui.tabular.menu .item:hover {
-        color: black;
-        background-color: white;
-      }
-      
-      h1, h2, h3, h4 {
-        color: black;
-      }
-      
-      .ui.list, .class{
-        color: white;
-      }
-      
-      .ui.form .field:last-child {
-        display: flex;
-        justify-content: flex-end;
-      }
-      
-      #profile_tool_bar {
-        display: flex;
-        justify-content: space-around;
-      }
-      
-    </style>
+>
   </head>
   <body>
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:blocks/menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -187,34 +131,14 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
 ?>
 
               </div>
-            </div><!--
-            <div class="row">
-              <div class="eight wide column">
-                <fieldset>
-                  <legend><h1>Свойства</h1></legend>
-                  <div class="panel-group" id="accord_vars">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse">Свойства</a>
-                        </h4>
-                      </div>
-                      <div id="vars" class="panel-collapse collapse in">
-                        <div class="panel-body" id="vars-table"></div>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
-              <div class="eight wide column">
-               <fieldset>
-                  <legend><h1>Методы</h1></legend>
-                </fieldset>
-              </div>
-            </div>-->
+            </div>
             <div class="row">
               <div class="sixteen wide column">              
                 <div class="ui top attached tabular menu">
+                  <a class="item" data-tab="review">
+                    <i class="area chart icon"></i>
+                    Обзор
+                  </a>
                   <a class="item active" data-tab="method_code">
                     <i class="large code icon"></i>
                     Код
@@ -223,6 +147,48 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
                     <i class="large file code outline icon"></i>
                     Генерация
                   </a>
+                </div>
+                <div class="ui bottom attached tab segment" data-tab="review">
+                  <div class="ui grid">
+                    <div class="row">
+                      <div class="sixteen wide column">                      
+                        <div class="actions" id="profile_tool_bar">
+                          <div class="ui labeled button" tabindex="0">
+                            <div class="ui button">
+                              Классов
+                            </div>
+                            <a class="ui basic red left pointing label">
+                              <?php echo (($tmp = @$_smarty_tpl->tpl_vars['countOfClasses']->value)===null||$tmp==='' ? 0 : $tmp);?>
+
+                            </a>
+                          </div>
+                          <div class="ui labeled button" tabindex="0">
+                            <div class="ui button">
+                              Методов
+                            </div>
+                            <a class="ui basic red left pointing label">
+                              <?php echo (($tmp = @$_smarty_tpl->tpl_vars['countOfMethods']->value)===null||$tmp==='' ? 0 : $tmp);?>
+
+                            </a>
+                          </div>
+                          <div class="ui labeled button" tabindex="0">
+                            <div class="ui button">
+                              Свойств
+                            </div>
+                            <a class="ui basic red left pointing label">
+                              <?php echo (($tmp = @$_smarty_tpl->tpl_vars['countOfVars']->value)===null||$tmp==='' ? 0 : $tmp);?>
+
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="sixteen wide column">
+                      
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="ui bottom attached tab segment active" data-tab="method_code">
                   <div class="ui internally celled grid">
@@ -273,81 +239,13 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
       </div>
     </div>
     <!--
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-3">
-              <?php if ($_smarty_tpl->tpl_vars['msgs']->value != NULL) {?>
-              <?php }?>
-              <fieldset>
-                <legend>Иерархия классов</legend>
-                <?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
-                  <div id="hierarchia" class="ui bulleted list">
-                    <?php echo $_smarty_tpl->tpl_vars['classHierarchia']->value;?>
-
-                  </div>
-                <?php } else { ?>
-                  <h3 align="center">Классы не объявлены</h3>
-                <?php }?>
-              </fieldset>
-            </div>
-            <div class="col-md-9">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="panel-group" id="accord_vars">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <a data-toggle="collapse">Свойства</a>
-                            </h4>
-                          </div>
-                          <div id="vars" class="panel-collapse collapse in">
-                            <div class="panel-body" id="vars-table"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="panel-group" id="accord_methods">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h4 class="panel-title">
-                              <a data-toggle="collapse">Методы</a>
-                            </h4>
-                          </div>
-                          <div id="methods" class="panel-collapse collapse in">
-                            <div class="panel-body" id="methods-table"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <fieldset>
-                    <legend>Редактирование метода <span id="currentEditMethod"></span></legend>
-                    
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    -->
+    
     <!-- Modal windows -->
     
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:modals/create_image_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:modals/select_current_image_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:modals/create_class_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -374,10 +272,13 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
  type="text/javascript">
     
       var classes = [];
+      var classes_for_search = [];
       
       $("a.class").each(function(index, value){
         let class_name = $(value).attr("href");
         class_name = class_name.substr(1, class_name.length);
+        
+        classes_for_search.push({ title: class_name });
         
         classes.push(class_name);
       });
@@ -414,6 +315,10 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
         $("#createImageModal").modal('show');
       });
       
+      $("#selectCurrentImage").on("click", function(){
+        $("#selectCurrnetImageModal").modal('show');
+      });
+      
       $("#createClass").on("click", function(){
         $("#createClassModal").modal('show');
       });
@@ -431,9 +336,25 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
       });
       
       
-      
-      
       //init segment ui
+      $('.ui.search').search({
+        source: classes_for_search   
+      });
+            
+      $("#search_class").on("change", function(){
+        var class_name = $("#search_class").val();
+        
+        if (classes.indexOf(class_name) != -1) {
+        
+          if (class_name != "") {
+            app.setCurrentClass(class_name);
+            app.getClassMembers();
+          }
+        }
+        
+      });
+      
+      
 			$(".menu .item").tab();
 			$('.ui.accordion').accordion();
       
@@ -446,9 +367,9 @@ function content_59ac25c5adde44_71202618 ($_smarty_tpl) {
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_145559ac25c5a39d13_73622962 */
-if (!function_exists('smarty_template_function_menu_145559ac25c5a39d13_73622962')) {
-function smarty_template_function_menu_145559ac25c5a39d13_73622962($_smarty_tpl,$params) {
+/* smarty_template_function_menu_2597159ac32d9b64a49_97634752 */
+if (!function_exists('smarty_template_function_menu_2597159ac32d9b64a49_97634752')) {
+function smarty_template_function_menu_2597159ac32d9b64a49_97634752($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -494,5 +415,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_145559ac25c5a39d13_73622962 */
+/*/ smarty_template_function_menu_2597159ac32d9b64a49_97634752 */
 }

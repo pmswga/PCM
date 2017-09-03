@@ -2,40 +2,6 @@
   <div class="header">
     Профиль: {$profile->login()}
   </div>
-  <div class="actions" id="profile_tool_bar">
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Образов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Классов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Методов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Свойств
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-  </div>
   <div class="content">
     <div class="ui grid">
       <div class="row">

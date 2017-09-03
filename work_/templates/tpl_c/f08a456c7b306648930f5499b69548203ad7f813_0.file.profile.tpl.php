@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-03 18:57:58
+/* Smarty version 3.1.29, created on 2017-09-03 19:27:00
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\modals\profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac2686b89ed6_77879996',
+  'unifunc' => 'content_59ac2d541c0758_86819084',
   'file_dependency' => 
   array (
     'f08a456c7b306648930f5499b69548203ad7f813' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\modals\\profile.tpl',
-      1 => 1504454277,
+      1 => 1504456019,
       2 => 'file',
     ),
   ),
@@ -19,47 +19,13 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59ac2686b89ed6_77879996 ($_smarty_tpl) {
+function content_59ac2d541c0758_86819084 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\domains\\PCM\\work_\\engine\\smarty\\plugins\\modifier.date_format.php';
 ?>
 <div class="ui big modal" id="profileModal">
   <div class="header">
     Профиль: <?php echo $_smarty_tpl->tpl_vars['profile']->value->login();?>
 
-  </div>
-  <div class="actions" id="profile_tool_bar">
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Образов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Классов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Методов
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
-    <div class="ui labeled button" tabindex="0">
-      <div class="ui button">
-        Свойств
-      </div>
-      <a class="ui basic red left pointing label">
-        1,048
-      </a>
-    </div>
   </div>
   <div class="content">
     <div class="ui grid">
