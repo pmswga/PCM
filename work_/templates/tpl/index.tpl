@@ -14,13 +14,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="css/semantic/semantic.js"></script>
-		<!-- <script type="text/javascript" src="js/tabulation.js"></script> -->
+	  <script type="text/javascript" src="js/tabulation.js"></script> 
 		<script type="text/javascript" src="js/uiapp.js"></script>
     
     <!-- Init EditArea -->
     <script type="text/javascript" src="editarea/edit_area/edit_area_full.js"></script> 
     <script type="text/javascript">
-      
+      /*
        editAreaLoader.init({ 
         id: "methodCode" 
         ,start_highlight: true 
@@ -30,7 +30,8 @@
         ,word_wrap: true 
         ,language: "ru" 
         ,syntax: "php" 
-       }); 
+       });
+*/       
        /*
        editAreaLoader.init({ 
         id: "generatedCode" 
@@ -157,7 +158,7 @@
                       <div class="ten wide column">
                         <form name="editCodeMethodForm" method="POST" class="ui form">
                           <div class="field">
-                            <textarea rows="15" name="src" id="methodCode"></textarea>
+                            <textarea rows="15" name="src" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
                         <!-- onkeydown="insertTab(this, event);" -->
                           </div>
                           <div class="field">

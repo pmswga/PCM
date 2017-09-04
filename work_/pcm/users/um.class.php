@@ -41,17 +41,18 @@
     
     public function add($user) : bool
     { 
-      if (!empty($user) && ($user instanceof User)) {        
+      if (!empty($user) && ($user instanceof User)) {
       
-        $add_user_query = $this->dbc()->prepare("INSERT INTO `users` (`email`, `password`, `account_type`, `expiration_date`) VALUES (:email, :passwd, :account_type, ADDDATE(:expiration_date, INTERVAL 30 DAY))");
+        $add_user_query = $this->dbc()->prepare("INSERT INTO `users` (`sn`, `fn`, `email`, `password`, `account_type`, `expiration_date`) VALUES (:sn, :fn, :email, :passwd, :account_type, ADDDATE(:expiration_date, INTERVAL 7 DAY))");
       
+        $add_user_query->bindValue(":sn", $user->secondName());
+        $add_user_query->bindValue(":fn", $user->firstName());
         $add_user_query->bindValue(":email", $user->login());
         $add_user_query->bindValue(":passwd", $user->password());
         $add_user_query->bindValue(":account_type", $user->accountType());
         $add_user_query->bindValue(":expiration_date", $user->expirationDate());
       
         return $add_user_query->execute();
-      
       } else {
         return false;
       }
@@ -72,13 +73,18 @@
     {
       if (!empty($login) && !empty($password)) {
         $user_data = $this->query(
-        "SELECT `email`, `password`, `account_type`, `expiration_date` FROM `users` WHERE `email`=:login AND `password`=:password",[
+        "SELECT u.sn, u.fn, u.email, u.password, at.description as account_type, u.expiration_date 
+         FROM `users` u 
+          INNER JOIN `account_types` at ON u.account_type=at.id_account_type
+         WHERE u.email=:login AND u.password=:password",[
           ":login" => $login,
           ":password" => $password
         ])[0];
         
         if (!empty($user_data)) {          
           return new User(
+            $user_data['sn'],
+            $user_data['fn'],
             $user_data['email'],
             $user_data['password'],
             (int)$user_data['account_type'],

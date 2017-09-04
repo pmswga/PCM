@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 00:42:18
+/* Smarty version 3.1.29, created on 2017-09-04 22:22:42
   from "C:\OpenServer\domains\PCM\work_\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59ac773abd6d33_23594878',
+  'unifunc' => 'content_59ada802d6dc33_35345984',
   'file_dependency' => 
   array (
     'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl\\index.tpl',
-      1 => 1504474938,
+      1 => 1504552935,
       2 => 'file',
     ),
   ),
@@ -36,11 +36,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\work_\\templates\\tpl_c\\ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb_0.file.index.tpl.php',
       'uid' => 'ca2d8f2bf3cefe578fcb753c2b4c3801fea6e7bb',
-      'call_name' => 'smarty_template_function_menu_2426959ac773ab0f983_67037195',
+      'call_name' => 'smarty_template_function_menu_1333559ada802c9eb80_91880616',
     ),
   ),
 ),false)) {
-function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
+function content_59ada802d6dc33_35345984 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -63,9 +63,9 @@ function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
     <?php echo '<script'; ?>
  type="text/javascript" src="css/semantic/semantic.js"><?php echo '</script'; ?>
 >
-		<!-- <?php echo '<script'; ?>
+	  <?php echo '<script'; ?>
  type="text/javascript" src="js/tabulation.js"><?php echo '</script'; ?>
-> -->
+> 
 		<?php echo '<script'; ?>
  type="text/javascript" src="js/uiapp.js"><?php echo '</script'; ?>
 >
@@ -76,7 +76,7 @@ function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
 > 
     <?php echo '<script'; ?>
  type="text/javascript">
-      
+      /*
        editAreaLoader.init({ 
         id: "methodCode" 
         ,start_highlight: true 
@@ -86,7 +86,8 @@ function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
         ,word_wrap: true 
         ,language: "ru" 
         ,syntax: "php" 
-       }); 
+       });
+*/       
        /*
        editAreaLoader.init({ 
         id: "generatedCode" 
@@ -208,7 +209,7 @@ function content_59ac773abd6d33_23594878 ($_smarty_tpl) {
                       <div class="ten wide column">
                         <form name="editCodeMethodForm" method="POST" class="ui form">
                           <div class="field">
-                            <textarea rows="15" name="src" id="methodCode"></textarea>
+                            <textarea rows="15" name="src" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
                         <!-- onkeydown="insertTab(this, event);" -->
                           </div>
                           <div class="field">
@@ -441,9 +442,9 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_1_saved_item;
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_2426959ac773ab0f983_67037195 */
-if (!function_exists('smarty_template_function_menu_2426959ac773ab0f983_67037195')) {
-function smarty_template_function_menu_2426959ac773ab0f983_67037195($_smarty_tpl,$params) {
+/* smarty_template_function_menu_1333559ada802c9eb80_91880616 */
+if (!function_exists('smarty_template_function_menu_1333559ada802c9eb80_91880616')) {
+function smarty_template_function_menu_1333559ada802c9eb80_91880616($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -489,5 +490,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_2426959ac773ab0f983_67037195 */
+/*/ smarty_template_function_menu_1333559ada802c9eb80_91880616 */
 }

@@ -10,6 +10,10 @@
     
   } else {
     
+    $account_types = $UM->query("SELECT * FROM `account_types`");
+    
+    $CT->assign("account_types", $account_types);
+    
     $CT->Show("login.tpl");
     
     if (!empty($_POST['loginUserButton'])) {
@@ -35,8 +39,10 @@
     }
     
     if (!empty($_POST['registrationUserButton'])) {
+      $sn = htmlspecialchars($_POST['sn']);
+      $fn = htmlspecialchars($_POST['fn']);
       $login = htmlspecialchars($_POST['login']);
-      $password = md5(htmlspecialchars($_POST['password']));
+      $password = md5(htmlspecialchars($_POST['passwd']));
       $retry_password = md5(htmlspecialchars($_POST['retry_password']));
       $account_type = htmlspecialchars($_POST['account_type']);
       
@@ -45,6 +51,8 @@
         if (strcmp($password, $retry_password) === 0) {
           
           $new_user = new User(
+            $sn,
+            $fn,
             $login,
             $password,
             $account_type,
