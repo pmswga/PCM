@@ -40,7 +40,7 @@
         $this->DBC = $dbc;
       } else {
         
-        $this->DBC = new \PDO("mysql:dbname=".DATABASE_NAME.";host=127.0.0.1:".PORT, USER_NAME, USER_PASSWORD);
+        $this->DBC = new \PDO("mysql:dbname=".DATABASE_NAME.";host=".HOST, USER_NAME, USER_PASSWORD);
         $this->DBC->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->DBC->exec("SET NAMES utf8");
         

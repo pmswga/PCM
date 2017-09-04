@@ -47,7 +47,7 @@
       
     }
     
-    // $_SESSION['images'] = $UM->images($_SESSION['user']->login());
+    $_SESSION['images'] = $UM->images($_SESSION['user']->login());
     
     $CT->assign("profile", $_SESSION['user']);
     $CT->assign("images", $_SESSION['images']);
@@ -64,7 +64,6 @@
       
       if (!empty($imageName)) {
         $newImage = new PImage($imageName, $imageDescp);
-        // $_SESSION['images'][$imageName] = $newImage;
         
         if ($UM->addImage($_SESSION['user']->login(), $newImage)) {          
           setMessage("Образ ".$imageName." был успешно создан", "success");
