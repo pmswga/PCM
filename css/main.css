@@ -74,3 +74,15 @@ a.class:hover {
 .protected {
   color: #F3A343;
 }
+
+.ui.list {
+  list-style-type: none;
+}
+
+#image_structures {
+  color: black;
+}
+
+legend.black__ {
+  color: white;
+}

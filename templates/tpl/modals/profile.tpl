@@ -14,6 +14,14 @@
             </thead>
             <tbody>
               <tr>
+                <td>Фамилия</td>
+                <td>{$profile->secondName()}</td>
+              </tr>
+              <tr>
+                <td>Имя</td>
+                <td>{$profile->firstName()}</td>
+              </tr>
+              <tr>
                 <td>Тип акканута</td>
                 <td>{$profile->accountType()}</td>
               </tr>
@@ -35,44 +43,24 @@
               Изменить тип акканута
             </div>
             <div class="content">
-              <div class="ui three column internally celled grid">
+              <div class="ui two column internally celled grid">
                 <div class="row">
                   <div class="column">
-                    Free
+                    <h4 align="center">Free</h4>
                   </div>
                   <div class="column">
-                    Standart
+                    <h4 align="center">Standart</h4>
                   </div>
-                  <div class="column">
-                    Developer 
-                  </div>                
                 </div>
                 <div class="row">
-                  <div class="column">
+                  <div class="column" style="display: flex; justify-content: center;">
                     <input type="submit" value="Перейти" class="ui primary button">
                   </div>
-                  <div class="column">
+                  <div class="column" style="display: flex; justify-content: center;">
                     <input type="submit" value="Перейти" class="ui primary button">
                   </div>
-                  <div class="column">
-                    <input type="submit" value="Перейти" class="ui primary button">
-                  </div>                
                 </div>
               </div>
-            </div>
-            <div class="title">
-              Сменить логин
-            </div>
-            <div class="content">
-              <form class="ui form">
-                <div class="field">
-                  <label>Новый логин</label>
-                  <input type="password">
-                </div>
-                <div class="field">
-                  <input type="submit" value="Изменить" class="ui orange button">
-                </div>
-              </form>
             </div>
             <div class="title">
               Сменить пароль

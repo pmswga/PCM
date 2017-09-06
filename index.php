@@ -8,6 +8,8 @@
   use PCM\Structures\PMethod;
   use PCM\Users\User;
   
+  // CTools::var_dump($_SESSION['images']);
+  
   if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)) {
   
     $update = function () {
@@ -110,8 +112,7 @@
           
         } else {
           setMessage("Невозможно создать безымянный класс", "warning");
-        }
-      
+        }      
 
       } else {
         setMessage("Невозможно создать класс в пустом образе", "warning");
@@ -155,14 +156,20 @@
         $methodAccessType = $_POST['methodAccessType'];
         $args = (!empty($_POST['methodArgs'])) ? explode(",", $_POST['methodArgs']) : array();
         
-        if (!empty($methodName)) {          
+        if (!empty($methodName) && !empty($class)) {          
           $newMethod = new PMethod($methodName, $methodAccessType, $methodType, $args);
           
-          $_SESSION['currentImage']->getClass($class)['supclass']->addMethod($newMethod);
+          $class_ = $_SESSION['currentImage']->getClass($class)['supclass'];
           
-          setMessage("Метод ".$methodName." был добавлено в класс ".$class, "success");
+          if (!empty($class_)) {            
+            $class_->addMethod($newMethod);
+            setMessage("Метод ".$methodName." был добавлено в класс ".$class, "success");
+          } else {
+            setMessage("Произошла ошибка при добавлении метода в класс ".$class, "negative");
+          }
+          
         } else {
-          setMessage("Вы не можете создать безымянный метод", "negative");
+            setMessage("Произошла ошибка при добавлении метода в класс ".$class, "negative");
         }
         
       } else {
@@ -180,7 +187,20 @@
         $editMethod = $_POST['editMethod'];
         $src = $_POST['src'];
         
-        $_SESSION['currentImage']->getClass($editClass)['supclass']->getMethod($editMethod)->setSrc($src);
+        if (!empty($_SESSION['currentImage'])) {
+          
+          $class = $_SESSION['currentImage']->getClass($editClass)['supclass'];
+          if (!empty($class)) {
+            $class->getMethod($editMethod)->setSrc($src);            
+            setMessage("Исходный код метода был сохранён в ".$editClass." в ".$editMethod."()");
+          } else {            
+            setMessage("Не возможно сохранить исходный код метода", "negative");
+          }
+          
+        } else {
+          setMessage("Не возможно сохранить исходный код метода", "negative");
+        }
+        
       }
       
       $update();

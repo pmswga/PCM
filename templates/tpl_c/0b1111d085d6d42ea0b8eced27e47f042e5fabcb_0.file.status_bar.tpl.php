@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 23:37:37
+/* Smarty version 3.1.29, created on 2017-09-06 02:37:03
   from "C:\OpenServer\domains\PCM\templates\tpl\blocks\status_bar.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59adb991709564_64315091',
+  'unifunc' => 'content_59af351f770ad4_50580836',
   'file_dependency' => 
   array (
     '0b1111d085d6d42ea0b8eced27e47f042e5fabcb' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59adb991709564_64315091 ($_smarty_tpl) {
+function content_59af351f770ad4_50580836 ($_smarty_tpl) {
 $_from = $_smarty_tpl->tpl_vars['msgs']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');

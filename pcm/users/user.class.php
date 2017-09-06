@@ -24,7 +24,7 @@
                          string $fn,
                          string $login,
                          string $password,
-                         int $account_type,
+                         string $account_type,
                          string $expiration_date
     ) {
       $this->sn = $sn;
@@ -55,12 +55,12 @@
       return $this->password;
     }
     
-    public function accountType()
+    public function accountType() : string
     {
       return $this->account_type;
     }
     
-    public function expirationDate()
+    public function expirationDate() : string
     {
       return $this->expiration_date;
     }

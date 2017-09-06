@@ -20,7 +20,7 @@
             {/if}
           </td>{*
           <td class="type">
-            {if $var->getVarType() == 0}          
+            {if $var->getVarType() == 0}
               NATIVE
             {elseif $var->getVarType() == 1}
               STATIC

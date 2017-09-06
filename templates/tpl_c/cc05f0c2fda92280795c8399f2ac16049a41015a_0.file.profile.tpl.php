@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 23:25:15
+/* Smarty version 3.1.29, created on 2017-09-06 02:37:03
   from "C:\OpenServer\domains\PCM\templates\tpl\modals\profile.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59adb6ab5f62a8_08634361',
+  'unifunc' => 'content_59af351f895a90_44612833',
   'file_dependency' => 
   array (
     'cc05f0c2fda92280795c8399f2ac16049a41015a' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\modals\\profile.tpl',
-      1 => 1504473040,
+      1 => 1504651633,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59adb6ab5f62a8_08634361 ($_smarty_tpl) {
+function content_59af351f895a90_44612833 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\domains\\PCM\\engine\\smarty\\plugins\\modifier.date_format.php';
 ?>
 <div class="ui big modal" id="profileModal">
@@ -38,6 +38,16 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\d
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>Фамилия</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['profile']->value->secondName();?>
+</td>
+              </tr>
+              <tr>
+                <td>Имя</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['profile']->value->firstName();?>
+</td>
+              </tr>
               <tr>
                 <td>Тип акканута</td>
                 <td><?php echo $_smarty_tpl->tpl_vars['profile']->value->accountType();?>
@@ -62,44 +72,24 @@ if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\OpenServer\\d
               Изменить тип акканута
             </div>
             <div class="content">
-              <div class="ui three column internally celled grid">
+              <div class="ui two column internally celled grid">
                 <div class="row">
                   <div class="column">
-                    Free
+                    <h4 align="center">Free</h4>
                   </div>
                   <div class="column">
-                    Standart
+                    <h4 align="center">Standart</h4>
                   </div>
-                  <div class="column">
-                    Developer 
-                  </div>                
                 </div>
                 <div class="row">
-                  <div class="column">
+                  <div class="column" style="display: flex; justify-content: center;">
                     <input type="submit" value="Перейти" class="ui primary button">
                   </div>
-                  <div class="column">
+                  <div class="column" style="display: flex; justify-content: center;">
                     <input type="submit" value="Перейти" class="ui primary button">
                   </div>
-                  <div class="column">
-                    <input type="submit" value="Перейти" class="ui primary button">
-                  </div>                
                 </div>
               </div>
-            </div>
-            <div class="title">
-              Сменить логин
-            </div>
-            <div class="content">
-              <form class="ui form">
-                <div class="field">
-                  <label>Новый логин</label>
-                  <input type="password">
-                </div>
-                <div class="field">
-                  <input type="submit" value="Изменить" class="ui orange button">
-                </div>
-              </form>
             </div>
             <div class="title">
               Сменить пароль

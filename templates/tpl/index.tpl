@@ -11,43 +11,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/semantic/semantic.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  -->
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="css/semantic/semantic.js"></script>
+    <script type="text/javascript" src="js/semantic.js"></script>
 	  <script type="text/javascript" src="js/tabulation.js"></script> 
 		<script type="text/javascript" src="js/uiapp.js"></script>
-    
-    <!-- Init EditArea -->
-    <script type="text/javascript" src="editarea/edit_area/edit_area_full.js"></script> 
-    <script type="text/javascript">
-      /*
-       editAreaLoader.init({ 
-        id: "methodCode" 
-        ,start_highlight: true 
-        ,allow_resize: "no" 
-        ,min_height: 650
-        ,allow_toggle: false
-        ,word_wrap: true 
-        ,language: "ru" 
-        ,syntax: "php" 
-       });
-*/       
-       /*
-       editAreaLoader.init({ 
-        id: "generatedCode" 
-        ,start_highlight: true 
-        ,allow_resize: "both"
-        ,min_height: 650
-        ,allow_toggle: false
-        ,word_wrap: true 
-        ,language: "ru" 
-        ,syntax: "php"
-        ,is_editable: false
-       }); 
-    */
-    </script>
   </head>
   <body>
+    {$image_no_set = "Не выбран образ по умолчанию"}
+  
     {include file="blocks/menu.tpl"}
     <div id="content" class="ui divided grid">
       <div class="row">
@@ -62,31 +34,29 @@
           <br>
           <div class="row">
             <div class="sixteen wide column">
-              <fieldset>
-                <legend><h1>Иерархия классов</h1></legend>
-                {function menu}
-                  <ul class="ui list" id="hierarchia">
-                    {foreach from=$data item=entry}
-                      <li class="item">
-                        <i class="folder icon"></i>
-                        <div class="content">
-                          <div class="header"><a href="#{$entry['supclass']->getClassName()}" class="class">{$entry['supclass']->getClassName()}</a></div>
-                          {if is_array($entry['subclass'])}
-                            <ul class="list">
-                              {menu data=$entry["subclass"]}
-                            </ul>
-                          {/if}
-                        </div>
-                      </li>
-                    {/foreach}
-                  </ul>
-                {/function}
-                {if $classHierarchia != NULL}
-                  {menu data=$classHierarchia}
-                {else}
-                  Классы не объявлены
-                {/if}
-              </fieldset>          
+              {function menu}
+                <ul class="ui list" id="hierarchia">
+                  {foreach from=$data item=entry}
+                    <li class="item">
+                      <i class="folder icon"></i>
+                      <div class="content">
+                        <div class="header"><a href="#{$entry['supclass']->getClassName()}" class="class">{$entry['supclass']->getClassName()}</a></div>
+                        {if is_array($entry['subclass'])}
+                          <ul class="list">
+                            {menu data=$entry["subclass"]}
+                          </ul>
+                        {/if}
+                      </div>
+                    </li>
+                  {/foreach}
+                </ul>
+              {/function}
+              {if $classHierarchia != NULL}
+                <fieldset>
+                  <legend><h1>Иерархия классов</h1></legend>
+                    {menu data=$classHierarchia}
+                </fieldset>
+              {/if}
             </div>
           </div>
         </div>
@@ -113,44 +83,79 @@
                     Генерация
                   </a>
                 </div>
-                <div class="ui bottom attached tab segment" data-tab="review">
-                  <div class="ui grid">
-                    <div class="row">
-                      <div class="sixteen wide column">                      
-                        <div class="actions" id="profile_tool_bar">
-                          <div class="ui labeled button" tabindex="0">
-                            <div class="ui button">
-                              Классов
-                            </div>
-                            <a class="ui basic red left pointing label">
-                              {$countOfClasses|default:0}
-                            </a>
+                <div class="ui bottom attached tab segment" data-tab="review">            
+                  {if $image != NULL}
+                    <div class="ui internally grid">
+                      <div class="row">
+                        <div class="eight wide column">                      
+                          <div id="profile_tool_bar">
+                            <table class="ui table striped">
+                              <tbody>
+                                <tr>
+                                  <td>Классов</td>
+                                  <td>{$countOfClasses|default:0}</td>
+                                </tr>
+                                <tr>
+                                  <td>Методов</td>
+                                  <td>{$countOfMethods|default:0}</td>
+                                </tr>
+                                <tr>
+                                  <td>Свойств</td>
+                                  <td>{$countOfVars|default:0}</td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
-                          <div class="ui labeled button" tabindex="0">
-                            <div class="ui button">
-                              Методов
-                            </div>
-                            <a class="ui basic red left pointing label">
-                              {$countOfMethods|default:0}
-                            </a>
-                          </div>
-                          <div class="ui labeled button" tabindex="0">
-                            <div class="ui button">
-                              Свойств
-                            </div>
-                            <a class="ui basic red left pointing label">
-                              {$countOfVars|default:0}
-                            </a>
-                          </div>
+                          <fieldset>
+                            <legend style="color: black;"><h1>Структура образа</h1></legend>
+                            {function stat}
+                              <ul class="ui list" id="image_structures">
+                                {foreach from=$data item=entry}
+                                  <li class="item">
+                                    <i class="folder open icon"></i>
+                                    <div class="content">
+                                      <div class="header">
+                                        <a href="#{$entry['supclass']->getClassName()}">{$entry['supclass']->getClassName()}</a>
+                                      </div>
+                                      <div class="content">
+                                        <ul class="ui list">
+                                          {foreach from=$entry['supclass']->getVars() item=var}
+                                            <li class="item">
+                                              <div class="content">
+                                                <div class="header">var ${$var->getVarName()}</div>
+                                              </div>
+                                            </li>
+                                          {/foreach}
+                                          {foreach from=$entry['supclass']->getMethods() item=method}
+                                            <li class="item">
+                                              <div class="content">
+                                                <div class="header">method {$method->getMethodName()}()</div>
+                                              </div>
+                                            </li>
+                                          {/foreach}
+                                        </ul>
+                                      </div>
+                                      {if is_array($entry['subclass'])}
+                                        <ul class="list">
+                                          {stat data=$entry["subclass"]}
+                                        </ul>
+                                      {/if}
+                                    </div>
+                                  </li>
+                                {/foreach}
+                              </ul>
+                            {/function}
+                            {stat data=$image->getClassHierarchia()}
+                          </fieldset>
+                        </div>
+                        <div class="eight wide column">
+                          {include file="tables/image_statistic.tpl"}
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="sixteen wide column">
-                      
-                      </div>
-                    </div>
-                  </div>
+                  {else}
+                    <h3 align="center">{$image_no_set}</h3>
+                  {/if}
                 </div>
                 <div class="ui bottom attached tab segment active" data-tab="method_code">
                   <div class="ui internally celled grid">
@@ -192,8 +197,8 @@
                   </div>
                 </div>
                 <div class="ui bottom attached tab segment" data-tab="generate_code">
-                  <div class="ui grid">
-                    {if $image != NULL}
+                  {if $image != NULL}
+                    <div class="ui grid">
                       <div class="row">
                         <div class="six wide column">
                           {$classes = $image->getClasses()}
@@ -213,7 +218,7 @@
                               </tbody>
                             </table>
                           {else}
-                            <h3>В образе не найдены классы</h3>
+                            <h3 align="center">В образе нет классов</h3>
                           {/if}
                         </div>
                         <div class="ten wide column">
@@ -232,15 +237,11 @@
                             </div>
                           </div>
                         </div>
-                      </div> 
-                    {else}
-                      <div class="row">
-                        <div class="six wide column">
-                          <h2>Для начала необходимо создать образ</h2>
-                        </div>
                       </div>
-                    {/if}
-                  </div>
+                    </div>
+                  {else}
+                    <h3 align="center">{$image_no_set}</h3>
+                  {/if}
                 </div>
               </div>
             </div>
@@ -282,8 +283,8 @@
       
       let app = new UIApp(classes);
       if (!app.getClassMembers()) {
-        $("#vars-table").html("<h3 align='center'>Empty</h3>");
-        $("#methods-table").html("<h3 align='center'>Empty</h3>");
+        $("#vars-table").html("<h3 align='center'>Не объявлены</h3>");
+        $("#methods-table").html("<h3 align='center'>Не объявлены</h3>");
       }
       
       $("a.class").on("click", function(){

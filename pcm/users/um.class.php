@@ -73,7 +73,7 @@
     {
       if (!empty($login) && !empty($password)) {
         $user_data = $this->query(
-        "SELECT u.sn, u.fn, u.email, u.password, at.description as account_type, u.expiration_date 
+        "SELECT u.sn, u.fn, u.email, u.password, at.description, u.expiration_date 
          FROM `users` u 
           INNER JOIN `account_types` at ON u.account_type=at.id_account_type
          WHERE u.email=:login AND u.password=:password",[
@@ -87,7 +87,7 @@
             $user_data['fn'],
             $user_data['email'],
             $user_data['password'],
-            (int)$user_data['account_type'],
+            $user_data['description'],
             $user_data['expiration_date']
           );
         } else {

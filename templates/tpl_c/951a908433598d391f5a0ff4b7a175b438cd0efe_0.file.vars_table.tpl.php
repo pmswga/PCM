@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-04 23:25:15
+/* Smarty version 3.1.29, created on 2017-09-06 06:34:40
   from "C:\OpenServer\domains\PCM\templates\tpl\tables\vars_table.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59adb6abc3fa20_91931505',
+  'unifunc' => 'content_59af6cd07a0957_89213564',
   'file_dependency' => 
   array (
     '951a908433598d391f5a0ff4b7a175b438cd0efe' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\tables\\vars_table.tpl',
-      1 => 1504451763,
+      1 => 1504668868,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59adb6abc3fa20_91931505 ($_smarty_tpl) {
+function content_59af6cd07a0957_89213564 ($_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['vars']->value != NULL) {?>
   <table class="ui table striped">
     <thead>

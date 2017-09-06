@@ -20,7 +20,7 @@
             {/if}
           </td>{*
           <td class="type">
-            {if $method->getMethodType() == 0}          
+            {if $method->getMethodType() == 0}
               NATIVE
             {elseif $method->getMethodType() == 1}
               STATIC
