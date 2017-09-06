@@ -163,8 +163,8 @@
                       <div class="ten wide column">
                         <form name="editCodeMethodForm" method="POST" class="ui form">
                           <div class="field">
+                            <h3>Редактирование метода <span id="currentEditMethod"></span></h3>
                             <textarea rows="15" name="src" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
-                        <!-- onkeydown="insertTab(this, event);" -->
                           </div>
                           <div class="field">
                             <input type="hidden" name="editClass" value="">

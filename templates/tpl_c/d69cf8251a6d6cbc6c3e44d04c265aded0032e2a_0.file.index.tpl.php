@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-06 02:37:03
+/* Smarty version 3.1.29, created on 2017-09-06 06:44:36
   from "C:\OpenServer\domains\PCM\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59af351f71ea43_77659887',
+  'unifunc' => 'content_59af6f24c25409_55040180',
   'file_dependency' => 
   array (
     'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\index.tpl',
-      1 => 1504654154,
+      1 => 1504669475,
       2 => 'file',
     ),
   ),
@@ -37,7 +37,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\d69cf8251a6d6cbc6c3e44d04c265aded0032e2a_0.file.index.tpl.php',
       'uid' => 'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a',
-      'call_name' => 'smarty_template_function_menu_1194559af351f64f994_37526715',
+      'call_name' => 'smarty_template_function_menu_3225459af6f24b5a1d8_27327993',
     ),
     'stat' => 
     array (
@@ -46,11 +46,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\d69cf8251a6d6cbc6c3e44d04c265aded0032e2a_0.file.index.tpl.php',
       'uid' => 'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a',
-      'call_name' => 'smarty_template_function_stat_1194559af351f64f994_37526715',
+      'call_name' => 'smarty_template_function_stat_3225459af6f24b5a1d8_27327993',
     ),
   ),
 ),false)) {
-function content_59af351f71ea43_77659887 ($_smarty_tpl) {
+function content_59af6f24c25409_55040180 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -189,8 +189,8 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
                       <div class="ten wide column">
                         <form name="editCodeMethodForm" method="POST" class="ui form">
                           <div class="field">
+                            <h3>Редактирование метода <span id="currentEditMethod"></span></h3>
                             <textarea rows="15" name="src" onkeydown="insertTab(this, event);" id="methodCode"></textarea>
-                        <!-- onkeydown="insertTab(this, event);" -->
                           </div>
                           <div class="field">
                             <input type="hidden" name="editClass" value="">
@@ -419,9 +419,9 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_4_saved_item;
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_1194559af351f64f994_37526715 */
-if (!function_exists('smarty_template_function_menu_1194559af351f64f994_37526715')) {
-function smarty_template_function_menu_1194559af351f64f994_37526715($_smarty_tpl,$params) {
+/* smarty_template_function_menu_3225459af6f24b5a1d8_27327993 */
+if (!function_exists('smarty_template_function_menu_3225459af6f24b5a1d8_27327993')) {
+function smarty_template_function_menu_3225459af6f24b5a1d8_27327993($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -467,10 +467,10 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_1194559af351f64f994_37526715 */
-/* smarty_template_function_stat_1194559af351f64f994_37526715 */
-if (!function_exists('smarty_template_function_stat_1194559af351f64f994_37526715')) {
-function smarty_template_function_stat_1194559af351f64f994_37526715($_smarty_tpl,$params) {
+/*/ smarty_template_function_menu_3225459af6f24b5a1d8_27327993 */
+/* smarty_template_function_stat_3225459af6f24b5a1d8_27327993 */
+if (!function_exists('smarty_template_function_stat_3225459af6f24b5a1d8_27327993')) {
+function smarty_template_function_stat_3225459af6f24b5a1d8_27327993($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -572,5 +572,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_stat_1194559af351f64f994_37526715 */
+/*/ smarty_template_function_stat_3225459af6f24b5a1d8_27327993 */
 }

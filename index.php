@@ -192,7 +192,7 @@
           $class = $_SESSION['currentImage']->getClass($editClass)['supclass'];
           if (!empty($class)) {
             $class->getMethod($editMethod)->setSrc($src);            
-            setMessage("Исходный код метода был сохранён в ".$editClass." в ".$editMethod."()");
+            setMessage("Исходный код метода был сохранён в ".$editClass." в ".$editMethod."()", "success");
           } else {            
             setMessage("Не возможно сохранить исходный код метода", "negative");
           }
