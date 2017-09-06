@@ -229,6 +229,8 @@
       
       if ($UM->remove($_SESSION['user']->login())) {
         unset($_SESSION['user']);
+        unset($_SESSION['currentImage']);
+        unset($_SESSION['images']);
         CTools::Message("Ваш аккаунт был удалён навсегда");
       } else {
         CTools::Message("Произошла ошибка при удалении аккаунта");
