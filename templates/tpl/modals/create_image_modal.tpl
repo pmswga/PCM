@@ -9,7 +9,7 @@
           <table class="ui celled striped table">
             <thead>
               <tr>
-                <th colspan="">Существующие образы</th>
+                <th>Существующие образы</th>
               </tr>
             </thead>
             <tbody>

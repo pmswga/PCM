@@ -108,7 +108,7 @@
         INSERT INTO `user_images` 
         (`id_user`, `caption`, `descp`, `image`) 
         VALUES 
-        ((select getUserID(:login)), :caption, :descp, :image)
+        ((SELECT getUserID(:login)), :caption, :descp, :image)
       ");
       
       $add_new_image->bindValue(":login", $login);
@@ -117,6 +117,35 @@
       $add_new_image->bindValue(":image", serialize($image));
       
       return $add_new_image->execute();
+    }
+    
+    /*!
+      \brief
+    */
+    
+    public function removeImage(string $login, string $image)
+    {
+      $remove_image = $this->dbc()->prepare("DELETE FROM `user_images` WHERE `id_user`=(SELECT getUserID(:login)) AND `caption`=:image");
+      
+      $remove_image->bindValue(":login", $login);
+      $remove_image->bindValue(":image", $image);
+      
+      return $remove_image->execute();
+    }
+    
+    /*!
+      \brief 
+    */
+    
+    public function syncImage(string $login, PImage $image) : bool
+    {
+      $update_image = $this->dbc()->prepare("UPDATE `user_images` SET `image`=:image WHERE `id_user`=(SELECT getUserID(:login)) AND `caption`=:caption");
+      
+      $update_image->bindValue(":login", $login);
+      $update_image->bindValue(":caption", $image->getImageName());
+      $update_image->bindValue(":image", serialize($image));
+      
+      return $update_image->execute();
     }
     
     /*!

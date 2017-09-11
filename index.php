@@ -15,10 +15,11 @@
     $update = function () {
       CTools::Redirect("index.php");
     };
-    
+        
     if (empty($_SESSION['currentImage'])) {
       setMessage("Не выбран образ по умолчанию", "negative");
     } else {
+      $UM->syncImage($_SESSION['user']->login(), $_SESSION['currentImage']);
       
       $CT->assign("currentImage", $_SESSION['currentImage']->getImageName());
       $CT->assign("image", $_SESSION['currentImage']);
@@ -88,6 +89,17 @@
         setMessage("Образ ".$currentImage." был выбран в качестве по умолчанию", "info");
       } else {
         setMessage("Невозможно выбрать несуществующий образ", "negative");
+      }
+      
+      $update();
+    }
+    
+    if (!empty($_POST['removeImageButton'])) {
+      if ($UM->removeImage($_SESSION['user']->login(), $_SESSION['currentImage']->getImageName())) {
+        unset($_SESSION['currentImage']);
+        setMessage("Ваш образ был удалён навсегда", "success");
+      } else {
+        setMessage("Произошла ошибка при удалении образа", "negative");
       }
       
       $update();
