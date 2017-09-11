@@ -142,11 +142,19 @@
         $varAccessType = $_POST['varAccessType'];
         $varType = $_POST['varType'];
         
-        if (!empty($varName)) {          
-          $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
+        if (!empty($varName)) {
           
-          setMessage("Свойство ".$varName." было добавлено в класс ".$className, "success");
+          $vars = explode(",", $varName);
           
+          $count_vars = 0;
+          foreach ($vars as $varName) {
+            
+            $_SESSION['currentImage']->getClass($className)['supclass']->addVar(new PVar($varName, $varAccessType, $varType));
+            
+            $count_vars++;
+          }
+          
+          setMessage($count_vars." cвойств было добавлено в класс ".$className, "success");
         } else {
           setMessage("Вы не можете создать безымянное свойство", "negative");
         }

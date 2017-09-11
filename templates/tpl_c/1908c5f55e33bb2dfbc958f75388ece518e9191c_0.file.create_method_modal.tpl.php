@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-06 02:37:03
+/* Smarty version 3.1.29, created on 2017-09-11 23:46:07
   from "C:\OpenServer\domains\PCM\templates\tpl\modals\create_method_modal.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59af351f866c96_44978495',
+  'unifunc' => 'content_59b6f60f352473_52068525',
   'file_dependency' => 
   array (
     '1908c5f55e33bb2dfbc958f75388ece518e9191c' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\modals\\create_method_modal.tpl',
-      1 => 1504474041,
+      1 => 1505162764,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59af351f866c96_44978495 ($_smarty_tpl) {
+function content_59b6f60f352473_52068525 ($_smarty_tpl) {
 ?>
 <div class="ui small modal" id="createMethodModal">
   <div class="header">
@@ -64,8 +64,9 @@ $_smarty_tpl->tpl_vars['class'] = $__foreach_class_0_saved_item;
               <div class="field">
                 <label>Тип метода</label>
                 <select name="methodType">
-                  <option value="0" >Обычный</option>
-                  <option value="1" >Абстрактный</option>
+                  <option value="0">Обычный</option>
+                  <option value="1">Статический</option>
+                  <option value="2">Абстрактный</option>
                 </select>
               </div>
               <div class="field">

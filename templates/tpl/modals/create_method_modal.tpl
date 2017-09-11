@@ -23,8 +23,9 @@
               <div class="field">
                 <label>Тип метода</label>
                 <select name="methodType">
-                  <option value="0" >Обычный</option>
-                  <option value="1" >Абстрактный</option>
+                  <option value="0">Обычный</option>
+                  <option value="1">Статический</option>
+                  <option value="2">Абстрактный</option>
                 </select>
               </div>
               <div class="field">

@@ -207,7 +207,17 @@
 			$lines = explode("\n", $this->src);
 			for($i = 0; $i < count($lines); $i++) $lines[$i] = str_replace("\t", "    ", $lines[$i]);
 			
-			$code = "\n".$access_type.$method_type." function ".$this->method_name;
+      switch ($method_type)
+      {
+        case "abstract ":
+        {
+          $code = "\n".$method_type.$access_type." function ".$this->method_name;          
+        } break;
+        default:
+        {
+          $code = "\n".$access_type.$method_type." function ".$this->method_name;          
+        } break;
+      }
 			
 			$code .= "(";
 			foreach($this->args as $arg)
