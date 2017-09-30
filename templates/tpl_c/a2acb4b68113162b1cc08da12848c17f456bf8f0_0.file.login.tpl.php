@@ -1,3 +1,26 @@
+<?php
+/* Smarty version 3.1.29, created on 2017-09-30 22:50:16
+  from "C:\OpenServer\domains\PCM\templates\tpl\login.tpl" */
+
+if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
+  'has_nocache_code' => false,
+  'version' => '3.1.29',
+  'unifunc' => 'content_59cff578199b05_88846706',
+  'file_dependency' => 
+  array (
+    'a2acb4b68113162b1cc08da12848c17f456bf8f0' => 
+    array (
+      0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\login.tpl',
+      1 => 1506801012,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_59cff578199b05_88846706 ($_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,8 +30,12 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.js"><?php echo '</script'; ?>
+>
   </head>
   <body>
     <div class="container-fluid">
@@ -53,7 +80,7 @@
             <h4 class="modal-title">Регистрация</h4>
           </div>
           <div class="modal-body">
-            {if $account_types != NULL}
+            <?php if ($_smarty_tpl->tpl_vars['account_types']->value != NULL) {?>
               <form name="registrationUserForm" method="POST">
                 <div class="form-group" id="message"></div>
                 <div class="form-group">
@@ -79,24 +106,44 @@
                 <div class="form-group">
                   <label>Тип аккаунта</label>
                   <select name="account_type" class="form-control">
-                    {foreach from=$account_types item=account_type}
-                      <option value="{$account_type['id_account_type']}">{$account_type['description']}</option>
-                    {/foreach}
+                    <?php
+$_from = $_smarty_tpl->tpl_vars['account_types']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$__foreach_account_type_0_saved_item = isset($_smarty_tpl->tpl_vars['account_type']) ? $_smarty_tpl->tpl_vars['account_type'] : false;
+$_smarty_tpl->tpl_vars['account_type'] = new Smarty_Variable();
+$_smarty_tpl->tpl_vars['account_type']->_loop = false;
+foreach ($_from as $_smarty_tpl->tpl_vars['account_type']->value) {
+$_smarty_tpl->tpl_vars['account_type']->_loop = true;
+$__foreach_account_type_0_saved_local_item = $_smarty_tpl->tpl_vars['account_type'];
+?>
+                      <option value="<?php echo $_smarty_tpl->tpl_vars['account_type']->value['id_account_type'];?>
+"><?php echo $_smarty_tpl->tpl_vars['account_type']->value['description'];?>
+</option>
+                    <?php
+$_smarty_tpl->tpl_vars['account_type'] = $__foreach_account_type_0_saved_local_item;
+}
+if ($__foreach_account_type_0_saved_item) {
+$_smarty_tpl->tpl_vars['account_type'] = $__foreach_account_type_0_saved_item;
+}
+?>
                   </select>
                 </div>
                 <div class="form-group">
                   <input type="submit" name="registrationUserButton" value="Зарегистрировать" class="btn btn-primary">
                 </div>
               </form>
-            {else}
+            <?php } else { ?>
               <h3 align="center">Регистрация временно закрыта</h3>
-            {/if}
+            <?php }?>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     
-    <script type="text/javascript">
+    <?php echo '<script'; ?>
+ type="text/javascript">
 
       $(document).ready(function(){
 
@@ -150,6 +197,8 @@
 
       });
       
-    </script>
+    <?php echo '</script'; ?>
+>
   </body>
-</html>
+</html><?php }
+}

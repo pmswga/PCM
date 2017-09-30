@@ -1,0 +1,26 @@
+.form-group:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.btn, .btn-default {
+    width: 150px;
+}
+
+[name="loginUserButton"] {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[name="loginUserForm"] label {
+    color: white;
+    font-size: 20px;
+}
+
+[name="login"], [name="passwd"], [name="retry_password"], [name="account_type"], [name="sn"], [name="fn"] {
+    border: 1px solid black;
+}
+
+#message {
+    padding: 10px;
+}
