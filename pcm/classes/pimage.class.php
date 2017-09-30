@@ -9,7 +9,7 @@
 	class PImage
 	{
 		private $image_name;
-    private $image_descp;
+    	private $image_descp;
 		private $image_file;
 		private $classes;
 		private $classes_files;
@@ -17,7 +17,7 @@
 		public function __construct(string $image_name, string $image_descp = "")
 		{
 			$this->image_name = str_replace(" ", "_", $image_name);
-      $this->image_descp = $image_descp;
+      		$this->image_descp = $image_descp;
 			$this->image_file = strtolower($image_name).".pcm";
 			$this->classes = array();
 			$this->classes_files = array();
@@ -28,10 +28,10 @@
 			return $this->image_name;
 		}
     
-    public function getImageDescp() : string
-    {
-      return $this->image_descp;
-    }
+		public function getImageDescp() : string
+		{
+		return $this->image_descp;
+		}
 		
 		public function getClassesFiles() : array
 		{

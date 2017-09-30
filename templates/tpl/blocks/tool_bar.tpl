@@ -1,4 +1,4 @@
-<div class="ui menu">
+<div class="ui stackable menu">
   <a class="item" id="createClass">
     <i class="plus icon"></i>
     Класс

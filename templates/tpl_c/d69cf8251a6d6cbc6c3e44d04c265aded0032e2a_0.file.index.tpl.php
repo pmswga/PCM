@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-12 00:02:51
+/* Smarty version 3.1.29, created on 2017-09-30 19:58:15
   from "C:\OpenServer\domains\PCM\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59b6f9fb4cede2_39436588',
+  'unifunc' => 'content_59cfcd27e17d09_42981124',
   'file_dependency' => 
   array (
     'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a' => 
     array (
       0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\index.tpl',
-      1 => 1505163770,
+      1 => 1506790092,
       2 => 'file',
     ),
   ),
@@ -29,6 +29,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
     'file:modals/create_var_modal.tpl' => 1,
     'file:modals/create_method_modal.tpl' => 1,
     'file:modals/profile.tpl' => 1,
+    'file:modals/guide_modal.tpl' => 1,
   ),
   'tpl_function' => 
   array (
@@ -39,11 +40,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\d69cf8251a6d6cbc6c3e44d04c265aded0032e2a_0.file.index.tpl.php',
       'uid' => 'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a',
-      'call_name' => 'smarty_template_function_menu_189559b6f9fb436836_28173758',
+      'call_name' => 'smarty_template_function_menu_1467459cfcd27d7b8d1_05413347',
     ),
   ),
 ),false)) {
-function content_59b6f9fb4cede2_39436588 ($_smarty_tpl) {
+function content_59cfcd27e17d09_42981124 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,11 +77,11 @@ function content_59b6f9fb4cede2_39436588 ($_smarty_tpl) {
   <body>
     <?php $_smarty_tpl->tpl_vars['image_no_set'] = new Smarty_Variable("Не выбран образ по умолчанию", null);
 $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
-  
+
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:blocks/menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
-    <div id="content" class="ui divided grid">
+    <div id="content" class="ui stackable divided grid">
       <div class="row">
         <div class="four wide column">
           <div class="row">
@@ -172,6 +173,9 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
 
     
     <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:modals/profile.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+    <?php $_smarty_tpl->smarty->ext->_subtemplate->render($_smarty_tpl, "file:modals/guide_modal.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
     
@@ -276,13 +280,17 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
         $("#profileModal").modal('show');
       });
       
+      $("#guide").on("click", function(){
+        $("#guideModal").modal('show');
+      });
+
     <?php echo '</script'; ?>
 >   
   </body>
 </html><?php }
-/* smarty_template_function_menu_189559b6f9fb436836_28173758 */
-if (!function_exists('smarty_template_function_menu_189559b6f9fb436836_28173758')) {
-function smarty_template_function_menu_189559b6f9fb436836_28173758($_smarty_tpl,$params) {
+/* smarty_template_function_menu_1467459cfcd27d7b8d1_05413347 */
+if (!function_exists('smarty_template_function_menu_1467459cfcd27d7b8d1_05413347')) {
+function smarty_template_function_menu_1467459cfcd27d7b8d1_05413347($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -328,5 +336,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_189559b6f9fb436836_28173758 */
+/*/ smarty_template_function_menu_1467459cfcd27d7b8d1_05413347 */
 }

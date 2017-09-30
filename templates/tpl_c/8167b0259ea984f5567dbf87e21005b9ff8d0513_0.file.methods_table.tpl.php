@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-09-06 06:36:55
+/* Smarty version 3.1.29, created on 2017-09-30 19:58:16
   from "C:\OpenServer\domains\PCM\templates\tpl\tables\methods_table.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59af6d57e33305_30828267',
+  'unifunc' => 'content_59cfcd286a1c50_28936799',
   'file_dependency' => 
   array (
     '8167b0259ea984f5567dbf87e21005b9ff8d0513' => 
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_59af6d57e33305_30828267 ($_smarty_tpl) {
+function content_59cfcd286a1c50_28936799 ($_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['methods']->value != NULL) {?>
   <table class="ui table striped">
     <thead>

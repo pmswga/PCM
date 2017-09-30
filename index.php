@@ -17,7 +17,7 @@
     };
         
     if (empty($_SESSION['currentImage'])) {
-      setMessage("Не выбран образ по умолчанию", "negative");
+      setMessage("Не выбран образ по умолчанию", "warning");
     } else {
       $UM->syncImage($_SESSION['user']->login(), $_SESSION['currentImage']);
       
@@ -130,6 +130,17 @@
         setMessage("Невозможно создать класс в пустом образе", "warning");
       }
       
+      $update();
+    }
+
+    if (!empty($_POST['removeClassesButton'])) {
+      $classes = $_POST['classes'];
+
+      foreach ($classes as $class) {
+        $_SESSION['currentImage']->removeClass($class);
+      }
+
+      setMessage("Выбранные классы были удалены", "success");
       $update();
     }
     

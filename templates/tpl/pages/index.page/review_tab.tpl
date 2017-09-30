@@ -25,7 +25,7 @@
           </tbody>
         </table>
         <fieldset>
-          <legend style="color: black;"><h1>Структура образа</h1></legend>
+          <legend>Структура образа</legend>
           {function stat}
             <ul class="ui list" id="image_structures">
               {foreach from=$data item=entry}

@@ -6,7 +6,7 @@ body {
 }
 
 .ui.inverted.menu {
-  width: 200vh;
+  /* width: 200vh; */
   background-color: #564F6E;
 }
 
@@ -14,7 +14,7 @@ body {
   padding: 10px;
 }
 
-fieldset legend {
+h1 {
   color: white;
 }
 
@@ -78,6 +78,14 @@ a.class:hover {
   color: black;
 }
 
-legend.black__ {
-  color: white;
+#guide_steps {
+  width: 100%; 
+}
+
+img[src="img/image.png" ] {
+  margin: 0em 1rem 0em 0em;
+}
+
+#method_table, #vars_table {
+  text-align: center;
 }

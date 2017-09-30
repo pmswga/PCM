@@ -19,9 +19,9 @@
   </head>
   <body>
     {$image_no_set = "Не выбран образ по умолчанию"}
-  
+
     {include file="blocks/menu.tpl"}
-    <div id="content" class="ui divided grid">
+    <div id="content" class="ui stackable divided grid">
       <div class="row">
         <div class="four wide column">
           <div class="row">
@@ -108,6 +108,7 @@
     {include "modals/create_method_modal.tpl"}
     
     {include "modals/profile.tpl"}
+    {include "modals/guide_modal.tpl"}
     {*
     {include "modals/view_images_modal.tpl"}
     *}
@@ -211,6 +212,10 @@
         $("#profileModal").modal('show');
       });
       
+      $("#guide").on("click", function(){
+        $("#guideModal").modal('show');
+      });
+
     </script>   
   </body>
 </html>
