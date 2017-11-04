@@ -10,16 +10,344 @@
     </title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/semantic/semantic.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">  -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/semantic.js"></script>
 	  <script type="text/javascript" src="js/tabulation.js"></script> 
-		<script type="text/javascript" src="js/uiapp.js"></script>
+    <script type="text/javascript" src="js/uiapp.js"></script>
+    <style type="text/css">
+
+      .ui.grid {
+        padding: 10px;
+      }
+
+    </style>
   </head>
   <body>
+      <div class="ui internally grid">
+        <div class="row">
+          <div class="sixteem wide column">
+            <div class="ui menu">
+              <div class="header item">
+                <img src="img/logo.png" alt="" title="Object-Oriented Development Environment">
+              </div>
+              <div class="item">
+                <select class="ui dropdown">
+                  {foreach from=$images item=image}        
+                    <option value="{$image->getImageName()}">{$image->getImageName()}</option>
+                  {/foreach}
+                </select>
+              </div>
+              <a class="item">
+                <i class="plus icon"></i>
+                Проект
+              </a>
+              <div class="right menu">
+                <a class="item" id="guide">
+                  <i class="help circle icon"></i>
+                </a>
+                <a class="item" id="profile">Профиль</a>
+                <a class="ui item">
+                  Выйти
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="four wide column">
+            <div class="ui top attached active tab segment" data-tab="classes">
+                {function menu}
+                <ul class="ui list" id="hierarchia">
+                  {foreach from=$data item=entry}
+                    <li class="item">
+                      <i class="folder icon"></i>
+                      <div class="content">
+                        <div class="header"><a href="#{$entry['supclass']->getClassName()}" class="class">{$entry['supclass']->getClassName()}</a></div>
+                        {if is_array($entry['subclass'])}
+                          <ul class="list">
+                            {menu data=$entry["subclass"]}
+                          </ul>
+                        {/if}
+                      </div>
+                    </li>
+                  {/foreach}
+                </ul>
+              {/function}
+              {if $classHierarchia != NULL}
+                {menu data=$classHierarchia}
+              {/if}
+            </div>
+            <div class="ui top attached tab segment" data-tab="name_spaces">
+
+            </div>
+            <div class="ui bottom attached tabular menu">
+              <a class="active item" data-tab="classes">Иерархия классов</a>
+              <a class="item" data-tab="name_spaces">Пространства имён</a>
+            </div>
+          </div>
+          <div class="twelve wide column">
+            <div class="ui menu">
+              <a class="item" id="createClass">
+                <i class="plus icon"></i>
+                Класс
+              </a>
+              <a class="item" id="createVar">
+                <i class="plus icon"></i>
+                Свойство
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Метод
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Пространство имён
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Интерфейс
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Словарь
+              </a>
+            </div>
+            <div class="ui top attached active tab segment" data-tab="public">
+              <div class="ui grid">
+                <div class="row">
+                  <div class="eight wide column">
+                    <h3>Свойства</h3>
+                    <hr>
+                    <table class="ui table">
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Тип</th>
+                          <th>Выбрать</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>sn</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>fn</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>pt</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>email</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>password</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="eight wide column">
+                    <h3>Методы</h3>
+                    <hr>
+                    <table class="ui table">
+                      <thead>
+                        <tr>
+                          <th>Имя</th>
+                          <th>Тип</th>
+                          <th>Выбрать</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>setSn()</td>
+                            <td>no static</td>
+                            <td>
+                              <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label></label>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>setFn()</td>
+                            <td>no static</td>
+                            <td>
+                              <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label></label>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>setPt()</td>
+                            <td>no static</td>
+                            <td>
+                              <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label></label>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>setEmail()</td>
+                            <td>no static</td>
+                            <td>
+                              <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label></label>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>setPassword()</td>
+                            <td>no static</td>
+                            <td>
+                              <div class="ui checkbox">
+                                <input type="checkbox">
+                                <label></label>
+                              </div>
+                            </td>
+                          </tr>
+
+                        <tr>
+                          <td>getSn()</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>getFn()</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>getPt()</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>getEmail()</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>getPassword()</td>
+                          <td>no static</td>
+                          <td>
+                            <div class="ui checkbox">
+                              <input type="checkbox">
+                              <label></label>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui top attached tab segment" data-tab="private">
+              Second
+            </div>
+            <div class="ui top attached tab segment" data-tab="protected">
+              Third
+            </div>
+            <div class="ui bottom attached tabular menu">
+              <a class="active item" data-tab="public">public</a>
+              <a class="item" data-tab="private">private</a>
+              <a class="item" data-tab="protected">protected</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="sixteen wide column">
+            <div class="ui top attached tabular menu">
+              <a class="item" data-tab="statistic">Статистика</a>
+              <a class="active item" data-tab="code">Код</a>
+              <a class="item" data-tab="generate">Генерация</a>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="statistic">
+            Third
+            </div>
+            <div class="ui bottom attached active tab segment" data-tab="code">
+              <form class="ui form">
+                <div class="field">
+                  <label>Метод: </label>
+                  <textarea></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="ui bottom attached tab segment" data-tab="generate">
+              Second
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+      
+      $('.menu .item').tab();
+
+      </script>
+
     {$image_no_set = "Не выбран образ по умолчанию"}
 
+    {*
     {include file="blocks/menu.tpl"}
     <div id="content" class="ui stackable divided grid">
       <div class="row">
@@ -112,7 +440,7 @@
     {*
     {include "modals/view_images_modal.tpl"}
     *}
-    
+<!--     
     <script type="text/javascript">
     
       var classes = [];
@@ -216,6 +544,7 @@
         $("#guideModal").modal('show');
       });
 
-    </script>   
+    </script>
+     -->
   </body>
 </html>

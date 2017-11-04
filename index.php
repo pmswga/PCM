@@ -7,7 +7,10 @@
   use PCM\Structures\PVar;
   use PCM\Structures\PMethod;
   use PCM\Users\User;
-  
+
+  $CT->Show("index.tpl");
+
+  /*
   // CTools::var_dump($_SESSION['images']);
   
   if (isset($_SESSION['user']) && ($_SESSION['user'] instanceof User)) {
@@ -241,8 +244,6 @@
       $_SESSION['currentImage']->generate();
     }
     
-    /*! Work with Profile */
-    
     if (!empty($_POST['changeProfilePasswordButton'])) {
       $oldPassword = md5(htmlspecialchars($_POST['oldPassword']));
       $newPassword = md5(htmlspecialchars($_POST['newPassword']));
@@ -275,5 +276,5 @@
     CTools::Redirect("login.php");
     
   }
-  
+  */
 ?>

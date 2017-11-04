@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-10-15 13:45:30
-  from "C:\OpenServer\domains\PCM\templates\tpl\index.tpl" */
+/* Smarty version 3.1.29, created on 2017-11-04 22:56:13
+  from "E:\OpenServer\domains\PCM\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59e33c4aa54ee5_51236523',
+  'unifunc' => 'content_59fe1b5d6227b5_54350204',
   'file_dependency' => 
   array (
-    'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a' => 
+    '9387acc6a16b96707fe1715d8260330922d043a5' => 
     array (
-      0 => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl\\index.tpl',
-      1 => 1508064329,
+      0 => 'E:\\OpenServer\\domains\\PCM\\templates\\tpl\\index.tpl',
+      1 => 1509825372,
       2 => 'file',
     ),
   ),
@@ -25,13 +25,13 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       'called_functions' => 
       array (
       ),
-      'compiled_filepath' => 'C:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\d69cf8251a6d6cbc6c3e44d04c265aded0032e2a_0.file.index.tpl.php',
-      'uid' => 'd69cf8251a6d6cbc6c3e44d04c265aded0032e2a',
-      'call_name' => 'smarty_template_function_menu_8959e33c4aa0ab42_35968764',
+      'compiled_filepath' => 'E:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\9387acc6a16b96707fe1715d8260330922d043a5_0.file.index.tpl.php',
+      'uid' => '9387acc6a16b96707fe1715d8260330922d043a5',
+      'call_name' => 'smarty_template_function_menu_2166259fe1b5d5d0725_84563382',
     ),
   ),
 ),false)) {
-function content_59e33c4aa54ee5_51236523 ($_smarty_tpl) {
+function content_59fe1b5d6227b5_54350204 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,6 +73,9 @@ function content_59e33c4aa54ee5_51236523 ($_smarty_tpl) {
         <div class="row">
           <div class="sixteem wide column">
             <div class="ui menu">
+              <div class="header item">
+                <img src="img/logo.png" alt="" title="Object-Oriented Development Environment">
+              </div>
               <div class="item">
                 <select class="ui dropdown">
                   <?php
@@ -99,25 +102,9 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_item;
 ?>
                 </select>
               </div>
-              <a class="item" id="createClass">
+              <a class="item">
                 <i class="plus icon"></i>
-                Класс
-              </a>
-              <a class="item" id="createVar">
-                <i class="plus icon"></i>
-                Свойство
-              </a>
-              <a class="item" id="createMethod">
-                <i class="plus icon"></i>
-                Метод
-              </a>
-              <a class="item" id="createMethod">
-                <i class="plus icon"></i>
-                Интерфейс
-              </a>
-              <a class="item" id="createMethod">
-                <i class="plus icon"></i>
-                Словарь
+                Проект
               </a>
               <div class="right menu">
                 <a class="item" id="guide">
@@ -133,17 +120,48 @@ $_smarty_tpl->tpl_vars['image'] = $__foreach_image_0_saved_item;
         </div>
         <div class="row">
           <div class="four wide column">
-            <fieldset style="height: 100%">
-              <legend><h2>Иерархия классов</h2></legend>
-              
-              
-            <?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
-                  <?php $_smarty_tpl->smarty->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'menu', array('data'=>$_smarty_tpl->tpl_vars['classHierarchia']->value), true);?>
+            <div class="ui top attached active tab segment" data-tab="classes">
+                
+              <?php if ($_smarty_tpl->tpl_vars['classHierarchia']->value != NULL) {?>
+                <?php $_smarty_tpl->smarty->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'menu', array('data'=>$_smarty_tpl->tpl_vars['classHierarchia']->value), true);?>
 
-            <?php }?>
-            </fieldset>
+              <?php }?>
+            </div>
+            <div class="ui top attached tab segment" data-tab="name_spaces">
+
+            </div>
+            <div class="ui bottom attached tabular menu">
+              <a class="active item" data-tab="classes">Иерархия классов</a>
+              <a class="item" data-tab="name_spaces">Пространства имён</a>
+            </div>
           </div>
           <div class="twelve wide column">
+            <div class="ui menu">
+              <a class="item" id="createClass">
+                <i class="plus icon"></i>
+                Класс
+              </a>
+              <a class="item" id="createVar">
+                <i class="plus icon"></i>
+                Свойство
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Метод
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Пространство имён
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Интерфейс
+              </a>
+              <a class="item" id="createMethod">
+                <i class="plus icon"></i>
+                Словарь
+              </a>
+            </div>
             <div class="ui top attached active tab segment" data-tab="public">
               <div class="ui grid">
                 <div class="row">
@@ -491,15 +509,15 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
      -->
   </body>
 </html><?php }
-/* smarty_template_function_menu_8959e33c4aa0ab42_35968764 */
-if (!function_exists('smarty_template_function_menu_8959e33c4aa0ab42_35968764')) {
-function smarty_template_function_menu_8959e33c4aa0ab42_35968764($_smarty_tpl,$params) {
+/* smarty_template_function_menu_2166259fe1b5d5d0725_84563382 */
+if (!function_exists('smarty_template_function_menu_2166259fe1b5d5d0725_84563382')) {
+function smarty_template_function_menu_2166259fe1b5d5d0725_84563382($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
 }?>
-              <ul class="ui list" id="hierarchia">
-                <?php
+                <ul class="ui list" id="hierarchia">
+                  <?php
 $_from = $_smarty_tpl->tpl_vars['data']->value;
 if (!is_array($_from) && !is_object($_from)) {
 settype($_from, 'array');
@@ -511,33 +529,33 @@ foreach ($_from as $_smarty_tpl->tpl_vars['entry']->value) {
 $_smarty_tpl->tpl_vars['entry']->_loop = true;
 $__foreach_entry_1_saved_local_item = $_smarty_tpl->tpl_vars['entry'];
 ?>
-                  <li class="item">
-                    <i class="folder icon"></i>
-                    <div class="content">
-                      <div class="header"><a href="#<?php echo $_smarty_tpl->tpl_vars['entry']->value['supclass']->getClassName();?>
+                    <li class="item">
+                      <i class="folder icon"></i>
+                      <div class="content">
+                        <div class="header"><a href="#<?php echo $_smarty_tpl->tpl_vars['entry']->value['supclass']->getClassName();?>
 " class="class"><?php echo $_smarty_tpl->tpl_vars['entry']->value['supclass']->getClassName();?>
 </a></div>
-                      <?php if (is_array($_smarty_tpl->tpl_vars['entry']->value['subclass'])) {?>
-                        <ul class="list">
-                          <?php $_smarty_tpl->smarty->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'menu', array('data'=>$_smarty_tpl->tpl_vars['entry']->value["subclass"]), true);?>
+                        <?php if (is_array($_smarty_tpl->tpl_vars['entry']->value['subclass'])) {?>
+                          <ul class="list">
+                            <?php $_smarty_tpl->smarty->ext->_tplFunction->callTemplateFunction($_smarty_tpl, 'menu', array('data'=>$_smarty_tpl->tpl_vars['entry']->value["subclass"]), true);?>
 
-                        </ul>
-                      <?php }?>
-                    </div>
-                  </li>
-                <?php
+                          </ul>
+                        <?php }?>
+                      </div>
+                    </li>
+                  <?php
 $_smarty_tpl->tpl_vars['entry'] = $__foreach_entry_1_saved_local_item;
 }
 if ($__foreach_entry_1_saved_item) {
 $_smarty_tpl->tpl_vars['entry'] = $__foreach_entry_1_saved_item;
 }
 ?>
-              </ul>
-            <?php foreach (Smarty::$global_tpl_vars as $key => $value){
+                </ul>
+              <?php foreach (Smarty::$global_tpl_vars as $key => $value){
 if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $value) $saved_tpl_vars[$key] = $value;
 }
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_8959e33c4aa0ab42_35968764 */
+/*/ smarty_template_function_menu_2166259fe1b5d5d0725_84563382 */
 }
