@@ -40,7 +40,7 @@
   
 	$CT = new CTemplater("templates/tpl", "templates/tpl_c", "templates/configs", "templates/cache");
   
-  $UM = new UserManager();
+  // $UM = new UserManager();
   
   function setMessage(string $msg, string $type)
   {

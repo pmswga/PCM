@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.29, created on 2017-11-04 22:56:13
+/* Smarty version 3.1.29, created on 2017-11-19 16:33:29
   from "E:\OpenServer\domains\PCM\templates\tpl\index.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.29',
-  'unifunc' => 'content_59fe1b5d6227b5_54350204',
+  'unifunc' => 'content_5a11882966cf52_94970423',
   'file_dependency' => 
   array (
     '9387acc6a16b96707fe1715d8260330922d043a5' => 
     array (
       0 => 'E:\\OpenServer\\domains\\PCM\\templates\\tpl\\index.tpl',
-      1 => 1509825372,
+      1 => 1511098409,
       2 => 'file',
     ),
   ),
@@ -27,11 +27,11 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
       ),
       'compiled_filepath' => 'E:\\OpenServer\\domains\\PCM\\templates\\tpl_c\\9387acc6a16b96707fe1715d8260330922d043a5_0.file.index.tpl.php',
       'uid' => '9387acc6a16b96707fe1715d8260330922d043a5',
-      'call_name' => 'smarty_template_function_menu_2166259fe1b5d5d0725_84563382',
+      'call_name' => 'smarty_template_function_menu_278305a118829622bc4_80629788',
     ),
   ),
 ),false)) {
-function content_59fe1b5d6227b5_54350204 ($_smarty_tpl) {
+function content_5a11882966cf52_94970423 ($_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -509,9 +509,9 @@ $_smarty_tpl->ext->_updateScope->updateScope($_smarty_tpl, 'image_no_set', 0);?>
      -->
   </body>
 </html><?php }
-/* smarty_template_function_menu_2166259fe1b5d5d0725_84563382 */
-if (!function_exists('smarty_template_function_menu_2166259fe1b5d5d0725_84563382')) {
-function smarty_template_function_menu_2166259fe1b5d5d0725_84563382($_smarty_tpl,$params) {
+/* smarty_template_function_menu_278305a118829622bc4_80629788 */
+if (!function_exists('smarty_template_function_menu_278305a118829622bc4_80629788')) {
+function smarty_template_function_menu_278305a118829622bc4_80629788($_smarty_tpl,$params) {
 $saved_tpl_vars = $_smarty_tpl->tpl_vars;
 foreach ($params as $key => $value) {
 $_smarty_tpl->tpl_vars[$key] = new Smarty_Variable($value);
@@ -557,5 +557,5 @@ if (!isset($_smarty_tpl->tpl_vars[$key]) || $_smarty_tpl->tpl_vars[$key] === $va
 $_smarty_tpl->tpl_vars = $saved_tpl_vars;
 }
 }
-/*/ smarty_template_function_menu_2166259fe1b5d5d0725_84563382 */
+/*/ smarty_template_function_menu_278305a118829622bc4_80629788 */
 }
